@@ -6,10 +6,11 @@ navigation:
   section: [2]
 ---
 
-Start from this chapter, you will learn the usage of [Spark](http://spark.apache.org), an in-memory spark clustering computing framework.
+Start from this chapter, you will learn the usage of [Spark](http://spark.apache.org), an in-memory spark clustering computing framework. Due to time limit, we will focus on interactive shell.
 
+
+**TODO**
 - Interactive Shell
-  You will learn how to use Scala shell
 - Feature construction
 - MLlib
 
