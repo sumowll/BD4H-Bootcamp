@@ -1,0 +1,11 @@
+# markdown: redcarpet
+# title: Bigdatq Bootcamp
+# highlighter: rouge
+
+markdown: kramdown
+
+ignore: [.gitignore]
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
