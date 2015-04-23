@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Usage of Spark MLlib
+title: Spark MLlib
 navigation:
-  section: [2, 1]
+  section: [2, 5]
 ---
 
-This is a test of spark
+With data loaded and preprocessed. Run clustering algorithm 
 
 ```scala
 import org.apache.spark.mllib.Clustering
