@@ -8,7 +8,7 @@ navigation:
 This section will briefly go through the essential knowledge about scala for later Spark training. In this section we will first show how to work with spark shell, then show how use variables, functions with examples. Finally, we give instructions about how to compile and run a standalone program using `sbt`.
 
 # Spark Shell
-Open a terminal and navigate to the root of training material. You could open a scala shell by typing `scala`. Or, you could use [sbt](http://www.scala-sbt.org/index.html) by typing `sbt console`. The second approach will help you add your project source code and dependencies into class path, so that your functions or library functions will be available for you to try to in the interactive shell. 
+Open a terminal and navigate to the root of code samples. You could open a scala shell by typing `scala`. Or, you could use [sbt](http://www.scala-sbt.org/index.html) by typing `sbt/sbt console`. The second approach will help you add your project source code and dependencies into class path, so that your functions or library functions will be available for you to try to in the interactive shell. 
 
 Start the scala shell you will see
 ```scala
@@ -135,12 +135,34 @@ A special kind of class we will use is [`Case Class`](http://www.scala-lang.org/
 ```scala
 scala> case class Patient(val name: String, val id: Int)
 ```
+It's very convenient to use case class in pattern matting
+```scala
+scala> val p = new Patient("Abc", 1)
+p: Patient = Patient(Abc,1)
+
+scala> p match {case Patient("Abc", id) => println(s"matching id is $id")}
+matching id is 1
+```
 
 # Standalone Program
-
+Working with large real world application, you usually need to compile and package your source code with some tools. Here we show how to compile and run a simple program with [sbt](http://www.scala-sbt.org/index.html). Run the sample code in 'hello-bigdata' folder
+```
+% sbt/sbt run
+Attempting to fetch sbt
+######################################################################## 100.0%
+Launching sbt from sbt/sbt-launch-0.13.8.jar
+[info] .....
+[info] Done updating.
+[info] Compiling 1 Scala source to ./hello-bigdata/target/scala-2.10/classes...
+[info] Running Hello 
+Hello bigdata
+[success] Total time: 2 s, completed May 3, 2015 8:42:48 PM
+```
+the source code file `hello.scals` is compiled and invoked.
 
 # Further Reading
 This is a very brief overview of important Scala language features required for the training. We highly recommend the readers to checkout below references
 
 - [Twitter Scala School](https://twitter.github.io/scala_school/index.html)
 - [Official Scala Tutorial](http://docs.scala-lang.org/tutorials/?_ga=1.128323084.1826222080.1429310377)
+- [sbt tutorial](http://www.scala-sbt.org/0.13/tutorial/index.html)
