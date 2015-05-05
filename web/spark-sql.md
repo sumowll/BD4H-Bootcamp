@@ -61,7 +61,12 @@ patientId        eventId   count
 # Saving data
 Spark SQL provides a convenient way to save data in different format just like loading data. For example you could write 
 ```scala
-scala> patientEvents.filter($"eventId".startsWith("DIAG")).groupBy("patientId", "eventId").count.orderBy($"count".desc).save("aggregated.json", "json")
+scala> patientEvents.
+    filter($"eventId".startsWith("DIAG")).
+    groupBy("patientId", "eventId").
+    count.
+    orderBy($"count".desc).
+    save("aggregated.json", "json")
 ```
 or
 ```scala
@@ -69,25 +74,30 @@ scala> patientEvents.filter($"eventId".startsWith("DIAG")).groupBy("patientId", 
 ```
 to save your transformed data in `json` or `csv` format respectively.
 
-# User defiend function
-In some cases, the built-in function of SQL like `count`, `max` if not enough, you could write your own function. For example, we want to know the total number of different events in our events file. You could first difine and register an UDF as below
-```scala
-scala> sqlContext.udf.register("getEventType", (s: String) => s match {
-    case diagnostics if diagnostics.startsWith("DIAG") => "diagnostics"
-    case "PAYMENT" => "payment"
-    case drug if drug.startsWith("DRUG") => "drug"
-    case procedure if procedure.startsWith("PROC") => "procedure"
-    case "heartfailure" => "heart failure"
-    case _ => "unkown"
-    })
-```
-next, write sql and call your function
-```scala
-scala> sqlContext.sql("select getEventType(eventId) type, count(*) count from events group by getEventType(eventId) order by count desc").show
-type          count
-drug          16251
-diagnostics   10820
-payment       3259 
-procedure     514  
-heart failure 300  
-```
+# User defiend function (UDF)
+In some cases, the built-in function of SQL like `count`, `max` if not enough, you could write your own function. For example, you want to _find_ number of different event types, you could:
+
+1. define and register an UDF
+
+    ```scala
+    scala> sqlContext.udf.register("getEventType", (s: String) => s match {
+        case diagnostics if diagnostics.startsWith("DIAG") => "diagnostics"
+        case "PAYMENT" => "payment"
+        case drug if drug.startsWith("DRUG") => "drug"
+        case procedure if procedure.startsWith("PROC") => "procedure"
+        case "heartfailure" => "heart failure"
+        case _ => "unkown"
+        })
+    ```
+
+2. write sql and call your function
+
+    ```scala
+    scala> sqlContext.sql("select getEventType(eventId) type, count(*) count from events group by getEventType(eventId) order by count desc").show
+    type          count
+    drug          16251
+    diagnostics   10820
+    payment       3259 
+    procedure     514  
+    heart failure 300  
+    ```
