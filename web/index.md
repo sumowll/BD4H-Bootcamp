@@ -1,6 +1,7 @@
 ---
-layout: default
-title: this is a test
+layout: page
+title: Big Data Bootcamp
+description: Georgia Tech big data bootcampt training material
 navigation:
   section: [0]
 ---
@@ -19,4 +20,11 @@ Content of the training material is divided into three chapters:
 3. Chapter three will guide you through the process of building a real application using what you've learned.
 
 list of pages:
+
 {% include section-list.html %}
+
+<li>
+    <a href="hadoop.html">
+    1. Overview of Hadoop
+    </a>
+</li>

@@ -1,11 +1,27 @@
-# markdown: redcarpet
-# title: Bigdatq Bootcamp
-# highlighter: rouge
+# Site
+title: Bigdata Bootcamp
+header-img: image/home-bg.jpg
+description: Gatech CSE big data bootcamp
 
-markdown: kramdown
+url: "http://manul.io"
+baseurl: ""
+permalink: pretty
 
-ignore: [.gitignore]
+# Social network
+twitter_username: SBootstrap 
+github_username: cmanul
+facebook_username: suhang
+email: su_hang@live.com
 
+# Markdown
+markdown: redcarpet
+highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+
+redcarpet:
+  extensions: [disable_indented_code_blocks, lax_spacing, with_toc_data, prettify]
+
+exclude: ["less", "node_modules", "Gruntfile.js", "package.json", "README.md"]
+
