@@ -58,7 +58,7 @@ lines: org.apache.spark.rdd.RDD[String] = README.md MapPartitionsRDD[1] at textF
 # RDD Operations
 RDDs offer two types of operations: **transformation** and **actions**. 
 Transformations are operations on RDDs that return a new RDD, such as `map()` and `filter()`.
-Actions are operations that return a resultA to the driver program or write it to storage, such as `first()` and `count()`.
+Actions are operations that return a result to the driver program or write it to storage, such as `first()` and `count()`.
 Spark treats transformations and actions very differently, so understanding which type of operation you are performing is very important.
 You can check whether a function is a transformation or an action by looking at its return type: transformations return RDDs, whereas actions return some other data type.
 
@@ -66,16 +66,23 @@ All transformations in Spark are lazy, in that they do not compute the results r
 Therefore, the above command of reading in a file has not actually been executed yet. 
 We can force the evaluation of RDDs by calling any actions.
 
-For example, we can count the number of lines in the input file
+Let's go through some common RDD operations by playing with our dataset.
+Recall that in the file **case.csv**, each line is a 4-tuple `patient-id, event-id, timestamp, value`.
+
+
+1. Count the number of lines in the input file
 
 ```scala
 scala> lines.count()
 res1: Long = 14046
 ```
-Let us take a peek at the data. The `take(k)` will return the first k element in the RDD. Spark also provides `collect()` which brings all the elements in the EDD back to the driver program. Note that it is only used when the data is small.
+2. Let us take a peek at the data. The `take(k)` will return the first k elements in the RDD. Spark also provides `collect()` which brings all the elements in the EDD back to the driver program. Note that it is only used when the data is small.
 
 ```scala
 scala> lines.take(5)
+```
+
+```
 res2: Array[String] = Array(00013D2EFD8E45D1,DIAG78820,1166,1.0, 00013D2EFD8E45D1,DIAGV4501,1166,1.0, 00013D2EFD8E45D1,heartfailure,1166,1.0, 00013D2EFD8E45D1,DIAG2720,1166,1.0, 00013D2EFD8E45D1,DIAG4019,1166,1.0)  
 ```
 
@@ -83,6 +90,9 @@ We got the first 5 records in this RDD. However, this is hard to read. We can ma
 
 ```scala
 scala> lines.take(5).foreach(println)
+```
+
+```
 00013D2EFD8E45D1,DIAG78820,1166,1.0
 00013D2EFD8E45D1,DIAGV4501,1166,1.0
 00013D2EFD8E45D1,heartfailure,1166,1.0
@@ -91,41 +101,45 @@ scala> lines.take(5).foreach(println)
 ```
 Note that during the above 3 commands, the RDD `lines` has been computed (i.e. read in from file) 3 times. We can prevent this by calling `lines.cache()`, which will cache the RDD in memory.
 
-We can count the number of records for a particular patients.
-
+3. We can count the number of records for a particular patients by using the `filter` function.
 ```scala
 scala> lines.filter(line => line.contains("00013D2EFD8E45D1")).count()
 res4: Long = 200
 ```
 
-We can also calculate the number of distinct patients.
+4. We can also calculate the number of distinct patients.
 In order to do this, we first extract the patient ID from each line.
-We use the `map()` function, which transforms each item in the RDD into a new item by performaning the provided function. In this example, we transform each line into the corresponding patient ID by extracting only the first column. We then eliminate duplicate IDs by the `distinct()` fucntion.
+We use the `map()` function, which transforms each item in the RDD into a new item by performing the provided function. In this example, we transform each line into the corresponding patient ID by extracting only the first column. We then eliminate duplicate IDs by the `distinct()` function.
 
 ```scala
 scala> lines.map(line => line.split(",")(0)).distinct().count()
 res5: Long = 100
 ```
 
-Suppose now we want to calculate the total payment by each patients. A payment record in the dataset is in the form of `(patien-id, PAYMENT, timestamp, amount)`.
-
+5. Suppose now we want to calculate the total payment by each patients. A payment record in the dataset is in the form of `(patient-id, PAYMENT, timestamp, value)`.
 ```scala
-scala> val payment_lines = lines.filter(line => line.contains("PAYMENT"))
-scala> val payments = payment_lines.map(line => (line.split(",")(0), line.split(",")(3).toFloat)).reduceByKey(_+_)
+scala> val payments = lines.filter(line => line.contains("PAYMENT")).
+                                 map{ x =>
+                                   val s = x.split(",")
+                                   (s(0), s(3).toFloat)
+                                 }.reduceByKey(_+_)
 ```
 
-The RDD `payment_lines` only contains those records associated with payment. Each line is then transformed to a key-value pair `(patients-id, payment amount)`. Because each patient can have multiple payments, we need to use `reduceByKey` to sum up the payments for each patient.
+The RDD returned by `filter` contains those records associated with payment. Each item is then transformed to a key-value pair `(patient-id, amount)`. Because each patient can have multiple payments, we need to use `reduceByKey` to sum up the payments for each patient.
 
 We can then show the top-3 patients with the highest payment.
 
 ```scala
 scala> payments.sortBy(_._2, false).take(3).foreach(println)
+```
+
+```
 (0085B4F55FFA358D,139880.0)
 (019E4729585EF3DD,108980.0)
 (01AC552BE839AB2B,108530.0)
 ```
 
-For RDD consists of numeric values, Spark provides some useful statitical primitives.
+6. For RDD consists of numeric values, Spark provides some useful statistical primitives.
 
 ```scala
 scala> val payment_values = payments.map(payment => payment._2).cache()
@@ -145,11 +159,14 @@ scala> payment_values.stdev()
 res10: Double = 26337.091771112468
 ```
 
-RDDs support many of the operations of mathematical sets, such as `union` and `intersection`, even when the RDDs themselves are not properly sets.
+7. RDDs support many of the operations of mathematical sets, such as `union` and `intersection`, even when the RDDs themselves are not properly sets. For example, we can combine the two files by the `union` fucntion.
 
 ```scala
 scala> val lines2 = sc.textFile("control.csv")
-scala> lines.union(lines2).count()
-res11: Long = 31144
+scala> lines.union(lines2).count() 
+res11: Long = 31144 
+
 ```
 
+For the complete list of RDD operations, please see the 
+[Spark Programming Guide](https://spark.apache.org/docs/latest/programming-guide.html#rdd-operations).
