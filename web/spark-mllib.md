@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Spark MLlib
 navigation:
   section: [2, 5]
