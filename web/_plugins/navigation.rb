@@ -12,7 +12,7 @@ module Jekyll
         if not page.data["navigation"].nil?
           unsorted << page if page.data["navigation"]["show"] != false
         else
-          puts "no nav on page " + page.data["title"]
+          puts "no nav on page " + page.data["title"].to_s
         end
       end
 

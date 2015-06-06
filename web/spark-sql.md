@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Spark Sql
 categories: [section]
 navigation:
@@ -15,6 +15,7 @@ Recent versions of Spark released the programming abstraction named DataFrame, w
 Spark provide API to load data in json, parquet, hive table etc. You could refer to the official [Spark SQL programming guide](https://spark.apache.org/docs/latest/sql-programming-guide.html#data-sources) for those formats. Here we show how to load csv files, we will use the [spark-csv](https://github.com/databricks/spark-csv) module by databricks.
 
 Start spark shell with below command to add extra dependencies
+
 ```
 % spark/bin/spark-shell --packages com.databricks:spark-csv_2.10:1.0.3
 [logs]
@@ -25,10 +26,11 @@ SQL context available as sqlContext.
 
 scala> 
 ```
+
 Now, load data
 ```scala
 scala> val patientEvents = sqlContext.load("data/", "com.databricks.spark.csv").
-     | toDF("patientId", "eventId", "date", "value")
+     toDF("patientId", "eventId", "date", "value")
 patientEvents: org.apache.spark.sql.DataFrame = [patientId: string, eventId: string, date: string, value: string]
 ```
 the first parameter is path to data, and second is data source. Here we specify a directory name so that all files in that directory will be read and second parameter make sure we will the proper parser. Next we call `toDF` to rename the column with meaningful name.
@@ -44,7 +46,7 @@ Here the `patientEvents` DataFrame is registered as a table in sql context so th
 
 Next, we show how to manipulate data with DSL, same result of previous SQL command could be achieved by
 ```scala
-scala> scala> patientEvents.filter($"eventId".startsWith("DIAG")).groupBy("patientId", "eventId").count.orderBy($"count".desc).show
+scala> patientEvents.filter($"eventId".startsWith("DIAG")).groupBy("patientId", "eventId").count.orderBy($"count".desc).show
 patientId        eventId   count
 00291F39917544B1 DIAG28521 16   
 00291F39917544B1 DIAG58881 16   
@@ -60,6 +62,7 @@ patientId        eventId   count
 ```
 # Saving data
 Spark SQL provides a convenient way to save data in different format just like loading data. For example you could write 
+
 ```scala
 scala> patientEvents.
     filter($"eventId".startsWith("DIAG")).
@@ -68,10 +71,13 @@ scala> patientEvents.
     orderBy($"count".desc).
     save("aggregated.json", "json")
 ```
+
 or
+
 ```scala
 scala> patientEvents.filter($"eventId".startsWith("DIAG")).groupBy("patientId", "eventId").count.orderBy($"count".desc).save("aggregated.csv", "com.databricks.spark.csv")
 ```
+
 to save your transformed data in `json` or `csv` format respectively.
 
 # User defiend function (UDF)
