@@ -3,3 +3,4 @@ private/
 data/
 derby.log
 metastore_db
+spark

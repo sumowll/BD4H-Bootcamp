@@ -15,21 +15,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Install puppet agent
-yum -y --nogpg install http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
-yum -y install curl  || yum -y install curl 
-yum -y install sudo || yum -y install sudo
-yum -y install unzip || yum -y install unzip
-yum -y install tar  || yum -y install tar 
-
-rpm --rebuilddb
-yum -y --nogpg install puppet || yum -y --nogpg install puppet
-
 # Setup rng-tools to improve virtual machine entropy performance.
 # The poor entropy performance will cause kerberos provisioning failed.
-yum -y install rng-tools
-sed -i.bak 's/EXTRAOPTIONS=\"\"/EXTRAOPTIONS=\"-r \/dev\/urandom\"/' /etc/sysconfig/rngd
-service rngd start
+su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm'
+yum -y --nogpg install rng-tools haveged
+sudo /usr/sbin/haveged --run=0
+sudo /usr/sbin/rngd --no-tpm=1 --rng-device=/dev/urandom
 
 # Install puppet modules
 puppet apply /bootcamp-vm/puppet-modules.pp
@@ -55,3 +46,16 @@ bigtop::bigtop_repo_uri: $2
 hadoop_cluster_node::cluster_components: $3
 bigtop::jdk_package_name: $4
 EOF
+
+cat > /etc/profile.d/hadoop.sh << EOF
+export HADOOP_CONF_DIR=/etc/hadoop/conf/
+export HADOOP_MAPRED_HOME=/usr/lib/hadoop-mapreduce/
+export HIVE_HOME=/usr/lib/hive/
+export PIG_HOME=/usr/lib/pig/
+export FLUME_HOME=/usr/lib/flume/
+export SQOOP_HOME=/usr/lib/sqoop/
+export HIVE_CONF_DIR=/etc/hive/conf/
+export JAVA_HOME=/usr/lib/jvm/java-openjdk/
+EOF
+
+

@@ -46,6 +46,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       d.vagrant_machine = "docker-host"
       d.vagrant_vagrantfile = "./coreos/Vagrantfile"
       d.has_ssh = false # We have decided to pipe commands to docker instead of ssh, due to ssh hang issue in vagrant.
+      d.volumes = ['/sys/fs/cgroup:/sys/fs/cgroup:ro']
     end
     image.ssh.username = "root"
     image.ssh.port = 22
@@ -64,7 +65,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         d.vagrant_machine = "docker-host"
         d.vagrant_vagrantfile = "./coreos/Vagrantfile"
         d.has_ssh = false # We have decided to pipe commands to docker instead of ssh, due to ssh hang issue in vagrant.
-        d.volumes = ['/bootcamp-vm/:/bootcamp-vm:rw']
+        d.volumes = ['/bootcamp-vm/:/bootcamp-vm:rw', '/sys/fs/cgroup:/sys/fs/cgroup:ro']
       end
       node.ssh.username = "root"
       node.ssh.port = 22

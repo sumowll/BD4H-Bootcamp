@@ -60,9 +60,9 @@ provision() {
 }
 
 destroy() {
-    nodes=(`vagrant status | grep -v image| awk '{print $1}'`)
+    nodes=(`vagrant status | grep running | grep -v image| awk '{print $1}'`)
     rm -rvf ./config.rb
-    echo "127.0.0.1   localhost\n" > hosts
+    echo -e "127.0.0.1\tlocalhost\n" > hosts
 
     for node in ${nodes[*]}; do
         vagrant destroy -f $node
