@@ -3,8 +3,8 @@ title: Bigdata Bootcamp
 header-img: image/home-bg.jpg
 description: Gatech CSE big data bootcamp
 
-url: "http://manul.io"
-baseurl: ""
+url: "http://www.sunlab.org"
+baseurl: "/bigdata"
 permalink: pretty
 
 # Social network

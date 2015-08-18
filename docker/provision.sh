@@ -23,22 +23,22 @@ sudo /usr/sbin/haveged --run=0
 sudo /usr/sbin/rngd --no-tpm=1 --rng-device=/dev/urandom
 
 # Install puppet modules
-puppet apply /bootcamp-vm/puppet-modules.pp
+puppet apply /bootcamp/docker/puppet-modules.pp
 
 mkdir -p /data/{1,2}
 
 sysctl kernel.hostname=`hostname -f`
 
 # Unmount device /etc/hosts and replace it by a shared hosts file
-echo -e "`hostname -i`\t`hostname -f`" >> /bootcamp-vm/hosts
+echo -e "`hostname -i`\t`hostname -f`" >> /bootcamp/docker/hosts
 umount /etc/hosts
 mv /etc/hosts /etc/hosts.bak
-ln -s /bootcamp-vm/hosts /etc/hosts
+ln -s /bootcamp/docker/hosts /etc/hosts
 
 # Prepare puppet configuration file
 mkdir -p /etc/puppet/hieradata
-cp /bootcamp-vm/puppet/hiera.yaml /etc/puppet
-cp -r /bootcamp-vm/puppet/hieradata/bigtop/ /etc/puppet/hieradata/
+cp /bootcamp/docker/puppet/hiera.yaml /etc/puppet
+cp -r /bootcamp/docker/puppet/hieradata/bigtop/ /etc/puppet/hieradata/
 cat > /etc/puppet/hieradata/site.yaml << EOF
 bigtop::hadoop_head_node: $1
 hadoop::hadoop_storage_dirs: [/data/1, /data/2]
