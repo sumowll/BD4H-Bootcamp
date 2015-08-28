@@ -17,7 +17,7 @@ Hadoop provides a command interface to interact with HDFS. Most of the commands 
 hdfs dfs -mkdir input
 ```
 
-2. Copying a file frome the local file system to HDFS
+2. Copying a file from the local file system to HDFS
 ```
 hdfs dfs -put case.csv input
 hdfs dfs -put control.csv input
@@ -57,15 +57,24 @@ hdfs dfs -cat input/*.csv
 hdfs dfs -get input/case.csv local_case.csv
 ```
 
-For more detailed usage of different commands, you can type `hdfs dfs -help`.
+6. For more detailed usage of different commands, you can type
+```
+hdfs dfs -help
+```
 
 # MapReduce
 MapReduce works by breaking the processing into two phases: the map phase and the reduce phase. Each phase has key-value pairs as input and output, the types of which can be chosen by the user. The user also defines the mapper function and the reducer function.
 
 Let's write a simple MapReduce program in Java to calculate the frequency of each `event-id` in our **case.csv** file. 
-Each line in the file is a 4-tuple `patient-id, event-id, timestamp, value`
+Each line in the file is a 4-tuple `patient-id, event-id, timestamp, value`.
 
-# Mapper
+A MapReduce program consists of three parts:
+1. A Mapper Class
+2. A Reducer Class
+3. A main function that tells Hadoop to use the classes we created.
+
+
+## Mapper
 Create a Java file `FrequencyMapper.java`. The FrequencyMapper class extends the predefined `Mapper` class and overwrite the `map` function.
 
 ```java

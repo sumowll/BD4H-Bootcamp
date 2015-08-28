@@ -76,7 +76,7 @@ Recall that in the file **case.csv**, each line is a 4-tuple `patient-id, event-
 scala> lines.count()
 res1: Long = 14046
 ```
-2. Let us take a peek at the data. The `take(k)` will return the first k elements in the RDD. Spark also provides `collect()` which brings all the elements in the EDD back to the driver program. Note that it is only used when the data is small.
+2. Let us take a peek at the data. The `take(k)` will return the first k elements in the RDD. Spark also provides `collect()` which brings all the elements in the RDD back to the driver program. Note that it is only used when the data is small.
 
 ```scala
 scala> lines.take(5)
