@@ -31,7 +31,7 @@ class spark {
     package { "spark-master":
       ensure => latest,
     }
-
+/*
     if ( $fqdn == $common::master_host ) {
       service { "spark-master":
         ensure => running,
@@ -40,7 +40,7 @@ class spark {
         hasrestart => true,
         hasstatus => true,
       }
-    }
+    }*/
   }
 
   class worker {
@@ -49,16 +49,16 @@ class spark {
     package { "spark-worker":
       ensure => latest,
     }
-
-    if ( $fqdn == $common::master_host ) {
-      Service["spark-master"] ~> Service["spark-worker"]
-    }
-    service { "spark-worker":
-      ensure => running,
-      require => [ Package["spark-worker"], File["/etc/spark/conf/spark-env.sh"], ],
-      subscribe => [Package["spark-worker"], File["/etc/spark/conf/spark-env.sh"] ],
-      hasrestart => true,
-      hasstatus => true,
-    } 
-  }
+/*
+   # if ( $fqdn == $common::master_host ) {
+   #   Service["spark-master"] ~> Service["spark-worker"]
+   # }
+   # service { "spark-worker":
+   #   ensure => running,
+   #   require => [ Package["spark-worker"], File["/etc/spark/conf/spark-env.sh"], ],
+   #   subscribe => [Package["spark-worker"], File["/etc/spark/conf/spark-env.sh"] ],
+   #   hasrestart => true,
+   #   hasstatus => true,
+   # } */
+  } 
 }
