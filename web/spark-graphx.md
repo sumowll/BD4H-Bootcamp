@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Spark GraphX
 categories: [section]
 navigation:

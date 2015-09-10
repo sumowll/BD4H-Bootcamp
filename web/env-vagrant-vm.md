@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: CentOS VM in VirtualBox with Vagrant
 description: Georgia Tech big data bootcamp training material
 ---

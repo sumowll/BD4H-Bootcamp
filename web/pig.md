@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Apache Pig
 categories: [section]
 navigation:

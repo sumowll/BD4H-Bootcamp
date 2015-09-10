@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Spark Basic
 categories: [section]
 navigation:

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Hadoop Streaming
 categories: [section]
 navigation:

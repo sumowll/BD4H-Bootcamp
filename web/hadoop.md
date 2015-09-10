@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Overview of Hadoop
 categories: [section]
 navigation:

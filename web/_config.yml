@@ -1,6 +1,6 @@
 # Site
 title: Bigdata Bootcamp
-header-img: image/home-bg.jpg
+header-img: image/background.jpg
 description: Gatech CSE big data bootcamp
 
 url: "http://www.sunlab.org"
@@ -25,3 +25,11 @@ redcarpet:
 
 exclude: ["less", "node_modules", "Gruntfile.js", "package.json", "README.md"]
 
+# page default
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "post"
+      author: "Sun Lab"

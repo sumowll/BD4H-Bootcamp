@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Docker in CoreOS VM
 description: Georgia Tech big data bootcampt training material
 ---

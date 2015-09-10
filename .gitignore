@@ -1,6 +1,11 @@
 training/
 private/
-data/
+#data/
 derby.log
 metastore_db
 spark
+#### joe made this: https://goel.io/joe
+
+#####=== Vagrant ===#####
+.vagrant/
+
