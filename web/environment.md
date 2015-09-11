@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: Learning Environment
 description: Georgia Tech big data bootcamp training material
 ---
@@ -17,7 +17,7 @@ In this training, we reply heavily on terminal.
 In order to get lasted sample source code, scripts for environment setup, you will need to install Git, a version control software.
 
 ## Windows
-Download and install Git from [https://git-scm.com/download/win](https://git-scm.com/download/win). Please make sure you are install this `Git for Windows`, not something like `Github for Windows` because you will rely heavily on `Git Bash` terminal.
+Download and install Git from [https://git-scm.com/download/win](https://git-scm.com/download/win). Please make sure you are installing this `Git for Windows`, not  `Github for Windows` because you will rely heavily on `Git Bash` terminal.
 
 ## Mac
 We highly recommend you install Git through Home brew. To do so, please
@@ -41,5 +41,5 @@ git clone git@bitbucket.org:realsunlab/bigdata-bootcamp.git
 
 We provide two simple approaches for environment setup, the 1st one is prefered.
 
-1. [Centos in Vagrant](env-vagrant-vm) (Suggested)
-2. [Docker in CoreOS VM](env-docker)
+1. [Centos in Vagrant]({{ site.baseurl }}/env-vagrant-vm) (Suggested)
+2. [Docker in CoreOS VM]({{ site.baseurl }}/env-docker)

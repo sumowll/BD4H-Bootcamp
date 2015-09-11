@@ -4,6 +4,8 @@ private/
 derby.log
 metastore_db
 spark
+web/deploy.sh
+
 #### joe made this: https://goel.io/joe
 
 #####=== Vagrant ===#####

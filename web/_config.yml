@@ -8,9 +8,9 @@ baseurl: "/bigdata"
 permalink: pretty
 
 # Social network
-twitter_username: SBootstrap 
+twitter_username: jimeng 
 github_username: cmanul
-facebook_username: suhang
+facebook_username: cmanul
 email: su_hang@live.com
 
 # Markdown
@@ -23,13 +23,15 @@ kramdown:
 redcarpet:
   extensions: [disable_indented_code_blocks, lax_spacing, with_toc_data, prettify, footnotes]
 
-exclude: ["less", "node_modules", "Gruntfile.js", "package.json", "README.md"]
+exclude: ["less", "node_modules", "Gruntfile.js", "package.json", "README.md", "deploy.sh"]
 
 # page default
 defaults:
   -
     scope:
       path: ""
+      type: "pages"
     values:
       layout: "post"
       author: "Sun Lab"
+      description: Georgia Tech big data bootcamp training material

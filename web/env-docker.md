@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: page
 title: Docker in CoreOS VM
 description: Georgia Tech big data bootcampt training material
 ---
 
-**Attention: only tested in Mac with admin previlege**
+**Attention: only tested on Mac with admin previlege**
 
 # Pre-requisite
 

@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: page
 title: CentOS VM in VirtualBox with Vagrant
 description: Georgia Tech big data bootcamp training material
 ---
 
-**Attention: only tested in Mac with admin previlege**
+**Attention: only tested on Mac with admin previlege**
 
 # Pre-requisite
 
@@ -27,7 +27,7 @@ Open a terminal and you need to
 2. Run `.vagrant up` to provision and run the VM.
 
 # Connect
-You could connect to master node by run `vagrant ssh` in `vm` folder.You will find all materials in `/bootcamp` folder.
+You could connect to master node by run `vagrant ssh` in `vm` folder. You will find all materials in `/bootcamp` folder.
 
 
 # Terminate
