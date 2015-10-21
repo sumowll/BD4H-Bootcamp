@@ -17,20 +17,19 @@ To get started, please [**setup learning environment**](environment) first.
 # Content Summary
 Content of the training material is divided into two chapters **Hadoop** and **Spark**.
 
-## Hadoop Ecosystem
+## [Hadoop Ecosystem](hadoop)
 1. [Hadoop Basic](hadoop)
 2. [HBase](hbase)
 3. [Pig](pig)
 4. [Hive](hive)
 5. [Hadoop Streaming](hadoop-streaming)
 
-## Spark Ecosystem
-1. [Spark Overview](spark)
-2. [Scala Basic](scala-basic)
-3. [Spark Basic](spark-basic)
-4. [Spark SQL](spark-sql)
-5. [Spark GraphX](spark-graphx)
-6. [Spark MLlib](spark-mllib)
+## [Spark Ecosystem](spark)
+1. [Scala Basic](scala-basic)
+2. [Spark Basic](spark-basic)
+3. [Spark SQL](spark-sql)
+4. [Spark GraphX](spark-graphx)
+5. [Spark MLlib](spark-mllib)
 
 <div class="text-center col-md-12"><a href="hadoop/" class="btn btn-lg btn-info">Start Learn <span class="glyphicon glyphicon-export"></span></a></div>
 

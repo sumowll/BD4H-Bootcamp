@@ -3,7 +3,7 @@ layout: post
 title: Apache Hive
 categories: [section]
 navigation:
-  section: [1, 4]
+  section: [1, 5]
 ---
 
 This section shows the basic usage of Hadoop Hive. Hive provides SQL like language HiveQL on top of Hadoop. Instead of writing raw MapReduce program, you can work on data warehouse task using simple farmiliar query language.

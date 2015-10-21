@@ -6,6 +6,26 @@ navigation:
   section: [2]
 ---
 
+{% objective %}
+- hi this is learning objective
+- objective 2.
+{% endobjective %}
+
+{% exercise hi this is test %}
+hi
+>this
+> > is
+> > test
+
+``` scala
+val x = 2l
+```
+ad
+{% endexercise %}
+{% exercise hi this is another test %}
+xxxx antoerh
+{% endexercise %}
+
 In this chapter, you will learn the usage of [Spark](http://spark.apache.org), an in-memory spark clustering computing framework for parallel data processing. Due to time limit, we will focus more on interactive shell. 
 
 Initially, Spark is developed with [Scala](http://www.scala-lang.org/), a functional programming laguage on JVM. Though most of the Spark functions also have Python and Java API, in this course, we will give examples in Scala only for its concise and simplicity. Interested students could learn more about Python and Java in Spark from [Spark document](https://spark.apache.org/docs/latest/programming-guide.html).

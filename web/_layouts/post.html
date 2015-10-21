@@ -7,7 +7,7 @@ layout: default
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
+                <div class="site-heading" style="padding: 100px 0px 50px 0px">
                     <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
                     <hr class="small">
                     <span class="subheading">{{ page.description }}</span>
@@ -22,7 +22,6 @@ layout: default
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             {{ content }}
-
 
             <ul class="pager">
                 {% include pre-page.html %}
@@ -46,6 +45,9 @@ layout: default
                 })();
             </script>
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+        <div class="col-lg-2 col-md-1">
+            <div id="toc"></div>
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@ layout: post
 title: Hadoop Streaming
 categories: [section]
 navigation:
-  section: [1, 4]
+  section: [1, 3]
 ---
 
 In this section, you will learn how to work with Hadoop Streaming, a mechanism to run any executable in Hadoop MapReduce. We will show how to count the frequency of different `eventname` in a patient event sequence file. We show the xamples in Python code.
