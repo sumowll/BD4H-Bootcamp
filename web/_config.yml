@@ -3,8 +3,8 @@ title: Bigdata Bootcamp
 header-img: image/background.jpg
 description: Gatech CSE big data bootcamp
 
-url: "http://www.sunlab.org"
-baseurl: "/bigdata"
+url: "http://bigdata.manul.io"
+#baseurl: "/bigdata"
 permalink: pretty
 
 # Social network
@@ -15,7 +15,7 @@ email: su_hang@live.com
 
 # Markdown
 markdown: redcarpet
-highlighter: rouge
+highlighter: null#rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge

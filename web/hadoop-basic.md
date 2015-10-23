@@ -232,7 +232,7 @@ DIAG07032       1
 DIAG1120        5
 ...
 ```
-The order may not be the same.
+Please notice that the output content order may be different from above.
 
 ### Clean up
 
@@ -240,3 +240,19 @@ If you run the job again, you will see an error message saying the `output` dire
 ```
 hdfs dfs -rm -r output
 ```
+
+{% exercise Count diagnostic code only(events start with DIAG).%}
+You can achieve this by updating mapper as
+```java
+public void map(LongWritable offset, Text lineText, Context context)
+    throws IOException, InterruptedException {
+
+  String line = lineText.toString();
+  String eventID = line.split(",")[1];
+  if(eventID.startsWith("DIAG")){
+    context.write(new Text(eventID), one);
+  }
+}
+```
+{% endexercise %}
+
