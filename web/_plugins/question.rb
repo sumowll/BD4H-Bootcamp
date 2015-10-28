@@ -13,10 +13,11 @@ class Exercise < Liquid::Block
         site = context.registers[:site]
         converter = site.getConverterImpl(::Jekyll::Converters::Markdown)
         # hack way to avoid replace new line in code
-        content = converter.convert(super(context)).gsub(/>[\n]+</, "><")
+        content = converter.convert(super(context)).gsub(/[\n]+/, "\n").strip
         # additional new line in the rendered code will make markdown parser add
         # unnecessary <p> tag between the code and cause problem
-        block = '<div class="panel-group exercise">
+        block = '
+<div class="panel-group exercise">
 <div class="panel panel-default">
 <div class="panel-heading">
 <h4 class="panel-title">
@@ -24,7 +25,11 @@ class Exercise < Liquid::Block
 </h4>
 </div>
 <div id="question%{index}" class="panel-collapse collapse">
-<div class="panel-body">%{content}</div></div></div></div>'.gsub(/[\n]+/, "") % {title: @title, index: @index, content: content}
+<div class="panel-body">
+    %{content}
+</div></div></div>
+</div>
+' % {title: @title, index: @index, content: content}
         return block #
     end
 end

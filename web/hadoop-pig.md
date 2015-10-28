@@ -1,14 +1,21 @@
 ---
 layout: post
-title: Apache Pig
+title: Hadoop Pig
 categories: [section]
 navigation:
   section: [1, 4]
 ---
+{% objective %}
+- Know how to work with Pig interactive shell.
+- Understand Pig Latin data types.
+- Understand relation.
+- Can implement simle data processing script in Pig Latin.
+- Can write user defined function(UDF).
+{% endobjective %}
 
 In this part of training, we show the usage of [Hadoop Pig](http://pig.apache.org/), a high-level data analysis tool on top of Hadoop MapReduce. Througout the training you will learn how to run interactive shell and run Pig script. We will use feature construction for predictive modeling from longitude data as an example.
 
-# Interactive Shell Basic
+# Interactive Shell
 Pig provides a shell to manipulate data interactively. Let's start a shell an run that in local mode for demo purpose
 ``` bash
 pig -x local
@@ -27,7 +34,7 @@ Here we call the `case_events` a [**relation**](http://pig.apache.org/docs/r0.14
 ```
 (patientid:chararray, eventname:chararray, dateoffset:int, value:double)
 ```
-which define a four-field tuple with names and type of each field.
+which define a four-field tuple with names and type of each field corresponds to our raw data.
 
 You can check the schema using `DESCRIBE` operator
 ``` pig
@@ -55,32 +62,38 @@ type `help` to learn more about these commands in pig shell.
 Finally, type `quit` to leave the shell.
 
 # Data type
-In this section, we briefly describe data types. Pig could work with simple type like `int`, `double`. Most important concept is `tupe` and `bag`.
+In this section, we briefly describe data types. Pig can work with simple type like `int`, `double`. More important types are `tupe` and `bag`.
 
-**Tuple** is usually reprented with `()`, for example
+**Tuple** is usually represented with `()`, for example
 ```
 (021FB39310BC3797,DRUG55154239805,1456,10.0)
 ```
-in Pig Latin, we could either fetch field by index (like `$0`) or by name (like `patientid`). With index we could also fetch a range of fields. For example `$2..` means _2_-st to last. 
+In Pig Latin, we can either fetch field by index (like `$0`) or by name (like `patientid`). With index we can also fetch a range of fields. For example `$2..` means _2_-st to last.
 
-**Bag** is usually denoted with `{}`, from result of `DESCRIBE case_events` we could see `case_events` itself is a bag. You could regard bag as a special un ordered `set` that don't check duplication.
+**Bag** is usually denoted with `{}`, from result of `DESCRIBE case_events` we can see `case_events` itself is a bag. You can regard bag as a special un ordered `set` that doesn't check duplication.
 
 Check out [official doc about data type](http://pig.apache.org/docs/r0.14.0/basic.html#Data+Types+and+More) for more. You will find examples of the type in below samples, pay attention to result of `DESCRIBE` and you will find types and names of fields.
 
 # Feature construction
-Next, you will practice working with Pig Latin in the context of feature construction for predictive modeling. You will learn built-in operators like `GROUP BY`, `JOIN` as well as User Defined Function (UDF) in python. The result of feature construction will be feature matrix that can be consumed by a lot of machine learning packages.
+Next, you will learn by practicing in the context of feature construction for predictive modeling. You will learn built-in operators like `GROUP BY`, `JOIN` as well as User Defined Function (UDF) in python. The result of feature construction will be feature matrix that can be consumed by a lot of machine learning packages.
+
+## Overview
+The process of feature construction is depicted below
+![feature construction high level]({{ site.baseurl }}/image/post/hadoop-pig-process.svg "Feature Construction Process")
+
+We will start from loading raw data. Then we extrat the prediction target(i.e. the patient will have heart failure or not). Next, we aggregate events of patient into features. After that we need to link prediction target and features to compose complete training/testing samples. Finally we split the data into training and testing sets and save.
 
 ## Load data
 First, you can check your working directory and availability of raw data file by
 ``` pig
-grunt> pwd    
+grunt> pwd
 file:/path/to/bigdata-bootcamp
 grunt> ls data
 file:/path/to/bigdata-bootcamp/data/case.csv<r 1>    536404
 file:/path/to/bigdata-bootcamp/data/control.csv<r 1> 672568
 grunt> 
 ```
-Then, let's load the data as
+Then, let's load the data as a `relation`
 ```
 grunt> events = LOAD 'data/' USING PigStorage(',') AS (patientid:chararray, eventname:chararray, dateoffset:int, value:int);
 ```
@@ -153,7 +166,7 @@ grunt> DUMP feature_name_index;
 (9978,DRUG99207074501)
 ```
 
-Next, we could update `feature_name_values` to use feature index rather than feature name.
+Next, we can update `feature_name_values` to use feature index rather than feature name.
 ```pig
 grunt> feature_id_values = JOIN feature_name_values BY featurename, feature_name_index BY featurename;
 grunt> DESCRIBE feature_id_values;
@@ -215,7 +228,7 @@ grunt> DUMP feature_vectors;
 (FBFD014814507B5C,30:270.000000 700:1.000000)
 ```
 
-Next, we could join `targets` and `feature_vectors` to asscociate feature vector with target
+Next, we can join `targets` and `feature_vectors` to asscociate feature vector with target
 ```pig
 grunt> samples = JOIN targets BY patientid, feature_vectors BY patientid;
 grunt> DESCRIBE samples;
@@ -229,7 +242,7 @@ grunt> DUMP samples;
 ```
 
 ## Split and save
-We are almost there, just save the `samples`. In machine learning setting, it's a common practice to split data into training and testing samples. We could do that by associate each sample with a random key and split with that random key.
+We are almost there, just save the `samples`. In machine learning setting, it's a common practice to split data into training and testing samples. We can do that by associate each sample with a random key and split with that random key.
 
 ``` pig
 grunt> samples = FOREACH samples GENERATE RANDOM() as assignmentkey, *;
@@ -238,16 +251,16 @@ grunt> training = FOREACH training GENERATE $1..;
 grunt> testing = FOREACH testing GENERATE $1..;
 ```
 
-Then, we could save 
+Then, we can save 
 ``` pig
 grunt> STORE training INTO 'training' USING PigStorage(' ');
 grunt> STORE testing INTO 'testing' USING PigStorage(' ');
 ```
 
 # Script
-Running commands interactively is efficient, but sometimes we want to save the commands for reuse. We could save the commands we run into a script file (i.e. features.pig) and run the entire script.
+Running commands interactively is efficient, but sometimes we want to save the commands for reuse. We can save the commands we run into a script file (i.e. features.pig) and run the entire script.
 
-You could checkout `sample/pig` folder. Navigate to there and run the script simply with
+You can checkout `sample/pig` folder. Navigate to there and run the script simply with
 ```bash
 pig -x local features.pig
 ```

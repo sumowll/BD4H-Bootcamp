@@ -5,12 +5,17 @@ categories: [section]
 navigation:
   section: [1, 3]
 ---
+{% objective %}
+- Know how to work with Hadoop Streaming.
+- Can write Hadoop Streaming program using python.
+{% endobjective %}
 
-In this section, you will learn how to work with Hadoop Streaming, a mechanism to run any executable in Hadoop MapReduce. We will show how to count the frequency of different `eventname` in a patient event sequence file. We show the xamples in Python code.
+In this section, you will learn how to work with Hadoop Streaming, a mechanism to run any executable in Hadoop MapReduce. We will show how to count the frequency of different `eventname` in a patient [event sequence file]({{ site.baseurl }}/data/). We show the examples in Python code, but you will find it's straightforward to adapt to other languages.
 
 # Mapper and Reducer
 Let's first have a look at the source code[^1] of mapper and reducer respectively.
 
+## Mapper
 The source of mapper is
 ```python
 #!/usr/bin/env python
@@ -33,7 +38,8 @@ for line in sys.stdin:
 ```
 The script read lines from  standard input and with some simple processing output the `event_name` as key and `1` as value to standard output.
 
-Reducer is a little bit complex. The output of mapper will be shuffled by Hadoop framework and reduder will get a list of key-value pairs. The framework gunrantee that same key will go to same reducer instance.
+## Reducer
+Reducer is a little bit complex. The output of mapper will be shuffled by Hadoop framework and reduder will get a list of key-value pairs. The framework gunrantee that key-value pairs of same key will go to same reducer instance.
 
 ```python
 #!/usr/bin/env python
@@ -78,6 +84,7 @@ if current_event == event_name:
 This piece of code check the boundaries of sorted input and sum up values from same key.
 
 # How to run
+## Local test
 Before running it in Hadoop, it's more convenient to test that in shell with `cat` and `sort` commands. You will need to navigate to _sample/hadoop-streaming_ folder. Then, run below command in shell
 ```bash
 cat data/* | python mapper.py | sort | python reducer.py                       
@@ -96,8 +103,10 @@ DIAG0221        1
 DIAG0232        1
 ...
 ```
+It works as expected, now we could run it in Hadoop. 
 
-It works as expected, now we could run it in Hadoop. We first need to put data into HDFS then run hadoop
+## Hadoop
+We first need to put data into HDFS then run hadoop
 ```
 hdfs dfs -put data/ /streaming-data
 hadoop jar hadoop-streaming.jar \
@@ -120,7 +129,6 @@ hdfs dfs -rm -r /streaming-data
 ```
 
 # Further reading
-Streaming is a good machanism to reuse existing code. Wrapping existing code to work with Hadoop could be simplified with framework like [mrjob](https://github.com/Yelp/mrjob) and [Luigi](http://luigi.readthedocs.org/en/latest/index.html) for Python. You could find more explaination and description of Streaming from its [offical docment](http://hadoop.apache.org/docs/r1.2.1/streaming.html).
+Streaming is a good machanism to reuse existing code. Wrapping existing code to work with Hadoop can be simplified with framework like [mrjob](https://github.com/Yelp/mrjob) and [Luigi](http://luigi.readthedocs.org/en/latest/index.html) for Python. You can find more explaination and description of Streaming from its [offical docment](http://hadoop.apache.org/docs/r1.2.1/streaming.html).
 
-[^1]: adapted from [Michael G. Noll's blog](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/), copyright to original author.
-
+[^1]: this example is adapted from [Michael G. Noll's blog](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/), copyright to original author.

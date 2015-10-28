@@ -5,8 +5,16 @@ class Message < Liquid::Block
     end
 
     def render(context)
-        content = super
-        '<p class="msgbox bg-%{type}">%{content}</p>' % {type: @type, content: content}
+        site = context.registers[:site]
+        converter = site.getConverterImpl(::Jekyll::Converters::Markdown)
+        # hack way to avoid replace new line in code
+        content = converter.convert(super(context)).gsub(/[\n]+/, "\n").strip
+        header = @type.capitalize
+        if header == "Info"
+            header = "Information"
+        end
+        '<div class="msgbox bg-%{type}"><h4>%{header}</h4>%{content}
+</div>' % {type: @type, header: header, content: content}
     end
 end
 

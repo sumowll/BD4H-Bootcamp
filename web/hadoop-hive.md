@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apache Hive
+title: Hadoop Hive
 categories: [section]
 navigation:
   section: [1, 5]

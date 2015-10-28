@@ -19,10 +19,10 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 
 ## [Hadoop Ecosystem](hadoop)
 1. [Hadoop Basic](hadoop-basic)
-2. [HBase](hbase)
-3. [Pig](pig)
-4. [Hive](hive)
-5. [Hadoop Streaming](hadoop-streaming)
+2. [Hadoop HBase](hadoop-hbase)
+3. [Hadoop Streaming](hadoop-streaming)
+4. [Hadoop Pig](hadoop-pig)
+5. [Hadoop Hive](hadoop-hive)
 
 ## [Spark Ecosystem](spark)
 1. [Scala Basic](scala-basic)

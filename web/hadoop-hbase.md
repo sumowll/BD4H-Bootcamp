@@ -1,15 +1,21 @@
 ---
 layout: post
-title: Apache HBase
+title: Hadoop HBase
 categories: [section]
 navigation:
   section: [1, 2]
 ---
 
+{% objective %}
+- Know HBase interactive shell.
+- Being able to conduct CRUD operations.
+{% endobjective %}
+
 Apache HBase is a distributed column-oriented database built on top of the Hadoop file system. Use HBase when you need random, realtime read/write access to your Big Data. It provides a convenient interactive shell as well as a Java API.
 
 # Interactive Shell
-You can start the HBase interactive shell using `hbase shell` command. If HBase is successfully installed in your system, you will get 
+You can start the HBase interactive shell using `hbase shell` command. You will get
+
 ```
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
@@ -19,14 +25,7 @@ hbase(main):001:0>
 ```
 To exit the interactive shell, type `exit` or `<ctrl+c>`.
 
-1. Checking the status of the cluster
-```
-hbase(main):001:0> status
-(may have some debug messages)
-2 servers, 0 dead, 1.0000 average load
-```
-
-2. Creating a table
+# Create
 
 The syntax to create a table in HBase shell is shown below.
 ```
@@ -43,7 +42,8 @@ And it will give you the following output.
 0 row(s) in 1.1620 seconds
 ```
 
-3. Listing table(s)
+# Update
+## List table(s)
 
 ```
 hbase(main):003:0> list
@@ -52,7 +52,7 @@ hospital
 1 row(s) in 0.0180 seconds
 ```
 
-4. Describe and Alter the table
+## Describe and alter table
 
 The `describe` command returns the description of the table. 
 
@@ -82,7 +82,7 @@ hbase(main):007:0> enable 'hospital'
 
 ```
 
-5. Putting data into the table
+## Put data
 
 Using `put` command, you can insert rows into a table. Its syntax is as follows:
 ```
@@ -102,7 +102,16 @@ hbase(main):010:0> put 'hospital', 'row1', 'value:value', '1'
 hbase(main):011:0> put 'hospital', 'row2', 'id:event', 'event-id-2'
 ```
 
-6. Reading data 
+# Read
+## Cluster status
+Checking the status of the cluster
+```
+hbase(main):001:0> status
+(may have some debug messages)
+2 servers, 0 dead, 1.0000 average load
+```
+
+## Table data 
 
 Using the `scan` command, you can get the table data.
 
@@ -142,7 +151,8 @@ hbase(main):015:0> get 'hospital', 'row1', {COLUMN => 'id:patient'}
  1 row(s) in 0.9730 seconds
 ```
 
-7. Deleting data
+# Delete
+## Delete cell
 
 You can delete a specific cell in a table by the `delete` command
 
@@ -158,9 +168,9 @@ hbase(main):017:0> deleteall 'hospital', 'row1'
 0 row(s) in 0.0110 seconds   
 ```
 
-8. Dropping a Table
+## Drop table
 
-Using the drop command, you can delete a table. Before dropping a table, you have to disable it.
+Using the `drop` command, you can delete a table. Before dropping a table, you have to disable it.
 
 ```
 hbase(main):018:0> disable 'hospital'
