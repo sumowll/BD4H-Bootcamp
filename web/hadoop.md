@@ -12,7 +12,7 @@ navigation:
 - Know matual tools in Hadoop ecosystem.
 {% endobjective %}
 
-[Hadoop](http://hadoop.apache.org) is a framework for distributed storage and processing of very large data sets on computer clusters built from commodity hardware. It's mainly composed of two parts: data storage and data processing. The distributed storage part is handled by the Hadoop Distributed File System (HDFS). The distributed processing part is achieved via MapReduce. On top of HDFS and MapReduce, a bunch of powerful tools have being developed. In this chapter you will learn the basic Hadoop HDFS, MapReduce knowledge as well as usage of advanced tools like Pig and Hive.
+[Hadoop](http://hadoop.apache.org) is a framework for distributed storage and processing of very large data sets on computer clusters built from commodity hardware. It's mainly composed of two parts: data storage and data processing. The distributed storage part is handled by the Hadoop Distributed File System (HDFS). The distributed processing part is achieved via MapReduce. On top of HDFS and MapReduce, a bunch of powerful tools have being developed. In this chapter you will learn the basic Hadoop HDFS, MapReduce knowledge as well as usage of advanced tools like Pig and Hive. Testing!
 
 This chapter is divided into following sections
 
