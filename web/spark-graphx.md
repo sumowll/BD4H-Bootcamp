@@ -6,11 +6,16 @@ navigation:
   section: [2, 4]
 ---
 
+{% objective %}
+- Understand composition of graph in Spark GraphX.
+- Being able to create graph.
+- Being able to use built-in graph algorithm.
+{% endobjective %}
+
 In this section, we show how to create a graph with patient and diagnostic code. Then, we show how to run algorithms on the the newly created graph.
 
 # Basic concept
 Spark GraphX abstracts the graph as a concept named property graph, which means that each edge and vertex is associated with some property. The `Graph` class has below definition
-
 
 ```scala
 class Graph[VD, ED] {
@@ -18,108 +23,114 @@ class Graph[VD, ED] {
   val edges: EdgeRDD[ED]
 }
 ```
-
-We could regard `VertexRDD[VD]` as RDD of `(VertexID, VD)` tuple and `EdgeRDD[ED]` as RDD of `(VertexID, VertexID, ED)`.
+Where `VD` and `ED` define property type of vertex and edge respectively. We can regard `VertexRDD[VD]` as RDD of `(VertexID, VD)` tuple and `EdgeRDD[ED]` as RDD of `(VertexID, VertexID, ED)`.
 
 # Graph construction
-Let's create a graph of patients and diagnostic codes. For each patient we could assign its patient id as vertex property, and for each diagnostic code, we will the code as vertex property. For the edge between patient and diagnostic code, we will use number of times the patient is diagnosed with given disease.
+Let's create a graph of patients and diagnostic codes. For each patient we can assign its patient id as vertex property, and for each diagnostic code, we will use the code as vertex property. For the edge between patient and diagnostic code, we will use number of times the patient is diagnosed with given disease as edge property.
 
-1. define  necessary data structure and import
+## Define class
+Let's first define  necessary data structure and import
+```scala
+import org.apache.spark.SparkContext._
+import org.apache.spark.graphx._
+import org.apache.spark.rdd.RDD
 
-    ```scala
-    import org.apache.spark.SparkContext._
-    import org.apache.spark.graphx._
-    import org.apache.spark.rdd.RDD
+abstract class VertexProperty extends Serializable
 
-    abstract class VertexProperty extends Serializable
-    
-    case class PatientProperty(patientId: String) extends VertexProperty
-    
-    case class DiagnosticProperty(icd9code: String) extends VertexProperty
+case class PatientProperty(patientId: String) extends VertexProperty
 
-    case class PatientEvent(patientId: String, eventName: String, date: Int, value: Double)
-    ```
+case class DiagnosticProperty(icd9code: String) extends VertexProperty
 
-2. load patient event data and filter out diagnostic related only
-    
-    ```scala
-    val allEvents = sc.textFile("data/").
-        map(_.split(",")).
-        map(splits => PatientEvent(splits(0), splits(1), splits(2).toInt, splits(3).toDouble))
+case class PatientEvent(patientId: String, eventName: String, date: Int, value: Double)
+```
 
-    // get and cache dianosticEvents as we will reuse
-    val diagnosticEvents = allEvents.
-        filter(_.eventName.startsWith("DIAG")).cache()
-    ```
+## Load raw data
+Load patient event data and filter out diagnostic related events only
 
-3. create patient vertex
+```scala
+val allEvents = sc.textFile("data/").
+    map(_.split(",")).
+    map(splits => PatientEvent(splits(0), splits(1), splits(2).toInt, splits(3).toDouble))
 
-    ```scala
-    // create patient vertex
-    val patientVertexIdRDD = diagnosticEvents.
-        map(_.patientId).  
-        distinct.            // get distinct patient ids
-        zipWithIndex         // assign an index as vertex id
+// get and cache dianosticEvents as we will reuse
+val diagnosticEvents = allEvents.
+    filter(_.eventName.startsWith("DIAG")).cache()
+```
 
-    val patient2VertexId = patientVertexIdRDD.collect.toMap
-    val patientVertex = patientVertexIdRDD.
-        map{case(patientId, index) => (index, PatientProperty(patientId))}.
-        asInstanceOf[RDD[(VertexId, VertexProperty)]]
-    ```
+## Create vertex
+### Patient vertex
+Let's create patient vertex
 
-    Notice that in order to assign an unique ID for each vertex, we finally `collect` all the patient to `VertrexID` mapping. Theoritically this is not an efficient practice. One could mitigate uniqueness of ID by calculating ID directly with Hash.
+```scala
+// create patient vertex
+val patientVertexIdRDD = diagnosticEvents.
+    map(_.patientId).  
+    distinct.            // get distinct patient ids
+    zipWithIndex         // assign an index as vertex id
 
-4. create diagnostic code vertex
+val patient2VertexId = patientVertexIdRDD.collect.toMap
+val patientVertex = patientVertexIdRDD.
+    map{case(patientId, index) => (index, PatientProperty(patientId))}.
+    asInstanceOf[RDD[(VertexId, VertexProperty)]]
+```
+In order to use the newly created vetext id, we finally `collect` all the patient to `VertrexID` mapping.
 
-    ```scala
-    // create diagnostic code vertex
-    val startIndex = patient2VertexId.size
-    val diagnosticVertexIdRDD = diagnosticEvents.
-        map(_.eventName).
-        distinct.
-        zipWithIndex.
-        map{case(icd9code, zeroBasedIndex) => 
-            (icd9code, zeroBasedIndex + startIndex)} // make sure no confilic with patient vertex id
+{% msgwarning %}
+Theoritically collecting RDD to driver is not an efficient practice. One can mitigate uniqueness of ID by calculating ID directly with Hash.
+{% endmsgwarning %}
 
-    val diagnostic2VertexId = diagnosticVertexIdRDD.collect.toMap
+### Diagnostic code vertex
+Similar to patient vertex, we can create diagnostic code vertex with
+```scala
+// create diagnostic code vertex
+val startIndex = patient2VertexId.size
+val diagnosticVertexIdRDD = diagnosticEvents.
+    map(_.eventName).
+    distinct.
+    zipWithIndex.
+    map{case(icd9code, zeroBasedIndex) => 
+        (icd9code, zeroBasedIndex + startIndex)} // make sure no confilic with patient vertex id
 
-    val diagnosticVertex = diagnosticVertexIdRDD.
-        map{case(icd9code, index) => (index, DiagnosticProperty(icd9code))}.
-        asInstanceOf[RDD[(VertexId, VertexProperty)]]
-    ```
+val diagnostic2VertexId = diagnosticVertexIdRDD.collect.toMap
 
-    Here we assign vertex id by adding the result of `zipWithIndex` with an offset obtained from previous patient vertex to avoid ID confilication between patient and diagnostic code.
+val diagnosticVertex = diagnosticVertexIdRDD.
+    map{case(icd9code, index) => (index, DiagnosticProperty(icd9code))}.
+    asInstanceOf[RDD[(VertexId, VertexProperty)]]
+```
 
-5. create edges 
+Here we assign vertex id by adding the result of `zipWithIndex` with an offset obtained from previous patient vertex to avoid ID confilication between patient and diagnostic code.
 
-    ```scala
-    val bcPatient2VertexId = sc.broadcast(patient2VertexId)
-    val bcDiagnostic2VertexId = sc.broadcast(diagnostic2VertexId)
+## Create edge
+In order to create edge, we will need to know vertext id of vertices we just created.
 
-    val edges = diagnosticEvents.
-        map(event => ((event.patientId, event.eventName), 1)).
-        reduceByKey(_ + _).
-        map{case((patientId, icd9code), count) => (patientId, icd9code, count)}.
-        map{case(patientId, icd9code, count) => Edge(
-            bcPatient2VertexId.value(patientId),
-            bcDiagnostic2VertexId.value(icd9code),
-            count
-        )}
-    ```
+```scala
+val bcPatient2VertexId = sc.broadcast(patient2VertexId)
+val bcDiagnostic2VertexId = sc.broadcast(diagnostic2VertexId)
 
-    We first broadcast patient and diagnostic code to vertext id mappting. Broadcast could avoid uncessary copy in distributed setting thus will be more effecient. Then we count occurrence of `(patient-id, icd-9-code)` pairs with `map` and `reduceByKey`, finally we translate them to proper `VertexID`.
+val edges = diagnosticEvents.
+    map(event => ((event.patientId, event.eventName), 1)).
+    reduceByKey(_ + _).
+    map{case((patientId, icd9code), count) => (patientId, icd9code, count)}.
+    map{case(patientId, icd9code, count) => Edge(
+        bcPatient2VertexId.value(patientId), // src id
+        bcDiagnostic2VertexId.value(icd9code), // target id
+        count // edge property
+    )}
+```
+We first broadcast patient and diagnostic code to vertext id mappting. Broadcast can avoid uncessary copy in distributed setting thus will be more effecient. Then we count occurrence of `(patient-id, icd-9-code)` pairs with `map` and `reduceByKey`, finally we translate them to proper `VertexID`.
 
-6. put it together to create the graph
+## Assemble vetex and edge
+We will need to put vertices and edges together to create the graph
 
-    ```scala
-    val vertices = sc.union(patientVertex, diagnosticVertex)
-    val graph = Graph(vertices, edges)
-    ```
+```scala
+val vertices = sc.union(patientVertex, diagnosticVertex)
+val graph = Graph(vertices, edges)
+```
 
 # Graph operation
-Given the graph we created, we could run some basic graph operations.
+Given the graph we created, we can run some basic graph operations.
 ## Connected components
-[Connected component][connected-component-wiki] could help find disconnected subgraphs. GraphX provide the API to get connected components as below
+[Connected component][connected-component-wiki] can help find disconnected subgraphs. GraphX provide the API to get connected components as below
 
 ```scala
 val connectedComponents = graph.connectedComponents
@@ -135,7 +146,7 @@ Array((2556,0), (1260,0), (1410,0), (324,0), (180,0))
 
 The first element of the tuple is `VertexID` identical to original graph. The second element in the tuple is `connected component` represented by smalled `VertexID` in that component. In above example, five vertices belong to same component.
 
-We could easily get number of connected components using operations on RDD as below.
+We can easily get number of connected components using operations on RDD as below.
 
 ```scala
 scala> connectedComponents.vertices.map(_._2).distinct.collect
@@ -143,7 +154,7 @@ Array[org.apache.spark.graphx.VertexId] = Array(0, 169, 239)
 ```
 
 ## Degree
-The property graph abstraction of GraphX is directed graph. It provides computation of in-dgree, out-degree and total degree. For example, we could get degrees as
+The property graph abstraction of GraphX is a directed graph. It provides computation of in-dgree, out-degree and total degree. For example, we can get degrees as
 
 ```scala
 val inDegrees = graph.inDegrees
@@ -152,7 +163,7 @@ val totalDegrees = graph.degrees
 ```
 
 ## PageRank
-GraphX also provides implementation of the famous [PageRank] algorithm, which could compute the 'importance' of a vertex. The graph we generated above is a bipartite graph and not suitable for PageRank. To gve an example of PageRank, we randomly generate a graph and run fixed iteration of PageRank algorithm on it.
+GraphX also provides implementation of the famous [PageRank] algorithm, which can compute the 'importance' of a vertex. The graph we generated above is a bipartite graph and not suitable for PageRank. To gve an example of PageRank, we randomly generate a graph and run fixed iteration of PageRank algorithm on it.
 
 ```scala
 import org.apache.spark.graphx.util.GraphGenerators
@@ -163,13 +174,13 @@ val randomGraph = Graph[Int, Int] =
 val pagerank = randomGraph.staticPageRank(20)
 ```
 
-Or, we could run PageRank util converge with tolerance as `0.01` using `randomGraph.pageRank(0.01)`
+Or, we can run PageRank util converge with tolerance as `0.01` using `randomGraph.pageRank(0.01)`
 
 # Application
-Next, we show some how we could ultilize the graph operations to solve some practical problems in the healthcare domain.
+Next, we show some how we can ultilize the graph operations to solve some practical problems in the healthcare domain.
 
 ## Explore comorbidities
-[Comorbidity] is additional disorders co-occuring with primary disease. We know all the case patients have heart failure, we could explore possible comorbidities as below (see comments for more explaination)
+[Comorbidity] is additional disorders co-occuring with primary disease. We know all the case patients have heart failure, we can explore possible comorbidities as below (see comments for more explaination)
 
 ```scala
 // get all the case patients
@@ -199,7 +210,7 @@ We have
 top5ComorbidityVertices: Array[(org.apache.spark.graphx.VertexId, Int)] = Array((3129,86), (335,63), (857,58), (2048,49), (669,48))
 ```
 
-And we could check the vertex of index 3129 in original graph is
+And we can check the vertex of index 3129 in original graph is
 
 ```
 scala> graph.vertices.filter(_._1 == 3129).collect
@@ -210,7 +221,7 @@ Array((3129,DiagnosticProperty(DIAG4019)))
 The 4019 code correponds to [Hypertension](http://www.hipaaspace.com/Medical_Billing/Coding/ICD-9/Diagnosis/4019), which is reasonable.
 
 ## Similar patients
-Given a patient diagnostic graph, we could also find similar patients. One of the most straightforward approach is shortest path on the graph.
+Given a patient diagnostic graph, we can also find similar patients. One of the most straightforward approach is shortest path on the graph.
 
 ```scala
 val sssp = graph.

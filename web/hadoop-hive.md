@@ -5,11 +5,17 @@ categories: [section]
 navigation:
   section: [1, 5]
 ---
+{% objective %}
+- Know how to work with Hive interactive shell.
+- Can create table.
+- Can load data into table.
+- Can run basic query.
+{% endobjective %}
 
-This section shows the basic usage of Hadoop Hive. Hive provides SQL like language HiveQL on top of Hadoop. Instead of writing raw MapReduce program, you can work on data warehouse task using simple farmiliar query language.
+This section shows the basic usage of Hadoop Hive. Hive provides SQL like language `HiveQL` on top of Hadoop. Instead of writing raw MapReduce program, you can work on data warehouse task using simple farmiliar query language.
 
 # Interactive shell
-In the sample code, we will use the data of patient event sequences in tupel format. Let's start the Hive CLI interactive shell first by typing `hive` in command line
+In the sample code, we will continue to use our event tuple [patient data]({{ site.baseurl }}/data/). Let's start the Hive CLI interactive shell first by typing `hive` in command line
 ```bash
 > hive
 ...                                                                         
@@ -17,6 +23,7 @@ In the sample code, we will use the data of patient event sequences in tupel for
 hive> 
 ```
 
+# Create table
 Before loading data, we first need to define a table just like working with database server with SQL.
 ```sql
 hive> CREATE TABLE events (
@@ -31,7 +38,7 @@ OK
 Time taken: 0.289 seconds
 hive> 
 ```
-And we could check existing tables and schema with commands
+And you can check existing tables and schema with commands
 ``` sql
 hive> SHOW TABLES;
 OK
@@ -46,7 +53,8 @@ value                   int
 Time taken: 0.221 seconds, Fetched: 4 row(s)
 ```
 
-Next, let's insert data into the table.
+# Load data
+Let's insert data into the table.
 ```sql
 hive> LOAD DATA LOCAL INPATH 'data'
     > OVERWRITE INTO TABLE events;
@@ -56,7 +64,9 @@ OK
 Time taken: 0.521 seconds
 ```
 
-Then we could run SQL we are farmiliar with like
+# Query
+## Basic
+Then you can run SQL we are farmiliar with like
 ``` sql
 hive> SELECT patient_id, count(*) FROM events
     > GROUP BY patient_id;
@@ -75,7 +85,8 @@ FBFD014814507B5C        28
 Time taken: 20.351 seconds, Fetched: 300 row(s)
 ```
 
-We could also save query result to local directory
+## Save result
+You can also save query result to local directory
 ``` sql
 hive> INSERT OVERWRITE LOCAL DIRECTORY 'tmp_local_out'
     > ROW FORMAT DELIMITED
@@ -91,10 +102,10 @@ OK
 Time taken: 17.034 seconds
 ```
 
-You could learn more about the syntax from its [language manual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+You can learn more about the syntax from its [language manual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
 
 # Besides shell
-Besides running commands with interactive shell, you can also run a script. In the `sample/hive` folder, you can run the entire script with
+Besides running commands with interactive shell, you can also run a script in batch mode without interaction. In the `sample/hive` folder, you can run the entire script with
 ```bash
 hive -f sample.hql
 ```
@@ -127,7 +138,7 @@ FROM events
 GROUP BY patient_id;
 ```
 
-Further, it's possible to run [hive as a server](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients) and connect with JDBC or its beeline client.
+Further, it's possible to run [hive as a server](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients) and connect to the server with JDBC or with its beeline client.
 
 # Related tools
 Hive translate queries into a series of MapReduce jobs, thus not suitable for realtime setting. Alternative tools inspired and influeced by Hive are getting more attention, for example, [Cloudera Impala](http://impala.io/) and [Spark SQL](https://spark.apache.org/sql/).
