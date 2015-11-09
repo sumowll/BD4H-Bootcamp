@@ -19,12 +19,12 @@ Also, please make sure you have enough free memory(4GB) available.
 *for windows user, install GIT bash for windows which include SSH for access to VM*
 
 # Setup
-With pre-requiste softwares properly installed, you could setup your Centos VM learning environment. Before you actually run commands, please make sure you have enough previlege. For example, virtual network adapter and network filesystem will be setup.
+With pre-requiste softwares properly installed, you could setup your Centos VM learning environment. Before you actually run commands, please make sure you have enough previlege. For example, virtual network adapter and network filesystem will be set up.
 
 Open a terminal and you need to
 
 1. Navigate to *vm* folder.
-2. Run `.vagrant up` to provision and run the VM.
+2. Run `vagrant up` to provision and run the VM.
 
 # Connect
 You could connect to master node by run `vagrant ssh` in `vm` folder. You will find all materials in `/bootcamp` folder.

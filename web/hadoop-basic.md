@@ -7,8 +7,8 @@ navigation:
 ---
 
 {% objective %}
-- Being farmiliar with basic operations of HDFS.
-- Being able to write basic MapReduce program.
+- Being familiar with basic operations of HDFS.
+- Being able to write basic MapReduce programs.
 {% endobjective %}
 
 # HDFS Operations
@@ -19,7 +19,7 @@ Similar to creating local directory via linux command `mkdir`, creating a folder
 ```
 > hdfs dfs -mkdir input
 ```
-where `hdfs` is the HDFS utility, `dfs` is subcommad to handle basic HDFS operation,  `-mkdir` means you want to create a directory and directory name is specified as `input`. Above command actually create the `input` directory in your home directory of HDFS, which by default shold be `/user/your_name/`. Of course, you can create it to other place with absolute or relative path.
+where `hdfs` is the HDFS utility, `dfs` is subcommad to handle basic HDFS operation,  `-mkdir` means you want to create a directory and directory name is specified as `input`. Above command actually create the `input` directory in your home directory of HDFS, which by default should be `/user/your_name/`. Of course, you can create it to other place with absolute or relative path.
 
 ## Copy data in and out
 Suppose you followed previous instrucion and created an directory named `input`, you can copy data from local file system to HDFS using `-put`. For example,
@@ -37,7 +37,7 @@ hdfs dfs -get input/case.csv local_case.csv
 will copy the `input/case.csv` file out HDFS into current working directory using a new name `local_case.csv`. If you didn't specify `local_case.csv`, the original name `case.csv` will be kept.
 
 ## List File Information
-Just like linux `ls` command, `-ls` is the operation to list files and folders in HDFS. For example, below command list items in your home directory of HDFS(i.e `/user/your_name/`)
+Just like linux `ls` command, `-ls` is the operation to list files and folders in HDFS. For example, the following command list items in your home directory of HDFS (i.e `/user/your_name/`)
 ```
 > hdfs dfs -ls
 Found 1 items
@@ -52,11 +52,11 @@ found 2 items
 ```
 
 ## Fetch file content
-Actually you don't need to copy file out first to see its content, you can directly use `-cat` to printing the content of files in HDFS. For example, below command print out content of the one file you just put into HDFS.
+Actually you don't need to copy file out first to see its content, you can directly use `-cat` to printing the content of files in HDFS. For example, the following command print out content of the one file you just put into HDFS.
 ```
 hdfs dfs -cat input/case.csv 
 ```
-You will find wildcard character is very useful since output of MapReduce and other Hadoop based tools tends to be directory. For example, to print content of all csv files(the case.csv and control.csv) in `input` HDFS folder, you can
+You will find wildcard character very useful since output of MapReduce and other Hadoop-based tools tendsto be directory. For example, to print content of all csv files (the case.csv and control.csv) in the `input` HDFS folder, you can
 ```
 hdfs dfs -cat input/*.csv 
 ```
@@ -67,7 +67,7 @@ For more detailed usage of different commands and parameters, you can type
 hdfs dfs -help
 ```
 
-{% exercise Remove what you just created.%}
+{% exercise Remove what you just created (hint: similar to the Linux command) %}
 ```
 hdfs dfs -rm -r input
 ```
@@ -111,7 +111,7 @@ public class FrequencyMapper
 }
 ```
 
-The 4-tuple ` <LongWritable, Text, Text, IntWritable> ` specifies that the inpur key-value pair is of type `<LongWritable, Text>` and the output key-value type is of type `<Text, IntWritable>`.
+The 4-tuple ` <LongWritable, Text, Text, IntWritable> ` specifies that the input key-value pair is of type `<LongWritable, Text>` and the output key-value type is of type `<Text, IntWritable>`.
 Since the input files are plain text, we use the input key-value pair of type `<LongWritable, Text>`. The key is the offset of the start of each line, which is not used here. The value is the actual text in the corresponding line.
 
 We use `toString()` to transform the Hadoop `Text` object into the more familiar Java `String` object and extract only the second field of the line (recall that each line is in the form of `patient-id, event-id, timestamp, value`). We then call `context.write` to write the output. Each `line` will be mapped to a pair as `(event-id, 1)`, where 1 is of type IntWritable. Since 1 is a constant, we use a static variable to store it. 
@@ -192,7 +192,7 @@ You can find all source code in `sample/hadoop` folder. You will need to navigat
 ### Compile
 Compile the three java files with `javac`
 ```
-javac -cp $(hadoop classpath) -d Frequency FrequencyMapper.java FrequencyReducer.java Frequency.java 
+javac -cp $(hadoop classpath) -d classes FrequencyMapper.java FrequencyReducer.java Frequency.java 
 ```
 where `hadoop classpath` outputs the required class path to compile a Hadoop program. `-d classes` puts the generated classes into the `classes` directory. You will  see three class files in the `classes` directory now.
 
@@ -204,7 +204,7 @@ jar -cvf Frequency.jar -C classes/ .
 ```
 
 {% msginfo %}
-In real world application development, you will not need to compile files manually one by one then create jar. Instead, build tools like Maven, Gradle, SBT will be employed.
+In real-world application development, you will not need to compile files manually one by one then create jar. Instead, build tools like Maven, Gradle, SBT will be employed.
 {% endmsginfo %}
 
 ### Run
@@ -241,7 +241,7 @@ If you run the job again, you will see an error message saying the `output` dire
 hdfs dfs -rm -r output
 ```
 
-{% exercise Count diagnostic code only(events start with DIAG).%}
+{% exercise Count diagnostic code only (events that start with DIAG).%}
 You can achieve this by updating mapper as
 ```java
 public void map(LongWritable offset, Text lineText, Context context)

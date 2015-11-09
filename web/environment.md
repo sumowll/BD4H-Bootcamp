@@ -11,10 +11,10 @@ In this training, we reply heavily on terminal.
 
 - For *Linux* user, you may already very farmiliar wtih terminal. 
 - For  *Mac* user, you could search the `terminal` application if you never use that before. 
-- For *Windows* user, please [install git](#install-git) and use the  `Gi Bash` application come with **Git for Windows**.
+- For *Windows* user, please [install git](#install-git) and use the  `Git Bash` application that comes with **Git for Windows**.
 
 # Install Git
-In order to get lasted sample source code, scripts for environment setup, you will need to install Git, a version control software.
+In order to get the lated sample source code, scripts for environment setup, you will need to install Git, a version control software.
 
 ## Windows
 Download and install Git from [https://git-scm.com/download/win](https://git-scm.com/download/win). Please make sure you are installing this `Git for Windows`, not  `Github for Windows` because you will rely heavily on `Git Bash` terminal.

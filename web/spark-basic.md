@@ -113,10 +113,25 @@ scala> lines.take(5).foreach(println)
 ```
 Note that during the above 3 commands, the RDD `lines` has been computed (i.e. read in from file) 3 times. We can prevent this by calling `lines.cache()`, which will cache the RDD in memory.
 
+{% exercise Print `event-id` for the first 5 records %}
+```scala
+scala> lines.take(5).foreach(x => println(x.split(",")(1)))
+```
+{% endexercise %}
+
+
 ## Map
 The `map` operation in Spark is similar to that of Hadoop. It's a **transformation** that transforms each item in the RDD into a new item by performing the provided function. For example, in order to get IDs of loaded patients, we use `map` like
 ```scala
 scala> lines.map(line => line.split(",")(0))
+```
+
+It is also possible to write a more complexity, multiple-lines map function. In this case, curly braces should be used in place of parentheses. For example, we can get both `patient-id` and `event-id`. 
+```scala
+scala> lines.map{line =>
+  val s = line.split(",")
+  (s(0), s(1))
+}
 ```
 
 ## Filter
