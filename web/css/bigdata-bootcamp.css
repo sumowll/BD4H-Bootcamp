@@ -456,7 +456,7 @@ body {
 /* Message Box */
 div.msgbox {
   padding: 15px;
-  border: 2px solid #eee;
+  border: 2px solid #bbb;
   border-radius: 3px;
 }
 div.msgbox p {

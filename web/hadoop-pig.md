@@ -105,14 +105,15 @@ grunt> targets = FILTER events BY eventname == 'heartfailure';
 grunt> event_target_pairs = JOIN events by patientid, targets BY patientid;
 grunt> filtered_events = FILTER event_target_pairs BY (events::dateoffset <= targets::dateoffset - 365);
 ```
-After `JOIN` we have some redundant fields we will no longer need, so that we can project `filtered_events` to a simpler format.
+After `JOIN` we have some redundant fields we will no longer need, so that we can project `filtered_events` into a simpler format.
 ```pig
 grunt> filtered_events = FOREACH filtered_events GENERATE $0 AS patientid, $1 AS eventname, $3 AS value;
 ```
 Notice that as dateoffset is no longer useful after filtering, we droped that.
 
 ## Aggregate events into feature
-Our raw data is event sequence. In order to aggregate that into feature suitable for machine learning, we can  sum up event value as feature value corresponds to the given event. In additionFor example, given below raw event sequence for a patient
+### Illustrative sample
+Our raw data is event sequence. In order to aggregate that into feature suitable for machine learning, we can **sum** up event value as feature value corresponds to the given event. Each event type will become a feature and we will redictly use event name as feature name. For example, given below raw event sequence for a patient
 
 ```
 FBFD014814507B5C,PAYMENT,1220,30.0
@@ -121,16 +122,16 @@ FBFD014814507B5C,PAYMENT,1321,1000.0
 FBFD014814507B5C,DIAGE887,907,1.0
 FBFD014814507B5C,DRUG52959072214,1016,30.0
 ```
+
 We can get feature name value pair for this patient with ID `FBFD014814507B5C` as
 ```
 (PAYMENT, 1030.0)
 (DIAGE887, 2.0)
 (DRUG52959072214, 30.0)
 ```
-
-Below code will convert `filtered_events` into tuples in `(patientid, feature name, feature value)` format
+### Code
+Below code will convert `filtered_events` from [previous filter step](#extract-target-and-filter) into tuples in `(patientid, feature name, feature value)` format
 ``` pig
-
 grunt> feature_name_values = GROUP filtered_events BY (patientid, eventname);
 grunt> DESCRIBE feature_name_values;                                         
 feature_name_values: {group: (patientid: chararray,eventname: chararray),filtered_events: {(patientid: chararray,eventname: chararray,value: int)}}
@@ -146,9 +147,11 @@ grunt> dump feature_name_values;
 ```
 
 ## Assign index to feature
-In machine learning setting, we want to assign an index to each different feature. Form example, DIAG38845 corresponds to 1 and DIAGV6546 corresponds to 2 etc.
+### Get unique index
+In machine learning setting, we want to assign an index to each different feature rather than directly use name. Form example, `DIAG38845` corresponds to No.1 and `DIAGV6546` corresponds to NO.2 etc.
 
 Below code find unique feature name using `DISTINCT`and assign an index to feature name with `RANK`
+
 ``` pig
 grunt> feature_names = FOREACH feature_name_values GENERATE featurename;
 grunt> feature_names = DISTINCT feature_names;
@@ -166,6 +169,7 @@ grunt> DUMP feature_name_index;
 (9978,DRUG99207074501)
 ```
 
+### Use unique index
 Next, we can update `feature_name_values` to use feature index rather than feature name.
 ```pig
 grunt> feature_id_values = JOIN feature_name_values BY featurename, feature_name_index BY featurename;
@@ -184,6 +188,7 @@ grunt> DUMP feature_id_values;
 ```
 
 ## Format feature matrix
+### Illustratative example
 Now, we are approaching the final step. We need to create a feature vector for each patient. Our ultimate result will convert each patient into a feature vector associated with target we want to predict. We already get target in the `targets` relation. Our final representation is like below
 ```
 target featureid:value[featureid:value]...
@@ -203,6 +208,7 @@ we will represet the patient with
 ```
 notice that the `feautreid` is in increase order and this is required by a lot of machine learning package. We call such target (aka label) and features pair a `sample`.
 
+### Code
 Let's for group `feature_id_values` by patientid and check the structure
 ```
 grunt> grpd = GROUP feature_id_values BY patientid;
@@ -215,7 +221,7 @@ We can find `feature_id_values` is a bag and we want to convert it into a string
 def bag_to_svmlight(input):
     return ' '.join(( "%s:%f" % (fid, float(fvalue)) for _, fid, fvalue in input))
 ```
-The script just simply enumerate all tuples from `input` and form id value pairs then join. `@outputSchema("feature:chararray")` specifies the return value name and tupe. In order to use that, we need to register it first
+The script simply enumerate all tuples from `input` and form id value pairs then join. `@outputSchema("feature:chararray")` specifies the return value name and tupe. In order to use that, we need to register it first
 ```pig
 grunt> REGISTER sample/pig/utils.py USING jython AS utils;
 grunt> feature_vectors = FOREACH grpd {
@@ -228,6 +234,7 @@ grunt> DUMP feature_vectors;
 (FBFD014814507B5C,30:270.000000 700:1.000000)
 ```
 
+## Merge
 Next, we can join `targets` and `feature_vectors` to asscociate feature vector with target
 ```pig
 grunt> samples = JOIN targets BY patientid, feature_vectors BY patientid;
@@ -258,9 +265,18 @@ grunt> STORE testing INTO 'testing' USING PigStorage(' ');
 ```
 
 # Script
-Running commands interactively is efficient, but sometimes we want to save the commands for reuse. We can save the commands we run into a script file (i.e. features.pig) and run the entire script.
+Running commands interactively is efficient, but sometimes we want to save the commands for future reuse purpose. We can save the commands we run into a script file (i.e. features.pig) and run the entire script in batch mode.
 
-You can checkout `sample/pig` folder. Navigate to there and run the script simply with
+You can checkout in _sample/pig_ folder. Navigate to there and run the script simply with
 ```bash
 pig -x local features.pig
 ```
+
+{% exercise Use data one year before but no earlier than 2 years(i.e. 1 year observation window size).%}
+Additional conditions can be applied together with 1 year prediction window. i.e. 
+```
+filtered_events = FILTER event_target_pairs BY (events::dateoffset <= targets::dateoffset - 365) AND (events::dateoffset >= targets::dateoffset - 730);
+```
+{% endexercise %}
+
+

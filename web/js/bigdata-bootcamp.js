@@ -42,7 +42,8 @@ $(function() {
     $("#toc").tocify({
         // 0-th is the header
         context: ".container:eq( 1 )",
-        extendPage: false
+        extendPage: false,
+        scrollTo: 70
     });
 })
 
