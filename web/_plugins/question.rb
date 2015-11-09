@@ -11,7 +11,11 @@ class Exercise < Liquid::Block
 
     def render(context)
         site = context.registers[:site]
-        converter = site.getConverterImpl(::Jekyll::Converters::Markdown)
+        converter = if site.respond_to?(:find_converter_instance)
+            site.find_converter_instance(Jekyll::Converters::Markdown)
+        else
+            site.getConverterImpl(Jekyll::Converters::Markdown)
+        end
         # hack way to avoid replace new line in code
         content = converter.convert(super(context)).gsub(/[\n]+/, "\n").strip
         # additional new line in the rendered code will make markdown parser add
