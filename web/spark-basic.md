@@ -113,7 +113,7 @@ scala> lines.take(5).foreach(println)
 ```
 Note that during the above 3 commands, the RDD `lines` has been computed (i.e. read in from file) 3 times. We can prevent this by calling `lines.cache()`, which will cache the RDD in memory.
 
-{% exercise Print `event-id` for the first 5 records %}
+{% exercise Print the first 5 event-id %}
 ```scala
 scala> lines.take(5).foreach(x => println(x.split(",")(1)))
 ```
@@ -126,7 +126,7 @@ The `map` operation in Spark is similar to that of Hadoop. It's a **transformati
 scala> lines.map(line => line.split(",")(0))
 ```
 
-It is also possible to write a more complexity, multiple-lines map function. In this case, curly braces should be used in place of parentheses. For example, we can get both `patient-id` and `event-id`. 
+It is also possible to write a more complex, multiple-lines map function. In this case, curly braces should be used in place of parentheses. For example, we can get both `patient-id` and `event-id` at the same time. 
 ```scala
 scala> lines.map{line =>
   val s = line.split(",")
@@ -135,7 +135,7 @@ scala> lines.map{line =>
 ```
 
 ## Filter
-As indicated by it's name, `filter` can **transform** an RDD to another by filtering out elements that satisfy given condition. For example, we can count the number of records for a particular patients by using the `filter` function.
+As indicated by it's name, `filter` can **transform** an RDD to another by filtering out elements that satisfy the given condition. For example, we can count the number of records for a particular patients by using the `filter` function.
 ```scala
 scala> lines.filter(line => line.contains("00013D2EFD8E45D1")).count()
 res4: Long = 200
@@ -160,9 +160,9 @@ scala> val payments = lines.filter(line => line.contains("PAYMENT")).
                                  }.reduceByKey(_+_)
 ```
 
-The RDD returned by `filter` contains those records associated with payment. Each item is then transformed to a key-value pair `(patient-id, amount)` with `map`. Because each patient can have multiple payments, we need to use `reduceByKey` to sum up the payments for each patient. Here in this example, `patient-id` will be key, and `amount` be value to aggregate.
+The RDD returned by `filter` contains those records associated with payment. Each item is then transformed to a key-value pair `(patient-id, value)` with `map`. Because each patient can have multiple payments, we need to use `reduceByKey` to sum up the payments for each patient. Here in this example, `patient-id` will be the key, and `value` will be the value to be aggregated.
 
-We can then show the top-3 patients with the highest payment using `sortBy` first.
+We can then show the top-3 patients with the highest payment using `sortBy` first. 
 
 ```scala
 scala> payments.sortBy(_._2, false).take(3).foreach(println)
@@ -173,6 +173,29 @@ scala> payments.sortBy(_._2, false).take(3).foreach(println)
 (019E4729585EF3DD,108980.0)
 (01AC552BE839AB2B,108530.0)
 ```
+
+
+{% exercise Calculate the maximum payment of each patient %}
+```scala
+scala> val maxPayments = lines.filter(line => line.contains("PAYMENT")).
+                                 map{ x =>
+                                   val s = x.split(",")
+                                   (s(0), s(3).toFloat)
+                                 }.reduceByKey(math.max)
+```
+Here, `reduceByKey(math.max)` is the simplified expression of `reduceByKey(math.max(_,_))` or `reduceByKey((a,b) => math.max(a,b))`.
+{% endexercise %}
+
+{% exercise Count the number of records for each drug (event-id starts with "DRUG") %}
+```scala
+scala> val maxPayments = lines.filter(_.contains("DRUG")).
+                                 map{ x =>
+                                   val s = x.split(",")
+                                   (s(1), 1)
+                                 }.reduceByKey(_+_)
+```
+{% endexercise %}
+
 
 ## Statistics
 For RDD consists of numeric values, Spark provides some useful statistical primitives.
@@ -195,15 +218,39 @@ scala> payment_values.stdev()
 res10: Double = 26337.091771112468
 ```
 
+
 ## Set Operation
 RDDs support many of the operations of mathematical sets, such as `union` and `intersection`, even when the RDDs themselves are not properly sets. For example, we can combine the two files by the `union` fucntion. Please notice that `union` here is not strictly identical to union operation in mathmatics as Spark will not remove duplication.
 
 ```scala
-scala> val lines2 = sc.textFile("control.csv")
-scala> lines.union(lines2).count() 
+scala> val linesControl = sc.textFile("control.csv")
+scala> lines.union(linesControl).count() 
 res11: Long = 31144 
 
 ```
+{% msginfo %}
+Here, a more straightforward way is to use the wildcard character (*) to read in multiple files into a single RDD. 
+```scala
+scala> val lines = sc.textFile("*.csv")
+```
+{% endmsginfo %}
+
+
+{% exercise Count the number of drugs that appear in both case.csv and control.csv %}
+```scala
+scala> val drugCase = sc.textFile("case.csv").
+                     filter(_.contains("DRUG")).
+                     map(_.split(",")(1)).
+                     distinct()
+scala> val drugControl = sc.textFile("control.csv").
+                     filter(_.contains("DRUG")).  
+                     map(_.split(",")(1)).
+                     distinct()
+scala> drugCase.intersection(drugControl).count()
+res: Long = 396
+```
+{% endexercise %}
+
 
 # Further Reading
 For the complete list of RDD operations, please see the 
