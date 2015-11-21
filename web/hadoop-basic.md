@@ -19,10 +19,10 @@ Similar to creating local directory via linux command `mkdir`, creating a folder
 ```
 > hdfs dfs -mkdir input
 ```
-where `hdfs` is the HDFS utility, `dfs` is subcommad to handle basic HDFS operation,  `-mkdir` means you want to create a directory and directory name is specified as `input`. Above command actually create the `input` directory in your home directory of HDFS, which by default should be `/user/your_name/`. Of course, you can create it to other place with absolute or relative path.
+where `hdfs` is the HDFS utility program, `dfs` is the subcommand to handle basic HDFS operations,  `-mkdir` means you want to create a directory and the directory name is specified as `input`. Above commands actually create the `input` directory in your home directory in HDFS, which by default should be `/user/username/`. Of course, you can create it to other place with absolute or relative path.
 
 ## Copy data in and out
-Suppose you followed previous instrucion and created an directory named `input`, you can copy data from local file system to HDFS using `-put`. For example,
+Suppose you followed previous instruction and created an directory named `input`, you can copy data from local file system to HDFS using `-put`. For example,
 
 ```
 > hdfs dfs -put case.csv input
@@ -30,11 +30,11 @@ Suppose you followed previous instrucion and created an directory named `input`,
 ```
 You can find these two files as described in [sample data]({{ site.baseurl }}/data/).
 
-Corresponds to `-put`, `-get` operation will copy data out of HDFS. For example
+Similarly to `-put`, `-get` operation will copy data out of HDFS to the local folder. For example
 ```
 hdfs dfs -get input/case.csv local_case.csv
 ```
-will copy the `input/case.csv` file out HDFS into current working directory using a new name `local_case.csv`. If you didn't specify `local_case.csv`, the original name `case.csv` will be kept.
+will copy the `input/case.csv` file out HDFS into the current working directory using a new name `local_case.csv`. If you didn't specify `local_case.csv`, the original name `case.csv` will be kept.
 
 ## List File Information
 Just like linux `ls` command, `-ls` is the operation to list files and folders in HDFS. For example, the following command list items in your home directory of HDFS (i.e `/user/your_name/`)
@@ -52,7 +52,7 @@ found 2 items
 ```
 
 ## Fetch file content
-Actually you don't need to copy file out first to see its content, you can directly use `-cat` to printing the content of files in HDFS. For example, the following command print out content of the one file you just put into HDFS.
+Actually you don't need to copy files out local in order to see its content, you can directly use `-cat` to printing the content of files in HDFS. For example, the following command print out content of the one file you just put into HDFS.
 ```
 hdfs dfs -cat input/case.csv 
 ```

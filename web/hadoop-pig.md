@@ -6,14 +6,12 @@ navigation:
   section: [1, 4]
 ---
 {% objective %}
-- Know how to work with Pig interactive shell.
-- Understand Pig Latin data types.
-- Understand relation.
-- Can implement simle data processing script in Pig Latin.
+- Learn how to work with Pig interactive shell.
+- Understand Pig Latin data types and Pig relations.
+- Can implement data processing scripts in Pig Latin.
 - Can write user defined function(UDF).
 {% endobjective %}
-
-In this part of training, we show the usage of [Hadoop Pig](http://pig.apache.org/), a high-level data analysis tool on top of Hadoop MapReduce. Througout the training you will learn how to run interactive shell and run Pig script. We will use feature construction for predictive modeling from longitude data as an example.
+The goal of this module is to show how to construct feature vectors from the [raw event sequences data]({{ site.baseurl }}/data/). In this part of training, we show the usage of [Hadoop Pig](http://pig.apache.org/), a high-level data processing tool on top of Hadoop MapReduce. Througout the training, you will learn how to run interactive shell and run the Pig script. We will use feature construction for predictive modeling from longitudinaldata as an example.
 
 # Interactive Shell
 Pig provides a shell to manipulate data interactively. Let's start a shell an run that in local mode for demo purpose
@@ -70,9 +68,9 @@ In this section, we briefly describe data types. Pig can work with simple type l
 ```
 In Pig Latin, we can either fetch field by index (like `$0`) or by name (like `patientid`). With index we can also fetch a range of fields. For example `$2..` means _2_-st to last.
 
-**Bag** is usually denoted with `{}`, from result of `DESCRIBE case_events` we can see `case_events` itself is a bag. You can regard bag as a special un ordered `set` that doesn't check duplication.
+**Bag** is usually denoted with `{}`, from result of `DESCRIBE case_events` we can see `case_events` itself is a bag. You can regard bag as a special unordered `set` that doesn't check duplication.
 
-Check out [official doc about data type](http://pig.apache.org/docs/r0.14.0/basic.html#Data+Types+and+More) for more. You will find examples of the type in below samples, pay attention to result of `DESCRIBE` and you will find types and names of fields.
+Check out the [official documentation about data type](http://pig.apache.org/docs/r0.14.0/basic.html#Data+Types+and+More) for more. You will find examples of the type in below samples, pay attention to result of `DESCRIBE` and you will find types and names of fields.
 
 # Feature construction
 Next, you will learn by practicing in the context of feature construction for predictive modeling. You will learn built-in operators like `GROUP BY`, `JOIN` as well as User Defined Function (UDF) in python. The result of feature construction will be feature matrix that can be consumed by a lot of machine learning packages.
@@ -130,7 +128,7 @@ We can get feature name value pair for this patient with ID `FBFD014814507B5C` a
 (DRUG52959072214, 30.0)
 ```
 ### Code
-Below code will convert `filtered_events` from [previous filter step](#extract-target-and-filter) into tuples in `(patientid, feature name, feature value)` format
+Below code will aggregate `filtered_events` from [previous filter step](#extract-target-and-filter) into tuples in `(patientid, feature name, feature value)` format
 ``` pig
 grunt> feature_name_values = GROUP filtered_events BY (patientid, eventname);
 grunt> DESCRIBE feature_name_values;                                         
@@ -146,11 +144,11 @@ grunt> dump feature_name_values;
 (FBFD014814507B5C,DRUG52959072214,30)
 ```
 
-## Assign index to feature
-### Get unique index
-In machine learning setting, we want to assign an index to each different feature rather than directly use name. Form example, `DIAG38845` corresponds to No.1 and `DIAGV6546` corresponds to NO.2 etc.
+## Assign integer-ID to feature
+### Get unique feature-ID
+In machine learning setting, we want to assign an index to each different feature rather than directly use name. Form example, DIAG38845 corresponds to feature-id=1 and DIAGV6546 corresponds to feature-id=2.
 
-Below code find unique feature name using `DISTINCT`and assign an index to feature name with `RANK`
+Below code find unique feature name using `DISTINCT` operator and assign an index to feature name with `RANK` operator
 
 ``` pig
 grunt> feature_names = FOREACH feature_name_values GENERATE featurename;
