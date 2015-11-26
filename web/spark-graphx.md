@@ -3,7 +3,7 @@ layout: post
 title: Spark GraphX
 categories: [section]
 navigation:
-  section: [2, 4]
+  section: [2, 6]
 ---
 
 {% objective %}

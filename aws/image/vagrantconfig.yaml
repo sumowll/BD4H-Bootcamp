@@ -20,7 +20,7 @@ docker:
 num_instances: 1
 repo: http://bigtop-repos.s3.amazonaws.com/releases/1.0.0/centos/6/x86_64
 #repo: "http://bigtop01.cloudera.org:8080/view/Releases/job/Bigtop-1.0.0-rpm/BUILD_ENVIRONMENTS=centos-6%2clabel=docker-slave-06/lastSuccessfulBuild/artifact/output/"
-components: [hadoop, yarn, pig, hive, spark]
+components: [hadoop, yarn, pig, hive, spark, hbase]
 jdk: "java-1.7.0-openjdk-devel.x86_64"
 namenode_ui_port: "50070"
 yarn_ui_port: "8088"

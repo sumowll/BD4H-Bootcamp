@@ -1,4 +1,4 @@
-FROM sunlab/bigdata:0.01
+FROM sunlab/bigdata:0.03
 MAINTAINER Hang Su "hangsu@gatech.edu"
 
 USER root
@@ -12,6 +12,7 @@ RUN chown -R {{ item.1 }}:{{ item.1 }} /home/{{ item.1 }}/.ssh
 RUN chmod 0600 /home/{{ item.1 }}/.ssh/authorized_keys
 RUN chmod 0700 /home/{{ item.1 }}/.ssh
 RUN echo "{{ item.1 }} ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+RUN usermod -a -G hadoop,yarn {{ item.1 }}
 
 USER {{ item.1 }}
 ENV HOME /home/{{ item.1 }}

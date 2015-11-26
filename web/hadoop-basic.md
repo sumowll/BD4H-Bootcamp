@@ -11,6 +11,8 @@ navigation:
 - Being able to write basic MapReduce programs.
 {% endobjective %}
 
+In this section, you will first learn how to put/get data into/from HDFS. Then you will learn how to write a simple count program to get prevalence of different events in parallel.
+
 # HDFS Operations
 Hadoop provides a command line utility `hdfs` to interact with HDFS. Basic operations are placed under `hdfs dfs` subcommand. Let's play with some basic operations.
 
@@ -25,6 +27,7 @@ where `hdfs` is the HDFS utility program, `dfs` is the subcommand to handle basi
 Suppose you followed previous instruction and created an directory named `input`, you can copy data from local file system to HDFS using `-put`. For example,
 
 ```
+> cd ~/bigdata-bootcamp/data/
 > hdfs dfs -put case.csv input
 > hdfs dfs -put control.csv input
 ```
@@ -54,7 +57,17 @@ found 2 items
 ## Fetch file content
 Actually you don't need to copy files out local in order to see its content, you can directly use `-cat` to printing the content of files in HDFS. For example, the following command print out content of the one file you just put into HDFS.
 ```
-hdfs dfs -cat input/case.csv 
+> hdfs dfs -cat input/case.csv 
+...
+020E860BD31CAC69,DRUG00440128228,976,60.0
+020E860BD31CAC69,DIAG486,907,1.0
+020E860BD31CAC69,DIAG7863,907,1.0
+020E860BD31CAC69,DIAGV5866,907,1.0
+020E860BD31CAC69,DIAG3659,907,1.0
+020E860BD31CAC69,DIAGRG199,907,1.0
+020E860BD31CAC69,PAYMENT,907,15000.0
+020E860BD31CAC69,heartfailure,956,1.0
+...
 ```
 You will find wildcard character very useful since output of MapReduce and other Hadoop-based tools tendsto be directory. For example, to print content of all csv files (the case.csv and control.csv) in the `input` HDFS folder, you can
 ```
@@ -192,7 +205,8 @@ You can find all source code in `sample/hadoop` folder. You will need to navigat
 ### Compile
 Compile the three java files with `javac`
 ```
-javac -cp $(hadoop classpath) -d classes FrequencyMapper.java FrequencyReducer.java Frequency.java 
+> mkdir classes
+> javac -cp $(hadoop classpath) -d classes FrequencyMapper.java FrequencyReducer.java Frequency.java 
 ```
 where `hadoop classpath` outputs the required class path to compile a Hadoop program. `-d classes` puts the generated classes into the `classes` directory. You will  see three class files in the `classes` directory now.
 
@@ -210,11 +224,14 @@ In real-world application development, you will not need to compile files manual
 ### Run
 You can run the jar file just created with
 ```
-hadoop jar Frequency.jar Frequency input output
+hadoop jar Frequency.jar Frequency input/case.csv output
 ```
-where `Frequency.jar` is named of jar file, `Frequency` is java class to run. `input` and `output` are parameters to the `Frequency` class we implemented. Please be careful that `input` and `output` are used as path in HDFS.
-
+where `Frequency.jar` is named of jar file, `Frequency` is java class to run. `input` and `output` are parameters to the `Frequency` class we implemented. Please be careful that `input/case.csv` and `output` are used as path in HDFS. We specify the file `input/case.csv` as input, but we can also specify `input` as input if we want to take both `input/case.csv` and `input/control.csv` into consideration. Notice than you don't need to create `output` folder yourself as Hadoop framework will do that for you.
+{% msginfo %}
+You may see log output like 'uber mode'. It means mappers and reducers will be forced to run under the same YARN container.
+{% endmsginfo %}
 While the program is running, you will see a lot of messages. After the job finishes, you can check the results in the `output` directory (created by Hadoop) by 
+
 
 ```
 hdfs dfs -ls output

@@ -17,7 +17,7 @@ navigation:
 This section will briefly go through the essential knowledge about scala for later Spark training. In this section we will first show how to work with scala shell, then show how use variables, functions with examples. Finally, we give instructions about how to compile and run a standalone program using `sbt`.
 
 # Scala Shell
-Open a terminal and navigate to the root of code samples. You can open a scala shell by typing `scala`. Or, you can use [sbt](http://www.scala-sbt.org/index.html) by typing `sbt/sbt console`. The second approach will help you add your project source code and dependencies into class path, so that your functions or library functions will be available for you to try to in the interactive shell. 
+Open a terminal and navigate to the root of code samples. You can open a scala shell by typing `scala`. Or, you can use [sbt](http://www.scala-sbt.org/index.html) by typing `sbt console`. The second approach will help you add your project source code and dependencies into class path, so that your functions or library functions will be available for you to try to in the interactive shell. 
 
 Start the scala shell you will see
 ```scala
@@ -77,7 +77,7 @@ myString: String = Hello Scala
 ```
 
 ## Type
-It looks like we are working with script language like Javascript or Python, as no variable type is specified explicitly. In fact, `scala` is static type language and the compiler can implicitly infer the type in most cae. However, you can always specify a type as
+It looks like we are working with script language like Javascript or Python, as no variable type is specified explicitly. In fact, `scala` is static type language and the compiler can implicitly infer the type in most cases. However, you can always specify a type as
 ```scala
 scala> val myDouble: Double = 3
 myDouble: Double = 3.0
@@ -92,7 +92,7 @@ myList: List[String] = List(this, is, a, list, of, string)
 scala> val myTuple:(Double, Double) = (1.0, 2.0)
 myTuple: (Double, Double) = (1.0,2.0)
 ```
-Here the `List[String]` is syntax of generics in Scala, which is same as `C#`. In above example, `List[String]` means a `List` of `String` and `(Double, Double)` means a two-field tuple type and both the 1st element and 1nd element should be of type `Double`.
+Here the `List[String]` is syntax of generics in Scala, which is same as `C#`. In above example, `List[String]` means a `List` of `String` and `(Double, Double)` means a two-field tuple type and both the 1st element and 2nd element should be of type `Double`.
 
 # Functions
 You can define a function and call into it like
@@ -159,6 +159,8 @@ In above example, `reduce` will aggregate `List[A]` into `A` and we defined the 
 scala> myInt.reduce((a, b)=> a+b)
 res1: Int = 21
 ```
+Here we use an import higher order function in functional programming, `reduce`. It can be illustrated with below figure where a function _f_ is applied to one element and a init zero value in a list and the result together with next element will be parameter of next call until end of list recursively.
+![functional-reduce](https://upload.wikimedia.org/wikipedia/commons/3/3e/Right-fold-transformation.png "Reduce Recursive") Interested reader can learn more from [wiki](https://en.wikipedia.org/wiki/Fold_\(higher-order_function\)).
 
 {% msginfo %}
 Partial function and placeholder syntax is an advanced topic of Scala programming language. It's hard to master withing short period of time. For this tutorial, we will use that in simple cases like the sum operation above.
@@ -177,7 +179,7 @@ scala> patient.name
 res13: String = Bob
 ```
 
-Here we see the succint syntax of Scala again. `class Patient(val name: String, val id: Int)` not only defined constructor of `Patient` but also defined two member varialbles(`name` and `id`). 
+Here we see the succinct syntax of Scala again. `class Patient(val name: String, val id: Int)` not only defined constructor of `Patient` but also defined two member varialbles(`name` and `id`). 
 
 A special kind of class we will use a lot is [`Case Class`](http://www.scala-lang.org/old/node/107). `Case Class` can be declared as 
 ```scala
@@ -195,7 +197,7 @@ x match {
     case _ => println("unknown")
 }
 ```
-It's very convenient to use case class in pattern matting
+It's very convenient to use case class in pattern matching
 ```scala
 scala> val p = new Patient("Abc", 1)
 p: Patient = Patient(Abc,1)
@@ -203,15 +205,15 @@ p: Patient = Patient(Abc,1)
 scala> p match {case Patient("Abc", id) => println(s"matching id is $id")}
 matching id is 1
 ```
-Here we not only matched value, but also extracted one member field from the `Patient` class instance.
+Here we not only matched `p` as `Patient` type, but also matched patient name and extracted one member field from the `Patient` class instance.
 
 # Standalone Program
 Working with large real world application, you usually need to compile and package your source code with some tools. Here we show how to compile and run a simple program with [sbt](http://www.scala-sbt.org/index.html). Run the sample code in 'hello-bigdata' folder
 ```
-% sbt/sbt run
+% sbt run
 Attempting to fetch sbt
 ######################################################################## 100.0%
-Launching sbt from sbt/sbt-launch-0.13.8.jar
+Launching sbt from sbt-launch-0.13.8.jar
 [info] .....
 [info] Done updating.
 [info] Compiling 1 Scala source to ./hello-bigdata/target/scala-2.10/classes...

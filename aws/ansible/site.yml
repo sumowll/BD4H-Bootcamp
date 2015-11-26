@@ -6,6 +6,9 @@
     - name: install git, docker, tmux, emacs
       yum: name=git,docker,tmux,emacs state=latest
 
+    - name: start docker service
+      service: name=docker state=started
+
     - name: install vagrant from rpm
       yum: name=https://releases.hashicorp.com/vagrant/1.7.4/vagrant_1.7.4_x86_64.rpm state=present
 
@@ -67,3 +70,14 @@
     - name: make start-all.sh runable
       file: path=/home/{{ item }}/start-all.sh  mode="u+x"
       with_items: "{{ all_user }}"
+
+    # - name: copy create-home.sh
+    #   template: src=create-home.sh dest=/home/{{ item }}/ owner={{ item }} force=yes group=ec2-user
+    #   with_items: "{{ all_user }}"
+
+    # - name: make create-home.sh runable
+    #   file: path=/home/{{ item }}/create-home.sh  mode="u+x"
+    #   with_items: "{{ all_user }}"
+
+    - name: pull the image for all
+      shell: docker pull sunlab/bigdata:0.03

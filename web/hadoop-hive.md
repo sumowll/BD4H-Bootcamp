@@ -3,7 +3,7 @@ layout: post
 title: Hadoop Hive
 categories: [section]
 navigation:
-  section: [1, 5]
+  section: [1, 4]
 ---
 {% objective %}
 - Know how to work with Hive interactive shell.
@@ -12,11 +12,12 @@ navigation:
 - Can run basic query.
 {% endobjective %}
 
-This section shows the basic usage of Hadoop Hive. Hive provides SQL like language `HiveQL` on top of Hadoop. Instead of writing raw MapReduce program, you can work on data warehouse task using simple farmiliar query language.
+This section shows the basic usage of Hadoop Hive. Hive provides SQL like language `HiveQL` on top of Hadoop. Instead of writing raw MapReduce program, you can work on data warehouse task using simple farmiliar query language. After learning this section, you will be able to use SQL-like syntax to query big data.
 
 # Interactive shell
 In the sample code, we will continue to use our event tuple [patient data]({{ site.baseurl }}/data/). Let's start the Hive CLI interactive shell first by typing `hive` in command line
 ```bash
+> cd bigdata-bootcamp/sample/hive
 > hive
 ...                                                                         
 [info]
@@ -27,13 +28,13 @@ hive>
 Before loading data, we first need to define a table just like working with database server with SQL.
 ```sql
 hive> CREATE TABLE events (
-    >   patient_id STRING,
-    >   event_name STRING,
-    >   date_offset INT,
-    >   value INT)
-    > ROW FORMAT DELIMITED
-    > FIELDS TERMINATED BY ','
-    > STORED AS TEXTFILE;
+        patient_id STRING,
+        event_name STRING,
+        date_offset INT,
+        value INT)
+      ROW FORMAT DELIMITED
+      FIELDS TERMINATED BY ','
+      STORED AS TEXTFILE;
 OK
 Time taken: 0.289 seconds
 hive> 
@@ -57,7 +58,7 @@ Time taken: 0.221 seconds, Fetched: 4 row(s)
 Let's insert data into the table.
 ```sql
 hive> LOAD DATA LOCAL INPATH 'data'
-    > OVERWRITE INTO TABLE events;
+      OVERWRITE INTO TABLE events;
 Loading data to table default.events
 Table default.events stats: [numFiles=2, numRows=0, totalSize=1208972, rawDataSize=0]
 OK
@@ -69,7 +70,7 @@ Time taken: 0.521 seconds
 Then you can run SQL we are farmiliar with like
 ``` sql
 hive> SELECT patient_id, count(*) FROM events
-    > GROUP BY patient_id;
+      GROUP BY patient_id;
 
 [info]...
 
@@ -89,12 +90,12 @@ Time taken: 20.351 seconds, Fetched: 300 row(s)
 You can also save query result to local directory
 ``` sql
 hive> INSERT OVERWRITE LOCAL DIRECTORY 'tmp_local_out'
-    > ROW FORMAT DELIMITED
-    > FIELDS TERMINATED BY ','
-    > STORED AS TEXTFILE
-    > SELECT patient_id, count(*) 
-    > FROM events 
-    > GROUP BY patient_id;
+      ROW FORMAT DELIMITED
+      FIELDS TERMINATED BY ','
+      STORED AS TEXTFILE
+      SELECT patient_id, count(*) 
+      FROM events 
+      GROUP BY patient_id;
 
 
 [info]...
@@ -107,7 +108,7 @@ You can learn more about the syntax from its [language manual](https://cwiki.apa
 # Besides shell
 Besides running commands with interactive shell, you can also run a script in batch mode without interaction. In the `sample/hive` folder, you can run the entire script with
 ```bash
-hive -f sample.hql
+> hive -f sample.hql
 ```
 
 The content of the script is simply the combination of commands we run in shell with one more statement to drop existing table if necessary

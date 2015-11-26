@@ -79,14 +79,19 @@ post-fix () {
     echo 'sudo -u hdfs bash -c "hdfs dfs -mkdir /user/ec2-user && hdfs dfs -chown ec2-user /user/ec2-user"' |vagrant ssh $1
     echo 'sudo usermod -a -G hadoop,yarn ec2-user' |vagrant ssh $1
     echo 'sudo chmod -R g+w /data && sudo chgrp -R hadoop /data' |vagrant ssh $1
-    echo 'sudo /sbin/service hadoop-hdfs-namenode stop' |vagrant ssh $1
-    echo 'sudo /sbin/service hadoop-hdfs-datanode stop' |vagrant ssh $1
-    echo 'sudo /sbin/service hadoop-yarn-resourcemanager stop' |vagrant ssh $1
-    echo 'sudo /sbin/service hadoop-yarn-nodemanager stop' |vagrant ssh $1
-    echo 'sudo /sbin/service hadoop-mapreduce-historyserver stop' |vagrant ssh $1
-    echo 'sudo /sbin/service spark-worker stop' |vagrant ssh $1
-    echo 'sudo /sbin/service spark-master stop' |vagrant ssh $1
-    echo 'sudo /sbin/service hadoop-yarn-proxyserver' |vagrant ssh $1
+    echo 'sudo /sbin/service zookeeper-server stop' | vagrant ssh $1
+    echo 'sudo /sbin/service hadoop-yarn-proxyserver stop' | vagrant ssh $1
+    echo 'sudo /sbin/service hadoop-hdfs-namenode stop' | vagrant ssh $1
+    echo 'sudo /sbin/service hadoop-hdfs-datanode stop' | vagrant ssh $1
+    echo 'sudo /sbin/service hadoop-yarn-resourcemanager stop' | vagrant ssh $1
+    echo 'sudo /sbin/service hadoop-mapreduce-historyserver stop' | vagrant ssh $1
+    echo 'sudo /sbin/service hadoop-yarn-nodemanager stop' | vagrant ssh $1
+    echo 'sudo /sbin/service spark-worker stop' | vagrant ssh $1
+    echo 'sudo /sbin/service spark-master stop' | vagrant ssh $1
+    echo 'sudo /sbin/service hbase-regionserver stop' | vagrant ssh $1
+    echo 'sudo /sbin/service hbase-master stop' | vagrant ssh $1
+    echo 'sudo /sbin/service hbase-thrift stop' | vagrant ssh $1
+    echo 'sbt test && rm -rf target' |vagrant ssh $1
 }
 
 get-yaml-config() {

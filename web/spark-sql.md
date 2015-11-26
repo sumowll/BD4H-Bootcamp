@@ -12,15 +12,15 @@ navigation:
 {% endobjective %}
 
 # Overview
-Recent versions of Spark released the programming abstraction named `DataFrame`, which can be regarded as table in traiditional relational database. `DataFrame` is stored in distributed manner so that different rows may locate on different machines. On `DataFrame` you can write `sql` queries, manipulate columns programatically with API etc.
+Recent versions of Spark released the programming abstraction named `DataFrame`, which can be regarded as table in traditional relational database. `DataFrame` is stored in distributed manner so that different rows may locate on different machines. On `DataFrame` you can write `sql` queries, manipulate columns programatically with API etc.
 
 # Loading data
 Spark provides API to load data in json, parquet, hive table etc. You can refer to the official [Spark SQL programming guide](https://spark.apache.org/docs/latest/sql-programming-guide.html#data-sources) for those formats. Here we show how to load csv files, we will use the [spark-csv](https://github.com/databricks/spark-csv) module by databricks.
 
-Start spark shell with below command to add extra dependencies
+Start spark shell in local mode with below command to add extra dependencies
 
 ```
-% spark/bin/spark-shell --packages com.databricks:spark-csv_2.10:1.0.3
+% spark/bin/spark-shell --master "local[2]" --packages com.databricks:spark-csv_2.10:1.0.3
 [logs]
 
 Spark context available as sc.
@@ -32,11 +32,11 @@ scala>
 
 Now, load data
 ```scala
-scala> val patientEvents = sqlContext.load("data/", "com.databricks.spark.csv").
+scala> val patientEvents = sqlContext.load("input/", "com.databricks.spark.csv").
      toDF("patientId", "eventId", "date", "value")
 patientEvents: org.apache.spark.sql.DataFrame = [patientId: string, eventId: string, date: string, value: string]
 ```
-the first parameter is path to data, and second is data source. Here we specify a directory name so that all files in that directory will be read and second parameter make sure we will the proper parser. Next we call `toDF` to rename the column with meaningful name.
+the first parameter is path to data(in HDFS), and second is a class name, the adapter to load CSV file. Here we specify a directory name so that all files in that directory will be read and second parameter make sure we will the proper parser. Next we call `toDF` to rename the column with meaningful name.
 
 # Manipulating data
 There are two methods to work with the DataFrame, either using the domain specific language (DSL) or use SQL. 
@@ -65,6 +65,7 @@ patientId        eventId   count
 01A999551906C787 DIAG4019  7    
 ...
 ```
+For a complete DSL functions, see [DataFrame](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.DataFrame) class api.
 
 # Saving data
 Spark SQL provides a convenient way to save data in different format just like loading data. For example you can write 
