@@ -34,7 +34,7 @@ You can type `:quit` to stop and quit the shell, but don't do that now. We will 
 
 # Variables
 ## Declare `val` and `var`
-Suppose you are still in the scala intertive shell. Define a immutable variable as
+In Scala, there are two types of variable, mutable and immutable. Unlike some functional programming language that requires immutable variable, Scala allows existence of mutable variable but immutable is recommended as it's easier to verify the correctness of your program. Suppose you are still in the scala intertive shell. Define a immutable variable as
 ```scala
 scala> val myInt = 1 + 1
 myInt: Int = 2
@@ -98,8 +98,8 @@ Here the `List[String]` is syntax of generics in Scala, which is same as `C#`. I
 You can define a function and call into it like
 ```scala
 scala> def triple(x: Int): Int = {
-     | x*3
-     | }
+          x*3
+       }
 triple: (x: Int)Int
 
 scala> triple(2)
@@ -146,24 +146,38 @@ where `item: String => println(item)` is an anonymous function. This function ca
 scala> myList.foreach(println(_))
 scala> myList.foreach(println)
 ```
-where `_` represent first parameter of the anonymous function with body `println(_)`. Additional `_` will represent other parameters. For example, we can calculate sum of numbers using reduce
+where `_` represent first parameter of the anonymous function with body `println(_)`. Additional `_` will represent other parameters. For example, we can calculate the total payment a patient made by
 ```scala
-scala> val myInt = List(1, 2, 3, 4, 5, 6)
-myInt: List[Int] = List(1, 2, 3, 4, 5, 6)
+scala> val payments = List(1, 2, 3, 4, 5, 6)
+payments: List[Int] = List(1, 2, 3, 4, 5, 6)
 
-scala> myInt.reduce(_ + _)
+scala> payments.reduce(_ + _)
 res0: Int = 21
 ```
 In above example, `reduce` will aggregate `List[A]` into `A` and we defined the aggregator as `_ + _` to sum them up. Of course, you can write that more explicit like
 ```scala
-scala> myInt.reduce((a, b)=> a+b)
+scala> payments.reduce((a, b)=> a+b)
 res1: Int = 21
 ```
-Here we use an import higher order function in functional programming, `reduce`. It can be illustrated with below figure where a function _f_ is applied to one element and a init zero value in a list and the result together with next element will be parameter of next call until end of list recursively.
-![functional-reduce](https://upload.wikimedia.org/wikipedia/commons/3/3e/Right-fold-transformation.png "Reduce Recursive") Interested reader can learn more from [wiki](https://en.wikipedia.org/wiki/Fold_\(higher-order_function\)).
+Here we use an import higher order function in functional programming, `reduce`. It can be illustrated with below figure where a function _f_ is applied to one element at a time and the result together with next element will be parameter of next call until end of list recursively.
+![functional-reduce]({{ site.baseurl }}/image/post/scala-reduce.png "Reduce Recursive") 
+It's important to remember that for `reduce` operation/function, input is `List[V]` and output is `V`, same `V`. Interested reader can learn more from [wiki](https://en.wikipedia.org/wiki/Fold_\(higher-order_function\)). In contrast to `reduce`, you can of course write code using `for` loop, which is verbose and very rare in Scala,
+```scala
+scala> var totalPayment = 0
+totalPayment: Int = 0
+
+scala> for (payment <- payments) {
+         totalPayment += payment
+       }
+
+scala> totalPayment
+res2: Int = 21
+
+scala>
+```
 
 {% msginfo %}
-Partial function and placeholder syntax is an advanced topic of Scala programming language. It's hard to master withing short period of time. For this tutorial, we will use that in simple cases like the sum operation above.
+Partial function and placeholder syntax is an advanced topic of Scala programming language. It's hard to master within short period of time. For this tutorial, we will use that in simple cases like the sum operation above.
 {% endmsginfo %}
 
 # Class
@@ -190,11 +204,12 @@ and see below [Pattern Matching](#pattern-matching) for use case.
 # Pattern Matching
 You may know the `switch..case` in other language. Scala provides a more flexible and powerful technique, `Pattern Matching`. Below example shows one can match by value, by type in one match.
 ```scala
-val x = 2
-x match {
-    case a: Int => println("a is int")
-    case 3 => println("equals 3")
-    case _ => println("unknown")
+val payment:Any = 21
+payment match {
+    case p: String => println("payment is a String")
+    case p: Int if p > 30 => println("payment > 30")
+    case p: Int if p ==0 => println("zero payment")
+    case _ => println("otherwise")
 }
 ```
 It's very convenient to use case class in pattern matching
@@ -206,10 +221,19 @@ scala> p match {case Patient("Abc", id) => println(s"matching id is $id")}
 matching id is 1
 ```
 Here we not only matched `p` as `Patient` type, but also matched patient name and extracted one member field from the `Patient` class instance.
+{% exercise Add default case to above `match` example %}
+```scala
+p match {
+    case Patient("Abc", id) => println(s"matching id is $id")
+    case _ => println("not matched")
+}
+```
+{% endexercise %}
 
 # Standalone Program
 Working with large real world application, you usually need to compile and package your source code with some tools. Here we show how to compile and run a simple program with [sbt](http://www.scala-sbt.org/index.html). Run the sample code in 'hello-bigdata' folder
 ```
+% cd ~/bigdata-bootcamp/sample/hello-bigdata
 % sbt run
 Attempting to fetch sbt
 ######################################################################## 100.0%

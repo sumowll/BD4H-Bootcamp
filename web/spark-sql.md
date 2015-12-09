@@ -20,7 +20,7 @@ Spark provides API to load data in json, parquet, hive table etc. You can refer 
 Start spark shell in local mode with below command to add extra dependencies
 
 ```
-% spark/bin/spark-shell --master "local[2]" --packages com.databricks:spark-csv_2.10:1.0.3
+% spark-shell --master "local[2]" --packages com.databricks:spark-csv_2.10:1.0.3
 [logs]
 
 Spark context available as sc.
@@ -33,10 +33,11 @@ scala>
 Now, load data
 ```scala
 scala> val patientEvents = sqlContext.load("input/", "com.databricks.spark.csv").
-     toDF("patientId", "eventId", "date", "value")
-patientEvents: org.apache.spark.sql.DataFrame = [patientId: string, eventId: string, date: string, value: string]
+     toDF("patientId", "eventId", "date", "rawvalue").
+     withColumn("value", 'rawvalue.cast("Double"))
+patientEvents: org.apache.spark.sql.DataFrame = [patientId: string, eventId: string, date: string, rawvalue: string, value: double]
 ```
-the first parameter is path to data(in HDFS), and second is a class name, the adapter to load CSV file. Here we specify a directory name so that all files in that directory will be read and second parameter make sure we will the proper parser. Next we call `toDF` to rename the column with meaningful name.
+the first parameter is path to data(in HDFS), and second is a class name, the adapter to load CSV file. Here we specify a directory name so that all files in that directory will be read and second parameter make sure we will the proper parser. Next we call `toDF` to rename the column with meaningful name. Finally, we add one more column that have double type of value instead of string.
 
 # Manipulating data
 There are two methods to work with the DataFrame, either using the domain specific language (DSL) or use SQL. 
@@ -47,7 +48,7 @@ scala> patientEvents.registerTempTable("events")
 scala> sqlContext.sql("select patientId, eventId, count(*) count from events where eventId like 'DIAG%' group by patientId, eventId order by count desc").collect
 res5: Array[org.apache.spark.sql.Row] = Array(...)
 ```
-Here the `patientEvents` DataFrame is registered as a table in sql context so that we could run sql commands. Next line is a standard sql command with `where`, `group by` and `sort by` statements.
+Here the `patientEvents` DataFrame is registered as a table in sql context so that we could run sql commands. Next line is a standard sql command with `where`, `group by` and `order by` statements.
 ## DSL
 Next, we show how to manipulate data with DSL, same result of previous SQL command can be achieved by
 ```scala
@@ -65,7 +66,7 @@ patientId        eventId   count
 01A999551906C787 DIAG4019  7    
 ...
 ```
-For a complete DSL functions, see [DataFrame](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.DataFrame) class api.
+For a complete DSL functions, see [DataFrame](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.DataFrame) class API.
 
 # Saving data
 Spark SQL provides a convenient way to save data in different format just like loading data. For example you can write 
@@ -115,6 +116,21 @@ heart failure 300
 ```
 
 {% exercise Find top 10 patients with highest total payment using both SQL and DSL.%}
-TBA
+SQL
+```scala
+scala> sqlContext.sql("select patientId, sum(value) as payment from events where eventId = 'PAYMENT' group by patientId order by payment desc limit 10").show
+
+patientId        payment
+0085B4F55FFA358D 139880.0
+019E4729585EF3DD 108980.0
+01AC552BE839AB2B 108530.0
+0103899F68F866F0 101710.0
+00291F39917544B1 99270.0
+01A999551906C787 84730.0
+01BE015FAF3D32D1 83290.0
+002AB71D3224BE66 79850.0
+51A115C3BD10C42B 76110.0
+01546ADB01630C6C 68190.0
+```
 {% endexercise %}
 

@@ -14,7 +14,7 @@ In this section, we will show how to setup suitable data for building predictive
 # Data Types
 For many machine learning tasks, such as classification, regression, and clustering, each data point is often represented as a vector. Each coordinate of the vector corresponds to a particular feature of the data point.
 
-## Vector
+## Feature Vector
 MLlib supports two types of vectors: dense and sparse.
 A dense vector is basically a `Double` array of length equals to the dimension of the vector.
 If a vector contains only a few non-zero entries, we can then more efficiently represent the vector by a sparse vector, which indicates the non-zero indices and the corresponding values.
@@ -48,7 +48,10 @@ scala> val labeled0 = LabeledPoint(0, Vectors.sparse(3, Seq((0, 1.0), (2, 3.0)))
 
 # Feature Construction
 ## Overview
-To apply machine learning algorithms, we need to transform our data into `RDD[LabeledPoint]`. This feature construction is similar to what we did in [Hadoop Pig]({{ site.baseurl }}/hadoop-pig/), but will be more concise since we are programming in Scala on Spark. High level steps are depicted as below
+To apply machine learning algorithms, we need to transform our data into `RDD[LabeledPoint]`. This feature construction is similar to what we did in [Hadoop Pig]({{ site.baseurl }}/hadoop-pig/), but will be more concise since we are programming in Scala on Spark. We will need to consider an one-year prediction window. Specifically, we will only use data one year before HF happen/not happen. Below figure depict the window
+![Prediction Window]({{ site.baseurl }}/image/post/prediction-window.jpg "Prediction Window")
+
+High level steps are depicted as below
 ![process-overview]({{ site.baseurl}}/image/post/mllib-predict-process.jpg "predictive process")
 
 Our parallelization will be on **patient level**, i.e. each element in RDD is everything about one and only one patient. Feature and prediction target for each patient is almost independent form the others. Recall that our data file is in the following form:
@@ -62,29 +65,34 @@ Our parallelization will be on **patient level**, i.e. each element in RDD is ev
 Each line is a 4-tuple `(patient-id, event-id, timestamp, value)`. Suppose now our goal is to predict if a patient will have heart failure. We can use the value associated with the event `heartfailure` as the label. This value can be either 1.0 (the patient has heart failure) or 0.0 (the patient does not have heart failure). We call a patient with heart failure a **positive example**, and a patient without heart failure a **negative example**. 
 For example, in the above snippet we can see that patient `00013D2EFD8E45D1` is a positive example. The file **case.csv** consists of only positive examples, and the file **control.csv** consists of only negative examples.
 
-We will need to consider an one-year prediction window. Specifically, we will only use data one year before HF happen/not happen. Below figure depict the window
-![Prediction Window]({{ site.baseurl }}/image/post/prediction-window.jpg "Prediction Window")
-
 We will use the values associated with events other than `heartfailure` to construct feature vector for each patient. Specifically, the length of the vector is the number of distinct `event-id`'s, and each coordinate of the vector stores the value corresponds to a particular event. The values associated with events not shown in the file are assume to be 0. Since each patient typically has only a few hundreds of records (lines) compared to thousands of distinct events, it is more efficient to use `SparseVector`.
 Note that each patient can have multiple records with the same `event-id`. In this case we sum up the values associated with a same `event-id` as feature value and use `event-id` as feature name. 
 
-## Load data
+## 1. Load data
 The file **input/case.csv** consists of only positive examples, and the file **input/control.csv** consists of only negative examples. We will load them together. Since the data will be used more than once, we use `cache()` to prevent reading in the file multiple times.
 
 ```scala
-// combine the two files
-val rawData = sc.textFile("input/").cache()
+case class Event(patientId: String, eventId: String, timestamp: Int, value: Double)
+
+val rawData = sc.textFile("input/").
+  map{line =>
+    val splits = line.split(",")
+    new Event(splits(0), splits(1), splits(2).toInt, splits(3).toDouble)
+  }
 ```
 
-## Group patient data
+## 2. Group patient data
 One patiet's index date, prediction target etc are independent from another patient, so that we can group by patient-id to put everything about one patient together. When we run `map` operation, Spark will help us parallelize computation on **patient level**.
 ```scala
 // group raw data with patient id and ignore patient id
 // then we will run parallel on patient lelvel
 val grpPatients = rawData.groupBy(_.patientId).map(_._2)
 ```
+Please recall that `_._2` will return second field of a tuple. The `groupBy` operation can be illustrated with below example
+![applicaion-groupby]({{ site.baseurl }}/image/post/application-groupby.jpg "Groupby illustrative example")
+so, finally the `grpPatients` will be `RDD[List[event]]`
 
-## Define target and feature values
+## 3. Define target and feature values
 Now, we can practice our **patient level** parallelization. For each patient, we first find the prediction target, which is encoded into an event with name `heartfailure`, then we decide index date to filter out useful events and aggregate them into feature names using `sum` operation and remain event name as feature name.
 ``` scala
 val patientTargetAndFeatures = grpPatients.map{events =>
@@ -115,22 +123,40 @@ val patientTargetAndFeatures = grpPatients.map{events =>
   (target, features)
 }
 ```
-
-## Feature name to id
-In above step, we got `filteredFeatureEvents` as `RDD[(target, Map[feature-name, feature-value])]`. In order to convert `feature-name` to some integer id as required by most machine learning modules including MLlib, we will need to collect all unique `feautre-name` and associate it with an integer id.
+The construction of target is straightforward, but the process of constructing features is vague. Below example show what happened in main body of above `map` operation to illustrate how `features` were constructed
+![application-feature-values]({{ site.baseurl }}/image/post/application-feature-values.jpg "feature values process")
+Our final `filteredFeatureEvents` should be `RDD[(target, Map[feature-name, feature-value])]` and we can verify that by
 ```scala
-    // assign unique integer id to feature name
-    val featureMap = patientTargetAndFeatures. // RDD[(target, Map[feature-name, feature-value])]
-      flatMap(_._2.keys). // get all feature values
-      distinct. // remove duplication
-      collect. // collect to driver program
-      zipWithIndex. // assign an integer id
-      toMap // convert to Map[feature-name, feature-id]
+scala> patientTargetAndFeatures.take(1)
+res0: Array[(Double, scala.collection.immutable.Map[String,Double])] = Array((0.0,Map(DRUG36987241603 -> 60.0, DRUG00378181701 -> 30.0, DRUG11517316909 -> 20.0, DRUG53002055230 -> 200.0, DRUG23490063206 -> 30.0, DRUG61113074382 -> 60.0, DRUG58016093000 -> 60.0, DRUG52604508802 -> 30.0, DRUG58016037228 -> 10.0, DRUG60491080134 -> 30.0, DRUG51079093119 -> 360.0, DRUG00228275711 -> 30.0, DRUG63629290803 -> 120.0, DIAG4011 -> 1.0, DRUG58016075212 -> 90.0, DRUG00378412401 -> 30.0, DRUG63629260701 -> 30.0, DRUG00839619116 -> 30.0, DRUG11390002315 -> 30.0, DRUG58016058050 -> 60.0, DRUG55289082930 -> 60.0, DRUG36987154502 -> 30.0, DRUG00364095301 -> 30.0, DRUG58016021326 -> 180.0, DRUG54868593401 -> 30.0, DRUG58016054035 -> 30.0, DRUG64464000105 -> 30.0, DRUG58016076573 -> 30.0, DRUG00839710006...
 ```
 
-## Create final `LabeledPoint`
+## 4. Feature name to id
+In above step, we got `filteredFeatureEvents` as `RDD[(target, Map[feature-name, feature-value])]`. In order to convert `feature-name` to some integer id as required by most machine learning modules including MLlib, we will need to collect all unique `feautre-name` and associate it with an integer id.
+```scala
+// assign unique integer id to feature name
+val featureMap = patientTargetAndFeatures. // RDD[(target, Map[feature-name, feature-value])]
+  flatMap(_._2.keys). // get all feature names
+  distinct. // remove duplication
+  collect. // collect to driver program
+  zipWithIndex. // assign an integer id
+  toMap // convert to Map[feature-name, feature-id]
+```
+Here we used an operation named `flatMap`. Below is an example, and we can think of `flatMap` as a two step thing, map and flatten. So that `patientTargetAndFeatures.flatMap(_._2.keys)` will give `RDD[feature-name]`.
+![flat-map]({{ site.baseurl }}/image/post/application-flatMap.jpg "Flat map")
+Content of the data after other opeartions is depicted below with same toy example as above for `flatMap`.
+![application-name-2-id.jpg]({{ site.baseurl }}/image/post/application-name-2-id.jpg "name to id")
+Here `collect` is not depicted as what `collect` does is collect data from distributed to centralized storage on driver. All the necessary function calls like `zipWithIndex` is of the same name on `RDD` and on common local data structures like `List`.
+
+{% msginfo %}
+If you get confused about result of certain operation, you can avoid chain of operation calls and instead print out result of each step.
+{% endmsginfo %}
+
+## 5. Create final `LabeledPoint`
 In this last step, we transform `(target, features)` for each patient into  `LabeledPoint`. Basically, we just need to translate feature name in `features` into feautre id and create a feature vector then associate the vector with `target`.
 ```scala
+// broadcast feature map from driver to all workers
+val scFeatureMap = sc.broadcast(featureMap)
 val finalSamples = patientTargetAndFeatures.map {case(target, features) =>
   val numFeature = scFeatureMap.value.size
   val indexedFeatures = features.
@@ -143,6 +169,7 @@ val finalSamples = patientTargetAndFeatures.map {case(target, features) =>
     labeledPoint
 }
 ```
+Here in above example, we called `sc.broadcast`. As indicated by its name this function is used for broadcasting data from driver to works so that workers will not need to copy on demand and waste bandwidth thus slow down the process. It's usage is very simple, call `val broadcasted = sc.broadcast(object)` and use `broadcasted.value` to get original `object` within operations like `map` on RDD. Please beaware that such broadcasted object is read only and that there's no synchronization problem.
 
 # Save
 With data readily available as `RDD[LabeledPoint]`, we can save it into a common format accepted by a lot of machine learning modules, the LibSVM/svmlight format, named after LibSVM/svmlight package.
@@ -155,11 +182,11 @@ MLUtils.saveAsLibSVMFile(finalSamples, "samples")
 {% exercise Save `featureMap` to local file system for future use. %}
 You can achieve that by
 ```scala
-val mapping = featureMap
-  .toList
-  .sortBy(_._2)
-  .map(pair => s"${pair._1}$$${pair._2}") # intentionally use special seperator
-  .mkString("\n")
+val mapping = featureMap.
+  toList.
+  sortBy(_._2).
+  map(pair => s"${pair._1}|${pair._2}"). // intentionally use special seperator
+  mkString("\n")
 
 
 scala.tools.nsc.io.File("mapping.txt").writeAll(mapping)

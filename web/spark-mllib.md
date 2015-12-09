@@ -21,7 +21,7 @@ statistics, then train a classifier to prediction heart failure occurrence.
 Loading data from your saved result can be achieved by
 ``` scala
 import org.apache.spark.mllib.util.MLUtils
-val data = MLUtils.loadLibSVMFile(sc, "sample")
+val data = MLUtils.loadLibSVMFile(sc, "samples")
 ```
 
 ## Basic Statistics
@@ -50,7 +50,7 @@ summary.numNonzeros(0)
 In typical machine learning problem, we need to split data into training (60%) and test (40%) set.
 
 ```scala
-val splits = data.randomSplit(Array(0.6, 0.4), seed = 0L)
+val splits = data.randomSplit(Array(0.6, 0.4), seed = 15L)
 val train = splits(0).cache()
 val test = splits(1).cache()
 ```
@@ -67,7 +67,8 @@ val model = SVMWithSGD.train(train, numIterations)
 For each sample in the testing set, output a (prediction, label) pair, and calculate the prediction accuracy.
  
 ```scala
-val predictionAndLabel = test.map(x => (model.predict(x.features), x.label))
+val scModel = sc.broadcast(model)
+val predictionAndLabel = test.map(x => (scModel.value.predict(x.features), x.label))
 val accuracy = predictionAndLabel.filter(x => x._1 == x._2).count / test.count.toFloat
 println("testing Accuracy  = " + accuracy)
 ```
@@ -93,8 +94,7 @@ If your data set is small after feature construction in previous [Spark Applicat
 ## Fetch data
 In order to work with Scikit-learn, you will need to take data out of HDFS into local file system. We can get the `samples` folder from your home directory in HDFS and merge content into one single file by below commands in bash
 ``` bash
-hdfs dfs -get samples /tmp/patients
-cat /tmp/patients/* > patients.svmlight
+hdfs dfs -getmerge samples patients.svmlight
 ```
 
 ## Move on with Python
@@ -117,6 +117,7 @@ from sklearn.cross_validation import train_test_split
 from sklearn.datasets import load_svmlight_file
 
 X, y = load_svmlight_file("patients.svmlight")
+X = X.toarray() # make it dense
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=41)
 ```
 
@@ -130,9 +131,15 @@ model.fit(X_train, y_train)
 ```
 
 ## Testing
-We can get prediction accuracy on testing set as
-```python
-model.score(X_test, y_test)
+We can get prediction accuracy and [auc](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) on testing set as
+``` python
+from sklearn.metrics import roc_auc_score
+accuracy = model.score(X_test, y_test)
+
+y_score = model.decision_function(X_test)
+auc = roc_auc_score(y_test, y_score)
+
+print "accuracy = %.3f, auc = %.3f" % (accuracy, auc)
 ```
 
 ## Save & load model
@@ -146,11 +153,45 @@ with open('pysvcmodel.pkl', 'rb') as f:
     loaded_model = pickle.load(f)
 ```
 
+## Sparsity and predictive features
+Since we have limited training data but rich feature space, we may consider using L1 penalty on model to get sparse coefficients.
 
+```python
+from sklearn.preprocessing import MinMaxScaler
 
+scaler = MinMaxScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
 
+l1_model = LinearSVC(C=1.0, random_state=42, dual=False, penalty='l1')
+l1_model.fit(X_train, y_train)
 
+accuracy = l1_model.score(X_test, y_test)
 
+y_score = l1_model.decision_function(X_test)
+auc = roc_auc_score(y_test, y_score)
+
+print "for sparse model, accuracy = %.3f, auc = %.3f" % (accuracy, auc)
+```
+
+Before fitting a model, we scalled the data to make sure weights of feature are comparable. With sparse model we get from previous example, we can actually decide predictive features according to their coefficients. Here we assume you did the last exercise of previous section about Spark Application. If not, please do that first.
+
+```python
+import numpy as np
+
+# loading mapping
+mapping = []
+with open('mapping.txt') as f:
+    for line in f.readlines():
+        splits = line.split('|') # feature-name | feature-index
+        mapping.append(splits[0])
+
+# get last 10, the largest 10
+top_10 =np.argsort(l1_model.coef_[0])[-10:]
+
+for index, fid in enumerate(top_10[::-1]): #read in reverse order
+    print "%d: feature [%s] with coef %.3f" % (index, mapping[fid], l1_model.coef_[0][fid])
+```
 
 {% comment %}
 # Regression

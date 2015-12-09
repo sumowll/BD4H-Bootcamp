@@ -118,7 +118,7 @@ Note that in above 3 code block examples, the RDD `lines` has been computed (i.e
 
 {% exercise Print the first 5 event-id %}
 ```scala
-scala> lines.take(5).map(_.split(",")).map(_(2)).foreach(println)
+scala> lines.take(5).map(_.split(",")).map(_(1)).foreach(println)
 ```
 {% endexercise %}
 
@@ -136,7 +136,7 @@ scala> lines.map{line =>
 ```
 
 ## Filter
-As indicated by it's name, `filter` can **transform** an RDD to another by filtering out only elements that satisfy the given condition. For example, we can count the number of events collected of a particular patient by using the `filter` function.
+As indicated by it's name, `filter` can **transform** an RDD to another by filtering out only elements that satisfy the given condition. For example, we want to count the number of events collected for a particular patient to verify correctness of our input. We can the `filter` function.
 ```scala
 scala> lines.filter(line => line.contains("00013D2EFD8E45D1")).count()
 res4: Long = 200
@@ -151,16 +151,35 @@ scala> lines.map(line => line.split(",")(0)).distinct().count()
 res5: Long = 100
 ```
 
-## Reduce
-Spark provides a similar operation of reduce in MapReduce, `reduceByKey`. This name is more informative. It *transform* an `RDD[(K, V)]` into `RDD[(K, List[V])]` and `reduce` on `List[V]` to get `RDD[(K, V)]`. Please be careful that we intentionally denote `V` as return type of `reduce` should be same as input list element. Suppose now we want to calculate the total payment by each patients. A payment record in the dataset is in the form of `(patient-id, PAYMENT, timestamp, value)`.
+## Group
+Sometimes, you will need to group the input events according to patient id to put everything about each patient together. For example, in order to exact index date for predictive modeling, you may first group patient data per patient then handle each patient seperately in parallel. We can see each element in RDD is tuple `(patient-id, iterable[event])`.
+
 ```scala
-scala> val payments = lines.filter(line => line.contains("PAYMENT")).
-                                 map{ x =>
+> val patientIdEventPair = lines.map{line =>
+  val patientId = line.split(",")(0)
+  (patientId, line)
+}
+> val groupedPatientData = patientIdEventPair.groupByKey
+> groupedPatientData.take(1)
+res1: Array[(String, Iterable[String])] = Array((0102353632C5E0D0,CompactBuffer(0102353632C5E0D0,DIAG29181,562,1.0, 0102353632C5E0D0,DIAG29212,562,1.0, 0102353632C5E0D0,DIAG34590,562,1.0, 0102353632C5E0D0,DIAG30000,562,1.0, 0102353632C5E0D0,DIAG2920,562,1.0, 0102353632C5E0D0,DIAG412,562,1.0, 0102353632C5E0D0,DIAG28800,562,1.0, 0102353632C5E0D0,DIAG30391,562,1.0, 0102353632C5E0D0,DIAGRG894,562,1.0, 0102353632C5E0D0,PAYMENT,562,6000.0, 0102353632C5E0D0,DIAG5781,570,1.0, 0102353632C5E0D0,DIAG53010,570,1.0, 0102353632C5E0D0,DIAGE8490,570,1.0, 0102353632C5E0D0,DIAG27651,570,1.0, 0102353632C5E0D0,DIAG78559,570,1.0, 0102353632C5E0D0,DIAG56210,570,1.0, 0102353632C5E0D0,DIAG5856,570,1.0, 0102353632C5E0D0,heartfailure,570,1.0, 0102353632C5E0D0,DIAG5070,570,1.0, 0102353632C5E0D0,DIAGRG346,570,1.0,...
+....
+```
+
+## Reduce By Key
+`reduceByKey` *transform* an `RDD[(K, V)]` into `RDD[(K, List[V])]` and `reduce` on `List[V]` to get `RDD[(K, V)]`. Please be careful that we intentionally denote `V` as return type of `reduce` should be same as input list element. Suppose now we want to calculate the total payment by each patients. A payment record in the dataset is in the form of `(patient-id, PAYMENT, timestamp, value)`.
+```scala
+val payment_events = lines.filter(line => line.contains("PAYMENT"))
+val payments = payment_events.map{ x =>
                                    val s = x.split(",")
                                    (s(0), s(3).toFloat)
-                                 }.reduceByKey(_+_)
+                                 }
+val paymentPerPatient = payments.reduceByKey(_+_)
 ```
-The RDD returned by `filter` contains those records associated with payment. Each item is then transformed to a key-value pair `(patient-id, payment)` with `map`. Because each patient can have multiple payments, we need to use `reduceByKey` to sum up the payments for each patient. Here in this example, `patient-id` will be served as the key, and `payment` will be the value to sum up for each patient.
+
+The `payment_events` RDD returned by `filter` contains those records associated with payment. Each item is then transformed to a key-value pair `(patient-id, payment)` with `map`. Because each patient can have multiple payments, we need to use `reduceByKey` to sum up the payments for each patient. Here in this example, `patient-id` will be served as the key, and `payment` will be the value to sum up for each patient. Below figure shows the process of `reduceByKey` in our example
+![reducebykey-payment]({{ site.baseurl }}/image/post/reducebykey-payment.jpg "reduceByKey on payment")
+
+## Sort
 
 We can then show the top-3 patients with the highest payment by using `sortBy` first. 
 
@@ -173,7 +192,7 @@ and output is
 (019E4729585EF3DD,108980.0)
 (01AC552BE839AB2B,108530.0)
 ```
-Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous function that return second element of a tuple. 
+Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous function that return second element of a tuple, which is the cost associated with a patient. The second paramter of `soryBy` controls order of sorting. In above example, `false` means decreasing order.
 
 
 {% exercise Calculate the maximum payment of each patient %}
@@ -189,7 +208,7 @@ Here, `reduceByKey(math.max)` is the simplified expression of `reduceByKey(math.
 
 {% exercise Count the number of records for each drug (event-id starts with "DRUG") %}
 ```scala
-scala> val maxPayments = lines.filter(_.contains("DRUG")).
+scala> val drugFrequency = lines.filter(_.contains("DRUG")).
                                  map{ x =>
                                    val s = x.split(",")
                                    (s(1), 1)
@@ -239,11 +258,11 @@ scala> val lines = sc.textFile("input/")
 
 {% exercise Count the number of drugs that appear in both case.csv and control.csv %}
 ```scala
-scala> val drugCase = sc.textFile("case.csv").
+scala> val drugCase = sc.textFile("input/case.csv").
                      filter(_.contains("DRUG")).
                      map(_.split(",")(1)).
                      distinct()
-scala> val drugControl = sc.textFile("control.csv").
+scala> val drugControl = sc.textFile("input/control.csv").
                      filter(_.contains("DRUG")).  
                      map(_.split(",")(1)).
                      distinct()

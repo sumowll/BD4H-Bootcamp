@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Big Data Bootcamp
-description: Georgia Tech big data bootcampt training material
+description: Georgia Tech big data bootcamp training material
 navigation:
   section: [0]
 ---
