@@ -15,12 +15,12 @@ In this section, we will show how to setup suitable data for building predictive
 For many machine learning tasks, such as classification, regression, and clustering, each data point is often represented as a vector. Each coordinate of the vector corresponds to a particular feature of the data point.
 
 ## Feature Vector
-MLlib supports two types of vectors: dense and sparse.
+MLlib, the machine learning module of Spark, supports two types of vectors: dense and sparse.
 A dense vector is basically a `Double` array of length equals to the dimension of the vector.
-If a vector contains only a few non-zero entries, we can then more efficiently represent the vector by a sparse vector, which indicates the non-zero indices and the corresponding values.
+If a vector contains only a few non-zero entries, we can then more efficiently represent the vector by a sparse vector with non-zero indices and the corresponding values only.
 For example, a vector `(1.0, 0.0, 3.0)` can be represented in dense format as `[1.0, 0.0, 3.0]` or in sparse format as `(3, [0, 1.0], [2, 3.0])`, where 3 is the size of the vector.
 
-The base class of a vectors is `Vector`, and there are two implementations: `DenseVector` and `SparseVector`. We recommend using the factory methods implemented in `Vectors` to create vectors.
+The base class of a vector is `Vector`, and there are two implementations: `DenseVector` and `SparseVector`. We recommend using the factory methods implemented in `Vectors` to create vectors.
 
 ```scala
 scala> import org.apache.spark.mllib.linalg.{Vector, Vectors}
@@ -33,7 +33,7 @@ scala> val sv = Vectors.sparse(3, Seq((0, 1.0), (2, 3.0)))
 ```
 
 ## Labeled Point
-A labeled point is a vector, either dense or sparse, associated with a label/prediction target. In MLlib, labeled points are used in supervised learning algorithms. For example, in binary classification, a label should be either 0 or 1. For multiclass classification, labels should be class indices starting from zero: 0, 1, 2, .... For regression, a label is a real-valued number.
+A labeled point is a vector, either dense or sparse, associated with a label/prediction target. In MLlib, labeled points are used in supervised learning algorithms. For example, in binary classification like HF prediction, a label should be either 0 or 1. For multiclass classification, labels should be class indices starting from zero: 0, 1, 2, .... For regression problem like payment prediction, a label is a real-valued number.
 
 ```scala
 scala> import org.apache.spark.mllib.linalg.Vectors
@@ -48,13 +48,13 @@ scala> val labeled0 = LabeledPoint(0, Vectors.sparse(3, Seq((0, 1.0), (2, 3.0)))
 
 # Feature Construction
 ## Overview
-To apply machine learning algorithms, we need to transform our data into `RDD[LabeledPoint]`. This feature construction is similar to what we did in [Hadoop Pig]({{ site.baseurl }}/hadoop-pig/), but will be more concise since we are programming in Scala on Spark. We will need to consider an one-year prediction window. Specifically, we will only use data one year before HF happen/not happen. Below figure depict the window
+To apply machine learning algorithms, we need to transform our data into `RDD[LabeledPoint]`. This feature construction is similar to what we did in [Hadoop Pig]({{ site.baseurl }}/hadoop-pig/), but will be more concise since we are programming in Scala on Spark. We will need to consider an one-year prediction window. Specifically, we will only use data one year before HF happen/not happen. The figure below depict relationship between prediction window and target.
 ![Prediction Window]({{ site.baseurl }}/image/post/prediction-window.jpg "Prediction Window")
 
-High level steps are depicted as below
+High level steps are depicted as the figure below
 ![process-overview]({{ site.baseurl}}/image/post/mllib-predict-process.jpg "predictive process")
 
-Our parallelization will be on **patient level**, i.e. each element in RDD is everything about one and only one patient. Feature and prediction target for each patient is almost independent form the others. Recall that our data file is in the following form:
+Our parallelization will be on **patient level**, i.e. each element in RDD is everything about exactly one patient. Feature and prediction target for each patient is almost independent from the others. Recall that our data file is in the following form:
 ```
 00013D2EFD8E45D1,DIAG78820,1166,1.0
 00013D2EFD8E45D1,DIAGV4501,1166,1.0
@@ -62,10 +62,10 @@ Our parallelization will be on **patient level**, i.e. each element in RDD is ev
 00013D2EFD8E45D1,DIAG2720,1166,1.0
 ....
 ```
-Each line is a 4-tuple `(patient-id, event-id, timestamp, value)`. Suppose now our goal is to predict if a patient will have heart failure. We can use the value associated with the event `heartfailure` as the label. This value can be either 1.0 (the patient has heart failure) or 0.0 (the patient does not have heart failure). We call a patient with heart failure a **positive example**, and a patient without heart failure a **negative example**. 
+Each line is a 4-tuple `(patient-id, event-id, timestamp, value)`. Suppose now our goal is to predict if a patient will have heart failure. We can use the value associated with the event `heartfailure` as the label. This value can be either 1.0 (the patient has heart failure) or 0.0 (the patient does not have heart failure). We call a patient with heart failure a **positive example** or **case patient**, and a patient without heart failure a **negative example** or **control patient**. 
 For example, in the above snippet we can see that patient `00013D2EFD8E45D1` is a positive example. The file **case.csv** consists of only positive examples, and the file **control.csv** consists of only negative examples.
 
-We will use the values associated with events other than `heartfailure` to construct feature vector for each patient. Specifically, the length of the vector is the number of distinct `event-id`'s, and each coordinate of the vector stores the value corresponds to a particular event. The values associated with events not shown in the file are assume to be 0. Since each patient typically has only a few hundreds of records (lines) compared to thousands of distinct events, it is more efficient to use `SparseVector`.
+We will use the values associated with events other than `heartfailure` to construct feature vector for each patient. Specifically, the length of the feature vector is the number of distinct `event-id`'s, and each coordinate of the vector stores the aggregated value corresponds to a particular `event-id`. The values associated with events not shown in the file are assume to be 0. Since each patient typically has only a few hundreds of records (lines) compared to thousands of distinct events, it is more efficient to use `SparseVector`.
 Note that each patient can have multiple records with the same `event-id`. In this case we sum up the values associated with a same `event-id` as feature value and use `event-id` as feature name. 
 
 ## 1. Load data
@@ -88,12 +88,12 @@ One patiet's index date, prediction target etc are independent from another pati
 // then we will run parallel on patient lelvel
 val grpPatients = rawData.groupBy(_.patientId).map(_._2)
 ```
-Please recall that `_._2` will return second field of a tuple. The `groupBy` operation can be illustrated with below example
+Please recall that `_._2` will return second field of a tuple. The `groupBy` operation can be illustrated with the example below
 ![applicaion-groupby]({{ site.baseurl }}/image/post/application-groupby.jpg "Groupby illustrative example")
 so, finally the `grpPatients` will be `RDD[List[event]]`
 
 ## 3. Define target and feature values
-Now, we can practice our **patient level** parallelization. For each patient, we first find the prediction target, which is encoded into an event with name `heartfailure`, then we decide index date to filter out useful events and aggregate them into feature names using `sum` operation and remain event name as feature name.
+Now, we can practice our **patient level** parallelization. For each patient, we first find the prediction target, which is encoded into an event with name `heartfailure`, then we decide index date to filter out useful events and aggregate them into feature names using `sum` function and remain event name as feature name.
 ``` scala
 val patientTargetAndFeatures = grpPatients.map{events =>
   // find event that encode our prediction target, heart failure
@@ -123,7 +123,7 @@ val patientTargetAndFeatures = grpPatients.map{events =>
   (target, features)
 }
 ```
-The construction of target is straightforward, but the process of constructing features is vague. Below example show what happened in main body of above `map` operation to illustrate how `features` were constructed
+The construction of target is straightforward, but the process of constructing features is vague. The example below show what happened in main body of above `map` operation to illustrate how `features` were constructed
 ![application-feature-values]({{ site.baseurl }}/image/post/application-feature-values.jpg "feature values process")
 Our final `filteredFeatureEvents` should be `RDD[(target, Map[feature-name, feature-value])]` and we can verify that by
 ```scala
@@ -169,7 +169,7 @@ val finalSamples = patientTargetAndFeatures.map {case(target, features) =>
     labeledPoint
 }
 ```
-Here in above example, we called `sc.broadcast`. As indicated by its name this function is used for broadcasting data from driver to works so that workers will not need to copy on demand and waste bandwidth thus slow down the process. It's usage is very simple, call `val broadcasted = sc.broadcast(object)` and use `broadcasted.value` to get original `object` within operations like `map` on RDD. Please beaware that such broadcasted object is read only and that there's no synchronization problem.
+Here in above example, we called `sc.broadcast`. As indicated by its name this function is used for broadcasting data from driver to workers so that workers will not need to copy on demand and waste bandwidth thus slow down the process. It's usage is very simple, call `val broadcasted = sc.broadcast(object)` and use `broadcasted.value` to get original `object` within operations like `map` on RDD. Please beaware of the fact that such broadcasted object is read-only.
 
 # Save
 With data readily available as `RDD[LabeledPoint]`, we can save it into a common format accepted by a lot of machine learning modules, the LibSVM/svmlight format, named after LibSVM/svmlight package.
