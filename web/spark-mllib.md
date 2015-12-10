@@ -6,19 +6,19 @@ navigation:
 ---
 {% objective %}
 - Understand input to MLlib.
-- Can run basic classification algorithms.
-- Can export/load trained model.
-- Can develop models using other machine learning module for verification purpose.
+- Learn to run basic classification algorithms.
+- Learn to export/load trained models.
+- Develop models using python machine learning module.
 {% endobjective %}
 
-In this section, you will learn how to build a heart failure (HF) predictive model step by step using MLlib. We assume you have finished previous [Spark Application]({{ site.baseurl }}/spark-application/) section. You will first learn how to train a model using Spark MLlib and save. Next, you will learn how to achieve same goal using Python Scikit-learn machine learning module for verification purpose.
+In this section, you will learn how to build a heart failure (HF) predictive model. You should have finished previous [Spark Application]({{ site.baseurl }}/spark-application/) section. You will first learn how to train a model using Spark MLlib and save. Next, you will learn how to achieve same goal using Python Scikit-learn machine learning module for verification purpose.
 
 # MLlib
-In this MLlib part, you will first load data and get some high-level summary 
-statistics, then train a classifier to prediction heart failure occurrence.
+You will first load data and compute some high-level summary 
+statistics, then train a classifier to predict heart failure.
 
 ## Load Samples
-Loading data from your saved result can be achieved by
+Loading data from previously saved data can be achieved by
 ``` scala
 import org.apache.spark.mllib.util.MLUtils
 val data = MLUtils.loadLibSVMFile(sc, "samples")
@@ -47,7 +47,7 @@ summary.numNonzeros(0)
 ```
 
 ## Split data
-In typical machine learning problem, we need to split data into training (60%) and testing (40%) set.
+In a typical machine learning problem, we need to split data into training (60%) and testing (40%) set.
 
 ```scala
 val splits = data.randomSplit(Array(0.6, 0.4), seed = 15L)
@@ -74,7 +74,7 @@ println("testing Accuracy  = " + accuracy)
 ```
 
 ## Save & load model
-In real world setting, you may need to save trained model. You can achieve that by directly serialize you model object using java `ObjectOutputStream` and save
+In real world setting, you may need to save the trained model. You can achieve that by directly serialize you model object using java `ObjectOutputStream` and save
 ```scala
   import java.io.{FileOutputStream, ObjectOutputStream, ObjectInputStream, FileInputStream}
   // save model
@@ -89,10 +89,10 @@ In real world setting, you may need to save trained model. You can achieve that 
 ```
 
 # Scikit-learn
-If your data set is small after feature construction described in previous [Spark Application]({{ site.baseurl }}/spark-application/) section, you may consider running machine learning predictive model training and testing using your farmiliar tools like scikit-learn in Python or some R pckages. Here we show how to do that in Scikit-learn, a Python machine learning library.
+If typical data set is often small enough after feature construction described in previous [Spark Application]({{ site.baseurl }}/spark-application/) section, you may consider running machine learning predictive model training and testing using your farmiliar tools like scikit-learn in Python or some R packages. Here we show how to do that in Scikit-learn, a Python machine learning library.
 
 ## Fetch data
-In order to work with Scikit-learn, you will need to take data out of HDFS into local file system. We can get the `samples` folder from your home directory in HDFS and merge content into one single file with the command below
+In order to work with Scikit-learn, you will need to take data out of HDFS into a local file system. We can get the `samples` folder from your home directory in HDFS and merge content into one single file with the command below
 ``` bash
 hdfs dfs -getmerge samples patients.svmlight
 ```
@@ -111,7 +111,7 @@ Please check out: http://continuum.io/thanks and https://anaconda.org
 which show version and distribution of the python installation you are using. Here we pre-installed [Anaconda](https://www.continuum.io/downloads)
 
 ## Load and split data
-Now we can load data and split it into training and testing set in similar way as above MLlib approach.
+Now we can load data and split it into training and testing set in similar way as the MLlib approach.
 ```python
 from sklearn.cross_validation import train_test_split
 from sklearn.datasets import load_svmlight_file
@@ -131,7 +131,7 @@ model.fit(X_train, y_train)
 ```
 
 ## Testing
-We can get prediction accuracy and [auc](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) on testing set as
+We can get prediction accuracy and [AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) on testing set as
 ``` python
 from sklearn.metrics import roc_auc_score
 accuracy = model.score(X_test, y_test)
@@ -139,7 +139,7 @@ accuracy = model.score(X_test, y_test)
 y_score = model.decision_function(X_test)
 auc = roc_auc_score(y_test, y_score)
 
-print "accuracy = %.3f, auc = %.3f" % (accuracy, auc)
+print "accuracy = %.3f, AUC = %.3f" % (accuracy, auc)
 ```
 
 ## Save & load model
@@ -154,7 +154,7 @@ with open('pysvcmodel.pkl', 'rb') as f:
 ```
 
 ## Sparsity and predictive features
-Since we have limited training data but rich feature space, we may consider using L1 penalty on model to get sparse coefficients.
+Since we have limited training data but a large number of features, we may consider using L1 penalty on model to regularize parameters.
 
 ```python
 from sklearn.preprocessing import MinMaxScaler
@@ -174,7 +174,7 @@ auc = roc_auc_score(y_test, y_score)
 print "for sparse model, accuracy = %.3f, auc = %.3f" % (accuracy, auc)
 ```
 
-Before fitting a model, we scalled the data to make sure weights of features are comparable. With sparse model we get from previous example, we can actually decide predictive features according to their coefficients. Here we assume you did the last exercise of previous section about Spark Application. If not, please do that first.
+Before fitting a model, we scaled the data to make sure weights of features are comparable. With the sparse model we get from previous example, we can actually identify predictive features according to their coefficients. Here we assume you did the last exercise of previous section about Spark Application. If not, please do that first.
 
 ```python
 import numpy as np
