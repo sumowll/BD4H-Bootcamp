@@ -7,8 +7,8 @@ navigation:
 {% objective %}
 - Understand input to MLlib.
 - Can run basic classification algorithms.
-- Can export/loas trained model.
-- Can develop model with other machine learning module for verification purpose.
+- Can export/load trained model.
+- Can develop models using other machine learning module for verification purpose.
 {% endobjective %}
 
 In this section, you will learn how to build a heart failure (HF) predictive model step by step using MLlib. We assume you have finished previous [Spark Application]({{ site.baseurl }}/spark-application/) section. You will first learn how to train a model using Spark MLlib and save. Next, you will learn how to achieve same goal using Python Scikit-learn machine learning module for verification purpose.
@@ -47,7 +47,7 @@ summary.numNonzeros(0)
 ```
 
 ## Split data
-In typical machine learning problem, we need to split data into training (60%) and test (40%) set.
+In typical machine learning problem, we need to split data into training (60%) and testing (40%) set.
 
 ```scala
 val splits = data.randomSplit(Array(0.6, 0.4), seed = 15L)
@@ -64,7 +64,7 @@ val model = SVMWithSGD.train(train, numIterations)
 ```
 
 ## Testing
-For each sample in the testing set, output a (prediction, label) pair, and calculate the prediction accuracy.
+For each sample in the testing set, output a (prediction, label) pair, and calculate the prediction accuracy. We use the broadcast mechanism to avoid unnecessary data copy.
  
 ```scala
 val scModel = sc.broadcast(model)
@@ -74,7 +74,7 @@ println("testing Accuracy  = " + accuracy)
 ```
 
 ## Save & load model
-In real world setting, you main need to save trained model. You can achieve that by directly serialize you model and save
+In real world setting, you may need to save trained model. You can achieve that by directly serialize you model object using java `ObjectOutputStream` and save
 ```scala
   import java.io.{FileOutputStream, ObjectOutputStream, ObjectInputStream, FileInputStream}
   // save model
@@ -89,16 +89,16 @@ In real world setting, you main need to save trained model. You can achieve that
 ```
 
 # Scikit-learn
-If your data set is small after feature construction in previous [Spark Application]({{ site.baseurl }}/spark-application/) section, you may consider run machine learning predictive model training test using your farmiliar tools like scikit-learn in Python or some R pckages. Here we show how to do that in Scikit-learn, a Python machine learning library.
+If your data set is small after feature construction described in previous [Spark Application]({{ site.baseurl }}/spark-application/) section, you may consider running machine learning predictive model training and testing using your farmiliar tools like scikit-learn in Python or some R pckages. Here we show how to do that in Scikit-learn, a Python machine learning library.
 
 ## Fetch data
-In order to work with Scikit-learn, you will need to take data out of HDFS into local file system. We can get the `samples` folder from your home directory in HDFS and merge content into one single file by below commands in bash
+In order to work with Scikit-learn, you will need to take data out of HDFS into local file system. We can get the `samples` folder from your home directory in HDFS and merge content into one single file with below command
 ``` bash
 hdfs dfs -getmerge samples patients.svmlight
 ```
 
 ## Move on with Python
-In later steps, you will use python interactive shell. To open a python interfactive shell, just type  `python` in bash. You will get something similar to below sample
+In later steps, you will use python interactive shell. To open a python interfactive shell, just type  `python` in bash. You will get prompt similar to below sample
 ``` python
 [hang@bootcamp1 ~]$ python
 Python 2.7.10 |Continuum Analytics, Inc.| (default, Oct 19 2015, 18:04:42)
@@ -108,7 +108,7 @@ Anaconda is brought to you by Continuum Analytics.
 Please check out: http://continuum.io/thanks and https://anaconda.org
 >>>
 ```
-which show version and distribution of the python installation you are using.
+which show version and distribution of the python installation you are using. Here we pre-installed [Anaconda](https://www.continuum.io/downloads)
 
 ## Load and split data
 Now we can load data and split it into training and testing set in similar way as above MLlib approach.
@@ -174,7 +174,7 @@ auc = roc_auc_score(y_test, y_score)
 print "for sparse model, accuracy = %.3f, auc = %.3f" % (accuracy, auc)
 ```
 
-Before fitting a model, we scalled the data to make sure weights of feature are comparable. With sparse model we get from previous example, we can actually decide predictive features according to their coefficients. Here we assume you did the last exercise of previous section about Spark Application. If not, please do that first.
+Before fitting a model, we scalled the data to make sure weights of features are comparable. With sparse model we get from previous example, we can actually decide predictive features according to their coefficients. Here we assume you did the last exercise of previous section about Spark Application. If not, please do that first.
 
 ```python
 import numpy as np
@@ -186,7 +186,7 @@ with open('mapping.txt') as f:
         splits = line.split('|') # feature-name | feature-index
         mapping.append(splits[0])
 
-# get last 10, the largest 10
+# get last 10 - the largest 10 indices
 top_10 =np.argsort(l1_model.coef_[0])[-10:]
 
 for index, fid in enumerate(top_10[::-1]): #read in reverse order
