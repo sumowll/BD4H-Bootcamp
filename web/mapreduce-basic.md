@@ -1,15 +1,16 @@
 ---
 layout: post
-title: Hadoop Basic
+title: MapReduce Basic
 categories: [section]
 navigation:
-  section: [1, 1]
+  section: [1, 1.2]
 ---
 
 {% objective %}
-- Being familiar with basic operations of HDFS.
 - Being able to write basic MapReduce programs.
 {% endobjective %}
+
+In this section, you will first learn how to put/get data into/from HDFS. Then you will learn how to write a simple count program to get prevalence of different events in parallel.
 
 # HDFS Operations
 Hadoop provides a command line utility `hdfs` to interact with HDFS. Basic operations are placed under `hdfs dfs` subcommand. Let's play with some basic operations.
@@ -19,22 +20,23 @@ Similar to creating local directory via linux command `mkdir`, creating a folder
 ```
 > hdfs dfs -mkdir input
 ```
-where `hdfs` is the HDFS utility, `dfs` is subcommad to handle basic HDFS operation,  `-mkdir` means you want to create a directory and directory name is specified as `input`. Above command actually create the `input` directory in your home directory of HDFS, which by default should be `/user/your_name/`. Of course, you can create it to other place with absolute or relative path.
+where `hdfs` is the HDFS utility program, `dfs` is the subcommand to handle basic HDFS operations,  `-mkdir` means you want to create a directory and the directory name is specified as `input`. Above commands actually create the `input` directory in your home directory in HDFS, which by default should be `/user/username/`. Of course, you can create it to other place with absolute or relative path.
 
 ## Copy data in and out
-Suppose you followed previous instrucion and created an directory named `input`, you can copy data from local file system to HDFS using `-put`. For example,
+Suppose you followed previous instruction and created an directory named `input`, you can copy data from local file system to HDFS using `-put`. For example,
 
 ```
+> cd ~/bigdata-bootcamp/data/
 > hdfs dfs -put case.csv input
 > hdfs dfs -put control.csv input
 ```
 You can find these two files as described in [sample data]({{ site.baseurl }}/data/).
 
-Corresponds to `-put`, `-get` operation will copy data out of HDFS. For example
+Similarly to `-put`, `-get` operation will copy data out of HDFS to the local folder. For example
 ```
 hdfs dfs -get input/case.csv local_case.csv
 ```
-will copy the `input/case.csv` file out HDFS into current working directory using a new name `local_case.csv`. If you didn't specify `local_case.csv`, the original name `case.csv` will be kept.
+will copy the `input/case.csv` file out HDFS into the current working directory using a new name `local_case.csv`. If you didn't specify `local_case.csv`, the original name `case.csv` will be kept.
 
 ## List File Information
 Just like linux `ls` command, `-ls` is the operation to list files and folders in HDFS. For example, the following command list items in your home directory of HDFS (i.e `/user/your_name/`)
@@ -52,9 +54,19 @@ found 2 items
 ```
 
 ## Fetch file content
-Actually you don't need to copy file out first to see its content, you can directly use `-cat` to printing the content of files in HDFS. For example, the following command print out content of the one file you just put into HDFS.
+Actually you don't need to copy files out local in order to see its content, you can directly use `-cat` to printing the content of files in HDFS. For example, the following command print out content of the one file you just put into HDFS.
 ```
-hdfs dfs -cat input/case.csv 
+> hdfs dfs -cat input/case.csv 
+...
+020E860BD31CAC69,DRUG00440128228,976,60.0
+020E860BD31CAC69,DIAG486,907,1.0
+020E860BD31CAC69,DIAG7863,907,1.0
+020E860BD31CAC69,DIAGV5866,907,1.0
+020E860BD31CAC69,DIAG3659,907,1.0
+020E860BD31CAC69,DIAGRG199,907,1.0
+020E860BD31CAC69,PAYMENT,907,15000.0
+020E860BD31CAC69,heartfailure,956,1.0
+...
 ```
 You will find wildcard character very useful since output of MapReduce and other Hadoop-based tools tendsto be directory. For example, to print content of all csv files (the case.csv and control.csv) in the `input` HDFS folder, you can
 ```
@@ -192,7 +204,8 @@ You can find all source code in `sample/hadoop` folder. You will need to navigat
 ### Compile
 Compile the three java files with `javac`
 ```
-javac -cp $(hadoop classpath) -d classes FrequencyMapper.java FrequencyReducer.java Frequency.java 
+> mkdir classes
+> javac -cp $(hadoop classpath) -d classes FrequencyMapper.java FrequencyReducer.java Frequency.java 
 ```
 where `hadoop classpath` outputs the required class path to compile a Hadoop program. `-d classes` puts the generated classes into the `classes` directory. You will  see three class files in the `classes` directory now.
 
@@ -210,11 +223,14 @@ In real-world application development, you will not need to compile files manual
 ### Run
 You can run the jar file just created with
 ```
-hadoop jar Frequency.jar Frequency input output
+hadoop jar Frequency.jar Frequency input/case.csv output
 ```
-where `Frequency.jar` is named of jar file, `Frequency` is java class to run. `input` and `output` are parameters to the `Frequency` class we implemented. Please be careful that `input` and `output` are used as path in HDFS.
-
+where `Frequency.jar` is named of jar file, `Frequency` is java class to run. `input` and `output` are parameters to the `Frequency` class we implemented. Please be careful that `input/case.csv` and `output` are used as path in HDFS. We specify the file `input/case.csv` as input, but we can also specify `input` as input if we want to take both `input/case.csv` and `input/control.csv` into consideration. Notice than you don't need to create `output` folder yourself as Hadoop framework will do that for you.
+{% msginfo %}
+You may see log output like 'uber mode'. It means mappers and reducers will be forced to run under the same YARN container.
+{% endmsginfo %}
 While the program is running, you will see a lot of messages. After the job finishes, you can check the results in the `output` directory (created by Hadoop) by 
+
 
 ```
 hdfs dfs -ls output

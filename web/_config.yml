@@ -18,7 +18,7 @@ markdown: redcarpet # kramdown #
 highlighter: null#rouge
 
 redcarpet:
-  extensions: [disable_indented_code_blocks, lax_spacing, with_toc_data, prettify, footnotes]
+  extensions: [disable_indented_code_blocks, lax_spacing, with_toc_data, prettify, footnotes, tables]
 
 exclude: ["less", "node_modules", "Gruntfile.js", "package.json", "README.md", "deploy.sh"]
 

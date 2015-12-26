@@ -16,6 +16,7 @@ class Exercise < Liquid::Block
         else
             site.getConverterImpl(Jekyll::Converters::Markdown)
         end
+        title = converter.convert("Exercise: " + @title).strip
         # hack way to avoid replace new line in code
         content = converter.convert(super(context)).gsub(/[\n]+/, "\n").strip
         # additional new line in the rendered code will make markdown parser add
@@ -25,7 +26,7 @@ class Exercise < Liquid::Block
 <div class="panel panel-default">
 <div class="panel-heading">
 <h4 class="panel-title">
-<a data-toggle="collapse" href="#question%{index}" style="text-decoration:none;">Exercise: %{title}</a>
+<a data-toggle="collapse" href="#question%{index}" style="text-decoration:none;">%{title}</a>
 </h4>
 </div>
 <div id="question%{index}" class="panel-collapse collapse">
@@ -33,7 +34,7 @@ class Exercise < Liquid::Block
     %{content}
 </div></div></div>
 </div>
-' % {title: @title, index: @index, content: content}
+' % {title: title, index: @index, content: content}
         return block #
     end
 end
