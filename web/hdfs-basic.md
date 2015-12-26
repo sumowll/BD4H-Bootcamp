@@ -10,7 +10,8 @@ navigation:
 - Being familiar with basic operations of HDFS.
 {% endobjective %}
 
-In this section, you will first learn how to put/get data into/from HDFS. Then you will learn how to write a simple count program to get prevalence of different events in parallel.
+Hadoop comes with a distributed filesystem called **HDFS**, which stands for *Hadoop Distributed File System*. Although Hadoop supports many other filesystems (e.g., Amazon S3), HDFS is the most popular choice and will be used throughout this bootcamp. Therefore, in this section, you will learn how to move data between your local filesystem and HDFS. 
+
 
 # HDFS Operations
 Hadoop provides a command line utility `hdfs` to interact with HDFS. Basic operations are placed under `hdfs dfs` subcommand. Let's play with some basic operations.
