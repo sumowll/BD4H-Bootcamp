@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Spark Basic
+title: Spark Basics
 categories: [section]
 navigation:
     section: [2, 2]

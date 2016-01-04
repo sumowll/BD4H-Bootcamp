@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MapReduce Basic
+title: MapReduce Basics
 categories: [section]
 navigation:
   section: [1, 1.2]
@@ -14,7 +14,9 @@ We have put the input data into HDFS in the [previous]({{ site.baseurl }}/hdfs-b
 
 
 # MapReduce
-MapReduce works by breaking the processing into two phases: the map phase and the reduce phase. Each phase has key-value pairs as input and output, the types of which can be chosen by the user. As user, you need to define the `map` and `reducer` operations.
+MapReduce works by breaking the processing into two phases: the map phase and the reduce phase. Each phase has key-value pairs as input and output, the types of which can be chosen by the user. The overview of the MapReduce paradigm is shown below.
+![MapReduce Flow]({{ site.baseurl }}/image/post/mapreduce-flow.jpg "MapReduce Flow")
+The input files are split and fed to mappers on different machines. Each mapper processes the corresponding input splits line by line, and outputs some key-value pairs on the local disk. Hadoop then shuffles these intermediate files, which includes sorting the key-value pairs and copying them across machines, to ensure that the intermediate ouputs with the same key are sent to the same reducer. The reducer then combines each group of key-value pairs with the same key into a single key-value pair. Since the shuffle phase is carried out automatically by Hadoop, the user only needs to define the `map` and `reduce` operations.
 
 Let's write a simple MapReduce program in Java to calculate the frequency of each `event-id` in our **case.csv** file described in [sample data]({{ site.baseurl }}/data/).
 
@@ -24,7 +26,7 @@ A MapReduce program consists of three parts:
 3. A main function that tells Hadoop to use the classes we created.
 
 ## Mapper
-Create a Java file `FrequencyMapper.java`. The FrequencyMapper class extends the predefined `Mapper` class and overwrite the `map` function.
+Create a Java file `FrequencyMapper.java`. The FrequencyMapper class extends the predefined `Mapper` class and overwrites the `map` function.
 
 ```java
 import java.io.IOException;
@@ -50,6 +52,8 @@ public class FrequencyMapper
 }
 ```
 
+The map function is illustrated below. 
+![Mapper Flow]({{ site.baseurl }}/image/post/map-flow.jpg "Mapper Flow")
 The 4-tuple ` <LongWritable, Text, Text, IntWritable> ` specifies that the input key-value pair is of type `<LongWritable, Text>` and the output key-value type is of type `<Text, IntWritable>`.
 Since the input files are plain text, we use the input key-value pair of type `<LongWritable, Text>`. The key is the offset of the start of each line, which is not used here. The value is the actual text in the corresponding line.
 
@@ -57,6 +61,8 @@ We use `toString()` to transform the Hadoop `Text` object into the more familiar
 
 ## Reducer
 Hadoop internally performs a shuffling process to ensure that the output of the mapper with a same key (same `event-id` in our problem) will go to a same reducer. A reducer thus receives a key and a collection of corresponding values (Java `Iterable` object). In our case the key-value pair is `(event-id, [1,1,...,1])`.
+This can be illustrated with the following example.
+![Reducer Flow]({{ site.baseurl }}/image/post/reduce-flow.jpg "Reducer Flow")
 
 Create a Java file `FrequencyReducer.java`. The FrequencyReducer class extends the predefined `Reducer` class and overwrite the `reduce` function.
 
@@ -152,7 +158,7 @@ You can run the jar file just created with
 ```
 hadoop jar Frequency.jar Frequency input/case.csv output
 ```
-where `Frequency.jar` is named of jar file, `Frequency` is java class to run. `input` and `output` are parameters to the `Frequency` class we implemented. Please be careful that `input/case.csv` and `output` are used as path in HDFS. We specify the file `input/case.csv` as input, but we can also specify `input` as input if we want to take both `input/case.csv` and `input/control.csv` into consideration. Notice than you don't need to create `output` folder yourself as Hadoop framework will do that for you.
+where `Frequency.jar` is the name of the jar file we just created and `Frequency` is the Java class to run. `input` and `output` are parameters to the `Frequency` class we implemented. Please be careful that `input/case.csv` and `output` are used as path in HDFS. We specify the file `input/case.csv` as input, but we can also only specify `input` as the input parameter if we want to take both `input/case.csv` and `input/control.csv` into consideration. Notice than you don't need to create `output` folder yourself as Hadoop framework will do that for you.
 {% msginfo %}
 You may see log output like 'uber mode'. It means mappers and reducers will be forced to run under the same YARN container.
 {% endmsginfo %}
@@ -176,6 +182,10 @@ DIAG1120        5
 ...
 ```
 Please notice that the output content order may be different from above.
+If the output files are not too large, you can copy and merge all of them into a local file by using
+```
+> hdfs dfs -getmerge output local_output.txt
+```
 
 ### Clean up
 
@@ -199,3 +209,104 @@ public void map(LongWritable offset, Text lineText, Context context)
 ```
 {% endexercise %}
 
+{% exercise Find the maximum payment of each patient %}
+#### Mapper
+```java
+import java.io.IOException;
+
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class MaxPaymentMapper
+  extends Mapper<LongWritable, Text, Text, FloatWritable> {
+
+  @Override
+  public void map(LongWritable offset, Text lineText, Context context)
+      throws IOException, InterruptedException {
+
+    String line = lineText.toString();
+    if(line.contains("PAYMENT")) {
+        String patientID = line.split(",")[0];
+        float payment = Float.parseFloat(line.split(",")[3]);
+        context.write(new Text(patientID), new FloatWritable(payment));
+    }
+  }
+}
+```
+
+#### Reducer
+```java
+import java.io.IOException;
+
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class MaxPaymentReducer extends Reducer<Text ,  FloatWritable ,  Text ,  FloatWritable > {
+     @Override public void reduce( Text patientID,  Iterable<FloatWritable> payments,  Context context)
+         throws IOException,  InterruptedException {
+
+      float maxPayment  = 0.0;
+      for ( FloatWritable payment : payments) {
+        float p = payment.get();
+        if(p > maxPayment)
+          maxPayment = p;
+      }
+      context.write(patientID,  new FloatWritable(maxPayment));
+    }
+}
+
+```
+
+#### Main function
+```java
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class MaxPayment {
+
+  public static void main(String[] args) throws Exception {
+    if (args.length != 2) {
+      System.err.println("Usage: MaxPayment <input path> <output path>");
+      System.exit(-1);
+    }
+
+    // create a Hadoop job and set the main class
+    Job job = Job.getInstance();
+    job.setJarByClass(MaxPayment.class);
+    job.setJobName("MaxPayment");
+
+    // set the input and output path
+    FileInputFormat.addInputPath(job, new Path(args[0]));
+    FileOutputFormat.setOutputPath(job, new Path(args[1]));
+
+    // set the Mapper and Reducer class
+    job.setMapperClass(MaxPaymentMapper.class);
+    job.setReducerClass(MaxPaymentReducer.class);
+
+    // specify the type of the output
+    job.setOutputKeyClass(Text.class);
+    job.setOutputValueClass(FloatWritable.class);
+
+    // run the job
+    System.exit(job.waitForCompletion(true) ? 0 : 1);
+  }
+}
+
+```
+
+#### Compile and run
+```
+> rm classes/*
+> javac -cp $(hadoop classpath) -d classes MaxPayment.java MaxPaymentMapper.java MaxPaymentReducer.java
+> jar -cvf Frequency.jar -C classes/ .
+> hadoop jar MaxPayment.jar MaxPayment input output
+```
+
+{% endexercise %}
