@@ -83,7 +83,7 @@ val rawData = sc.textFile("input/").
 ```
 
 ## 2. Group patient data
-One patiet's index date, prediction target etc are independent from another patient, so that we can group by patient-id to put everything about one patient together. When we run `map` operation, Spark will help us parallelize computation on **patient level**.
+One patient's index date, prediction target etc are independent from another patient, so that we can group by patient-id to put everything about one patient together. When we run `map` operation, Spark will help us parallelize computation on **patient level**.
 ```scala
 // group raw data with patient id and ignore patient id
 // then we will run parallel on patient lelvel
@@ -173,7 +173,7 @@ val finalSamples = patientTargetAndFeatures.map {case(target, features) =>
     labeledPoint
 }
 ```
-Here in above example, we called `sc.broadcast`. As indicated by its name this function is used for broadcasting data from driver to workers so that workers will not need to copy on demand and waste bandwidth thus slow down the process. Its usage is very simple, call `val broadcasted = sc.broadcast(object)` and use `broadcasted.value` to access original `object`. Please be aware of the fact that such broadcasted object is read-only.
+Here in above example, we called `sc.broadcast`. As indicated by its name, this function is used for broadcasting data from driver to workers so that workers will not need to copy on demand and waste bandwidth thus slow down the process. Its usage is very simple, call `val broadcasted = sc.broadcast(object)` and use `broadcasted.value` to access original `object`. Please be aware of the fact that such broadcasted object is read-only.
 
 # Save
 With data readily available as `RDD[LabeledPoint]`, we can save it into a common format accepted by a lot of machine learning modules, the LibSVM/svmlight format, named after LibSVM/svmlight package.
@@ -184,7 +184,7 @@ MLUtils.saveAsLibSVMFile(finalSamples, "samples")
 ```
 
 {% exercise Save `featureMap` to local file system for future use. %}
-You can achieve that by
+You can achieve this by
 ```scala
 val mapping = featureMap.
   toList.

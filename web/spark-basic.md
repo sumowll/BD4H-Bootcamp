@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Spark Basic
+title: Spark Basics
 categories: [section]
 navigation:
     section: [2, 2]
@@ -60,7 +60,7 @@ Parallelizing a collection is useful when you are learning Spark. However, this 
 {% endmsgwarning %}
 
 ## External Datasets
-A common way for creating RDDs is loading data from external storage. Below you will learn how to load data from a file system. Assuming you have put some data into HDFS as described in [Hadoop Basic]({{ site.baseurl }}/hadoop-basic/#hdfs-operations) section. If not, please do that first.
+A common way for creating RDDs is loading data from external storage. Below you will learn how to load data from a file system. Assuming you have put some data into HDFS as described in the [HDFS Basic]({{ site.baseurl }}/hdfs-basic/) section. If not, please do that first.
 
 ```scala
 scala> val lines = sc.textFile("input/case.csv")

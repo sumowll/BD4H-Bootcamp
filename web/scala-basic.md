@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Scala Basic
+title: Scala Basics
 categories: [section]
 navigation:
   section: [2, 1]

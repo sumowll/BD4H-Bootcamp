@@ -11,7 +11,7 @@ navigation:
 - Develop models using python machine learning module.
 {% endobjective %}
 
-In this section, you will learn how to build a heart failure (HF) predictive model. You should have finished previous [Spark Application]({{ site.baseurl }}/spark-application/) section. You will first learn how to train a model using Spark MLlib and save. Next, you will learn how to achieve same goal using Python Scikit-learn machine learning module for verification purpose.
+In this section, you will learn how to build a heart failure (HF) predictive model. You should have finished previous [Spark Application]({{ site.baseurl }}/spark-application/) section. You will first learn how to train a model using Spark MLlib and save it. Next, you will learn how to achieve same goal using Python Scikit-learn machine learning module for verification purpose.
 
 # MLlib
 You will first load data and compute some high-level summary 
