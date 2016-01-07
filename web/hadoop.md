@@ -16,9 +16,9 @@ navigation:
 ![hadoop-ecosystem]({{ site.baseurl }}/image/post/hadoop-ecosystem.jpg "Hadoop Tools to Cover")
 This chapter is divided into following sections
 
-1. **[HDFS Basic]({{ site.baseurl }}/mapreduce-basic/)**: You will learn basic operations of HDFS, including copy data in/out of HDFS, list available items in HDFS, remove items etc.
+1. **[HDFS Basic]({{ site.baseurl }}/hdfs-basic/)**: You will learn basic operations of HDFS, including copy data in/out of HDFS, list available items in HDFS, remove items etc.
 
-1. **[MapReduce Basic]({{ site.baseurl }}/hdfs-basic/)**: You will learn how to write a basic MapReduce program in Java to count distinct diagnostic code in order to compute prevalence of diseases in the given dataset.
+1. **[MapReduce Basic]({{ site.baseurl }}/mapreduce-basic/)**: You will learn how to write a basic MapReduce program in Java to count distinct diagnostic code in order to compute prevalence of diseases in the given dataset.
 
 2. **[Apache HBase]({{ site.baseurl }}/hadoop-hbase/)**: HBase is a powerful distributed NoSQL database inspired by Google BigTable. HBase provides SQL-like syntax to query big data. You will learn typical create, retrieve, update, delete (CRUD) operations.
 

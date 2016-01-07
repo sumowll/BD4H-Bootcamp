@@ -13,9 +13,9 @@ navigation:
 {% endobjective %}
 
 # Spark Shell
-Spark can run in several modes, including YARN client/server, Standalone, Mesos and Local. For this training, we will use local mode. Specifically, you can start the Spark interactive shell by invoking `spark-shell --master "local[2]"` in the terminal to run Spark in the local mode with two threads. Then you will see
+Spark can run in several modes, including YARN client/server, Standalone, Mesos and Local. For this training, we will use local mode. Specifically, you can start the Spark interactive shell by invoking the command below in the terminal to run Spark in the local mode with two threads. Then you will see
 ```text
-> spark-shell --master "local[2]"
+> spark-shell --master "local[2]" --driver-memory 6G
 Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 ...
 [messages]
@@ -23,7 +23,7 @@ Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 Spark context available as sc.
 scala>
 ```
-In Spark, we call the main entrance of a Spark program the driver. Here in the interactive shell, the Spark shell program is the driver. A driver program can access Spark through a `SparkContext` object, which represents a connection to a computing cluster. In the above interactive shell, `SparkContext` is already created for you as variable `sc`. You can input `sc` to see its type.
+In Spark, we call the main entrance of a Spark program the **driver** and Spark distribute computation to **worker**s to compute. Here in the interactive shell, the Spark shell program is the driver. In above example we set the memory of driver program to 6GB as in local mode driver and worker are together. A driver program can access Spark through a `SparkContext` object, which represents a connection to a computing cluster. In the above interactive shell, `SparkContext` is already created for you as variable `sc`. You can input `sc` to see its type.
 ```
 scala> sc
 res0: org.apache.spark.SparkContext = org.apache.spark.SparkContext@27896d3b
@@ -182,7 +182,7 @@ The `payment_events` RDD returned by `filter` contains those records associated 
 We can then find the top-3 patients with the highest payment by using `sortBy` first. 
 
 ```scala
-scala> payments.sortBy(_._2, false).take(3).foreach(println)
+scala> paymentPerPatient.sortBy(_._2, false).take(3).foreach(println)
 ```
 and output is
 ```
@@ -195,11 +195,7 @@ Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous fun
 
 {% exercise Calculate the maximum payment of each patient %}
 ```scala
-scala> val maxPayments = lines.filter(line => line.contains("PAYMENT")).
-                                 map{ x =>
-                                   val s = x.split(",")
-                                   (s(0), s(3).toFloat)
-                                 }.reduceByKey(math.max)
+scala> val maxPaymentPerPatient = paymentPerPatient.reduceByKey(math.max)
 ```
 Here, `reduceByKey(math.max)` is the simplified expression of `reduceByKey(math.max(_,_))` or `reduceByKey((a,b) => math.max(a,b))`. `math.max` is a function in scala that turns the larger one of two parameters.
 {% endexercise %}
@@ -219,7 +215,7 @@ scala> val drugFrequency = lines.filter(_.contains("DRUG")).
 Now we have total payment information of patients, we can run some basic statistics. For RDD consists of numeric values, Spark provides some useful statistical primitives.
 
 ```scala
-scala> val payment_values = payments.map(payment => payment._2).cache()
+scala> val payment_values = paymentPerPatient.map(payment => payment._2).cache()
 scala> payment_values.max()
 res6: Float = 139880.0
 
