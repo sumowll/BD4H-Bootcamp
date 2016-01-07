@@ -18,7 +18,8 @@ To get started, please [**setup learning environment**](environment) first.
 Content of the training material is divided into two chapters **Hadoop** and **Spark**.
 
 ## [Hadoop Ecosystem](hadoop)
-1. [Hadoop Basic](hadoop-basic)
+1. [HDFS Basic](hdfs-basic)
+1. [MapReduce Basic](mapreduce-basic)
 2. [Hadoop HBase](hadoop-hbase)
 3. [Hadoop Streaming](hadoop-streaming)
 4. [Hadoop Pig](hadoop-pig)
