@@ -24,7 +24,7 @@ We highly recommend you install Git through Home brew. To do so, please
 
 1. Open `Terminal`
 2. Run `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-3. Run `bew install git`
+3. Run `brew install git`
 
 ## Linux
 Follow instructions in [Download for Linux and Unix](https://git-scm.com/download/linux).
