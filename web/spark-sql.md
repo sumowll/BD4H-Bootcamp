@@ -98,7 +98,7 @@ scala> sqlContext.udf.register("getEventType", (s: String) => s match {
     case drug if drug.startsWith("DRUG") => "drug"
     case procedure if procedure.startsWith("PROC") => "procedure"
     case "heartfailure" => "heart failure"
-    case _ => "unkown"
+    case _ => "unknown"
     })
 ```
 
