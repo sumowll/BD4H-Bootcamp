@@ -132,5 +132,21 @@ patientId        payment
 51A115C3BD10C42B 76110.0
 01546ADB01630C6C 68190.0
 ```
+DSL
+```scala
+scala> patientEvents.filter(patientEvents("eventId") === "PAYMENT").groupBy("patientId").agg("value" -> "sum").withColumnRenamed("sum(value)", "payment").orderBy($"payment".desc).show(10)
+
+patientId        payment
+0085B4F55FFA358D 139880.0
+019E4729585EF3DD 108980.0
+01AC552BE839AB2B 108530.0
+0103899F68F866F0 101710.0
+00291F39917544B1 99270.0
+01A999551906C787 84730.0
+01BE015FAF3D32D1 83290.0
+002AB71D3224BE66 79850.0
+51A115C3BD10C42B 76110.0
+01546ADB01630C6C 68190.0
+```
 {% endexercise %}
 
