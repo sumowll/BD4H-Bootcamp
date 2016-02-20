@@ -18,7 +18,7 @@ For many machine learning tasks, such as classification, regression, and cluster
 MLlib, the machine learning module of Spark, supports two types of vectors: dense and sparse.
 A dense vector is basically a `Double` array of length equals to the dimension of the vector.
 If a vector contains only a few non-zero entries, we can then more efficiently represent the vector by a sparse vector with non-zero indices and the corresponding values only.
-For example, a vector `(1.0, 0.0, 3.0)` can be represented in dense format as `[1.0, 0.0, 3.0]` or in sparse format as `(3, [0, 1.0], [2, 3.0])`, where 3 is the size of the vector.
+For example, a vector `(1.0, 0.0, 3.0)` can be represented in dense format as `[1.0, 0.0, 3.0]` or in sparse format as `(3, [0, 2], [1.0, 3.0])`, where 3 is the size of the vector.
 
 The base class of a vector is `Vector`, and there are two implementations: `DenseVector` and `SparseVector`. We recommend using the factory methods implemented in `Vectors` to create vectors.
 
