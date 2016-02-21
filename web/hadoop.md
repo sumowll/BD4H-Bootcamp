@@ -26,5 +26,5 @@ This chapter is divided into following sections
 
 4. **[Apache Hive]({{ site.baseurl }}/hadoop-hive)**: Apace Hive provides SQL-like syntax to query data stored in HDFS, HBase etc. Again like Pig, Hive will cover the high-level HiveQL into low-level MapReduce programs. You will learn how to create table and do a simple query using Hive.
 
-5. **[Apache Pig]({{ site.baseurl }}/hadoop-pig)**: Apache Pig is a declarative language to manipulate data using Hadoop. You will learn Pig Latin, the grammer of Pig. Then the Pig system will translate the Pig Latin script into the low-level (often more cumbersome) MapReduce Java programs.
+5. **[Apache Pig]({{ site.baseurl }}/hadoop-pig)**: Apache Pig is a procedural language to manipulate data using Hadoop. You will learn Pig Latin, the grammer of Pig. Then the Pig system will translate the Pig Latin script into the low-level (often more cumbersome) MapReduce Java programs.
 
