@@ -17,7 +17,7 @@ Hadoop comes with a distributed filesystem called **HDFS**, which stands for *Ha
 Hadoop provides a command line utility `hdfs` to interact with HDFS. Basic operations are placed under `hdfs dfs` subcommand. Let's play with some basic operations.
 
 ## Create home directory
-When you first time use HDFS, it's very likely that your home directory in HDFS is not created yet. You home directory in HDFS by default should be `/user/<username>/`. In the environment we provide, there's a special user `hdfs` who is administrator of HDFS and has the permission to help create home directory.
+When you use HDFS for the first time, it's likely that your home directory in HDFS has not been created yet. Your home directory in HDFS is `/user/<username>/` by default. In the environment that we provide, there's a special user `hdfs` who is an HDFS administrator and has the permission to create new home directories.
 
 You will first need to switch to the `hdfs` user via
 ``` bash
