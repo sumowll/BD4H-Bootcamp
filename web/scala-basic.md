@@ -30,14 +30,14 @@ You can type `:quit` to stop and quit the shell, but don't do that now :-) Next 
 
 # Variables
 ## Declare `val` and `var`
-In Scala, there are two types of variable, immutable `val` and mutable `var`. Unlike some functional programming language that requires immutable variable, Scala allows existence of mutable variable but immutable is recommended as it is easier to verify the correctness of your program. Suppose you are still in the Scala intertive shell. Define an immutable variable as
+In Scala, there are two types of variable, immutable `val` and mutable `var`. Unlike some functional programming language that requires immutable variable, Scala allows existence of mutable variable but immutable is recommended as it is easier to verify the correctness of your program. Suppose you are still in the Scala interactive shell. Define an immutable variable as
 ```scala
 scala> val myInt = 1 + 1
 myInt: Int = 2
 
 scala> myInt = 3
 ```
-where `val` is a key word in `scala` that make the variable immutable. If you reassign a value to `myInt`, error will be reported.
+where `val` is a keyword in `scala` that makes the variable immutable. If you reassign a value to `myInt`, error will be reported.
 ```scala
 scala> myInt = 3
 <console>:8: error: reassignment to val
@@ -73,7 +73,7 @@ myString: String = Hello Healthcare
 ```
 
 ## Type
-Scalar may seem like a script language like Javascript or Python, as variable type is not specified explicitly. In fact, Scala is a static type language and the compiler can implicitly infer the type in most cases. However, you can always specify a type as
+Scalar may seem like a script language like JavaScript or Python, as variable type is not specified explicitly. In fact, Scala is a static type language and the compiler can implicitly infer the type in most cases. However, you can always specify a type as
 ```scala
 scala> val myDouble: Double = 3
 myDouble: Double = 3.0
@@ -85,7 +85,7 @@ Beside simple built-in variable types like `Int`, `Double` and `String`, you wil
 scala> val myList: List[String] = List("this", "is", "a", "list", "of", "string")
 myList: List[String] = List(this, is, a, list, of, string)
 
-scala> val myTuple:(Double, Double) = (1.0, 2.0)
+scala> val myTuple: (Double, Double) = (1.0, 2.0)
 myTuple: (Double, Double) = (1.0,2.0)
 ```
 Here the `List[String]` is syntax of generics in Scala, which is same as `C#`. In the above example, `List[String]` means a `List` of `String`. Similarly, `(Double, Double)` means a two-field tuple type and both the 1st element and the 2nd element should be of type `Double`.
