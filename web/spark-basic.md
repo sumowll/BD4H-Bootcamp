@@ -15,7 +15,7 @@ navigation:
 # Spark Shell
 Spark can run in several modes, including YARN client/server, Standalone, Mesos and Local. For this training, we will use local mode. Specifically, you can start the Spark interactive shell by invoking the command below in the terminal to run Spark in the local mode with two threads. Then you will see
 ```text
-> spark-shell --master "local[2]" --driver-memory 6G
+> spark-shell --master "local[2]" --driver-memory 3G
 Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 ...
 [messages]
