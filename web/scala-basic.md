@@ -19,10 +19,10 @@ You can open a Scala shell by typing `scala`. Or, you can use [sbt](http://www.s
 
 First of all, you need to install Scala in your VM 
 ```bash
-> wget http://www.scala-lang.org/files/archive/scala-2.10.1.tgz
->tar xvf scala-2.10.1.tgz
-> sudo mv scala-2.10.1 /usr/lib
-> sudo ln -s /usr/lib/scala-2.10.1 /usr/lib/scala
+> wget http://www.scala-lang.org/files/archive/scala-2.10.4.tgz
+> tar xvf scala-2.10.4.tgz
+> sudo mv scala-2.10.4 /usr/lib
+> sudo ln -s /usr/lib/scala-2.10.4 /usr/lib/scala
 > export PATH=$PATH:/usr/lib/scala/bin
 > scala -version
 ```
