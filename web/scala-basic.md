@@ -106,7 +106,7 @@ Where `x: Int` is parameter and its type, and the second `Int` is function retur
 def triple(x: Int) = x*3
 ```
 
-Scala is object-oriented (OO), function calls on a class method is straightforward like most OO languages(i.e. Java, C#)
+Scala is object-oriented (OO), function calls on a class method is straightforward like most OO languages (i.e. Java, C#)
 ```scala
 scala> myString = "Hello Healthcare"
 myString: String = Hello Healthcare
