@@ -24,7 +24,8 @@ This chapter is divided into following sections
 
 3. **[Hadoop Streaming]({{ site.baseurl }}/hadoop-streaming)**: Hadoop streaming provides the mechanism to write MapReduce program in any programming language. In this section, you will learn how to do the same count task via Hadoop streaming in python.
 
-4. **[Apache Hive]({{ site.baseurl }}/hadoop-hive)**: Apace Hive provides SQL-like syntax to query data stored in HDFS, HBase etc. Again like Pig, Hive will cover the high-level HiveQL into low-level MapReduce programs. You will learn how to create table and do a simple query using Hive.
+4. **[Apache Pig]({{ site.baseurl }}/hadoop-pig)**: Apache Pig is a procedural language to manipulate data using Hadoop. You will learn Pig Latin, the grammer of Pig. Then the Pig system will translate the Pig Latin script into the low-level (often more cumbersome) MapReduce Java programs.
 
-5. **[Apache Pig]({{ site.baseurl }}/hadoop-pig)**: Apache Pig is a procedural language to manipulate data using Hadoop. You will learn Pig Latin, the grammer of Pig. Then the Pig system will translate the Pig Latin script into the low-level (often more cumbersome) MapReduce Java programs.
+5. **[Apache Hive]({{ site.baseurl }}/hadoop-hive)**: Apace Hive provides SQL-like syntax to query data stored in HDFS, HBase etc. Again like Pig, Hive will cover the high-level HiveQL into low-level MapReduce programs. You will learn how to create table and do a simple query using Hive.
+
 
