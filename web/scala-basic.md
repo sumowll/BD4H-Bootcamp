@@ -8,11 +8,11 @@ navigation:
 {% objective %}
 - Learn how to work with scala interactive shell.
 - Understand `var` and `val`.
-- Define variables,functions and classes, and make function calls
-- Understand Simple Build Tool(SBT).
+- Define variables, functions and classes, and make function calls
+- Understand Simple Build Tool (SBT).
 {% endobjective %}
 
-In this section we will briefly go through the essential knowledge about Scala. You will first learn how to work with Scala shell, then learn how use variables, functions with examples. Finally, we give instructions about how to compile and run a standalone program using `sbt`.
+In this section we will briefly go through the essential knowledge about Scala. You will first learn how to work with Scala shell, then learn how to use variables, functions with examples. Finally, we give instructions about how to compile and run a standalone program using `sbt`.
 
 # Scala Shell
 You can open a Scala shell by typing `scala`. Or, you can use [sbt](http://www.scala-sbt.org/index.html) by typing `sbt console`. The second approach will help you add your project source code and dependencies into class path, so that your functions or library functions will be available for you to try to in the interactive shell. But in this training, we will stick to Scala shell for simplicity. 
