@@ -28,4 +28,11 @@ service rngd start
 # Install puppet modules
 puppet apply /bootcamp/docker/puppet-modules.pp
 
+# Install Scala
+wget http://www.scala-lang.org/files/archive/scala-2.10.5.tgz
+tar xvf scala-2.10.5.tgz
+mv scala-2.10.5 /usr/lib
+ln -s /usr/lib/scala-2.10.5 /usr/lib/scala
+ln -s /usr/lib/scala/bin/scala /usr/local/bin/scala
+
 mkdir -p /data/{1,2}
