@@ -23,7 +23,9 @@ Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 Spark context available as sc.
 scala>
 ```
-In Spark, we call the main entrance of a Spark program the **driver** and Spark distribute computation to **worker**s to compute. Here in the interactive shell, the Spark shell program is the driver. In above example we set the memory of driver program to 6GB as in local mode driver and worker are together. A driver program can access Spark through a `SparkContext` object, which represents a connection to a computing cluster. In the above interactive shell, `SparkContext` is already created for you as variable `sc`. You can input `sc` to see its type.
+Here you can set ``--driver-memory`` according to your local setting. If your setting of driver memory is larger than the VM memory, don't forget to change the VM memory setting first.
+
+In Spark, we call the main entrance of a Spark program the **driver** and Spark distribute computation to **worker**s to compute. Here in the interactive shell, the Spark shell program is the driver. In above example we set the memory of driver program to 3GB as in local mode driver and worker are together. A driver program can access Spark through a `SparkContext` object, which represents a connection to a computing cluster. In the above interactive shell, `SparkContext` is already created for you as variable `sc`. You can input `sc` to see its type.
 ```
 scala> sc
 res0: org.apache.spark.SparkContext = org.apache.spark.SparkContext@27896d3b
