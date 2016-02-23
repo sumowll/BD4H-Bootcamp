@@ -20,7 +20,7 @@ You can open a Scala shell by typing `scala`. Or, you can use [sbt](http://www.s
 Once starting the Scala shell you will see
 ```scala
 $ scala
-Welcome to Scala version 2.10.4 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0).
+Welcome to Scala version 2.10.5 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0).
 Type in expressions to have them evaluated.
 Type :help for more information.
 
