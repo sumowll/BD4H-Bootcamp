@@ -28,7 +28,7 @@ Then, you can create a directory and change ownership of the newly created folde
 > hdfs dfs -mkdir /user/<username>
 > hdfs dfs -chown <username> /user/<username>
 ```
-Please remember to change `<username>` to your actual linux user name(i.e. *user2*). Finally switch back to your user with `exit`.
+Please remember to change `<username>` to your actual linux user name (i.e. *user2*). Finally switch back to your user with `exit`.
 
 ## Create directory
 Similar to creating local directory via linux command `mkdir`, creating a folder named `input` in HDFS use
@@ -41,7 +41,7 @@ where `hdfs` is the HDFS utility program, `dfs` is the subcommand to handle basi
 Suppose you followed previous instructions and created an directory named `input`, you can then copy data from local file system to HDFS using `-put`. For example,
 
 ```
-> cd ~/bigdata-bootcamp/data/
+> cd /bootcamp/data/
 > hdfs dfs -put case.csv input
 > hdfs dfs -put control.csv input
 ```
