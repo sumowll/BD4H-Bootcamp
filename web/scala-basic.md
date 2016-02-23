@@ -30,14 +30,14 @@ You can type `:quit` to stop and quit the shell, but don't do that now :-) Next 
 
 # Variables
 ## Declare `val` and `var`
-In Scala, there are two types of variable, immutable `val` and mutable `var`. Unlike some functional programming language that requires immutable variable, Scala allows existence of mutable variable but immutable is recommended as it is easier to verify the correctness of your program. Suppose you are still in the Scala intertive shell. Define an immutable variable as
+In Scala, there are two types of variable, immutable `val` and mutable `var`. Unlike some functional programming language that requires immutable variable, Scala allows existence of mutable variable but immutable is recommended as it is easier to verify the correctness of your program. Suppose you are still in the Scala interactive shell. Define an immutable variable as
 ```scala
 scala> val myInt = 1 + 1
 myInt: Int = 2
 
 scala> myInt = 3
 ```
-where `val` is a key word in `scala` that make the variable immutable. If you reassign a value to `myInt`, error will be reported.
+where `val` is a keyword in `scala` that makes the variable immutable. If you reassign a value to `myInt`, error will be reported.
 ```scala
 scala> myInt = 3
 <console>:8: error: reassignment to val
@@ -73,7 +73,7 @@ myString: String = Hello Healthcare
 ```
 
 ## Type
-Scalar may seem like a script language like Javascript or Python, as variable type is not specified explicitly. In fact, Scala is a static type language and the compiler can implicitly infer the type in most cases. However, you can always specify a type as
+Scalar may seem like a script language like JavaScript or Python, as variable type is not specified explicitly. In fact, Scala is a static type language and the compiler can implicitly infer the type in most cases. However, you can always specify a type as
 ```scala
 scala> val myDouble: Double = 3
 myDouble: Double = 3.0
@@ -85,7 +85,7 @@ Beside simple built-in variable types like `Int`, `Double` and `String`, you wil
 scala> val myList: List[String] = List("this", "is", "a", "list", "of", "string")
 myList: List[String] = List(this, is, a, list, of, string)
 
-scala> val myTuple:(Double, Double) = (1.0, 2.0)
+scala> val myTuple: (Double, Double) = (1.0, 2.0)
 myTuple: (Double, Double) = (1.0,2.0)
 ```
 Here the `List[String]` is syntax of generics in Scala, which is same as `C#`. In the above example, `List[String]` means a `List` of `String`. Similarly, `(Double, Double)` means a two-field tuple type and both the 1st element and the 2nd element should be of type `Double`.
@@ -106,7 +106,7 @@ Where `x: Int` is parameter and its type, and the second `Int` is function retur
 def triple(x: Int) = x*3
 ```
 
-Scala is object-oriented (OO), function calls on a class method is straightforward like most OO languages(i.e. Java, C#)
+Scala is object-oriented (OO), function calls on a class method is straightforward like most OO languages (e.g. Java, C#)
 ```scala
 scala> myString = "Hello Healthcare"
 myString: String = Hello Healthcare
@@ -119,7 +119,7 @@ scala> val myInt = 2
 scala> myInt.toString
 res2: String = 2
 ```
-You can also define an anonymous function and pass it to variable like a lambda expression in some other languages such as python:
+You can also define an anonymous function and pass it to variable like a lambda expression in some other languages such as Python:
 
 ```scala
 scala> val increaseOne = (x: Int) => x + 1
@@ -145,7 +145,7 @@ where `item: String => println(item)` is an anonymous function. This function ca
 scala> myList.foreach(println(_))
 scala> myList.foreach(println)
 ```
-where `_` represent first parameter of the anonymous function with body `println(_)`. Additional `_` can be specified to represent more than one parameter. For example, we can calculate the total payment that a patient made by
+where `_` represents first parameter of the anonymous function with body `println(_)`. Additional `_` can be specified to represent more than one parameter. For example, we can calculate the total payment that a patient made by
 ```scala
 scala> val payments = List(1, 2, 3, 4, 5, 6)
 payments: List[Int] = List(1, 2, 3, 4, 5, 6)
@@ -153,9 +153,9 @@ payments: List[Int] = List(1, 2, 3, 4, 5, 6)
 scala> payments.reduce(_ + _)
 res0: Int = 21
 ```
-In above example, `reduce` will aggregate `List[A]` into `A` and we defined the aggregator as `_ + _` to sum them up. Of course, you can write that more explicit like
+In above example, `reduce` will aggregate `List[V]` into `V` and we defined the aggregator as `_ + _` to sum them up. Of course, you can write that more explicitly like
 ```scala
-scala> payments.reduce((a, b)=> a+b)
+scala> payments.reduce((a, b) => a+b)
 res1: Int = 21
 ```
 Here `reduce` is a construct from functional programming. It can be illustrated with the figure below where a function _f_ is applied to one element at a time and the result together with next element will be parameters of the next function call until the end of the list.
@@ -189,7 +189,7 @@ scala> patient.name
 res13: String = Bob
 ```
 
-Here we see the succinct syntax of Scala again. `class Patient(val name: String, val id: Int)` not only defined constructor of `Patient` but also defined two member variables(`name` and `id`). 
+Here we see the succinct syntax of Scala again. `class Patient(val name: String, val id: Int)` not only defines constructor of `Patient` but also defines two member variables (`name` and `id`). 
 
 A special kind of class that we will use a lot is [`Case Class`](http://www.scala-lang.org/old/node/107). `Case Class` can be declared as 
 ```scala
@@ -227,7 +227,7 @@ p match {
 {% endexercise %}
 
 # Standalone Program
-Working with large real world applications, you usually need to compile and package your source code with some tools. Here we show how to compile and run a simple program with [sbt](http://www.scala-sbt.org/index.html). Run the sample code in 'hello-bigdata' folder
+Working with large real-world applications, you usually need to compile and package your source code with some tools. Here we show how to compile and run a simple program with [sbt](http://www.scala-sbt.org/index.html). Run the sample code in 'hello-bigdata' folder
 ```
 % cd ~/bigdata-bootcamp/sample/hello-bigdata
 % sbt run
