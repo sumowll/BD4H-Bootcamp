@@ -40,11 +40,11 @@ Replace `INFO` with `WARN` so that only WARN messages and above are shown.
 
 
 # RDD
-Resilient Distributed Dataset(RDD) is Spark's core abstraction for working with data. An RDD is simply a fault-tolerant **distributed** collection of elements. You can imagine RDD as a large array but you cannot access elements randomly but you can apply the same operations to all elements in the array easily. In Spark, all the work is expressed as either creating new RDDs, transforming existing RDDs, or calling operations on RDDs to compute results. There are two ways to create RDDs: by distributing a collection of objects (e.g., a list or set), or by referencing a dataset in an external storage system, such as a shared filesystem, HDFS, HBase, or any data source offering a Hadoop InputFormat.
+Resilient Distributed Dataset (RDD) is Spark's core abstraction for working with data. An RDD is simply a fault-tolerant **distributed** collection of elements. You can imagine RDD as a large array but you cannot access elements randomly but you can apply the same operations to all elements in the array easily. In Spark, all the work is expressed as either creating new RDDs, transforming existing RDDs, or calling operations on RDDs to compute results. There are two ways to create RDDs: by distributing a collection of objects (e.g., a list or set), or by referencing a dataset in an external storage system, such as a shared filesystem, HDFS, HBase, or any data source offering a Hadoop InputFormat.
 
 ## Parallelized Collections
 
-For the demo purpose, the simplest way to create an RDD is to take an existing collection (e.g., a Scala Array) in your program and pass it to SparkContext's `parallelize()` method.
+For the demo purpose, the simplest way to create an RDD is to take an existing collection (e.g. a Scala Array) in your program and pass it to SparkContext's `parallelize()` method.
 
 ```scala
 scala> val data = Array(1, 2, 3, 4, 5)
@@ -54,7 +54,7 @@ scala> val distData = sc.parallelize(data)
 distData: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[2] at parallelize at <console>:23
 ```
 
-Once created, the distributed dataset (distData) can be operated in parallel. For example, we can add up the elements by calling `distData.reduce((a, b) => a + b)`. You will see more operations on RDD later on.
+Once created, the distributed dataset (`distData`) can be operated in parallel. For example, we can add up the elements by calling `distData.reduce((a, b) => a + b)`. You will see more operations on RDD later on.
 {% msgwarning %}
 Parallelizing a collection is useful when you are learning Spark. However, this is not encouraged in production since it requires the entire dataset to be in memory of the driver's machine first. Instead, importing data from [external datasets](#external-datasets) should be employed.
 {% endmsgwarning %}
