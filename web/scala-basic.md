@@ -17,16 +17,6 @@ In this section we will briefly go through the essential knowledge about Scala. 
 # Scala Shell
 You can open a Scala shell by typing `scala`. Or, you can use [sbt](http://www.scala-sbt.org/index.html) by typing `sbt console`. The second approach will help you add your project source code and dependencies into class path, so that your functions or library functions will be available for you to try to in the interactive shell. But in this training, we will stick to Scala shell for simplicity. 
 
-First of all, you need to install Scala in your VM 
-```bash
-> wget http://www.scala-lang.org/files/archive/scala-2.10.4.tgz
-> tar xvf scala-2.10.4.tgz
-> sudo mv scala-2.10.4 /usr/lib
-> sudo ln -s /usr/lib/scala-2.10.4 /usr/lib/scala
-> export PATH=$PATH:/usr/lib/scala/bin
-> scala -version
-```
-
 Once starting the Scala shell you will see
 ```scala
 $ scala
