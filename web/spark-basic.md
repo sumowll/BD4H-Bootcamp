@@ -53,7 +53,7 @@ scala> val data = Array(1, 2, 3, 4, 5)
 data: Array[Int] = Array(1, 2, 3, 4, 5)
 
 scala> val distData = sc.parallelize(data)
-distData: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[2] at parallelize at <console>:23
+distData: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[0] at parallelize at <console>:23
 ```
 
 Once created, the distributed dataset (`distData`) can be operated in parallel. For example, we can add up the elements by calling `distData.reduce((a, b) => a + b)`. You will see more operations on RDD later on.
