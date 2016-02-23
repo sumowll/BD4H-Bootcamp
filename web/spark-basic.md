@@ -53,7 +53,7 @@ scala> val data = Array(1, 2, 3, 4, 5)
 data: Array[Int] = Array(1, 2, 3, 4, 5)
 
 scala> val distData = sc.parallelize(data)
-distData: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[2] at parallelize at <console>:23
+distData: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[0] at parallelize at <console>:23
 ```
 
 Once created, the distributed dataset (`distData`) can be operated in parallel. For example, we can add up the elements by calling `distData.reduce((a, b) => a + b)`. You will see more operations on RDD later on.
@@ -74,7 +74,7 @@ Reading data from a file syetem, Spark relies on the HDFS library. In above exam
 {% endmsginfo %}
 
 # RDD Operations
-RDDs offer two types of operations: **transformation** and **actions**:
+RDDs offer two types of operations: **transformations** and **actions**:
 - **Transformations** are operations on RDDs that return a new RDD, such as `map()` and `filter()`.
 - **Actions** are operations that return a result to the driver program or write it to storage, such as `first()` and `count()`.
 
@@ -143,7 +143,7 @@ res4: Long = 200
 ```
 
 ## Distinct
-`distinct` is a transformation that transform a RDD to another by eliminating duplications. We can use that to count the number of distinct patients. In order to do this, we first extract the patient ID from each line.
+`distinct` is a transformation that transforms a RDD to another by eliminating duplications. We can use that to count the number of distinct patients. In order to do this, we first extract the patient ID from each line.
 We use the `map()` function as described above. In this example, we transform each line into the corresponding patient ID by extracting only the first column. We then eliminate duplicate IDs by the `distinct()` function.
 
 ```scala
@@ -166,7 +166,7 @@ res1: Array[(String, Iterable[String])] = Array((0102353632C5E0D0,CompactBuffer(
 ```
 
 ## Reduce By Key
-`reduceByKey` *transform* an `RDD[(K, V)]` into `RDD[(K, List[V])]` (like what groupByKey does) and then apply `reduce` function on `List[V]` to get final output `RDD[(K, V)]`. Please be careful that we intentionally denote `V` as return type of `reduce` which should be same as input type of the list element. Suppose now we want to calculate the total payment by each patients. A payment record in the dataset is in the form of `(patient-id, PAYMENT, timestamp, value)`.
+`reduceByKey` *transforms* an `RDD[(K, V)]` into `RDD[(K, List[V])]` (like what groupByKey does) and then apply `reduce` function on `List[V]` to get final output `RDD[(K, V)]`. Please be careful that we intentionally denote `V` as return type of `reduce` which should be same as input type of the list element. Suppose now we want to calculate the total payment by each patients. A payment record in the dataset is in the form of `(patient-id, PAYMENT, timestamp, value)`.
 ```scala
 val payment_events = lines.filter(line => line.contains("PAYMENT"))
 val payments = payment_events.map{ x =>
