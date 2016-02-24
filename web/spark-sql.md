@@ -20,7 +20,7 @@ Spark provides API to load data in json, parquet, hive table etc. You can refer 
 Start spark shell in local mode with the command below to add extra dependencies.
 
 ```
-% spark-shell --master "local[2]" --driver-memory 6G --packages com.databricks:spark-csv_2.10:1.3.0
+% spark-shell --master "local[2]" --driver-memory 3G --packages com.databricks:spark-csv_2.10:1.3.0
 [logs]
 
 Spark context available as sc.
