@@ -192,7 +192,7 @@ and output is
 (019E4729585EF3DD,108980.0)
 (01AC552BE839AB2B,108530.0)
 ```
-Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous function that return second element of a tuple, which is the total payment a patient. The second paramter of `soryBy` controls order of sorting. In above example, `false` means decreasing order.
+Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous function that returns the second element of a tuple, which is the total payment of a patient. The second parameter of `soryBy` controls the order of sorting. In above example, `false` means decreasing order.
 
 
 {% exercise Calculate the maximum payment of each patient %}
