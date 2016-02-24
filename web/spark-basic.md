@@ -152,7 +152,7 @@ res5: Long = 100
 ```
 
 ## Group
-Sometimes, you will need to group the input events according to patient id to put everything about each patient together. For example, in order to exact index date for predictive modeling, you may first group input data by patient then handle each patient seperately in parallel. We can see each element in RDD is tuple `(patient-id, iterable[event])`.
+Sometimes, you will need to group the input events according to `patient-id` to put everything about each patient together. For example, in order to extract index date for predictive modeling, you may first group input data by patient then handle each patient seperately in parallel. We can see each element in RDD is tuple `(patient-id, iterable[event])`.
 
 ```scala
 > val patientIdEventPair = lines.map{line =>
