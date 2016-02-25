@@ -70,7 +70,7 @@ lines: org.apache.spark.rdd.RDD[String] = README.md MapPartitionsRDD[1] at textF
 ```
 Here in the above example, each line of the original file will become an element in the `lines` RDD.
 {% msginfo %}
-Reading data from a file syetem, Spark relies on the HDFS library. In above example we assume HDFS is well configured through environmental variables or configuration files so that data is ready in HDFS. 
+Reading data from a file system, Spark relies on the HDFS library. In above example we assume HDFS is well configured through environmental variables or configuration files so that data is ready in HDFS. 
 {% endmsginfo %}
 
 # RDD Operations
@@ -166,7 +166,7 @@ res1: Array[(String, Iterable[String])] = Array((0102353632C5E0D0,CompactBuffer(
 ```
 
 ## Reduce By Key
-`reduceByKey` *transforms* an `RDD[(K, V)]` into `RDD[(K, List[V])]` (like what groupByKey does) and then apply `reduce` function on `List[V]` to get final output `RDD[(K, V)]`. Please be careful that we intentionally denote `V` as return type of `reduce` which should be same as input type of the list element. Suppose now we want to calculate the total payment by each patients. A payment record in the dataset is in the form of `(patient-id, PAYMENT, timestamp, value)`.
+`reduceByKey` *transforms* an `RDD[(K, V)]` into `RDD[(K, List[V])]` (like what groupByKey does) and then apply `reduce` function on `List[V]` to get final output `RDD[(K, V)]`. Please be careful that we intentionally denote `V` as return type of `reduce` which should be same as input type of the list element. Suppose now we want to calculate the total payment by each patient. A payment record in the dataset is in the form of `(patient-id, PAYMENT, timestamp, value)`.
 ```scala
 val payment_events = lines.filter(line => line.contains("PAYMENT"))
 val payments = payment_events.map{ x =>
@@ -192,7 +192,7 @@ and output is
 (019E4729585EF3DD,108980.0)
 (01AC552BE839AB2B,108530.0)
 ```
-Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous function that return second element of a tuple, which is the total payment a patient. The second paramter of `soryBy` controls order of sorting. In above example, `false` means decreasing order.
+Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous function that return second element of a tuple, which is the total payment a patient. The second parameter of `sortBy` controls order of sorting. In above example, `false` means decreasing order.
 
 
 {% exercise Calculate the maximum payment of each patient %}
@@ -236,7 +236,7 @@ res10: Double = 26337.091771112468
 
 
 ## Set Operation
-RDDs support many of the set operations, such as `union` and `intersection`, even when the RDDs themselves are not properly sets. For example, we can combine the two files by the `union` fucntion. Please notice that `union` here is not strictly identical to union operation in mathmatics as Spark will not remove duplications.
+RDDs support many of the set operations, such as `union` and `intersection`, even when the RDDs themselves are not properly sets. For example, we can combine the two files by the `union` function. Please notice that `union` here is not strictly identical to union operation in mathematics as Spark will not remove duplications.
 
 ```scala
 scala> val linesControl = sc.textFile("input/control.csv")
