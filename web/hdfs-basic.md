@@ -28,7 +28,7 @@ Then, you can create a directory and change ownership of the newly created folde
 > hdfs dfs -mkdir /user/<username>
 > hdfs dfs -chown <username> /user/<username>
 ```
-Please remember to change `<username>` to your actual linux user name(i.e. *user2*). Finally switch back to your user with `exit`.
+Please remember to change `<username>` to your actual linux user name (i.e. *user2*). Finally switch back to your user with `exit`.
 
 ## Create directory
 Similar to creating local directory via linux command `mkdir`, creating a folder named `input` in HDFS use
