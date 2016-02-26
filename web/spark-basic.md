@@ -152,7 +152,7 @@ res5: Long = 100
 ```
 
 ## Group
-Sometimes, you will need to group the input events according to patient id to put everything about each patient together. For example, in order to exact index date for predictive modeling, you may first group input data by patient then handle each patient seperately in parallel. We can see each element in RDD is tuple `(patient-id, iterable[event])`.
+Sometimes, you will need to group the input events according to `patient-id` to put everything about each patient together. For example, in order to extract index date for predictive modeling, you may first group input data by patient then handle each patient seperately in parallel. We can see each element in RDD is a (Key, Value) pair `(patient-id, iterable[event])`.
 
 ```scala
 > val patientIdEventPair = lines.map{line =>
@@ -192,7 +192,7 @@ and output is
 (019E4729585EF3DD,108980.0)
 (01AC552BE839AB2B,108530.0)
 ```
-Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous function that return second element of a tuple, which is the total payment a patient. The second parameter of `sortBy` controls order of sorting. In above example, `false` means decreasing order.
+Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous function that returns the second element of a tuple, which is the total payment a patient. The second parameter of `sortBy` controls the order of sorting. In above example, `false` means decreasing order.
 
 
 {% exercise Calculate the maximum payment of each patient %}
