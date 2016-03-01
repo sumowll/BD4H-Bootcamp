@@ -14,7 +14,7 @@ navigation:
 Apache HBase is a distributed column-oriented database built on top of the Hadoop file system. Use HBase when you need random, realtime read/write access to your Big Data. It provides a convenient interactive shell as well as a Java API.
 
 # Interactive Shell
-You can start the HBase interactive shell using `hbase shell` command. You will get
+You can start the HBase interactive shell using the command `hbase shell`. After entering this command, you will see the following output:
 
 ```
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
@@ -27,19 +27,23 @@ To exit the interactive shell, type `exit` or `<ctrl+c>`.
 
 # Create
 
-The syntax to create a table in HBase shell is shown below.
+The syntax to create a table from an HBase shell is shown below.
 ```
 create 'table name', 'column family'
 ```
 
-Let's create a table called `hospital` with two column families `id` and `value`.
+Note that in the HBase data model columns are grouped into "column families", which must be defined up front during table creation. These column families are stored together on disk. Because of this HBase is consided a column-oriented data store.
+
+Let's create a table called `hospital` with two column families: `id` and `value`.
 
 ```
 hbase(main):002:0> create 'hospital', 'id', 'value'
 ```
 And it will give you the following output.
 ```
-0 row(s) in 1.1620 seconds
+0 row(s) in 1.9850 seconds
+
+=> Hbase::Table - hospital
 ```
 
 # Update
@@ -67,9 +71,9 @@ hbase(main):004:0> describe 'hospital'
  > 'true'}                                                                                                                                                     
 1 row(s) in 0.0350 seconds
 ```
-This shows some basic information for each column family. For example, the `id` column family has block size 65536 and keeps at most 3 versions for each cell (distinguish by timestamp).
+This shows some basic information for each column family. For example, the `id` column family has block size of 65536 and keeps at most 3 versions for each cell (distinguishable by timestamp).
 
-We can alter the setting by using `alter`. But we need to first disable the table.
+We can alter the the table settings by using `alter`. But first we must disable the table.
 
 ```
 hbase(main):005:0> disable 'hospital'
@@ -84,11 +88,11 @@ hbase(main):007:0> enable 'hospital'
 
 ## Put data
 
-Using `put` command, you can insert rows into a table. Its syntax is as follows:
+Using the `put` command, you can insert rows into a table. The syntax is as follows:
 ```
 put 'table name', 'row key', 'colfamily:colname', 'value'
 ```
-For example, let's put a record of a paitent-id.
+For example, let's put a paitent-id record.
 
 ```
 hbase(main):008:0> put 'hospital', 'row1', 'id:patient', 'patient-id-1'
@@ -104,7 +108,7 @@ hbase(main):011:0> put 'hospital', 'row2', 'id:event', 'event-id-2'
 
 # Read
 ## Cluster status
-Checking the status of the cluster
+To check the status of the cluster use the `status` command:
 ```
 hbase(main):001:0> status
 (may have some debug messages)
@@ -113,7 +117,7 @@ hbase(main):001:0> status
 
 ## Table data 
 
-Using the `scan` command, you can get the table data.
+Using the `scan` command, you can view the table data.
 
 ```
 hbase(main):012:0> scan 'hospital'
@@ -125,14 +129,14 @@ ROW            COLUMN+CELL
 2 row(s) in 0.0130 seconds
 ```
 
-If you only want to know the number of rows, you can use
+If you only want to know the number of rows in a table, you can use:
 
 ```
 hbase(main):013:0> count 'hospital'
 2 row(s) in 0.0130 seconds
 ```
 
-Using the `get` command, you can get a single row of data at a time.
+The `get` command can be used to retrieve a single row of data at a time.
 
 ```
 hbase(main):014:0> get 'hospital', 'row1' 
@@ -143,7 +147,7 @@ COLUMN                                   CELL
 3 row(s) in 0.0270 seconds
 ```
 
-We can further specify the column that we want to retrieve.
+To retrieve the data in a particular column within a row we can use the following syntax:
 
 ```
 hbase(main):015:0> get 'hospital', 'row1', {COLUMN => 'id:patient'}
@@ -154,7 +158,7 @@ hbase(main):015:0> get 'hospital', 'row1', {COLUMN => 'id:patient'}
 # Delete
 ## Delete cell
 
-You can delete a specific cell in a table by the `delete` command
+You can delete a specific cell in a table by using the `delete` command
 
 ```
 hbase(main):016:0> delete 'hospital', 'row1', 'id:event'
@@ -170,7 +174,7 @@ hbase(main):017:0> deleteall 'hospital', 'row1'
 
 ## Drop table
 
-Using the `drop` command, you can delete a table. Before dropping a table, you have to disable it.
+Using the `drop` command, you can delete a table. Before dropping a table, you must disable it.
 
 ```
 hbase(main):018:0> disable 'hospital'
