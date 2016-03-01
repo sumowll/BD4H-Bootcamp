@@ -249,4 +249,4 @@ sssp.vertices.filter(_._2 < Double.PositiveInfinity).filter(_._1 < 300).takeOrde
 
 [Comorbidity]: http://en.wikipedia.org/wiki/Comorbidity
 [pagerank]: http://en.wikipedia.org/wiki/PageRank
-[connected-component-wiki]: http://en.wikipedia.org/wiki/Connected_component_\(
+[connected-component-wiki]: https://en.wikipedia.org/wiki/Connected_component_(graph_theory)
