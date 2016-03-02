@@ -89,7 +89,7 @@ In real world setting, you may need to save the trained model. You can achieve t
 ```
 
 # Scikit-learn
-If typical data set is often small enough after feature construction described in previous [Spark Application]({{ site.baseurl }}/spark-application/) section, you may consider running machine learning predictive model training and testing using your farmiliar tools like scikit-learn in Python or some R packages. Here we show how to do that in Scikit-learn, a Python machine learning library.
+If typical data set is often small enough after feature construction described in previous [Spark Application]({{ site.baseurl }}/spark-application/) section, you may consider running machine learning predictive model training and testing using your familiar tools like scikit-learn in Python or some R packages. Here we show how to do that in Scikit-learn, a Python machine learning library.
 
 ## Fetch data
 In order to work with Scikit-learn, you will need to take data out of HDFS into a local file system. We can get the `samples` folder from your home directory in HDFS and merge content into one single file with the command below
@@ -98,7 +98,7 @@ hdfs dfs -getmerge samples patients.svmlight
 ```
 
 ## Move on with Python
-In later steps, you will use python interactive shell. To open a python interfactive shell, just type  `python` in bash. You will get prompt similar to the sample below 
+In later steps, you will use python interactive shell. To open a python interactive shell, just type  `python` in bash. You will get prompt similar to the sample below 
 ``` python
 [hang@bootcamp1 ~]$ python
 Python 2.7.10 |Continuum Analytics, Inc.| (default, Oct 19 2015, 18:04:42)
