@@ -12,7 +12,7 @@ Welecome to the Big Data Bootcamp. This training material is has been developed 
 
 The training material [sample data](data) is for healthcare applications, but you can adapt what you learned to other domains and there is no requirement of healthcare background knowledge.
 
-To get started, please [**setup learning environment**](environment) first.
+To get started, please [**setup the learning environment**](environment) first.
 
 # Content Summary
 Content of the training material is divided into two chapters **Hadoop** and **Spark**.
