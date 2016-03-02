@@ -37,7 +37,7 @@ scala> val patientEvents = sqlContext.load("input/", "com.databricks.spark.csv")
      withColumn("value", 'rawvalue.cast("Double"))
 patientEvents: org.apache.spark.sql.DataFrame = [patientId: string, eventId: string, date: string, rawvalue: string, value: double]
 ```
-The first parameter is path to data(in HDFS), and second is a class name, the adapter to load CSV file. Here we specify a directory name so that all files in that directory will be read and second parameter make sure we will the proper parser. Next we call `toDF` to rename the column with meaningful name. Finally, we add one more column that have double type of value instead of string.
+The first parameter is path to data(in HDFS), and second is a class name, the adapter to load CSV file. Here we specify a directory name so that all files in that directory will be read and second parameter make sure we will the proper parser. Next we call `toDF` to rename the column with a meaningful name. Finally, we add one more column that has double type of value instead of string.
 
 # Manipulating data
 There are two methods to work with the DataFrame, either using SQL or using domain specific language (DSL). 
@@ -66,7 +66,7 @@ patientId        eventId   count
 01A999551906C787 DIAG4019  7    
 ...
 ```
-For a complete DSL functions, see [DataFrame](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.DataFrame) class API.
+For complete DSL functions, see [DataFrame](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.DataFrame) class API.
 
 # Saving data
 Spark SQL provides a convenient way to save data in a different format just like loading data. For example you can write 
@@ -90,7 +90,7 @@ to save  in `csv` format.
 In many cases the built-in function of SQL like `count`, `max` is not enough, you can extend it with your own functions. For example, you want to _find_ the number of different event types with the following UDF.
 
 ## Define
-define and register an UDF
+Define and register an UDF
 ```scala
 scala> sqlContext.udf.register("getEventType", (s: String) => s match {
     case diagnostics if diagnostics.startsWith("DIAG") => "diagnostics"
