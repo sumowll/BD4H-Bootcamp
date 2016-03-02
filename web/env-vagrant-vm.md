@@ -18,6 +18,9 @@ Also, please make sure you have enough free memory (4GB) available.
 For windows user, install GIT bash for windows which include SSH for access to VM.
 {% endmsgwarning%}
 
+# Settings
+The settings for the Vagrant VM are located in *vagrantconfig.yaml*. You can tweak them as necessary, such as adjusting the *number_cpus* or *memory_size* settings, to improve the performance of your VM.
+
 # Setup
 With pre-requiste softwares properly installed, you could setup your Centos VM learning environment. Before you actually run commands, please make sure you have enough previlege. For example, virtual network adapter and network filesystem will be set up.
 
@@ -30,7 +33,6 @@ Open a terminal and you need to
 
 # Connect
 You could connect to master node by run `vagrant ssh` in `vm` folder. You will find all materials in `/bootcamp` folder.
-
 
 # Terminate
 After you finish, you may want to terminate the virtual cluster. You could achieve that by
