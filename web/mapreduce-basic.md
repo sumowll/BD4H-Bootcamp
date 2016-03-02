@@ -305,7 +305,7 @@ public class MaxPayment {
 ```
 > rm classes/*
 > javac -cp $(hadoop classpath) -d classes MaxPayment.java MaxPaymentMapper.java MaxPaymentReducer.java
-> jar -cvf Frequency.jar -C classes/ .
+> jar -cvf MaxPayment.jar -C classes/ .
 > hadoop jar MaxPayment.jar MaxPayment input output
 ```
 
