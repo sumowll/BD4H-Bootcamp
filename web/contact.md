@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Contact us
-description: Georgia Tech big data bootcampt training material
+title: Contact Us
+description: Georgia Tech Big Data Bootcamp training material
 ---
 
 ## Jimeng Sun
