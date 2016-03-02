@@ -12,7 +12,7 @@ navigation:
 - Being able to use built-in graph algorithm.
 {% endobjective %}
 
-In this section, we show how to create a graph with patient and diagnostic code. Then, we show how to run algorithms on the the newly created graph.
+In this section, we show how to create a graph with patient and diagnostic codes. Then, we show how to run algorithms on the the newly created graph.
 
 # Basic concept
 Spark GraphX abstracts the graph as a concept named property graph, which means that each edge and vertex is associated with some property. The `Graph` class has below definition
@@ -89,7 +89,7 @@ val diagnosticVertexIdRDD = diagnosticEvents.
     distinct.
     zipWithIndex.
     map{case(icd9code, zeroBasedIndex) => 
-        (icd9code, zeroBasedIndex + startIndex)} // make sure no confilic with patient vertex id
+        (icd9code, zeroBasedIndex + startIndex)} // make sure no conflict with patient vertex id
 
 val diagnostic2VertexId = diagnosticVertexIdRDD.collect.toMap
 
@@ -98,7 +98,7 @@ val diagnosticVertex = diagnosticVertexIdRDD.
     asInstanceOf[RDD[(VertexId, VertexProperty)]]
 ```
 
-Here we assign vertex id by adding the result of `zipWithIndex` with an offset obtained from previous patient vertex to avoid ID confilication between patient and diagnostic code.
+Here we assign vertex id by adding the result of `zipWithIndex` with an offset obtained from previous patient vertex to avoid ID confliction between patient and diagnostic code.
 
 ## Create edge
 In order to create edge, we will need to know vertext id of vertices we just created.
@@ -117,7 +117,7 @@ val edges = diagnosticEvents.
         count // edge property
     )}
 ```
-We first broadcast patient and diagnostic code to vertext id mappting. Broadcast can avoid uncessary copy in distributed setting thus will be more effecient. Then we count occurrence of `(patient-id, icd-9-code)` pairs with `map` and `reduceByKey`, finally we translate them to proper `VertexID`.
+We first broadcast patient and diagnostic code to vertext id mapping. Broadcast can avoid unnecessary copy in distributed setting thus will be more effecient. Then we count occurrence of `(patient-id, icd-9-code)` pairs with `map` and `reduceByKey`, finally we translate them to proper `VertexID`.
 
 ## Assemble vetex and edge
 We will need to put vertices and edges together to create the graph
@@ -174,7 +174,7 @@ val randomGraph = Graph[Int, Int] =
 val pagerank = randomGraph.staticPageRank(20)
 ```
 
-Or, we can run PageRank util converge with tolerance as `0.01` using `randomGraph.pageRank(0.01)`
+Or, we can run PageRank until converge with tolerance as `0.01` using `randomGraph.pageRank(0.01)`
 
 # Application
 Next, we show some how we can ultilize the graph operations to solve some practical problems in the healthcare domain.
