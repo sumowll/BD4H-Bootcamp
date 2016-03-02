@@ -12,7 +12,7 @@ In order to use the Docker environment we provide, you will need two pre-requisi
 1. [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. [Vagrant](http://www.vagrantup.com/downloads.html)
 
-Also, please make sure you have enough free memory(4GB) available.
+Also, please make sure you have enough free memory (4GB) available.
 
 {% msgwarning %}
 For windows user, install GIT bash for windows which include SSH for access to VM.
@@ -26,6 +26,8 @@ Open a terminal and you need to
 1. Navigate to *vm* folder.
 2. Run `vagrant up` to provision and run the VM.
 
+(Note that the first run of `vagrant up` may take a long time. Please be patient.)
+
 # Connect
 You could connect to master node by run `vagrant ssh` in `vm` folder. You will find all materials in `/bootcamp` folder.
 
@@ -35,3 +37,7 @@ After you finish, you may want to terminate the virtual cluster. You could achie
 
 1. Navigate to *vm* folder.
 2. Run `vagrant destroy -f` to destroy the VM.
+
+Alternatively, you may just perform a graceful shutdown (without removing all traces of the vitual machine like above) by 
+1. Navigate to *vm* folder.
+2. Run `vagrant destroy halt` to destroy the VM.
