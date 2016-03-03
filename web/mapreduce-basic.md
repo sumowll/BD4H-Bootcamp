@@ -7,22 +7,22 @@ navigation:
 ---
 
 {% objective %}
-- Being able to write basic MapReduce programs.
+- Be able to write basic MapReduce programs.
 {% endobjective %}
 
-In the [previous]({{ site.baseurl }}/hdfs-basic/) section we put the input data into the Hadoop Distributed File System (HDFS). Now, let's learn how to write a distributed computing program using the *Hadoop MapReduce* paradigm. 
+In the [previous]({{ site.baseurl }}/hdfs-basic/) section we put the input data into a Hadoop Distributed File System (HDFS). Now, let's learn how to write a distributed computing program using the *Hadoop MapReduce* paradigm. 
 
 
 # MapReduce
-MapReduce works by breaking the processing into two phases: the map phase and the reduce phase. Each phase has key-value pairs as input and output, the types of which can be chosen by the user. The overview of the MapReduce paradigm is shown below.
+MapReduce works by breaking the processing into two phases: map and reduce. Each phase uses key-value pairs as input and output, the types of which can be chosen by the user. An overview of the MapReduce paradigm is shown below.
 ![MapReduce Flow]({{ site.baseurl }}/image/post/mapreduce-flow.jpg "MapReduce Flow")
-The input files are split and fed to mappers on different machines. Each mapper processes the corresponding input file "splits" line by line, and outputs the resulting key-value pairs to the local disk. Hadoop then performs a shuffle operation wherein the key-value data output by the map operations is sorted across machines, this is done to collect the key value data and group it by key so that data with the same key is sent to the same reducer. The reducers then combines each group of key-value pairs with the same key into a single key-value pair. Since the shuffle phase is carried out automatically by Hadoop, the user only needs to define the `map` and `reduce` operations.
+The input files are split and fed to mappers on different machines. Each mapper processes the corresponding input file "splits" line by line, and outputs the resulting key-value pairs to the local disk. Hadoop then performs a shuffle operation wherein the key-value data output by the map operations is sorted across machines. This is done to collect the key value data and group it by key so that data with the same key is sent to the same reducer. The reducers then combines each group of key-value pairs with the same key into a single key-value pair. Since the shuffle phase is carried out automatically by Hadoop, the user only needs to define the `map` and `reduce` operations.
 
 Let's write a simple MapReduce program in Java to calculate the frequency of each `event-id` in our **case.csv** file (described in [sample data]({{ site.baseurl }}/data/)).
 
 A MapReduce program consists of three parts:
-1. A Mapper Class
-2. A Reducer Class
+1. A Mapper
+2. A Reducer
 3. A main function that tells Hadoop to use the classes we created.
 
 ## Mapper
@@ -86,8 +86,8 @@ public class FrequencyReducer extends Reducer<Text ,  IntWritable ,  Text ,  Int
 }
 
 ```
-The 4-typle `<Text ,  IntWritable ,  Text ,  IntWritable >` specifies the types of the input and output key-value pair.
-Note that the type of the input key-value pair (`<Text ,  IntWritable>`) is the same as the output key-value pair of the mapper.
+The 4-tuple `<Text, IntWritable, Text, IntWritable >` specifies the types of the input and output key-value pair.
+Note that the type of the input key-value pair (`<Text, IntWritable>`) is the same as the output key-value pair of the mapper.
 
 ## Main function
 Write a Java file `Frequency.java` that runs the MapReduce job.
@@ -132,7 +132,7 @@ public class Frequency {
 ```
 
 ## Compile and Run
-You will find all of the source code in the `sample/hadoop` folder. You will need to navigate to that folder first, then compile, and then create and run the jar.
+You will find all of the source code in the `sample/hadoop` folder. You will need to navigate to that folder first, compile, and create the jar before running it.
 
 ### Compile
 Compile the three java files with `javac`:
@@ -150,7 +150,7 @@ jar -cvf Frequency.jar -C classes/ .
 ```
 
 {% msginfo %}
-In real-world application development, you will not need to compile files manually one by one and then create the jar. Instead, build tools like Maven, Gradle, SBT can be used to handle this process.
+In a real-world application development, you will not need to compile files manually one by one and then create the jar. Build tools like Maven, Gradle, SBT can be used to handle this process instead.
 {% endmsginfo %}
 
 ### Run
@@ -305,7 +305,7 @@ public class MaxPayment {
 ```
 > rm classes/*
 > javac -cp $(hadoop classpath) -d classes MaxPayment.java MaxPaymentMapper.java MaxPaymentReducer.java
-> jar -cvf Frequency.jar -C classes/ .
+> jar -cvf MaxPayment.jar -C classes/ .
 > hadoop jar MaxPayment.jar MaxPayment input output
 ```
 

@@ -8,16 +8,16 @@ navigation:
 {% objective %}
 - Load data into Spark SQL as DataFrame.
 - Manipulate data with built-in functions.
-- Define User Defined Function(UDF).
+- Define a User Defined Function (UDF).
 {% endobjective %}
 
 # Overview
 Recent versions of Spark released the programming abstraction named `DataFrame`, which can be regarded as a table in a relational database. `DataFrame` is stored in a distributed manner so that different rows may locate on different machines. On `DataFrame` you can write `sql` queries, manipulate columns programatically with API etc.
 
 # Loading data
-Spark provides API to load data in json, parquet, hive table etc. You can refer to the official [Spark SQL programming guide](https://spark.apache.org/docs/latest/sql-programming-guide.html#data-sources) for those formats. Here we show how to load csv files. And we will use the [spark-csv](https://github.com/databricks/spark-csv) module by databricks.
+Spark provides an API to load data from JSON, Parquet, Hive table etc. You can refer to the official [Spark SQL programming guide](https://spark.apache.org/docs/latest/sql-programming-guide.html#data-sources) for those formats. Here we show how to load csv files. And we will use the [spark-csv](https://github.com/databricks/spark-csv) module by Databricks.
 
-Start spark shell in local mode with the command below to add extra dependencies.
+Start the Spark shell in local mode with the command below to add extra dependencies which are needed to complete this training.
 
 ```
 % spark-shell --master "local[2]" --driver-memory 3G --packages com.databricks:spark-csv_2.10:1.3.0
@@ -30,14 +30,14 @@ SQL context available as sqlContext.
 scala> 
 ```
 
-Now, load data
+Now load data into the shell.
 ```scala
 scala> val patientEvents = sqlContext.load("input/", "com.databricks.spark.csv").
      toDF("patientId", "eventId", "date", "rawvalue").
      withColumn("value", 'rawvalue.cast("Double"))
 patientEvents: org.apache.spark.sql.DataFrame = [patientId: string, eventId: string, date: string, rawvalue: string, value: double]
 ```
-The first parameter is path to data(in HDFS), and second is a class name, the adapter to load CSV file. Here we specify a directory name so that all files in that directory will be read and second parameter make sure we will the proper parser. Next we call `toDF` to rename the column with a meaningful name. Finally, we add one more column that has double type of value instead of string.
+The first parameter is path to the data (in HDFS), and second is a class name, the specific adapter required to load a CSV file. Here we specified a directory name instead of a specific file name so that all files in that directory will be read and combined into one file. Next we call `toDF` to rename the columns in the CSV file with meaningful names. Finally, we add one more column that has double type of value instead of string which we will use ourselves for the rest of this material.
 
 # Manipulating data
 There are two methods to work with the DataFrame, either using SQL or using domain specific language (DSL). 
@@ -50,7 +50,7 @@ res5: Array[org.apache.spark.sql.Row] = Array(...)
 ```
 Here the `patientEvents` DataFrame is registered as a table in sql context so that we could run sql commands. Next line is a standard sql command with `where`, `group by` and `order by` statements.
 ## DSL
-Next, we show how to manipulate data with DSL, the same result of previous SQL command can be achieved by
+Next, we show how to manipulate data with DSL, the same result of previous SQL command can be achieved by:
 ```scala
 scala> patientEvents.filter($"eventId".startsWith("DIAG")).groupBy("patientId", "eventId").count.orderBy($"count".desc).show
 patientId        eventId   count
