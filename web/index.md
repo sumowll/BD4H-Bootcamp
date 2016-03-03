@@ -34,5 +34,5 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 6. [Spark GraphX](spark-graphx)
 
 
-<div class="text-center col-md-12"><a href="hadoop/" class="btn btn-lg btn-info">Start Learn <span class="glyphicon glyphicon-export"></span></a></div>
+<div class="text-center col-md-12"><a href="hadoop/" class="btn btn-lg btn-info">Start Learning<span class="glyphicon glyphicon-export"></span></a></div>
 
