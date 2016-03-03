@@ -15,7 +15,7 @@ In order to use the Docker environment we provide, you will need two pre-requisi
 Also, please make sure you have enough free memory (4GB) available.
 
 {% msgwarning %}
-For windows user, install GIT bash for windows which include SSH for access to VM.
+For Windows Users: Install GIT bash for windows which include SSH for access to the VM.
 {% endmsgwarning%}
 
 # Settings
@@ -23,6 +23,10 @@ The settings for the Vagrant VM are located in *vagrantconfig.yaml*. You can twe
 
 # Setup
 With pre-requiste softwares properly installed, you could setup your Centos VM learning environment. Before you actually run commands, please make sure you have enough previlege. For example, virtual network adapter and network filesystem will be set up.
+
+{% msgwarning %}
+For Windows Users: You may need to configure line endings before running vagrant up so the VM is properly configured. You can do this as a gobal configuration with "git config --global core.autocrlf false", or only for a given repo by setting "* text eol=lf" in .gitattributes of that repo. Be sure to follow the directions for refreshing a repo after changing line endings, as documented [here](https://help.github.com/articles/dealing-with-line-endings/#refreshing-a-repository-after-changing-line-endings "Refreshing a repository after changing line endings").
+{% endmsgwarning%}
 
 Open a terminal and you need to
 
