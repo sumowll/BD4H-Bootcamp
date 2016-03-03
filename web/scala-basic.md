@@ -6,13 +6,13 @@ navigation:
   section: [2, 1]
 ---
 {% objective %}
-- Learn how to work with scala interactive shell.
+- Learn how to work with Scala interactive shell.
 - Understand `var` and `val`.
-- Define variables,functions and classes, and make function calls
-- Understand Simple Build Tool(SBT).
+- Define variables, functions and classes, and make function calls
+- Understand Simple Build Tool (SBT).
 {% endobjective %}
 
-In this section we will briefly go through the essential knowledge about Scala. You will first learn how to work with Scala shell, then learn how use variables, functions with examples. Finally, we give instructions about how to compile and run a standalone program using `sbt`.
+In this section we will briefly go through the essential knowledge about Scala. You will first learn how to work with Scala shell, then learn how to use variables, functions with examples. Finally, we give instructions about how to compile and run a standalone program using `sbt`.
 
 # Scala Shell
 You can open a Scala shell by typing `scala`. Or, you can use [sbt](http://www.scala-sbt.org/index.html) by typing `sbt console`. The second approach will help you add your project source code and dependencies into class path, so that your functions or library functions will be available for you to try to in the interactive shell. But in this training, we will stick to Scala shell for simplicity. 
@@ -20,7 +20,7 @@ You can open a Scala shell by typing `scala`. Or, you can use [sbt](http://www.s
 Once starting the Scala shell you will see
 ```scala
 $ scala
-Welcome to Scala version 2.10.4 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0).
+Welcome to Scala version 2.10.5 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0).
 Type in expressions to have them evaluated.
 Type :help for more information.
 
@@ -80,7 +80,7 @@ myDouble: Double = 3.0
 ```
 It is always encouraged to specify the type so unless the type is too obvious.
 
-Beside simple built-in variable types like `Int`, `Double` and `String`, you will also learn about `List` and `Tuple` in the training: 
+Besides simple built-in variable types like `Int`, `Double` and `String`, you will also learn about `List` and `Tuple` in the training: 
 ```scala
 scala> val myList: List[String] = List("this", "is", "a", "list", "of", "string")
 myList: List[String] = List(this, is, a, list, of, string)
@@ -106,14 +106,14 @@ Where `x: Int` is parameter and its type, and the second `Int` is function retur
 def triple(x: Int) = x*3
 ```
 
-Scala is object-oriented (OO), function calls on a class method is straightforward like most OO languages (e.g. Java, C#)
+Scala is object-oriented (OO), function calls on a class method are straightforward like most OO languages (e.g. Java, C#)
 ```scala
 scala> myString = "Hello Healthcare"
 myString: String = Hello Healthcare
 scala> myString.lastIndexOf("Healthcare")
 res1: Int = 6
 ```
-If the function do not have parameters, you can even call it without parenthesis
+If the function does not have parameters, you can even call it without parenthesis
 ```scala
 scala> val myInt = 2
 scala> myInt.toString

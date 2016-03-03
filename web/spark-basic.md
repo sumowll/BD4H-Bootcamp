@@ -23,7 +23,9 @@ Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 Spark context available as sc.
 scala>
 ```
-In Spark, we call the main entrance of a Spark program the **driver** and Spark distribute computation to **worker**s to compute. Here in the interactive shell, the Spark shell program is the driver. In above example we set the memory of driver program to 6GB as in local mode driver and worker are together. A driver program can access Spark through a `SparkContext` object, which represents a connection to a computing cluster. In the above interactive shell, `SparkContext` is already created for you as variable `sc`. You can input `sc` to see its type.
+Here you can set ``--driver-memory`` according to your local setting. If your setting of driver memory is larger than the VM memory, don't forget to change the VM memory setting first.
+
+In Spark, we call the main entrance of a Spark program the **driver** and Spark distribute computation to **worker**s to compute. Here in the interactive shell, the Spark shell program is the driver. In above example we set the memory of driver program to 3GB as in local mode driver and worker are together. A driver program can access Spark through a `SparkContext` object, which represents a connection to a computing cluster. In the above interactive shell, `SparkContext` is already created for you as variable `sc`. You can input `sc` to see its type.
 ```
 scala> sc
 res0: org.apache.spark.SparkContext = org.apache.spark.SparkContext@27896d3b
@@ -51,7 +53,7 @@ scala> val data = Array(1, 2, 3, 4, 5)
 data: Array[Int] = Array(1, 2, 3, 4, 5)
 
 scala> val distData = sc.parallelize(data)
-distData: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[2] at parallelize at <console>:23
+distData: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[0] at parallelize at <console>:23
 ```
 
 Once created, the distributed dataset (`distData`) can be operated in parallel. For example, we can add up the elements by calling `distData.reduce((a, b) => a + b)`. You will see more operations on RDD later on.
@@ -68,11 +70,11 @@ lines: org.apache.spark.rdd.RDD[String] = README.md MapPartitionsRDD[1] at textF
 ```
 Here in the above example, each line of the original file will become an element in the `lines` RDD.
 {% msginfo %}
-Reading data from a file syetem, Spark relies on the HDFS library. In above example we assume HDFS is well configured through environmental variables or configuration files so that data is ready in HDFS. 
+Reading data from a file system, Spark relies on the HDFS library. In above example we assume HDFS is well configured through environmental variables or configuration files so that data is ready in HDFS. 
 {% endmsginfo %}
 
 # RDD Operations
-RDDs offer two types of operations: **transformation** and **actions**:
+RDDs offer two types of operations: **transformations** and **actions**:
 - **Transformations** are operations on RDDs that return a new RDD, such as `map()` and `filter()`.
 - **Actions** are operations that return a result to the driver program or write it to storage, such as `first()` and `count()`.
 
@@ -141,7 +143,7 @@ res4: Long = 200
 ```
 
 ## Distinct
-`distinct` is a transformation that transform a RDD to another by eliminating duplications. We can use that to count the number of distinct patients. In order to do this, we first extract the patient ID from each line.
+`distinct` is a transformation that transforms a RDD to another by eliminating duplications. We can use that to count the number of distinct patients. In order to do this, we first extract the patient ID from each line.
 We use the `map()` function as described above. In this example, we transform each line into the corresponding patient ID by extracting only the first column. We then eliminate duplicate IDs by the `distinct()` function.
 
 ```scala
@@ -150,7 +152,7 @@ res5: Long = 100
 ```
 
 ## Group
-Sometimes, you will need to group the input events according to patient id to put everything about each patient together. For example, in order to exact index date for predictive modeling, you may first group input data by patient then handle each patient seperately in parallel. We can see each element in RDD is tuple `(patient-id, iterable[event])`.
+Sometimes, you will need to group the input events according to `patient-id` to put everything about each patient together. For example, in order to extract index date for predictive modeling, you may first group input data by patient then handle each patient seperately in parallel. We can see each element in RDD is a (Key, Value) pair `(patient-id, iterable[event])`.
 
 ```scala
 > val patientIdEventPair = lines.map{line =>
@@ -164,7 +166,7 @@ res1: Array[(String, Iterable[String])] = Array((0102353632C5E0D0,CompactBuffer(
 ```
 
 ## Reduce By Key
-`reduceByKey` *transform* an `RDD[(K, V)]` into `RDD[(K, List[V])]` (like what groupByKey does) and then apply `reduce` function on `List[V]` to get final output `RDD[(K, V)]`. Please be careful that we intentionally denote `V` as return type of `reduce` which should be same as input type of the list element. Suppose now we want to calculate the total payment by each patients. A payment record in the dataset is in the form of `(patient-id, PAYMENT, timestamp, value)`.
+`reduceByKey` *transforms* an `RDD[(K, V)]` into `RDD[(K, List[V])]` (like what groupByKey does) and then apply `reduce` function on `List[V]` to get final output `RDD[(K, V)]`. Please be careful that we intentionally denote `V` as return type of `reduce` which should be same as input type of the list element. Suppose now we want to calculate the total payment by each patient. A payment record in the dataset is in the form of `(patient-id, PAYMENT, timestamp, value)`.
 ```scala
 val payment_events = lines.filter(line => line.contains("PAYMENT"))
 val payments = payment_events.map{ x =>
@@ -190,7 +192,7 @@ and output is
 (019E4729585EF3DD,108980.0)
 (01AC552BE839AB2B,108530.0)
 ```
-Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous function that return second element of a tuple, which is the total payment a patient. The second paramter of `soryBy` controls order of sorting. In above example, `false` means decreasing order.
+Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous function that returns the second element of a tuple, which is the total payment a patient. The second parameter of `sortBy` controls the order of sorting. In above example, `false` means decreasing order.
 
 
 {% exercise Calculate the maximum payment of each patient %}
@@ -234,7 +236,7 @@ res10: Double = 26337.091771112468
 
 
 ## Set Operation
-RDDs support many of the set operations, such as `union` and `intersection`, even when the RDDs themselves are not properly sets. For example, we can combine the two files by the `union` fucntion. Please notice that `union` here is not strictly identical to union operation in mathmatics as Spark will not remove duplications.
+RDDs support many of the set operations, such as `union` and `intersection`, even when the RDDs themselves are not properly sets. For example, we can combine the two files by the `union` function. Please notice that `union` here is not strictly identical to union operation in mathematics as Spark will not remove duplications.
 
 ```scala
 scala> val linesControl = sc.textFile("input/control.csv")

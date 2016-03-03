@@ -10,15 +10,15 @@ navigation:
 - Being able to write basic MapReduce programs.
 {% endobjective %}
 
-We have put the input data into HDFS in the [previous]({{ site.baseurl }}/hdfs-basic/) section. Now, let's learn how to write a distributed computing program using the *Hadoop MapReduce* paradigm. 
+In the [previous]({{ site.baseurl }}/hdfs-basic/) section we put the input data into the Hadoop Distributed File System (HDFS). Now, let's learn how to write a distributed computing program using the *Hadoop MapReduce* paradigm. 
 
 
 # MapReduce
 MapReduce works by breaking the processing into two phases: the map phase and the reduce phase. Each phase has key-value pairs as input and output, the types of which can be chosen by the user. The overview of the MapReduce paradigm is shown below.
 ![MapReduce Flow]({{ site.baseurl }}/image/post/mapreduce-flow.jpg "MapReduce Flow")
-The input files are split and fed to mappers on different machines. Each mapper processes the corresponding input splits line by line, and outputs some key-value pairs on the local disk. Hadoop then shuffles these intermediate files, which includes sorting the key-value pairs and copying them across machines, to ensure that the intermediate ouputs with the same key are sent to the same reducer. The reducer then combines each group of key-value pairs with the same key into a single key-value pair. Since the shuffle phase is carried out automatically by Hadoop, the user only needs to define the `map` and `reduce` operations.
+The input files are split and fed to mappers on different machines. Each mapper processes the corresponding input file "splits" line by line, and outputs the resulting key-value pairs to the local disk. Hadoop then performs a shuffle operation wherein the key-value data output by the map operations is sorted across machines, this is done to collect the key value data and group it by key so that data with the same key is sent to the same reducer. The reducers then combines each group of key-value pairs with the same key into a single key-value pair. Since the shuffle phase is carried out automatically by Hadoop, the user only needs to define the `map` and `reduce` operations.
 
-Let's write a simple MapReduce program in Java to calculate the frequency of each `event-id` in our **case.csv** file described in [sample data]({{ site.baseurl }}/data/).
+Let's write a simple MapReduce program in Java to calculate the frequency of each `event-id` in our **case.csv** file (described in [sample data]({{ site.baseurl }}/data/)).
 
 A MapReduce program consists of three parts:
 1. A Mapper Class
@@ -57,14 +57,14 @@ The map function is illustrated below.
 The 4-tuple ` <LongWritable, Text, Text, IntWritable> ` specifies that the input key-value pair is of type `<LongWritable, Text>` and the output key-value type is of type `<Text, IntWritable>`.
 Since the input files are plain text, we use the input key-value pair of type `<LongWritable, Text>`. The key is the offset of the start of each line, which is not used here. The value is the actual text in the corresponding line.
 
-We use `toString()` to transform the Hadoop `Text` object into the more familiar Java `String` object and extract only the second field of the line (recall that each line is in the form of `patient-id, event-id, timestamp, value`). We then call `context.write` to write the output. Each `line` will be mapped to a pair as `(event-id, 1)`, where 1 is of type IntWritable. Since 1 is a constant, we use a static variable to store it. 
+We use `toString()` to transform the Hadoop `Text` object into the more familiar Java `String` object and extract only the second field of the line (recall that each line is in the form of `patient-id, event-id, timestamp, value`). We then call `context.write` to write the output. Each `line` will be mapped to a pair structured as `(event-id, 1)`, where 1 is of type IntWritable. Since 1 is a constant, we use a static variable to store it. 
 
 ## Reducer
-Hadoop internally performs a shuffling process to ensure that the output of the mapper with a same key (same `event-id` in our problem) will go to a same reducer. A reducer thus receives a key and a collection of corresponding values (Java `Iterable` object). In our case the key-value pair is `(event-id, [1,1,...,1])`.
+Hadoop internally performs a shuffling process to ensure that the output of the mapper with the same key (same `event-id` in our case) will go to the same reducer. A reducer thus receives a key and a collection of corresponding values (Java `Iterable` object). In our case the key-value pair is `(event-id, [1,1,...,1])`.
 This can be illustrated with the following example.
 ![Reducer Flow]({{ site.baseurl }}/image/post/reduce-flow.jpg "Reducer Flow")
 
-Create a Java file `FrequencyReducer.java`. The FrequencyReducer class extends the predefined `Reducer` class and overwrite the `reduce` function.
+Create a Java file `FrequencyReducer.java`. The FrequencyReducer class extends the predefined `Reducer` class and overwrites the `reduce` function.
 
 ```java
 import java.io.IOException;
@@ -132,15 +132,15 @@ public class Frequency {
 ```
 
 ## Compile and Run
-You can find all source code in `sample/hadoop` folder. You will need to navigate to that folder first, then compile, creat jar and run.
+You will find all of the source code in the `sample/hadoop` folder. You will need to navigate to that folder first, then compile, and then create and run the jar.
 
 ### Compile
-Compile the three java files with `javac`
+Compile the three java files with `javac`:
 ```
 > mkdir classes
 > javac -cp $(hadoop classpath) -d classes FrequencyMapper.java FrequencyReducer.java Frequency.java 
 ```
-where `hadoop classpath` outputs the required class path to compile a Hadoop program. `-d classes` puts the generated classes into the `classes` directory. You will  see three class files in the `classes` directory now.
+where `hadoop classpath` outputs the required class path to compile a Hadoop program. `-d classes` puts the generated classes into the `classes` directory. After running this command you will see three class files in the `classes` directory.
 
 
 ### Create JAR
@@ -150,26 +150,26 @@ jar -cvf Frequency.jar -C classes/ .
 ```
 
 {% msginfo %}
-In real-world application development, you will not need to compile files manually one by one then create jar. Instead, build tools like Maven, Gradle, SBT will be employed.
+In real-world application development, you will not need to compile files manually one by one and then create the jar. Instead, build tools like Maven, Gradle, SBT can be used to handle this process.
 {% endmsginfo %}
 
 ### Run
-You can run the jar file just created with
+You can run the jar file just created with the command:
 ```
 hadoop jar Frequency.jar Frequency input/case.csv output
 ```
-where `Frequency.jar` is the name of the jar file we just created and `Frequency` is the Java class to run. `input` and `output` are parameters to the `Frequency` class we implemented. Please be careful that `input/case.csv` and `output` are used as path in HDFS. We specify the file `input/case.csv` as input, but we can also only specify `input` as the input parameter if we want to take both `input/case.csv` and `input/control.csv` into consideration. Notice than you don't need to create `output` folder yourself as Hadoop framework will do that for you.
+where `Frequency.jar` is the name of the jar file we just created and `Frequency` is the Java class to run. `input` and `output` are parameters to the `Frequency` class we implemented. Please note that `input/case.csv` and `output` are both paths in HDFS (and not the local file system). We specify the file `input/case.csv` as input, but we could only specify `input` as the input parameter if we want to process all files in the input folder in HDFS (in this case both `input/case.csv` and `input/control.csv`). Note that in that case you wouldn't need to create `output` folder yourself as the Hadoop framework would do that for you.
 {% msginfo %}
-You may see log output like 'uber mode'. It means mappers and reducers will be forced to run under the same YARN container.
+In the log output you may see messages like 'uber mode'. This means that the mappers and reducers will be forced to run under the same YARN container.
 {% endmsginfo %}
-While the program is running, you will see a lot of messages. After the job finishes, you can check the results in the `output` directory (created by Hadoop) by 
+While the program is running, you will see a lot of messages. After the job finishes, you can check the results in the `output` directory (created by Hadoop) by using the commands:
 
 
 ```
 hdfs dfs -ls output
 hdfs dfs -cat output/*
 ```
-You will get results like
+You will get results like:
 ```
 DIAG03812       2
 DIAG03819       1
@@ -181,15 +181,15 @@ DIAG07032       1
 DIAG1120        5
 ...
 ```
-Please notice that the output content order may be different from above.
-If the output files are not too large, you can copy and merge all of them into a local file by using
+Please note that the output content order may be different from above.
+If the output files are not too large, you can copy and merge all of them into a local file by using the command:
 ```
 > hdfs dfs -getmerge output local_output.txt
 ```
 
 ### Clean up
 
-If you run the job again, you will see an error message saying the `output` directory already exists. This prevents a user to accidentally overwrite a file. You can remove the directory by
+If you run the job again, you will see an error message saying the `output` directory already exists. This prevents a user from accidentally overwriting a file. You can remove the directory by using the command:
 ```
 hdfs dfs -rm -r output
 ```
