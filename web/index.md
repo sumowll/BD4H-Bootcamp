@@ -29,8 +29,10 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 1. [Scala Basics](scala-basic)
 2. [Spark Basics](spark-basic)
 3. [Spark SQL](spark-sql)
-4. [Spark GraphX](spark-graphx)
+4. [Spark Application](spark-application)
 5. [Spark MLlib](spark-mllib)
+6. [Spark GraphX](spark-graphx)
+
 
 <div class="text-center col-md-12"><a href="hadoop/" class="btn btn-lg btn-info">Start Learn <span class="glyphicon glyphicon-export"></span></a></div>
 
