@@ -39,12 +39,29 @@ $(document).ready(function () {
 
 // Table of Content
 $(function() {
+    var timeout = 0;
+    function resizeMenu() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            var height = $("#toc").height();
+            var windowHeight = $(window).height();
+            var position = $("#toc").position();
+            if ((height + position.top) > windowHeight) {
+                $("#toc").css("bottom", 0);
+            } else {
+                $("#toc").css("bottom", "initial"); 
+            }
+        }, 600);
+    }
+
     $("#toc").tocify({
         // 0-th is the header
         context: ".container:eq( 1 )",
         extendPage: false,
         scrollTo: 70
     });
+
+    $(window).resize(resizeMenu);
 })
 
 // Navigation Scripts to Show Header on Scroll-Up
