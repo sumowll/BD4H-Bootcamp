@@ -6,16 +6,16 @@ navigation:
   section: [1, 4]
 ---
 {% objective %}
-- Know how to work with Hive interactive shell.
-- Can create table.
-- Can load data into table.
-- Can run basic query.
+- Learn how to work with the Hive interactive shell.
+- Learn how to create tables in Hive.
+- Learn how to load data into Hive tables.
+- Learn how to run basic Hive querys.
 {% endobjective %}
 
-This section shows the basic usage of Hadoop Hive. Hive provides SQL like language `HiveQL` on top of Hadoop. Instead of writing raw MapReduce program, you can work on data warehouse task using simple farmiliar query language. After learning this section, you will be able to use SQL-like syntax to query big data.
+This section shows the basic usage of Hadoop Hive. Hive uses a SQL-like language called `HiveQL`, and runs on top of Hadoop. Instead of writing raw MapReduce programs, Hive allows you to perform data warehouse tasks using a simple and farmiliar query language. After completing this section, you will be able to use `HiveQL` to query big data.
 
 # Interactive shell
-In the sample code, we will continue to use our event tuple [patient data]({{ site.baseurl }}/data/). Let's start the Hive CLI interactive shell first by typing `hive` in command line
+In the sample code below we will continue to use the same event tuple [patient data]({{ site.baseurl }}/data/). Let's start the Hive CLI interactive shell first by typing `hive` in the command line.
 ```bash
 > cd bigdata-bootcamp/sample/hive
 > hive
@@ -25,7 +25,7 @@ hive>
 ```
 
 # Create table
-Before loading data, we first need to define a table just like working with database server with SQL.
+Before loading data, we first need to define a table just like we would if we were working with a database server such as SQL.
 ```sql
 hive> CREATE TABLE events (
         patient_id STRING,
@@ -39,7 +39,7 @@ OK
 Time taken: 0.289 seconds
 hive> 
 ```
-And you can check existing tables and schema with commands
+And you can check existing tables and schema with the commands `SHOW TABLES;` and `DESCRIBE table_name;` respectively.
 ``` sql
 hive> SHOW TABLES;
 OK
@@ -55,7 +55,7 @@ Time taken: 0.221 seconds, Fetched: 4 row(s)
 ```
 
 # Load data
-Let's insert data into the table.
+Next we'll insert data into the table.
 ```sql
 hive> LOAD DATA LOCAL INPATH 'data'
       OVERWRITE INTO TABLE events;
@@ -67,7 +67,7 @@ Time taken: 0.521 seconds
 
 # Query
 ## Basic
-Then you can run SQL we are farmiliar with like
+With the data loaded you can run farmiliar SQL statements like:
 ``` sql
 hive> SELECT patient_id, count(*) FROM events
       GROUP BY patient_id;
@@ -87,7 +87,7 @@ Time taken: 20.351 seconds, Fetched: 300 row(s)
 ```
 
 ## Save result
-You can also save query result to local directory
+You can also save query results to local directory (in the local file system):
 ``` sql
 hive> INSERT OVERWRITE LOCAL DIRECTORY 'tmp_local_out'
       ROW FORMAT DELIMITED
@@ -103,15 +103,15 @@ OK
 Time taken: 17.034 seconds
 ```
 
-You can learn more about the syntax from its [language manual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+You can learn more about Hive syntax from the [language manual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
 
 # Besides shell
-Besides running commands with interactive shell, you can also run a script in batch mode without interaction. In the `sample/hive` folder, you can run the entire script with
+Besides running commands with the interactive shell, you can also run a script in batch mode automatically. For example, in the `sample/hive` folder, you can run the entire `sample.hql` script with the command:
 ```bash
 > hive -f sample.hql
 ```
 
-The content of the script is simply the combination of commands we run in shell with one more statement to drop existing table if necessary
+The contents of the script is simply all of the commands that we ran in the shell, with one additional statement to drop existing table if necessary:
 ``` sql
 DROP TABLE IF EXISTS events;
 
@@ -139,7 +139,7 @@ FROM events
 GROUP BY patient_id;
 ```
 
-Further, it's possible to run [hive as a server](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients) and connect to the server with JDBC or with its beeline client.
+Furthermore, it's also possible to run [hive as a server](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients) and connect to the server with JDBC or with its beeline client.
 
 # Related tools
-Hive translate queries into a series of MapReduce jobs, thus not suitable for realtime setting. Alternative tools inspired and influeced by Hive are getting more attention, for example, [Cloudera Impala](http://impala.io/) and [Spark SQL](https://spark.apache.org/sql/).
+Hive translate queries into a series of MapReduce jobs, therefore it is not suitable for realtime use cases. Alternative tools inspired and influeced by Hive are getting more attention lately, for example, [Cloudera Impala](http://impala.io/) and [Spark SQL](https://spark.apache.org/sql/).
