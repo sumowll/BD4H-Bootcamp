@@ -1,18 +1,18 @@
 ---
 layout: page
 title: Big Data Bootcamp
-description: Georgia Tech big data bootcamp training material
+description: Georgia Tech Big Data Bootcamp training material
 navigation:
   section: [0]
 ---
 
 # Welcome
 
-Welecome to Big Data Bootcamp training. This training material is developed by [Sunlab](http://www.sunlab.org/) and [Polo Club](http://poloclub.gatech.edu/). Through the training, you will learn  big data tools in [Hadoop](http://hadoop.apache.org) and [Spark](http://spark.apache.org) ecosystem. 
+Welecome to the Big Data Bootcamp. This training material is has been developed by [Sunlab](http://www.sunlab.org/) and [Polo Club](http://poloclub.gatech.edu/). By the end of the training, you will learn about the big data tools that are part of the [Hadoop](http://hadoop.apache.org) and [Spark](http://spark.apache.org) ecosystems. 
 
-The training material [sample data](data) is for healthcare applications, but you can  adapt what you learned to other domains and there is no requirement of healthcare background knowledge.
+The training material [sample data](data) is for healthcare applications, but you can adapt what you learned to other domains and there is no requirement of healthcare background knowledge.
 
-To get started, please [**setup learning environment**](environment) first.
+To get started, please [**setup the learning environment**](environment) first.
 
 # Content Summary
 Content of the training material is divided into two chapters **Hadoop** and **Spark**.
