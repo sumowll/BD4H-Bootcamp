@@ -12,9 +12,9 @@ navigation:
 - Can write user defined function(UDF).
 {% endobjective %}
 
-The goal of this module is to show how to construct feature vectors from the [raw event sequences data]({{ site.baseurl }}/data/) through [Hadoop Pig](http://pig.apache.org/), a high-level data processing tool on top of Hadoop MapReduce. Instead of writing Java program, you will write high level script Pig Latin and let the framework tranlsate it into Map Reduce jobs for you. 
+The goal of this module is to show how to construct feature vectors from the [raw event sequences data]({{ site.baseurl }}/data/) through [Hadoop Pig](http://pig.apache.org/), a high-level data processing tool on top of Hadoop MapReduce. Instead of writing a Java program, you will write a high level script using Pig Latin and let the framework tranlsate it into MapReduce jobs for you. 
 
-Througout the training, you will learn how to run interactive shell and run the Pig script. We will first show basic knowledge of Pig in terms of _interactive shell_ and _data type_, then show how to complete the feature construction task step by step. The high-level process of feature construction is depicted below
+Throughout the training, you will learn how to run Pig interactively and run the Pig script. We will first demonstrate basic knowledge of Pig in terms of _interactive shell_ and _data type_, then show how to complete the feature construction task step by step. The high-level process of feature construction is depicted below
 ![feature construction high level]({{ site.baseurl }}/image/post/hadoop-pig-process.svg "Feature Construction Process")
 # Interactive Shell
 Pig provides a shell to manipulate data interactively. Let's start a shell and run that in local mode for demo purpose
@@ -22,13 +22,13 @@ Pig provides a shell to manipulate data interactively. Let's start a shell and r
 > cd bigdata-bootcamp/sample/pig
 > pig -x local
 ```
-and you will see promte as
+and you will see the prompt as
 ``` pig
 [info] ...
 grunt>  
 ```
 
-Next, you can input Pig Latin **statement**, the basic construct of using Pig. For example,
+Next, you can input Pig Latin **statement**, the basic construct for using Pig. For example,
 ``` pig
 grunt> case_events = LOAD 'data/case.csv' USING PigStorage(',') AS (patientid:chararray, eventname:chararray, dateoffset:int, value:double);
 ```
@@ -36,7 +36,7 @@ Here we call the `case_events` a [**relation**](http://pig.apache.org/docs/r0.14
 ```
 (patientid:chararray, eventname:chararray, dateoffset:int, value:double)
 ```
-which define a four-field tuple with names and type of each field corresponds to our raw data. Here we use the `PigStorage`, the most common adapter in Pig to load/save data from/into file system (including HDFS). Of course you can load data from other source like database using other `Storage` interface.
+which defines a four-field tuple with names and types of each field corresponding to our raw data. Here we use the `PigStorage`, the most common adapter in Pig to load/save data from/into file system (including HDFS). Of course you can load data from other sources (such as databases) using other `Storage` interface.
 
 You can check the schema using `DESCRIBE` operator
 ``` pig
@@ -55,7 +55,7 @@ grunt> DUMP case_events;
 ```
 {% msgwarning %}
 #### Limit Output
-Sometimes, `DUMP` with generate a lot of output but you may just want to see few examples. Pig it self doesn't have operator like _head_, instead you can
+Sometimes, `DUMP` with generate a lot of output but you may just want to see few examples. Pig itself doesn't have operator like _head_, instead you can
 ```pig
 tmp = LIMIT A 10;
 DUMP tmpl
@@ -65,15 +65,15 @@ to print top 10 items in relation `A`.
 
 {% msginfo %}
 #### About Lazy Evaluation
-Pig will not run immediately after you input a statement. Only when you need to `save` or `dump`, Pig will actually run. The good part of this property is that internally Pig can be optimized. A potential problem is that you may not realize you made a mistake until later statement that has output. If you are not sure, on small data set, you can `dump` frequently.
+Pig will not run immediately after you input a statement. Only when you need to `save` or `dump`, will Pig actually run. The good part of this property is that internally Pig can be optimized. A potential problem is that you may not realize you have made a mistake until you reach a later statement that has output. If you are not sure, on small data set, you can `dump` frequently.
 {% endmsginfo %}
 
-The shell also provide other commands. Important ones include but not limited to
+The shell also provide other commands. Important ones include (but not limited to)
 
 1. `fs`: serve same purpose as `hdfs dfs`, so that your can type `fs -ls` directly in pig shell instead of `hdfs dfs -ls`.
 2. `pwd`: check present working directory in case file is not found.
 
-type `help` to learn more about these commands in pig shell. Pig operators covered in later example are listed in below table, please refer to [Pig Offical Document](https://pig.apache.org/docs/r0.11.1/basic.html#Relational+Operators) to learn more.
+type `help` to learn more about these commands in pig shell. Pig operators covered in later example are listed in the table below, please refer to [Pig Offical Document](https://pig.apache.org/docs/r0.11.1/basic.html#Relational+Operators) to learn more.
 
 | Operator  | Explaination |
 | :------------- | :------------- |
@@ -93,29 +93,29 @@ type `help` to learn more about these commands in pig shell. Pig operators cover
 Finally, type `quit` to leave the shell.
 
 # Data type
-In this section, we briefly describe data types. Pig can work with simple type like `int`, `double`. More important types are `tupe` and `bag`.
+In this section, we briefly describe data types. Pig can work with simple types like `int`, `double`. More important types are `tuple` and `bag`.
 
 **Tuple** is usually represented with `()`, for example
 ```
 (021FB39310BC3797,DRUG55154239805,1456,10.0)
 ```
-In Pig Latin, we can either fetch field by index (like `$0`) or by name (like `patientid`). With index we can also fetch a range of fields. For example `$2..` means _2_-st to last.
+In Pig Latin, we can either fetch fields by index (like `$0`) or by name (like `patientid`). With index we can also fetch a range of fields. For example `$2..` means _2_-nd to last.
 
-**Bag** is usually denoted with `{}`, from result of `DESCRIBE case_events` we can see `case_events` itself is a bag. You can regard bag as a special unordered `set` that doesn't check duplication.
+**Bag** is usually denoted with `{}`, from result of `DESCRIBE case_events` we can see `case_events` itself is a bag. You can regard bag as a special unordered `set` that doesn't check for duplicates.
 
-Check out the [official documentation about data type](http://pig.apache.org/docs/r0.14.0/basic.html#Data+Types+and+More) for more. You will find examples of the type in below samples, pay attention to result of `DESCRIBE` and you will find types and names of fields.
+Check out the [official documentation about data type](http://pig.apache.org/docs/r0.14.0/basic.html#Data+Types+and+More) for more. You will find examples of the type in the samples below. Pay attention to the result of `DESCRIBE` where you will find types and names of fields.
 
 # Feature construction
-Next, you will learn by practicing in the context of feature construction for predictive modeling. You will learn built-in operators like `GROUP BY`, `JOIN` as well as User Defined Function (UDF) in python. The result of feature construction will be feature matrix that can be consumed by a lot of machine learning packages.
+Next, you will learn by practicing how to construct feature for predictive modeling. You will learn built-in operators like `GROUP BY`, `JOIN` as well as User Defined Function (UDF) in python. The result of feature construction will be feature matrix that can be used by a lot of machine learning packages.
 
 ## Overview
-Feature construction works by like below figure, where sample data format of each step is depicted.
+Feature construction works by like shown below, where sample data format of each step is depicted.
 ![feature construction]({{ site.baseurl }}/image/post/hadoop-pig-overview.jpg "Feature Construction Process")
 
-We will start from loading raw data. Then we extrat the prediction target(i.e. the patient will have heart failure or not). Next, we filter and aggregate events of patient into features. After that we need to link prediction target and features to compose complete training/testing samples. Finally we split the data into training and testing sets and save.
+We will start from loading raw data. Then we extract the prediction target (i.e. whether the patient will have heart failure or not). Next, we filter and aggregate events of patient into features. After that we need to link prediction target and features to generate complete training/testing samples. Finally we split the data into training and testing sets and save.
 
 ## Load data
-First, make sure you are in `bigdata-bootcamp/sample/pig` folder and ou can check availability of raw data file by
+First, make sure you are in `bigdata-bootcamp/sample/pig` folder and you can check availability of raw data file by
 ``` pig
 grunt> pwd
 file:/path/to/bigdata-bootcamp/sample/pig
@@ -130,24 +130,24 @@ grunt> events = LOAD 'data/' USING PigStorage(',') AS (patientid:chararray, even
 ```
 
 ## Extract target and filter
-Our data set can be used for predicting heart failure (HF), and we want to predict heart failure one year before it happen. As a result, we need to find the heart failure event date (for case patient, event value is 1 means HF happened, for control patient value is 0 as there's no HF) and filter out events that happened within one year to HF. 
+Our data set can be used for predicting heart failure (HF), and we want to predict heart failure one year before it happens. As a result, we need to find the heart failure event date (for case patient, event value of 1 means HF happened; for control patient value is 0 as there's no HF) and filter out events that happened within one year to HF. 
 ![Prediction Window]({{ site.baseurl }}/image/post/prediction-window.jpg "Prediction Window")
-As illustrated in above figure, we will need to find HF diagnostic date and use that date to filter out events witin prediction window only.
+As illustrated in above figure, we will need to find the HF diagnostic date and use that date to filter out events within the prediction window only.
 
 ``` pig
 grunt> targets = FILTER events BY eventname == 'heartfailure';
 grunt> event_target_pairs = JOIN events BY patientid, targets BY patientid;
 grunt> filtered_events = FILTER event_target_pairs BY (events::dateoffset <= targets::dateoffset - 365);
 ```
-After `JOIN` we have some redundant fields we will no longer need, so that we can project `filtered_events` into a simpler format.
+After `JOIN` we have some redundant fields that we will no longer need, so that we can project `filtered_events` into a simpler format.
 ```pig
 grunt> filtered_events = FOREACH filtered_events GENERATE $0 AS patientid, $1 AS eventname, $3 AS value;
 ```
-Notice that as dateoffset is no longer useful after filtering, we droped that.
+Notice that as dateoffset is no longer useful after filtering, we dropped that.
 
 ## Aggregate events into feature
 ### Illustrative sample
-Our raw data is event sequence. In order to aggregate that into feature suitable for machine learning, we can **sum** up event value as feature value corresponds to the given event. Each event type will become a feature and we will redictly use event name as feature name. For example, given below raw event sequence for a patient
+Our raw data is event sequence. In order to aggregate that into feature suitable for machine learning, we can **sum** up event value as feature value corresponds to the given event. Each event type will become a feature and we will directly use event name as feature name. For example, given below raw event sequence for a patient
 
 ```
 FBFD014814507B5C,PAYMENT,1220,30.0
@@ -164,7 +164,7 @@ We can get feature name value pair for this patient with ID `FBFD014814507B5C` a
 (DRUG52959072214, 30.0)
 ```
 ### Code
-Below code will aggregate `filtered_events` from [previous filter step](#extract-target-and-filter) into tuples in `(patientid, feature name, feature value)` format
+The code below code will aggregate `filtered_events` from [previous filter step](#extract-target-and-filter) into tuples in `(patientid, feature name, feature value)` format
 ``` pig
 grunt> feature_name_values = GROUP filtered_events BY (patientid, eventname);
 grunt> DESCRIBE feature_name_values;                                         
@@ -182,9 +182,9 @@ grunt> DUMP feature_name_values;
 
 ## Assign integer-ID to feature
 ### Get unique feature-ID
-In machine learning setting, we want to assign an index to each different feature rather than directly use name. Form example, DIAG38845 corresponds to feature-id=1 and DIAGV6546 corresponds to feature-id=2.
+In machine learning setting, we want to assign an index to each different feature rather than directly use its name. For example, DIAG38845 corresponds to feature-id=1 and DIAGV6546 corresponds to feature-id=2.
 
-Below code find unique feature name using `DISTINCT` operator and assign an index to feature name with `RANK` operator
+The code below is used to extract unique feature names using the `DISTINCT` operator and assign an index to feature name with `RANK` operator
 
 ``` pig
 grunt> feature_names = FOREACH feature_name_values GENERATE featurename;
@@ -223,12 +223,12 @@ grunt> DUMP feature_id_values;
 
 ## Format feature matrix
 ### Illustratative example
-Now, we are approaching the final step. We need to create a feature vector for each patient. Our ultimate result will convert each patient into a feature vector associated with target we want to predict. We already get target in the `targets` relation. Our final representation is like below
+Now, we are approaching the final step. We need to create a feature vector for each patient. Our ultimate result will convert each patient into a feature vector associated with target we want to predict. We already get target in the `targets` relation. Our final representation is shown below
 ```
 target featureid:value[featureid:value]...
 ```
 
-For example, given patient `2363A06EF118B098` with below features and don't have heart failure (target value is 0)
+For example, given patient `2363A06EF118B098` with the following features and doesn't have heart failure (target value is 0)
 ```
 (2363A06EF118B098,1,60)
 (2363A06EF118B098,4,30)
@@ -240,7 +240,7 @@ we will encode the patient features as
 ```
 0 1:60 4:30 9:60 23:10 45:90
 ```
-notice that the `feautreid` is in increase order and this is required by a lot of machine learning package. We call such target (aka label) and features pair a `sample`.
+notice that the `feautreid` is in increasing order and this is required by a lot of machine learning packages. We call such target (aka label) and features pair a `sample`.
 
 ### Code
 Let's group `feature_id_values` by patientid and check the structure
@@ -249,13 +249,13 @@ grunt> grpd = GROUP feature_id_values BY patientid;
 grunt> DESCRIBE grpd;
 grpd: {group: chararray,feature_id_values: {(patientid: chararray,featureid: long,value: long)}}
 ```
-We can find `feature_id_values` is a bag and we want to convert it into a string like `1:60 4:30 9:60 23:10 45:90` mentioned above. Here we will employ UDF defined in `utils.py` as
+We find that `feature_id_values` is a bag and want to convert it into a string like `1:60 4:30 9:60 23:10 45:90` as mentioned above. Here we will employ UDF defined in `utils.py` as
 ```python
 @outputSchema("feature:chararray")
 def bag_to_svmlight(input):
     return ' '.join(( "%s:%f" % (fid, float(fvalue)) for _, fid, fvalue in input))
 ```
-The script simply enumerate all tuples from `input` and form id value pairs then join. `@outputSchema("feature:chararray")` specifies the return value name and tupe. In order to use that, we need to register it first
+The script simply enumerates all tuples from `input` and forms id-value pairs then join. `@outputSchema("feature:chararray")` specifies the return value name and tuple. In order to use that, we need to register it first
 ```pig
 grunt> REGISTER utils.py USING jython AS utils;
 grunt> feature_vectors = FOREACH grpd {
@@ -283,7 +283,7 @@ grunt> DUMP samples;
 ```
 
 ## Split and save
-We are almost there, just save the `samples`. In machine learning setting, it's a common practice to split data into training and testing samples. We can do that by associate each sample with a random key and split with that random key.
+We are almost there, just save the `samples`. In machine learning settings, it is common practice to split data into training and testing samples. We can do that by associating each sample with a random key and split with that random key.
 
 ``` pig
 grunt> samples = FOREACH samples GENERATE RANDOM() AS assignmentkey, *;
@@ -301,7 +301,7 @@ grunt> STORE testing INTO 'testing' USING PigStorage(' ');
 # Script
 Running commands interactively is efficient, but sometimes we want to save the commands for future reuse purpose. We can save the commands we run into a script file (i.e. features.pig) and run the entire script in batch mode.
 
-You can checkout in _sample/pig_ folder. Navigate to there and run the script simply with
+You can check this out in _sample/pig_ folder. Navigate to there and run the script simply with
 ```bash
 cd bigdata-bootcamp/sample/pig
 pig -x local features.pig
