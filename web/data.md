@@ -4,11 +4,11 @@ title: About Data
 description: Georgia Tech big data bootcamp training material
 ---
 
-Throughout this training, we will use a small sample data set. If you follow the instructions of [environment setup]({{ site.baseurl }}/environment), you will be able to find the sample data in `~/bigdata-bootcamp/data` folder.
+Throughout the training exercises on this site we will use a small sample data set. If you followed the instructions documented on the [environment setup]({{ site.baseurl }}/environment) page to set up your environment, you will find the sample data in the `~/bigdata-bootcamp/data` folder in the virtual environment.
 
-There are two files, `case.csv` and `control.csv` respectively. We define patients who developed heart failure (HF) at some time point as case patients and who didn't develop HF as control patients.
+There are two data files with names `case.csv` and `control.csv` respectively. For the purpose of these exercises we will define patients who developed heart failure (HF) at some time point as case patients, and those who didn't develop HF as control patients.
 
-Each line of the sample data file consists of a tuple with format `(patient-id, event-id, timestamp, value)` as follows:
+Each line of the sample data file consists of a tuple structured as `(patient-id, event-id, timestamp, value)`, below are a few lines as an example:
 
 ``` text
 020E860BD31CAC69,DRUG36987254604,968,30.0
@@ -23,18 +23,18 @@ Each line of the sample data file consists of a tuple with format `(patient-id, 
 020E860BD31CAC69,heartfailure,956,1.0
 ```
 
-- `patient-id` is just a patient identifier (id) in order to differentiate records from different patients. For example, the portion of data we show above is all about patient with id `020E860BD31CAC69`.
-- `event-id` encodes all the clinical events that a patient had. For example, `DRUG00440128228` means a drug with National Drug Code as `00440128228`, `DIAG486` means the first 3 digit [ICD9 code](https://www.cms.gov/medicare-coverage-database/staticpages/icd-9-code-lookup.aspx), which means [Pneumonia](http://www.icd9data.com/2012/Volume1/460-519/480-488/486/486.htm) in this case and `PAYMENT` means that the patient made a payment with the corresponding dollar amount.
-- `timestamp` indicates the date at which an event happened. Here the timestamp is not real date but an offset from an unspecified start point for simplicity of processing and for privacy of patients.
-- `value` is the associated value of an event. See below for a detailed description.
+- `patient-id` is just a patient identifier (id) in order to differentiate records from different patients. For example, the portion of data we show above is all about the same patient, who has an id of `020E860BD31CAC69`.
+- `event-id` encodes all the clinical events that a patient has had. For example, `DRUG00440128228` indicates that the patient was taking a drug identified by a National Drug Code of `00440128228`. The numbers in `DIAG486` are the first 3 digits of an [ICD9 code](https://www.cms.gov/medicare-coverage-database/staticpages/icd-9-code-lookup.aspx), which in this case is the code for [Pneumonia](http://www.icd9data.com/2012/Volume1/460-519/480-488/486/486.htm). For this data an event-id of `PAYMENT` means that the patient made a payment with the corresponding dollar amount.
+- `timestamp` indicates the date at which the event on that row happened. Here the timestamp is not formatted as a real date but rather as an offset from an unspecified start point. This is done both to improve the simplicity of processing and to protect the privacy of the patients' data.
+- `value` is the associated value for an event. See the below table for a detailed description data in the value field.
 
 |event type| sample `event-od`| value meaning| example|
 |---------:|:-----------------|:-------------|:-------------|
-|diagnostic code|DIAG486|diagnosed with certain disease, value always be `1.0`| 1.0 |
-|drug consumption|DRUG00440128228|dosage of drug|30|
-|payment|PAYMENT| payment made on certain `timestamp`| 15000|
-|heartfailure|heartfailure| indicator of heart failure event| 1 |
+|diagnostic code|DIAG486|Will always be `1.0` for diagnose events| 1.0 |
+|drug consumption|DRUG00440128228|Dosage of the drug|30|
+|payment|PAYMENT|Amount of payment made on `timestamp` date| 15000|
+|heartfailure|heartfailure|Indicator of heart failure event| 1.0 |
 
 {% comment %}
-For `drug` it means the dosage, for `payment` means dollar amount and for `diagnostic` type event like `DIAG486` value equals `1` just means the event happened. The event `heartfailure` is a little bit different, for control patients, you will find event `heartfailure` have `value` equals `0` and for case patient equals `1`. The above sample data shows the patient `020E860BD31CAC69` was diagnosed with heart failure at timestamp 956.
+For `drug` the value corresponds to the drug dosage, for `payment` the value corresponds to the dollar amount of the payment, and for `diagnostic` events like `DIAG486` the value will always be `1` (which simply means the event happened and can be useful for counting events). The event `heartfailure` is a little bit different. You will find that the event `heartfailure` has `value` of `0` for control patients, and a `value` of `1` for case patients. The above sample data shows that patient `020E860BD31CAC69` was diagnosed with heart failure at timestamp 956.
 {% endcomment %}
