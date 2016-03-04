@@ -7,15 +7,15 @@ navigation:
 ---
 
 {% objective %}
-- Understand composition of graph in Spark GraphX.
-- Being able to create graph.
-- Being able to use built-in graph algorithm.
+- Understand composition of a graph in Spark GraphX.
+- Being able to create a graph.
+- Being able to use the built-in graph algorithm.
 {% endobjective %}
 
-In this section, we show how to create a graph with patient and diagnostic codes. Then, we show how to run algorithms on the the newly created graph.
+In this section we begin by creating a graph with patient and diagnostic codes. Later we will show how to run graph algorithms on the the graph you will create.
 
 # Basic concept
-Spark GraphX abstracts the graph as a concept named property graph, which means that each edge and vertex is associated with some property. The `Graph` class has below definition
+Spark GraphX abstracts a graph as a concept named __Property Graph__, which means that each edge and vertex is associated with some properties. The `Graph` class has the following definition
 
 ```scala
 class Graph[VD, ED] {
@@ -23,7 +23,7 @@ class Graph[VD, ED] {
   val edges: EdgeRDD[ED]
 }
 ```
-Where `VD` and `ED` define property type of vertex and edge respectively. We can regard `VertexRDD[VD]` as RDD of `(VertexID, VD)` tuple and `EdgeRDD[ED]` as RDD of `(VertexID, VertexID, ED)`.
+Where `VD` and `ED` define property types of each vertex and edge respectively. We can regard `VertexRDD[VD]` as RDD of `(VertexID, VD)` tuple and `EdgeRDD[ED]` as RDD of `(VertexID, VertexID, ED)`.
 
 # Graph construction
 Let's create a graph of patients and diagnostic codes. For each patient we can assign its patient id as vertex property, and for each diagnostic code, we will use the code as vertex property. For the edge between patient and diagnostic code, we will use number of times the patient is diagnosed with given disease as edge property.
@@ -76,7 +76,7 @@ val patientVertex = patientVertexIdRDD.
 In order to use the newly created vetext id, we finally `collect` all the patient to `VertrexID` mapping.
 
 {% msgwarning %}
-Theoritically collecting RDD to driver is not an efficient practice. One can mitigate uniqueness of ID by calculating ID directly with Hash.
+Theoritically collecting RDD to driver is not an efficient practice. One can mitigate uniqueness of ID by calculating ID directly with a Hash.
 {% endmsgwarning %}
 
 ### Diagnostic code vertex
@@ -130,7 +130,7 @@ val graph = Graph(vertices, edges)
 # Graph operation
 Given the graph we created, we can run some basic graph operations.
 ## Connected components
-[Connected component][connected-component-wiki] can help find disconnected subgraphs. GraphX provide the API to get connected components as below
+[Connected component][connected-component-wiki] can help find disconnected subgraphs. GraphX provides the API to get connected components as below
 
 ```scala
 val connectedComponents = graph.connectedComponents

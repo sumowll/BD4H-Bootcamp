@@ -20,7 +20,8 @@ In order to get the latest sample source code, scripts for environment setup, yo
 Download and install Git from [https://git-scm.com/download/win](https://git-scm.com/download/win). Please make sure you are installing this `Git for Windows`, not  `Github for Windows` because you will rely heavily on `Git Bash` terminal.
 
 ## Mac
-We highly recommend you install Git through Homebrew. To do so, please
+With Yosemite and higher, your OS comes preinstalled with git, so you do not need this step.
+Otherwise, we highly recommend you install Git through Homebrew. To do so, please
 
 1. Open `Terminal`
 2. Run `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
@@ -39,7 +40,7 @@ git clone git@bitbucket.org:realsunlab/bigdata-bootcamp.git
 
 # Setup Virtual Environment
 
-We provide two simple approaches for environment setup, the 1st one is prefered.
+We provide two simple approaches for environment setup, the 1st one is preferred.
 
 1. [Centos in Vagrant]({{ site.baseurl }}/env-vagrant-vm) (Suggested)
 2. [Docker in CoreOS VM]({{ site.baseurl }}/env-docker)

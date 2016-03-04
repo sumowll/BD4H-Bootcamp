@@ -14,7 +14,7 @@ navigation:
 
 The goal of this module is to show how to construct feature vectors from the [raw event sequences data]({{ site.baseurl }}/data/) through [Hadoop Pig](http://pig.apache.org/), a high-level data processing tool on top of Hadoop MapReduce. Instead of writing a Java program, you will write a high level script using Pig Latin and let the framework tranlsate it into MapReduce jobs for you. 
 
-Throughout the training, you will learn how to run Pig interactively and run the Pig script. We will first demonstrate basic knowledge of Pig in terms of _interactive shell_ and _data type_, then show how to complete the feature construction task step by step. The high-level process of feature construction is depicted below
+Throughout this training, you will learn how to run Pig interactively and run the Pig script. We will first demonstrate basic knowledge of Pig in terms of _interactive shell_ and _data type_, then show how to complete the feature construction task step by step. The high-level process of feature construction is depicted below
 ![feature construction high level]({{ site.baseurl }}/image/post/hadoop-pig-process.svg "Feature Construction Process")
 # Interactive Shell
 Pig provides a shell to manipulate data interactively. Let's start a shell and run that in local mode for demo purpose
@@ -28,7 +28,7 @@ and you will see the prompt as
 grunt>  
 ```
 
-Next, you can input Pig Latin **statement**, the basic construct for using Pig. For example,
+Next, you can input a Pig Latin **statement**, the basic construct for using Pig. For example,
 ``` pig
 grunt> case_events = LOAD 'data/case.csv' USING PigStorage(',') AS (patientid:chararray, eventname:chararray, dateoffset:int, value:double);
 ```
@@ -182,9 +182,9 @@ grunt> DUMP feature_name_values;
 
 ## Assign integer-ID to feature
 ### Get unique feature-ID
-In machine learning setting, we want to assign an index to each different feature rather than directly use its name. For example, DIAG38845 corresponds to feature-id=1 and DIAGV6546 corresponds to feature-id=2.
+In a machine learning setting, we want to assign an index to each different feature rather than directly use its name. For example, DIAG38845 corresponds to feature-id=1 and DIAGV6546 corresponds to feature-id=2.
 
-The code below is used to extract unique feature names using the `DISTINCT` operator and assign an index to feature name with `RANK` operator
+The code below is used to extract unique feature names using the `DISTINCT` operator and assign an index to feature name with `RANK` operator.
 
 ``` pig
 grunt> feature_names = FOREACH feature_name_values GENERATE featurename;
@@ -223,7 +223,7 @@ grunt> DUMP feature_id_values;
 
 ## Format feature matrix
 ### Illustratative example
-Now, we are approaching the final step. We need to create a feature vector for each patient. Our ultimate result will convert each patient into a feature vector associated with target we want to predict. We already get target in the `targets` relation. Our final representation is shown below
+Now, we are approaching the final step. We need to create a feature vector for each patient. Our ultimate result will convert each patient into a feature vector associated with target we want to predict. We already got target in the `targets` relation. Our final representation is shown below:
 ```
 target featureid:value[featureid:value]...
 ```
@@ -283,7 +283,7 @@ grunt> DUMP samples;
 ```
 
 ## Split and save
-We are almost there, just save the `samples`. In machine learning settings, it is common practice to split data into training and testing samples. We can do that by associating each sample with a random key and split with that random key.
+We are almost there, just save the `samples`. In a machine learning settings it is common practice to split data into training and testing samples. We can do that by associating each sample with a random key and split with that random key.
 
 ``` pig
 grunt> samples = FOREACH samples GENERATE RANDOM() AS assignmentkey, *;
@@ -299,7 +299,7 @@ grunt> STORE testing INTO 'testing' USING PigStorage(' ');
 ```
 
 # Script
-Running commands interactively is efficient, but sometimes we want to save the commands for future reuse purpose. We can save the commands we run into a script file (i.e. features.pig) and run the entire script in batch mode.
+Running commands interactively is efficient, but sometimes we want to save the commands for future reuse. We can save the commands we run into a script file (i.e. `features.pig`) and run the entire script in batch mode.
 
 You can check this out in _sample/pig_ folder. Navigate to there and run the script simply with
 ```bash
