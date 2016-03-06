@@ -144,7 +144,7 @@ Array[(org.apache.spark.graphx.VertexId, org.apache.spark.graphx.VertexId)] =
 Array((2556,0), (1260,0), (1410,0), (324,0), (180,0))
 ```
 
-The first element of the tuple is `VertexID` identical to original graph. The second element in the tuple is `connected component` represented by smalled `VertexID` in that component. In above example, five vertices belong to same component.
+The first element of the tuple is `VertexID` identical to original graph. The second element in the tuple is `connected component` represented by the lowest-numbered `VertexID` in that component. In above example, five vertices belong to same component.
 
 We can easily get number of connected components using operations on RDD as below.
 
