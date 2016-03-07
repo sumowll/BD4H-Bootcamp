@@ -36,7 +36,7 @@ import org.apache.spark.mllib.stat.{MultivariateStatisticalSummary, Statistics}
 val summary = Statistics.colStats(data.map(_.features))
   
 // summary.mean: a dense vector containing the mean value for each feature (column)
-// the mean of the first feature is 0.1
+// the mean of the first feature is 0.3
 summary.mean(0)
 
 // the variance of the first feature

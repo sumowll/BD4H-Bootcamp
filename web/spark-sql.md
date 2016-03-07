@@ -30,6 +30,15 @@ SQL context available as sqlContext.
 scala> 
 ```
 
+{% msginfo %}
+You may want to hide the log messages from spark. You can achieve that by
+``` scala
+import org.apache.log4j.Logger
+import org.apache.log4j.Level
+Logger.getRootLogger.setLevel(Level.ERROR)
+```
+{% endmsginfo %}
+
 Now load data into the shell.
 ```scala
 scala> val patientEvents = sqlContext.load("input/", "com.databricks.spark.csv").
