@@ -168,8 +168,15 @@ GraphX also provides implementation of the famous [PageRank] algorithm, which ca
 ```scala
 import org.apache.spark.graphx.util.GraphGenerators
 
+<<<<<<< HEAD
 val randomGraph:Graph[Long, Int] = 
    GraphGenerators.logNormalGraph(sc, numVertices = 100)
+=======
+
+val randomGraph:Graph[Long, Int] = 
+   GraphGenerators.logNormalGraph(sc, numVertices = 100)
+
+>>>>>>> remotes/origin/akhowala3/sparkgraphxmd-edited-online-with-bitbuck-1457310185825
 
 val pagerank = randomGraph.staticPageRank(20)
 ```
