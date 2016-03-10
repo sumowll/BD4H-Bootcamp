@@ -30,14 +30,14 @@ You can type `:quit` to stop and quit the shell, but don't do that now :-) Next 
 
 # Variables
 ## Declare `val` and `var`
-In Scala, there are two types of variable, immutable `val` and mutable `var`. Unlike some functional programming language that requires immutable variable, Scala allows existence of mutable variable but immutable is recommended as it is easier to verify the correctness of your program. Suppose you are still in the Scala interactive shell. Define an immutable variable as
+In Scala, there are two types of variable, immutable `val` and mutable `var`. Unlike some functional programming language that requires immutable variables, Scala allows existence of mutable variables but immutable is recommended as it is easier to verify the correctness of your program. Suppose you are still in the Scala interactive shell. Define an immutable variable as
 ```scala
 scala> val myInt = 1 + 1
 myInt: Int = 2
 
 scala> myInt = 3
 ```
-where `val` is a keyword in `scala` that makes the variable immutable. If you reassign a value to `myInt`, error will be reported.
+where `val` is a keyword in `scala` that makes the variables immutable. If you reassign a value to `myInt`, error will be reported.
 ```scala
 scala> myInt = 3
 <console>:8: error: reassignment to val
@@ -57,7 +57,7 @@ a: Int = 2
 ```
 {% endmsgwarning %}
 
-Instead, variable declared with `var` is mutable. Ideally, we try to use `val` instead of `var` if possible as a good practice of functional programming. 
+Instead, variables declared with `var` are mutable. Ideally, we try to use `val` instead of `var` if possible as a good practice of functional programming. 
 
 {% msginfo %}
 You may have concern that maybe too many immutable variables will be declared. Actually, with chained function calls, that situation is not the case for well organized code.
@@ -73,7 +73,7 @@ myString: String = Hello Healthcare
 ```
 
 ## Type
-Scalar may seem like a script language like JavaScript or Python, as variable type is not specified explicitly. In fact, Scala is a static type language and the compiler can implicitly infer the type in most cases. However, you can always specify a type as
+Scala may seem like a script language like JavaScript or Python, as variable type is not specified explicitly. In fact, Scala is a static type language and the compiler can implicitly infer the type in most cases. However, you can always specify a type as
 ```scala
 scala> val myDouble: Double = 3
 myDouble: Double = 3.0
@@ -101,7 +101,7 @@ triple: (x: Int)Int
 scala> triple(2)
 res0: Int = 6
 ```
-Where `x: Int` is parameter and its type, and the second `Int` is function return type. There's not explicit `return` statement, but the result of last expresssion `x*3` will be returned (similar to some other programming language like `Ruby`). In this example, as there is only one expression and return type can be infered by the compiler, you may define the function as
+Where `x: Int` is parameter and its type, and the second `Int` is function return type. There's not explicit `return` statement, but the result of last expresssion `x*3` will be returned (similar to some other programming languages like `Ruby`). In this example, as there is only one expression and return type can be infered by the compiler, you may define the function as
 ```scala
 def triple(x: Int) = x*3
 ```
