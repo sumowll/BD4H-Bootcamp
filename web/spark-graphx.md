@@ -52,7 +52,7 @@ val allEvents = sc.textFile("data/").
     map(_.split(",")).
     map(splits => PatientEvent(splits(0), splits(1), splits(2).toInt, splits(3).toDouble))
 
-// get and cache dianosticEvents as we will reuse
+// get and cache diagnosticEvents as we will reuse
 val diagnosticEvents = allEvents.
     filter(_.eventName.startsWith("DIAG")).cache()
 ```
@@ -76,7 +76,7 @@ val patientVertex = patientVertexIdRDD.
 In order to use the newly created vetext id, we finally `collect` all the patient to `VertrexID` mapping.
 
 {% msgwarning %}
-Theoritically collecting RDD to driver is not an efficient practice. One can mitigate uniqueness of ID by calculating ID directly with a Hash.
+Theoretically, collecting RDD to driver is not an efficient practice. One can obtain uniqueness of ID by calculating ID directly with a Hash.
 {% endmsgwarning %}
 
 ### Diagnostic code vertex
@@ -168,8 +168,7 @@ GraphX also provides implementation of the famous [PageRank] algorithm, which ca
 ```scala
 import org.apache.spark.graphx.util.GraphGenerators
 
-val randomGraph = Graph[Int, Int] = 
-   GraphGenerators.logNormalGraph(sc, numVertices = 100)
+val randomGraph = GraphGenerators.logNormalGraph(sc, numVertices = 100)
 
 val pagerank = randomGraph.staticPageRank(20)
 ```

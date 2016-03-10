@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo service sshd start
-sudo /sbin/service zookeeper-server start
+#sudo /sbin/service zookeeper-server start
 sudo /sbin/service hadoop-yarn-proxyserver start
 sudo /sbin/service hadoop-hdfs-namenode start
 sudo /sbin/service hadoop-hdfs-datanode start

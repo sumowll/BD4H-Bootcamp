@@ -197,7 +197,7 @@ Again in `sortBy` we use the `_` placeholder, so that `_._2` is an anonymous fun
 
 {% exercise Calculate the maximum payment of each patient %}
 ```scala
-scala> val maxPaymentPerPatient = paymentPerPatient.reduceByKey(math.max)
+scala> val maxPaymentPerPatient = payments.reduceByKey(math.max)
 ```
 Here, `reduceByKey(math.max)` is the simplified expression of `reduceByKey(math.max(_,_))` or `reduceByKey((a,b) => math.max(a,b))`. `math.max` is a function in scala that turns the larger one of two parameters.
 {% endexercise %}

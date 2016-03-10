@@ -43,4 +43,5 @@ git clone git@bitbucket.org:realsunlab/bigdata-bootcamp.git
 We provide two simple approaches for environment setup, the 1st one is preferred.
 
 1. [Centos in Vagrant]({{ site.baseurl }}/env-vagrant-vm) (Suggested)
-2. [Docker in CoreOS VM]({{ site.baseurl }}/env-docker)
+2. [Docker in AWS EC2]({{ site.baseurl}}/env-aws-docker) (Alternative)
+2. [Docker in CoreOS VM]({{ site.baseurl }}/env-docker) (To be updated)
