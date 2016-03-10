@@ -12,7 +12,7 @@ navigation:
 - Learn how to run basic Hive querys.
 {% endobjective %}
 
-This section shows the basic usage of Hadoop Hive. Hive uses a SQL-like language called `HiveQL`, and runs on top of Hadoop. Instead of writing raw MapReduce programs, Hive allows you to perform data warehouse tasks using a simple and farmiliar query language. After completing this section, you will be able to use `HiveQL` to query big data.
+This section shows the basic usage of Hadoop Hive. Hive uses a SQL-like language called `HiveQL`, and runs on top of Hadoop. Instead of writing raw MapReduce programs, Hive allows you to perform data warehouse tasks using a simple and familiar query language. After completing this section, you will be able to use `HiveQL` to query big data.
 
 # Interactive shell
 In the sample code below we will continue to use the same event tuple [patient data]({{ site.baseurl }}/data/). Let's start the Hive CLI interactive shell first by typing `hive` in the command line.
@@ -67,7 +67,7 @@ Time taken: 0.521 seconds
 
 # Query
 ## Basic
-With the data loaded you can run farmiliar SQL statements like:
+With the data loaded you can run familiar SQL statements like:
 ``` sql
 hive> SELECT patient_id, count(*) FROM events
       GROUP BY patient_id;
@@ -142,4 +142,6 @@ GROUP BY patient_id;
 Furthermore, it's also possible to run [hive as a server](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients) and connect to the server with JDBC or with its beeline client.
 
 # Related tools
-Hive translate queries into a series of MapReduce jobs, therefore it is not suitable for realtime use cases. Alternative tools inspired and influenced by Hive are getting more attention lately, for example, [Cloudera Impala](http://impala.io/) and [Spark SQL](https://spark.apache.org/sql/).
+
+Hive translate queries into a series of MapReduce jobs, therefore it is not suitable for real-time use cases. Alternative tools inspired and influenced by Hive are getting more attention lately, for example, [Cloudera Impala](http://impala.io/) and [Spark SQL](https://spark.apache.org/sql/).
+
