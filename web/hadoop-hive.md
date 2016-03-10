@@ -142,4 +142,6 @@ GROUP BY patient_id;
 Furthermore, it's also possible to run [hive as a server](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients) and connect to the server with JDBC or with its beeline client.
 
 # Related tools
+
 Hive translate queries into a series of MapReduce jobs, therefore it is not suitable for real-time use cases. Alternative tools inspired and influenced by Hive are getting more attention lately, for example, [Cloudera Impala](http://impala.io/) and [Spark SQL](https://spark.apache.org/sql/).
+
