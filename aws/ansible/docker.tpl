@@ -1,4 +1,4 @@
-FROM sunlab/bigdata:0.03
+FROM sunlab/bigdata:0.04
 MAINTAINER Hang Su "hangsu@gatech.edu"
 
 USER root
