@@ -462,3 +462,9 @@ div.msgbox {
 div.msgbox p {
   margin-top: 5px;
 }
+/* Utility Layout */
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
