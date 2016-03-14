@@ -12,7 +12,7 @@ navigation:
 - Can write user defined function(UDF).
 {% endobjective %}
 
-The goal of this module is to show how to construct feature vectors from the [raw event sequences data]({{ site.baseurl }}/data/) through [Hadoop Pig](http://pig.apache.org/), a high-level data processing tool on top of Hadoop MapReduce. Instead of writing a Java program, you will write a high level script using Pig Latin and let the framework tranlsate it into MapReduce jobs for you. 
+The goal of this module is to show how to construct feature vectors from the [raw event sequences data]({{ site.baseurl }}/data/) through [Hadoop Pig](http://pig.apache.org/), a high-level data processing tool on top of Hadoop MapReduce. Instead of writing a Java program, you will write a high level script using Pig Latin and let the framework translate it into MapReduce jobs for you. 
 
 Throughout this training, you will learn how to run Pig interactively and run the Pig script. We will first demonstrate basic knowledge of Pig in terms of _interactive shell_ and _data type_, then show how to complete the feature construction task step by step. The high-level process of feature construction is depicted below
 ![feature construction high level]({{ site.baseurl }}/image/post/hadoop-pig-process.svg "Feature Construction Process")
@@ -68,12 +68,12 @@ to print top 10 items in relation `A`.
 Pig will not run immediately after you input a statement. Only when you need to `save` or `dump`, will Pig actually run. The good part of this property is that internally Pig can be optimized. A potential problem is that you may not realize you have made a mistake until you reach a later statement that has output. If you are not sure, on small data set, you can `dump` frequently.
 {% endmsginfo %}
 
-The shell also provide other commands. Important ones include (but not limited to)
+The shell also provides other commands. Important ones include (but not limited to)
 
 1. `fs`: serve same purpose as `hdfs dfs`, so that your can type `fs -ls` directly in pig shell instead of `hdfs dfs -ls`.
 2. `pwd`: check present working directory in case file is not found.
 
-type `help` to learn more about these commands in pig shell. Pig operators covered in later example are listed in the table below, please refer to [Pig Offical Document](https://pig.apache.org/docs/r0.11.1/basic.html#Relational+Operators) to learn more.
+type `help` to learn more about these commands in pig shell. Pig operators covered in later example are listed in the table below, please refer to [Pig Official Documentation](https://pig.apache.org/docs/r0.11.1/basic.html#Relational+Operators) to learn more.
 
 | Operator  | Explaination |
 | :------------- | :------------- |
