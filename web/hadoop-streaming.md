@@ -178,7 +178,7 @@ if current_event == event_name and current_count > 1:
     print '%s\t%s' % (current_event, current_count)
 ```{% endexercise %}
 # Further reading
-Streaming is a good machanism to reuse existing code. Wrapping existing code to work with Hadoop can be simplified with framework like [mrjob](https://github.com/Yelp/mrjob) and [Luigi](http://luigi.readthedocs.org/en/latest/index.html) for Python. You can find more explaination and description of Streaming from its [offical document](http://hadoop.apache.org/docs/r1.2.1/streaming.html).
+Streaming is a good machanism to reuse existing code. Wrapping existing code to work with Hadoop can be simplified with framework like [mrjob](https://github.com/Yelp/mrjob) and [Luigi](http://luigi.readthedocs.org/en/latest/index.html) for Python. You can find more explanation and description of Streaming in its [offical documentation](http://hadoop.apache.org/docs/r1.2.1/streaming.html).
 
-[^1]: this example is adapted from [Michael G. Noll blog](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/), copyright to original author.
+[^1]: this example is adapted from [Michael G. Noll's blog](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/), copyright to original author.
 
