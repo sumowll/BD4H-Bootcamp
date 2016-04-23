@@ -92,7 +92,7 @@ Using the `put` command, you can insert rows into a table. The syntax is as foll
 ```
 put 'table name', 'row key', 'colfamily:colname', 'value'
 ```
-For example, let's put a paitent-id record.
+For example, let's put a patient-id record.
 
 ```
 hbase(main):008:0> put 'hospital', 'row1', 'id:patient', 'patient-id-1'

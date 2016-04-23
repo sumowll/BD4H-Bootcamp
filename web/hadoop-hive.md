@@ -9,7 +9,7 @@ navigation:
 - Learn how to work with the Hive interactive shell.
 - Learn how to create tables in Hive.
 - Learn how to load data into Hive tables.
-- Learn how to run basic Hive querys.
+- Learn how to run basic Hive queries.
 {% endobjective %}
 
 This section shows the basic usage of Hadoop Hive. Hive uses a SQL-like language called `HiveQL`, and runs on top of Hadoop. Instead of writing raw MapReduce programs, Hive allows you to perform data warehouse tasks using a simple and familiar query language. After completing this section, you will be able to use `HiveQL` to query big data.
@@ -87,7 +87,7 @@ Time taken: 20.351 seconds, Fetched: 300 row(s)
 ```
 
 ## Save result
-You can also save query results to local directory (in the local file system):
+You can also save query results to a local directory (in the local file system):
 ``` sql
 hive> INSERT OVERWRITE LOCAL DIRECTORY 'tmp_local_out'
       ROW FORMAT DELIMITED
@@ -111,7 +111,7 @@ Besides running commands with the interactive shell, you can also run a script i
 > hive -f sample.hql
 ```
 
-The contents of the script is simply all of the commands that we ran in the shell, with one additional statement to drop existing table if necessary:
+This script simply contains all of the commands that we ran in the shell, with one additional statement to drop the existing table if necessary:
 ``` sql
 DROP TABLE IF EXISTS events;
 
@@ -139,9 +139,9 @@ FROM events
 GROUP BY patient_id;
 ```
 
-Furthermore, it's also possible to run [hive as a server](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients) and connect to the server with JDBC or with its beeline client.
+Furthermore, it's also possible to run [Hive as a server](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients) and connect to the server with JDBC or with its Beeline client.
 
 # Related tools
 
-Hive translate queries into a series of MapReduce jobs, therefore it is not suitable for real-time use cases. Alternative tools inspired and influenced by Hive are getting more attention lately, for example, [Cloudera Impala](http://impala.io/) and [Spark SQL](https://spark.apache.org/sql/).
+Hive translates queries into a series of MapReduce jobs. Therefore, it is not suitable for real-time use cases. Alternative tools inspired and influenced by Hive are getting more attention lately, for example, [Cloudera Impala](http://impala.io/) and [Spark SQL](https://spark.apache.org/sql/).
 
