@@ -17,7 +17,7 @@
 
 # Install puppet agent
 yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
-yum -y install puppet curl sudo unzip
+yum -y install curl nss puppet sudo unzip
 
 # Setup rng-tools to improve virtual machine entropy performance.
 # The poor entropy performance will cause kerberos provisioning failed.
