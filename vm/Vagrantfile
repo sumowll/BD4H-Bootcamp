@@ -81,6 +81,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     bigtop_ip="10.10.10.11"
 
     bigtop.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--ioapic", "on"]
       vb.customize ["modifyvm", :id, "--memory", CONF['memory_size']]
       vb.customize ['modifyvm', :id, '--cpus', CONF['number_cpus']]
     end
