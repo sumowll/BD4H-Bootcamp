@@ -17,7 +17,7 @@
 
 # Install puppet agent
 yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
-yum -y install puppet curl sudo unzip
+yum -y install curl nss puppet sudo unzip
 
 # Setup rng-tools to improve virtual machine entropy performance.
 # The poor entropy performance will cause kerberos provisioning failed.
@@ -34,5 +34,6 @@ tar xvf scala-2.10.5.tgz
 mv scala-2.10.5 /usr/lib
 ln -s /usr/lib/scala-2.10.5 /usr/lib/scala
 ln -s /usr/lib/scala/bin/scala /usr/local/bin/scala
+echo export GROOVY_HOME=/usr/lib/bigtop-groovy >> .bashrc
 
 mkdir -p /data/{1,2}
