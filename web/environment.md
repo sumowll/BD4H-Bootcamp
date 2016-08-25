@@ -7,10 +7,10 @@ description: Georgia Tech big data bootcamp training material
 Setting up Hadoop, Spark, Java, etc. for a learning can be time consuming and tedious. In order to simplify this, we provide two different approaches. This section will show you how to setup environment.
 
 # About Terminal
-In this training, we reply heavily on terminal. 
+In this training, we reply heavily on terminal.
 
-- For *Linux* users, you are probably familiar with the terminal. 
-- For  *Mac* users, you could search for the `terminal` application if you have never use that before. 
+- For *Linux* users, you are probably familiar with the terminal.
+- For  *Mac* users, you could search for the `terminal` application if you have never use that before.
 - For *Windows* users, please [install git](#install-git) and use the `Git Bash` application that comes with **Git for Windows**.
 
 # Install Git
@@ -35,7 +35,7 @@ Follow instructions in [Download for Linux and Unix](https://git-scm.com/downloa
 Please download sample code, data etc. from our bitbucket repository by issuing below command in a Terminal
 
 ```
-git clone git@bitbucket.org:realsunlab/bigdata-bootcamp.git
+git clone https://bitbucket.org/realsunlab/bigdata-bootcamp.git
 ```
 
 # Setup Virtual Environment
