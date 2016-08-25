@@ -4,17 +4,17 @@ header-img: image/background.jpg
 description: Gatech CSE big data bootcamp
 url: "http://www.sunlab.org"
 #url: "http://bigdata.manul.io"
-baseurl: "/bigdata"
+baseurl: "/teaching/cse8803/fall2016/lab"
 permalink: pretty
 
 # Social network
-twitter_username: jimeng 
+twitter_username: jimeng
 github_username: cmanul
 facebook_username: cmanul
 email: su_hang@live.com
 
 # Markdown
-markdown: redcarpet # kramdown # 
+markdown: redcarpet # kramdown #
 highlighter: null#rouge
 
 redcarpet:
