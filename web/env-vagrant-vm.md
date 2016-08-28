@@ -44,6 +44,6 @@ After you finish, you may want to terminate the virtual cluster. You could achie
 1. Navigate to *vm* folder.
 2. Run `vagrant destroy -f` to destroy the VM.
 
-Alternatively, you may just perform a graceful shutdown (without removing all traces of the vitual machine like above) by 
+Alternatively, you may just perform a graceful shutdown (without removing all traces of the virtual machine like above) by
 1. Navigate to *vm* folder.
-2. Run `vagrant destroy halt` to destroy the VM.
+2. Run `vagrant halt` to gracefully shutdown the VM.
