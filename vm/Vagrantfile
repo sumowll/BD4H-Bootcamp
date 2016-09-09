@@ -74,6 +74,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # use vagrant-cachier to cache packages at local(https://github.com/fgrehm/vagrant-cachier)
   # config.hostmanager.enabled = true
 
+  config.ssh.insert_key = false
+
   # nodes definition
   config.vm.define "bigtop1" do |bigtop|
     bigtop.vm.box = CONF['box']
