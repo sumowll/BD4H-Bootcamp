@@ -44,4 +44,4 @@ We provide two simple approaches for environment setup, the 1st one is preferred
 
 1. [Centos in Vagrant]({{ site.baseurl }}/env-vagrant-vm) (Suggested)
 2. [Docker in AWS EC2]({{ site.baseurl}}/env-aws-docker) (Alternative)
-2. [Docker in CoreOS VM]({{ site.baseurl }}/env-docker) (To be updated)
+2. [Docker in Local OS (newer version of softwares, e.g. Spark 2.0)]({{ site.baseurl }}/env-docker) (Developing)

@@ -1,39 +1,108 @@
 ---
 layout: page
-title: Docker in CoreOS VM
-description: Georgia Tech big data bootcampt training material
+title: Docker in Local OS
+description: Georgia Tech big data bootcamp training material
 ---
+If we want to start this environment, we should
 
-**Attention: only tested on Mac with admin previlege**
++ prepare a docker environment in local machine
++ pull docker image sunlab/bigdata:0.05
 
-# Pre-requisite
+## 1. Install Docker
 
-In order to use the Docker environment we provide, you will need two pre-requisite
-1. [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-2. [Vagrant](http://www.vagrantup.com/downloads.html)
+There is an official tutorial for docker here: [https://docs.docker.com/engine/installation/mac/](https://docs.docker.com/engine/installation/mac/)
 
-Also, please make sure you have enough free memory(*TODO: HOW MUCH*) available.
+### Mac OSX
+OSX users can also install Docker via [HomeBrew](http://brew.sh/)
 
-# Setup
-With pre-requiste softwares properly installed, you could setup your CoreOS + Docker learning environment. Before you actually run commands, please make sure you have enough previlege to change system network setting. For example, virtual network adapter and network filesystem will be setup.
+```
+$ brew install Caskroom/cask/virtualbox
+$ brew install docker-machine
+$ brew install docker
+```
 
-Open a terminal and you need to
+To keep the Docker service active, we can use brew's service manager
 
-1. Navigate to *docker* folder.
-2. Run `./cluster.sh --build-image` to build docker image and setup the CoreOS VM.
-3. Create a cluster of 3 nodes with `./cluster.sh --provision`
+```
+$ brew services start docker-machine
+==> Successfully started `docker-machine` (label: homebrew.mxcl.docker-machine)
+```
+
+check the status:
+
+```
+$ brew services list
+Name           Status  User Plist
+docker-machine started name   /Users/name/Library/LaunchAgents/homebrew.mxcl.docker-machine.plist
+```
+
+We can create a default instance as this link:  https://docs.docker.com/machine/reference/create/
+
+```
+$ docker-machine create --driver virtualbox --virtualbox-memory 4096  default
+```
+__At least 4GB memory for vm is required.__
+
+Execute the following command before using other docker commands.
+
+```
+$ eval $(docker-machine env default)
+```
 
 
-# Connect
-You could connect to master node by run `vagrant ssh node1` in `docker` folder.You will find all materials in `/bootcamp` folder.
+### CentOS 7
+
+Just simply install
+
+```
+$ sudo yum install docker
+$ sudo service  docker start
+$ chkconfig docker on
+```
+
+#### Some Common issues :
+
+1. When using SELinux + BTRFS, you may meet an error message as follow:
+
+```
+# systemctl status docker.service -l
+...
+SELinux is not supported with the BTRFS graph driver!
+...
+```
+
+Modify /etc/sysconfig/docker as follow:
+
+```
+# Modify these options if you want to change the way the docker daemon runs
+#OPTIONS='--selinux-enabled'
+OPTIONS=''
+...
+```
+
+Restart your docker service
+
+2. Storage Issue:
+Error message found in /var/log/upstart/docker.log
+
+```
+[graphdriver] using prior storage driver \"btrfs\"...
+```
+
+Just delete directory /var/lib/docker and restart docker service
+
+### Ubuntu
+NOT TESTED
+Please refer to:
+[https://docs.docker.com/engine/installation/linux/ubuntulinux/](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
 
 
-# Terminate
-After you finish, you may want to terminate the virtual cluster. You could achieve that by
-
-1. Navigate to *docker* folder.
-2. Run `./cluster.sh --destroy` to remove docker cluster
-3. Navigate to *coreos* subfolder.
-4. Run `vagrant suspend` to suspend CoreOS or `vagrant destroy` to remove everything.
+### Windows
+NOT TESTED
+Please refer to:
+[https://docs.docker.com/engine/installation/windows/](https://docs.docker.com/engine/installation/windows/)
 
 
+## 2. Pull and run Docker image
+Please refer to:
+[https://hub.docker.com/r/sunlab/bigdata/](https://hub.docker.com/r/sunlab/bigdata/)
