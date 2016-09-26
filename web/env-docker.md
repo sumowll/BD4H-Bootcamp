@@ -6,7 +6,7 @@ description: Georgia Tech big data bootcamp training material
 If we want to start this environment, we should
 
 + prepare a docker environment in local machine
-+ pull docker image sunlab/bigdata:0.05
++ pull docker image sunlab/bigdata:0.04.1 or sunlab/bigdata:0.05
 
 ## 1. Install Docker
 
@@ -104,5 +104,101 @@ Please refer to:
 
 
 ## 2. Pull and run Docker image
-Please refer to:
-[https://hub.docker.com/r/sunlab/bigdata/](https://hub.docker.com/r/sunlab/bigdata/)
+### (1) Start the container with:
+#### Ver 0.05 for Spark 2.0, etc. (Jupyter and Zeppelin will be added soon)
+
+```
+docker run -it --privileged=true -m 4096m -h bootcamp1.docker sunlab/bigdata:0.05 /bin/bash
+```
+
+##### or
+
+#### Ver 0.04.1 for Spark 1.5 with Jupyter and Zeppelin
+
+```
+docker run -it --privileged=true -m 4096m -p 2222:22 -p 8888:8888 -p 8889:8889 -h bootcamp1.docker sunlab/bigdata:0.04.1 /bin/bash
+```
+
+it will expose three ports: 22, 8888, 8889 to host environment
+
+```
+-p host-port:vm-port
+```
+
+means you will visit `host-port` in your host environment and it will forward the message to `vm-port` in docker container. You can change this parameter `host-port` if you meet error like "port already in use".
+
+Each `vm-port` is linked to:
+```
+8888 - Jupyter Notebook
+8889 - Zeppelin Notebook
+```
+
+After you run Docker and start services as Step 2, you can access each Notebook with your web browser via:
+
+###### In Linux (Ubuntu, CentOS, Fedora, ...)
+You just need to visit "localhost:8888", or other port number if you changed `host-port`
+
+###### In OS X
+You should get the Docker's IP first with command as follow:
+
+```
+$ printenv  | grep "DOCKER_HOST"
+DOCKER_HOST=tcp://192.168.99.100:2376
+```
+
+then, you can visit 192.168.99.100:8888 or 192.168.99.100:8889 , or 192.168.99.100:`host-port` you changed.
+
+### (2) Start all necessary services
+```
+sudo service sshd start
+sudo service zookeeper-server start
+sudo service hadoop-yarn-proxyserver start
+sudo service hadoop-hdfs-namenode start
+sudo service hadoop-hdfs-datanode start
+sudo service hadoop-yarn-resourcemanager start
+sudo service hadoop-mapreduce-historyserver start
+sudo service hadoop-yarn-nodemanager start
+sudo service spark-worker start
+sudo service spark-master start
+sudo service hbase-regionserver start
+sudo service hbase-master start
+sudo service hbase-thrift start
+```
+
+If you have chosen 0.04.1 to use zeppelin, start one more service
+
+```
+sudo service zeppelin start
+```
+
+To use Jupyter Notebook:
+
+```
+jupyter notebook --ip=0.0.0.0
+```
+
+parameter `--ip=0.0.0.0` makes Jupyter allow you to visit this service via your web browser and it will open a web service listening port 8888.
+
+### (3) Stop all services
+You can stop services once you have done your works:
+
+```
+sudo service zookeeper-server stop
+sudo service hadoop-yarn-proxyserver stop
+sudo service hadoop-hdfs-namenode stop
+sudo service hadoop-hdfs-datanode stop
+sudo service hadoop-yarn-resourcemanager stop
+sudo service hadoop-mapreduce-historyserver stop
+sudo service hadoop-yarn-nodemanager stop
+sudo service spark-worker stop
+sudo service spark-master stop
+sudo service hbase-regionserver stop
+sudo service hbase-master stop
+sudo service hbase-thrift stop
+```
+
+and if you used Zeppelin,
+
+```
+sudo service zeppelin stop
+```

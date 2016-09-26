@@ -42,6 +42,6 @@ git clone https://bitbucket.org/realsunlab/bigdata-bootcamp.git
 
 We provide two simple approaches for environment setup, the 1st one is preferred.
 
-1. [Centos in Vagrant]({{ site.baseurl }}/env-vagrant-vm) (Suggested)
+1. [Centos in Vagrant]({{ site.baseurl }}/env-vagrant-vm)
 2. [Docker in AWS EC2]({{ site.baseurl}}/env-aws-docker) (Alternative)
-2. [Docker in Local OS (newer version of softwares, e.g. Spark 2.0)]({{ site.baseurl }}/env-docker) (Developing)
+2. [Docker in Local OS (For Spark 2.0 or Jupyter/Zeppelin Notebook)]({{ site.baseurl }}/env-docker) (Beta)

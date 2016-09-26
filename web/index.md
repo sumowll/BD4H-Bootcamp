@@ -8,7 +8,7 @@ navigation:
 
 # Welcome
 
-Welcome to the Big Data Bootcamp. This training material is has been developed by [Sunlab](http://www.sunlab.org/) and [Polo Club](http://poloclub.gatech.edu/). By the end of the training, you will learn about the big data tools that are part of the [Hadoop](http://hadoop.apache.org) and [Spark](http://spark.apache.org) ecosystems. 
+Welcome to the Big Data Bootcamp. This training material is has been developed by [Sunlab](http://www.sunlab.org/) and [Polo Club](http://poloclub.gatech.edu/). By the end of the training, you will learn about the big data tools that are part of the [Hadoop](http://hadoop.apache.org) and [Spark](http://spark.apache.org) ecosystems.
 
 The training material [sample data](data) is for healthcare applications, but you can adapt what you learned to other domains. There is no requirement of healthcare background knowledge.
 
@@ -33,6 +33,16 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 5. [Spark MLlib](spark-mllib)
 6. [Spark GraphX](spark-graphx)
 
+<!--
+## [Spark Examples on Jupyter Notebook](spark-jupyter) (BETA)
+1. [Scala Basics](scala-basic-jupyter)
+2. [Spark Basics](spark-basic-jupyter)
+3. [Spark SQL](spark-sql-jupyter)
+4. [Spark Application]()
+5. [Spark MLlib]()
+6. [Spark GraphX]()
+-->
+
 # Sponsors
 
 <div class="row" style="margin-bottom: 20px">
@@ -49,7 +59,3 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 </div>
 
 <div class="text-center col-md-12"><a href="hadoop/" class="btn btn-lg btn-info">Start Learning<span class="glyphicon glyphicon-export"></span></a></div>
-
-
-
-
