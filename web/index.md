@@ -33,6 +33,7 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 5. [Spark MLlib](spark-mllib)
 6. [Spark GraphX](spark-graphx)
 
+## [Zeppelin](zeppelin)
 <!--
 ## [Spark Examples on Jupyter Notebook](spark-jupyter) (BETA)
 1. [Scala Basics](scala-basic-jupyter)
@@ -46,6 +47,11 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 # Sponsors
 
 <div class="row" style="margin-bottom: 20px">
+<div class="col-xs-4 col-md-3 col-lg-3 vcenter">
+<a href="https://azure.microsoft.com/" target="_blank" style="cursor: pointer;">
+<img src="{{ site.baseurl }}/image/azure-logo.png" class="img-responsive" alt="Microsoft Azure">
+</a>
+</div>
 <div class="col-xs-4 col-md-3 col-lg-3 vcenter">
 <a href="https://aws.amazon.com/" target="_blank" style="cursor: pointer;">
 <img src="{{ site.baseurl }}/image/aws-logo-large.png" class="img-responsive" alt="Amazon Web Service">
