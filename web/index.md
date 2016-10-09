@@ -33,7 +33,7 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 5. [Spark MLlib](spark-mllib)
 6. [Spark GraphX](spark-graphx)
 
-## [Zeppelin](zeppelin)
+## [Zeppelin](zeppelin-intro)
 <!--
 ## [Spark Examples on Jupyter Notebook](spark-jupyter) (BETA)
 1. [Scala Basics](scala-basic-jupyter)

@@ -135,10 +135,10 @@ Each `vm-port` is linked to:
 
 After you run Docker and start services as Step 2, you can access each Notebook with your web browser via:
 
-###### In Linux (Ubuntu, CentOS, Fedora, ...)
+##### In Linux (Ubuntu, CentOS, Fedora, ...)
 You just need to visit "localhost:8888", or other port number if you changed `host-port`
 
-###### In OS X
+##### In OS X
 You should get the Docker's IP first with command as follow:
 
 ```
@@ -179,8 +179,9 @@ jupyter notebook --ip=0.0.0.0
 
 parameter `--ip=0.0.0.0` makes Jupyter allow you to visit this service via your web browser and it will open a web service listening port 8888.
 
+
 ### (3) Stop all services
-You can stop services once you have done your works:
+You can stop services if you want:
 
 ```
 sudo service zookeeper-server stop
@@ -201,4 +202,38 @@ and if you used Zeppelin,
 
 ```
 sudo service zeppelin stop
+```
+
+### (4) Detach or Exit
+To detach instance for keeping it up,
+```
+ctrl + p, ctrl + q
+```
+To exit,
+```
+exit
+```
+
+### (5) Re-attach
+If you detached a instance and want to attach again,
+check the `CONTAINER ID` or `NAMES` of it.
+```
+$ docker ps -a
+CONTAINER ID        IMAGE                   COMMAND                CREATED             STATUS                      PORTS                                                    NAMES
+c6b265ebd7d2        sunlab/bigdata:0.04.1   "/tini -- /bin/bash"   9 minutes ago       Up 4 seconds                0.0.0.0:8888-8889->8888-8889/tcp, 0.0.0.0:2222->22/tcp   berserk_hypatia
+cd6b3e243157        sunlab/bigdata:0.04.1   "/tini -- /bin/bash"   23 minutes ago      Created                                                                              loving_hoover
+92169a84b9a1        sunlab/bigdata:0.04.1   "/tini -- /bin/bash"   2 hours ago         Exited (0) 22 minutes ago                                                            peaceful_franklin
+```
+
+Then attach it by:
+
+```
+$ docker attach <CONTAINER ID or NAMES>
+```
+
+### (5) Destroy instance
+If you want to permanently remove instance
+
+```
+$ docker rm <CONTAINER ID or NAMES>
 ```
