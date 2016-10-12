@@ -9,6 +9,7 @@ navigation:
 - Learn how to work with Zeppelin Notebook.
 {% endobjective %}
 
+## You can skip this section, if you use your locally installed Zeppelin
 ## 1. Run provided Docker image
 Currently, we are using 0.04.1 for Zeppelin.
 If you have not run Docker yet, please run it first.
@@ -23,6 +24,18 @@ DOCKER_HOST=tcp://192.168.99.100:2376
 Then, start actual container, for example in OSX:
 ```
 docker run -it --privileged=true -m 4096m -p 2222:22 -p 8888:8888 -p 8889:8889 -h bootcamp1.docker sunlab/bigdata:0.04.1 /bin/bash
+```
+
+### Shared Folder
+You can use shared folder between your local OS and the virtual environment on Docker.
+This shared folder can be used to get data from your local and/or to save data without losing it after you exit/destroy your virtual environment.
+Use `-v` option to make shared folder from an existing local folder and a folder in virtual environment:
+```
+-v <local_folder:vm_folder>
+```
+You should use absolute path for `vm_folder`, but it does not need to be an existing folder. For example, if want to use `~/Data/` in my local OS as shared folder connected with `/sample_data/` in VM, I can start a container as following:
+```
+docker run -it -v ~/Data/:/sample_data/ --privileged=true -m 4096m -p 2222:22 -p 8888:8888 -p 8889:8889 -h bootcamp1.docker sunlab/bigdata:0.04.1 /bin/bash
 ```
 
 ## 2. Start Zeppelin service and create HDFS folder
