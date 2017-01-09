@@ -1,17 +1,17 @@
 # Site
 title: Bigdata Bootcamp
 header-img: image/background.jpg
-description: Gatech CSE big data bootcamp
+description: GT CSE big data bootcamp
 url: "http://www.sunlab.org"
 #url: "http://bigdata.manul.io"
 baseurl: "/teaching/cse8803/fall2016/lab"
 permalink: pretty
 
 # Social network
-twitter_username: jimeng
-github_username: cmanul
-facebook_username: cmanul
-email: su_hang@live.com
+#twitter_username: jimeng
+#github_username: cmanul
+#facebook_username: cmanul
+#email: jsun@cc
 
 # Markdown
 markdown: redcarpet # kramdown #
@@ -31,4 +31,4 @@ defaults:
     values:
       layout: "post"
       author: "Sun Lab"
-      description: Georgia Tech Big Data Bootcamp training material
+      description: GT Big Data Bootcamp training material
