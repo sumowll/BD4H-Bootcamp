@@ -3,7 +3,7 @@ layout: post
 title: Spark Basics
 categories: [section]
 navigation:
-    section: [2, 2]
+    section: [3, 1]
 ---
 
 {% objective %}

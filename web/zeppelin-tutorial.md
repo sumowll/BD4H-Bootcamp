@@ -3,7 +3,7 @@ layout: post
 title: Zeppelin Basic Tutorial
 categories: [section]
 navigation:
-  section: [3, 2]
+  section: [5, 2]
 ---
 {% objective %}
 - Try to follow the official tutorial of Zeppelin Notebook step-by-step.

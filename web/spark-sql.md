@@ -3,7 +3,7 @@ layout: post
 title: Spark Sql
 categories: [section]
 navigation:
-  section: [2, 3]
+  section: [3, 2]
 ---
 {% objective %}
 - Load data into Spark SQL as DataFrame.

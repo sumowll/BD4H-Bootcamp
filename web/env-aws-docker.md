@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Docker in AWS Ec2
-description: Georgia Tech big data bootcampt training material
+title: Docker in AWS EC2
+description: Georgia Tech big data bootcamp training material
 ---
 
 We developed a [Docker image](https://hub.docker.com/r/sunlab/bigdata/) which pre-installed all modules in this bootcamp. You can directly use it in your own environment if you have docker. This page describes how to launch an EC2 instance on AWS and run docker container within it.

@@ -2,7 +2,7 @@
 layout: post
 title: Spark MLlib and Scikit-learn
 navigation:
-  section: [2, 5]
+  section: [3, 4]
 ---
 {% objective %}
 - Understand input to MLlib.

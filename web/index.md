@@ -8,9 +8,9 @@ navigation:
 
 # Welcome
 
-Welcome to the Big Data Bootcamp. This training material is has been developed by [Sunlab](http://www.sunlab.org/) and [Polo Club](http://poloclub.gatech.edu/). By the end of the training, you will learn about the big data tools that are part of the [Hadoop](http://hadoop.apache.org) and [Spark](http://spark.apache.org) ecosystems.
+Welcome to the Big Data Bootcamp. This training material is has been developed by [Sunlab](http://www.sunlab.org/). By the end of the training, you will learn about the big data tools that are part of the [Hadoop](http://hadoop.apache.org) and [Spark](http://spark.apache.org) ecosystems.
 
-The training material [sample data](data) is for healthcare applications, but you can adapt what you learned to other domains. There is no requirement of healthcare background knowledge.
+The training material [sample data](data) is for healthcare applications, but you can adapt what you learned to other domains. There is no requirement of healthcare knowledge.
 
 To get started, please [**setup the learning environment**](environment) first.
 
@@ -25,13 +25,17 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 4. [Hadoop Pig](hadoop-pig)
 5. [Hadoop Hive](hadoop-hive)
 
-## [Spark Ecosystem](spark)
+## Scala
+
 1. [Scala Basics](scala-basic)
-2. [Spark Basics](spark-basic)
-3. [Spark SQL](spark-sql)
-4. [Spark Application](spark-application)
-5. [Spark MLlib](spark-mllib)
-6. [Spark GraphX](spark-graphx)
+2. [Scala Intro](scala-intro)
+
+## [Spark Ecosystem](spark)
+1. [Spark Basics](spark-basic)
+2. [Spark SQL](spark-sql)
+3. [Spark Application](spark-application)
+4. [Spark MLlib](spark-mllib)
+5. [Spark GraphX](spark-graphx)
 
 ## [Zeppelin](zeppelin-intro)
 <!--
