@@ -11,7 +11,8 @@ If we want to start this environment, we should
 ## 1. Install Docker
 
 There is an official tutorial for docker here: [https://docs.docker.com/engine/installation/mac/](https://docs.docker.com/engine/installation/mac/)
-Please note that if you currently have VirtualBox version 5.x.x on your machine, you will need to downgrade to version 4.3 on OS X. To do this uninstall VirtualBox with the uninstaller that came with it. If you receive an error stating that there are virtual boxes that are still running, go to the terminal and type in 
+
+Please note that if you currently have VirtualBox version 5.x.x installed, you will need to downgrade to version 4.3 on OS X. To do this uninstall VirtualBox with the uninstaller that came with it. If you receive an error stating that there are virtual boxes that are still running, go to the terminal and type in 
 
 ```
 $ ps-ae | grep
