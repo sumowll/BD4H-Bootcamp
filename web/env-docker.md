@@ -11,6 +11,17 @@ If we want to start this environment, we should
 ## 1. Install Docker
 
 There is an official tutorial for docker here: [https://docs.docker.com/engine/installation/mac/](https://docs.docker.com/engine/installation/mac/)
+Please note that if you currently have VirtualBox version 5.x.x installed, you will need to downgrade to version 4.3 on OS X. To do this uninstall VirtualBox with the uninstaller that came with it. If you receive an error stating that there are virtual boxes that are still running, go to the terminal and type in 
+
+```
+$ ps-ae | grep
+```
+
+to see which virtual boxes are still running. To kill all the running virtual boxes type in
+
+```
+$ killall -9 VBoxHeadless
+```
 
 ### Mac OSX
 OSX users can also install Docker via [HomeBrew](http://brew.sh/)
@@ -49,6 +60,11 @@ Execute the following command before using other docker commands.
 $ eval $(docker-machine env default)
 ```
 
+For OS X you might need to type in the following to get into the ec2 in the next step: 
+
+```
+$ eval "$(docker-machine env default)"
+```
 
 ### CentOS 7
 
@@ -119,7 +135,13 @@ docker run -it --privileged=true -m 4096m -h bootcamp1.docker sunlab/bigdata:0.0
 docker run -it --privileged=true -m 4096m -p 2222:22 -p 8888:8888 -p 8889:8889 -h bootcamp1.docker sunlab/bigdata:0.04.1 /bin/bash
 ```
 
-it will expose three ports: 22, 8888, 8889 to host environment
+If you receive an error here that states Cannot connect to the Docker daemon use
+
+```
+$eval "$(docker-machine env default)" 
+``` 
+
+Then retype the docker run -it above and it will expose three ports: 22, 8888, 8889 to host environment
 
 ```
 -p host-port:vm-port
