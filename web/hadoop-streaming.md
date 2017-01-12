@@ -110,24 +110,25 @@ Now that we've verified that it works as expected, we can run it in Hadoop.
 ## Hadoop
 We first need to put the data into HDFS, then run hadoop:
 ```
-hdfs dfs -put data/ /streaming-data
+hdfs dfs -mkdir streaming-data
+hdfs dfs -put data/* streaming-data
 hadoop jar hadoop-streaming.jar \
    -files mapper.py,reducer.py \
    -mapper "python mapper.py" \
    -reducer "python reducer.py" \
-   -input /streaming-data \
-   -output /streaming-output
+   -input streaming-data \
+   -output streaming-output
 ```
 
 Now we check the results and clean up:
 ``` bash
 # check result
-hdfs dfs -ls /streaming-output
-hdfs dfs -cat /streaming-output/*
+hdfs dfs -ls streaming-output
+hdfs dfs -cat streaming-output/*
 
 # clean up
-hdfs dfs -rm -r /streaming-output
-hdfs dfs -rm -r /streaming-data
+hdfs dfs -rm -r streaming-output
+hdfs dfs -rm -r streaming-data
 ```
 {% exercise Update mapper and reducer to output diagnostic code occurred more than once %}
 You will need to update both the mapper and reducer, for the mapper:
