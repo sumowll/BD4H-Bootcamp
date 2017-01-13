@@ -248,7 +248,7 @@ public class MaxPaymentReducer extends Reducer<Text ,  FloatWritable ,  Text ,  
      @Override public void reduce( Text patientID,  Iterable<FloatWritable> payments,  Context context)
          throws IOException,  InterruptedException {
 
-      float maxPayment  = 0.0;
+      float maxPayment  = 0.0f;
       for ( FloatWritable payment : payments) {
         float p = payment.get();
         if(p > maxPayment)
