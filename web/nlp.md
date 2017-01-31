@@ -171,41 +171,54 @@ We can also facet with ranges (in numeric and date fields), or use [facet pivots
 
 ```
 {
-          "field":"subject",
-          "value":"topiramate",
-          "count":31,
-          "pivot":[{
-              "field":"organization_attr",
-              "value":"REMEDYREPACK INC.",
-              "count":4},
-            {
-              "field":"organization_attr",
-              "value":"Unit Dose Services",
-              "count":4},
-            {
-              "field":"organization_attr",
-              "value":"Bryant Ranch Prepack",
-              "count":3},
-            {
-              "field":"organization_attr",
-              "value":"PD-Rx Pharmaceuticals, Inc.",
-              "count":3},
-            {
-              "field":"organization_attr",
-              "value":"DIRECT RX",
-              "count":2}]},
-        {
-          "field":"subject",
-          "value":"divalproex sodium",
-          "count":7,
-          "pivot":[{
-              "field":"organization_attr",
-              "value":"State of Florida DOH Central Pharmacy",
-              "count":3},
-            {
-              "field":"organization_attr",
-              "value":"REMEDYREPACK INC.",
-              "count":2}]}
+  "field": "subject",
+  "value": "topiramate",
+  "count": 31,
+  "pivot": [
+    {
+      "field": "organization_attr",
+      "value": "REMEDYREPACK INC.",
+      "count": 4
+    },
+    {
+      "field": "organization_attr",
+      "value": "Unit Dose Services",
+      "count": 4
+    },
+    {
+      "field": "organization_attr",
+      "value": "Bryant Ranch Prepack",
+      "count": 3
+    },
+    {
+      "field": "organization_attr",
+      "value": "PD-Rx Pharmaceuticals, Inc.",
+      "count": 3
+    },
+    {
+      "field": "organization_attr",
+      "value": "DIRECT RX",
+      "count": 2
+    }
+  ]
+},
+{
+  "field": "subject",
+  "value": "divalproex sodium",
+  "count": 7,
+  "pivot": [
+    {
+      "field": "organization_attr",
+      "value": "State of Florida DOH Central Pharmacy",
+      "count": 3
+    },
+    {
+      "field": "organization_attr",
+      "value": "REMEDYREPACK INC.",
+      "count": 2
+    }
+  ]
+}
 ```
 
 ### Terms and Term Vectors
