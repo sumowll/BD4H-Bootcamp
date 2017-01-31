@@ -1,24 +1,23 @@
 ---
 layout: post
 title: Solr
-categories:
+categories: [section]
 navigation:
+  section: [6]
 ---
-
 {% objective %}
 - To understand the basics of Clinical NLP with Solr and cTAKES
-
 {% endobjective %}
 
-
 # Solr
-[Solr](http://lucene.apache.org/solr/) is one of the most common search platforms, built on the powerful indexing platform [Lucene](https://lucene.apache.org/). The main feature of Solr is high-speed, scalable text search. It's most thought of as Google-like search (e.g. find me all the documents that mention 'cancer'). In addition, it supports highlighting, faceted search, spelling and fuzziness approximation, and 'more like this' searches. It supports many common data types like CSV, XML, text, Microsoft Word and PDF.
 
-![alt text](image/solr.jpeg "Solr Architecture")
+[Solr](http://lucene.apache.org/solr/) is one of the most common search platforms, built on the powerful indexing platform [Lucene](https://lucene.apache.org/). The main feature of Solr is high-speed, scalable text search. It's most thought of as Google-like search (e.g. find me all the documents that mention 'cancer'). In addition, it supports highlighting, faceted search, spelling and fuzziness approximation, and 'more like this' searches. It supports many common data types like CSV, XML, text, Microsoft Word and PDF.
+![alt text]({{ site.baseurl }}/image/solr.jpeg "Solr Architecture")
 
 Both Solr and Lucene are written in Java, but provide Rest-like HTTP interfaces and also native support in JVM languages, Python, Ruby, PHP, C++, and [others](https://cwiki.apache.org/confluence/display/solr/Client+APIs).
 
 Solr can be scaled to large clusters to using Zookeeper, but this discussion is focused on the basic features of Solr using a single instance.
+
 
 # Getting Started
 To run Solr, you'll need at least to be running Java 8. After that, download and decompress the tar file.
@@ -46,9 +45,7 @@ http://localhost:8983/solr/#/
 As mentioned above, Solr can run as single instance or as a cluster. It can be ran alongside Hadoop and is often distributed with major Hadoop installations. Solr can be used to store documents, or just used for indexing, referencing documents in another data store such as HBase or Cassandra.
 
 The Solr Dashboard provides some metrics about your installation, logging, configuration, and administration of cores. Most Solr installations will have a custom client application built on top of Solr, with a typical (simplified) installation looking something like this.
-
-
-![alt text](image/solr-deployment-architecture.png "Solr Deployment Architecture")
+![alt text]({{ site.baseurl }}/image/solr-deployment-architecture.png "Solr Deployment Architecture")
 
 
 # Setting up a Core
@@ -247,7 +244,6 @@ Sample:
 http://localhost:8983/solr/reports/select?indent=on&q=%22treatment%20of%20partial%20seizures%22&wt=json&fl=indications_and_usage_section&rows=10&mlt=true&mlt.fl=indications_and_usage_section
 ```
 
-
 # SolrJ
 
 [SolrJ](https://cwiki.apache.org/confluence/display/solr/Using+SolrJ) is Java API that simplifies some of the interactions with Solr, abstracting it to higher level methods. You can index with SolrJ as well. Here's a simple example in Scala.
@@ -288,8 +284,7 @@ So far, Solr is proven to be a very powerful tool for search and  information re
 * NER ([UMLS](https://www.nlm.nih.gov/research/umls/) Dictionary Lookup)
   * Disorders, Findings, Anatomical Sites, Procedures, Medications
 * Negation and Context ([NegEx](http://blulab.chpc.utah.edu/content/contextnegex))
-
-![alt text](image/ctakes.png "Sample cTAKES Output")
+![alt text]({{ site.baseurl }}/image/ctakes.png "Sample cTAKES Output")
 
 ### Getting Started with cTAKES
 * [Download or checkout from SVN](http://ctakes.apache.org/downloads.cgi)
@@ -298,8 +293,7 @@ So far, Solr is proven to be a very powerful tool for search and  information re
 * Or checkout cTAKES from source, see [here](https://cwiki.apache.org/confluence/display/CTAKES/cTAKES+3.2+Developer+Install+Guide)
 * Or run cTAKES as a dependency or your project, see a sample project [here](https://github.com/healthnlp/examples)
 * Determine what components you need for your project, and setup an Aggregator, or use the pre-built ones
-
-![alt text](image/ctakes-components.png "cTAKES Components")
+![alt text]({{ site.baseurl }}/image/ctakes-components.png "cTAKES Components")
 
 * Or write your own cTAKES annotator
 
@@ -381,5 +375,4 @@ bin/post -c reports yourfile.json
 ```
 
 EXTRA: Index data from the original source [documents](https://dailymed.nlm.nih.gov/dailymed/spl-resources-all-drug-labels.cfm). Write a script to map the original fields to your Solr fields. (See sample source document `levetiracetam.xml`, what additional fields would you want to capture in your index?)
-
 {% endexercise %}

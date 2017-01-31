@@ -4,7 +4,7 @@ header-img: image/background.jpg
 description: GT CSE big data bootcamp
 url: "http://www.sunlab.org"
 #url: "http://bigdata.manul.io"
-baseurl: "/teaching/cse8803/fall2016/lab"
+baseurl: "/teaching/cse6250/spring2017/lab"
 permalink: pretty
 
 # Social network

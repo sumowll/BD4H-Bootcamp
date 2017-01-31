@@ -3,7 +3,7 @@ layout: post
 title: How to start Zeppelin
 categories: [section]
 navigation:
-  section: [3, 1]
+  section: [5, 1]
 ---
 {% objective %}
 - Learn how to work with Zeppelin Notebook.

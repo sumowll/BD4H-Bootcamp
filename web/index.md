@@ -48,6 +48,8 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 6. [Spark GraphX]()
 -->
 
+## [Solr](nlp)
+
 # Sponsors
 
 <div class="row" style="margin-bottom: 20px">
