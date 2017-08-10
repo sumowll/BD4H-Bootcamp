@@ -70,7 +70,7 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 <div class="row" style="margin-bottom: 20px">
 <div class="col-xs-4 col-md-3 col-lg-3 vcenter">
 <a href="https://azure.microsoft.com/" target="_blank" style="cursor: pointer;">
-<img src="{{ site.baseurl }}/image/azure-logo.png" class="img-responsive" alt="Microsoft Azure">
+<img src="{{ site.baseurl }}/image/azure-logo-large.png" class="img-responsive" alt="Microsoft Azure">
 </a>
 </div>
 <div class="col-xs-4 col-md-3 col-lg-3 vcenter">
