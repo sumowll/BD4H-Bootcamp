@@ -9,17 +9,18 @@ We developed a [Docker image](https://hub.docker.com/r/sunlab/bigdata/) which pr
 # Launch an AWS EC2 instance 
 1.   Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/
 2.   From the Amazon EC2 console dashboard, click **AMIs** on left sidebar.
-3.   Choose *Public Images* in dropdown below launch and search for `ami-59d4f433`.
-4. Select the image and click the blue _Launch_ button.
-5. On the **Choose an Instance Type** page, select the hardware configuration and size of the instance to launch.
+3.   Switch **Region** to *N. Virginia* if you are in other regions.
+4.   Choose *Public Images* in dropdown below launch and search for `ami-59d4f433`.
+5. Select the image and click the blue _Launch_ button.
+6. On the **Choose an Instance Type** page, select the hardware configuration and size of the instance to launch.
 Choose the type _m4.xlarge_, with 4 vCPUs and 16GB memory, then click “Next: Configuration Instance Details”.
-6. On the **Configure Instance Details** page, just keep the default settings.
-7.  On the **Add Storage** page, you can specify storage size for your disk. Use the default 30GB.
-8. On the **Tag Instance** page, specify tags for your instance by providing key value combinations if you need.
-9.  On the **Configure Security Group** page, define firewall rules for your instance. We suggest you'd better keep the default setting unless you are sure what you are doing.
-10. On the **Review Instance Launch** page, check the details of your instance and click _Launch_.
-11. In the **Select an existing key pair or create a new key pair** dialog box. If you don’t have an existing key pair, choose **create a new key pair**. Enter a name for the key pair (e.g. bdhKeyPair) and click “Download Key Pair”. This key pair will be used to connect to your instance. Then on the same dialog box, choose Choose an existing key pair, and select the one you just created. 
-12.  Finally, click “Launch Instances”. You can view your instances by clicking **Instances** on the left navigation bar. 
+7. On the **Configure Instance Details** page, just keep the default settings.
+8.  On the **Add Storage** page, you can specify storage size for your disk. Use the default 30GB.
+9. On the **Tag Instance** page, specify tags for your instance by providing key value combinations if you need.
+10.  On the **Configure Security Group** page, define firewall rules for your instance. We suggest you'd better keep the default setting unless you are sure what you are doing.
+11. On the **Review Instance Launch** page, check the details of your instance and click _Launch_.
+12. In the **Select an existing key pair or create a new key pair** dialog box. If you don’t have an existing key pair, choose **create a new key pair**. Enter a name for the key pair (e.g. bdhKeyPair) and click “Download Key Pair”. This key pair will be used to connect to your instance. Then on the same dialog box, choose Choose an existing key pair, and select the one you just created. 
+13.  Finally, click “Launch Instances”. You can view your instances by clicking **Instances** on the left navigation bar. 
 
 # Connect to the instance
 After your instance is fully launched, you can connect to it using SSH client. Right click on the instance and click **connect** then AWS will show you instructions about connecting on various platform. `ssh` command will be used for `*nix` platform and Putty will be used for windows.
