@@ -53,6 +53,14 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 
 ## [Solr](nlp)
 
+## Deep Learning for Healthcare Applications
+1. [Intro](dl-intro)
+2. [Getting Started](dl-start)
+3. [Feedforward Neural Network](dl-fnn)
+4. [Convolutional Neural Network](dl-cnn)
+5. [Recurrent Neural Network (Part 1)](dl-rnn1)
+6. [Recurrent Neural Network (Part 2)](dl-rnn2)
+
 # Sponsors
 
 <div class="row" style="margin-bottom: 20px">
