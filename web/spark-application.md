@@ -2,7 +2,7 @@
 layout: post
 title: Spark Application
 navigation:
-  section: [2, 3]
+  section: [3, 3]
 ---
 {% objective %}
 - Prepare data for machine learning applications.
