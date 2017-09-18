@@ -16,17 +16,11 @@ In this training, we reply heavily on terminal.
 - For *Windows* users, please [install git](#install-git) and use the `Git Bash` application that comes with **Git for Windows**.
 
 ## Install Git
+
 In order to get the latest sample source code, scripts for environment setup, you will need to install Git, a version control software.
 
 ### Install Git in Windows
 
-Instruction:
-http://www.sunlab.org/teaching/cse6250/fall2017/lab/environment/   course reference 
-https://asciinema.org/a/137564     video reference by Yu
-
-For Windows Guy/Gals:
-
-Setup Git
 1. Install Git: [https://git-scm.com/download/win](https://git-scm.com/download/win) . Please make sure you are installing this `Git for Windows`, instead of `Github for Windows` because you will rely heavily on `Git Bash` terminal. Make sure to install with **Checkout as-is**, **commit as-is**, otherwise you will run into errors for vagrant. If you have already installed git but wish to set autocrlf to false, type: `git config --global core.autocrlf false`, and then **re-clone** the git repository.
 2. Open Git Bash
 3. Decide where you want the sample code to live, I put mine in my home directory
