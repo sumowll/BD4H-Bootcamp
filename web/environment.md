@@ -19,11 +19,22 @@ In this training, we reply heavily on terminal.
 In order to get the latest sample source code, scripts for environment setup, you will need to install Git, a version control software.
 
 ### Install Git in Windows
-Download and install Git from [https://git-scm.com/download/win](https://git-scm.com/download/win). Please make sure you are installing this `Git for Windows`, not  `Github for Windows` because you will rely heavily on `Git Bash` terminal.
+
+Instruction:
+http://www.sunlab.org/teaching/cse6250/fall2017/lab/environment/   course reference 
+https://asciinema.org/a/137564     video reference by Yu
+
+For Windows Guy/Gals:
+
+Setup Git
+1. Install Git: [https://git-scm.com/download/win](https://git-scm.com/download/win) . Please make sure you are installing this `Git for Windows`, instead of `Github for Windows` because you will rely heavily on `Git Bash` terminal. Make sure to install with **Checkout as-is**, **commit as-is**, otherwise you will run into errors for vagrant. If you have already installed git but wish to set autocrlf to false, type: `git config --global core.autocrlf false`, and then **re-clone** the git repository.
+2. Open Git Bash
+3. Decide where you want the sample code to live, I put mine in my home directory
+4. Type: `git clone https://bitbucket.org/realsunlab/bigdata-bootcamp.git`
 
 ### Install Git in Mac
 With Yosemite and higher, your OS comes preinstalled with git, so you do not need this step.
-Otherwise, we highly recommend you install Git through Homebrew. To do so, please
+Otherwise, we highly recommend you install Git through [Homebrew](http://brew.sh). To do so, please
 
 1. Open `Terminal`
 2. Run `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
