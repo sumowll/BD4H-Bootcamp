@@ -133,6 +133,59 @@ As reference, [here is a link](https://asciinema.org/a/138214) shows the progres
 Hope this sharing help! If there is anything else you would like to add, please feel free to leave the message below to share, especially for window users because I am also a Mac guy. I am not sure if we are allowed to implement in different way, hope instructor or other TA could explain it. 
 
 
+# Using Zeppelin in Vagrant
+
+Please refer to [https://asciinema.org/a/138869](https://asciinema.org/a/138869) for a simple demo progress.
+
+[here](https://github.com/yuikns/bigtop-scripts/blob/master/install-zeppelin.sh) is a script to make it easier to install zeppelin. This script will check your folder in **virtual machine**, if the directory `/usr/local/zeppelin` is not exists, it will download zeppelin-0.7.2 from official repository.
+
+Because of zeppelin requires much more resources, you are supposed to update the `${bigdata-bootcamp}/vm/vagrantconfig.yaml`, and increase the value of `memory_size`.
+
+Besides, you are also required to update `Vagrantfile`, and append one line as follow:
+
+```
+bigtop.vm.network :forwarded_port, guest: 8080, host: 10080
+```
+
+Don't Panic! Please just simply update your git repository using `git pull origin fall2017` in `${bigdata-bootcamp}`
+
+And then, you can reload vagrant using `vagrant reload` in vm.
+
+Enter the vm, you can type
+
+```bash
+curl -L https://goo.gl/5g79vJ | sudo bash
+```
+
+This command will install zeppelin and related interpreters.
+
+Here are the related commands
+
+```
+sudo -u zeppelin /usr/local/zeppelin/bin/zeppelin-daemon.sh start # start zeppelin service
+sudo -u zeppelin /usr/local/zeppelin/bin/zeppelin-daemon.sh stop  # stop zeppelin service
+sudo -u zeppelin /usr/local/zeppelin/bin/zeppelin-daemon.sh status # check current status
+```
+
+Once you started your service, please check your log file "/usr/local/zeppelin/logs/*.log", it may seems as follow:
+
+```
+INFO [2017-09-20 00:39:32,023] ({main} Server.java[doStart]:327) - jetty-9.2.15.v20160210  # It may stuck here for a while, since it is loading interpreters
+INFO [2017-09-20 00:42:17,357] ({main} StandardDescriptorProcessor.java[visitServlet]:297) - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+WARN [2017-09-20 00:42:17,831] ({main} Helium.java[loadConf]:101) - /bootcamp/data/zeppelin-0.7.2-bin-all/conf/helium.json does not exists
+WARN [2017-09-20 00:42:20,744] ({main} Interpreter.java[register]:406) - Static initialization is deprecated for interpreter sql, You should change it to use interpreter-setting.json in your jar or interpreter/{interpreter}/interpreter-setting.json
+INFO [2017-09-20 00:42:29,173] ({main} ServerImpl.java[initDestination]:94) - Setting the server's publish address to be /
+INFO [2017-09-20 00:42:30,354] ({main} ContextHandler.java[doStart]:744) - Started o.e.j.w.WebAppContext@4194e3ee{/,file:/bootcamp/data/zeppelin-0.7.2-bin-all/webapps/webapp/,AVAILABLE}{/bootcamp/data/zeppelin-0.7.2-bin-all/zeppelin-web-0.7.2.war}
+INFO [2017-09-20 00:42:30,364] ({main} AbstractConnector.java[doStart]:266) - Started ServerConnector@386d562{HTTP/1.1}{0.0.0.0:8080}
+INFO [2017-09-20 00:42:30,365] ({main} Server.java[doStart]:379) - Started @179820ms
+INFO [2017-09-20 00:42:30,365] ({main} ZeppelinServer.java[main]:194) - Done, zeppelin server started # This log means the the zeppelin server is ready now
+```
+
+After the service is ready, you can visit your browser using url "localhost:10080"
+
+If you are facing any problem, please attach the related dump and log files, which could be found in `/usr/local/zeppelin/logs`.
+
+
 # Related Vagrant Operations
 
 You could connect to master node by run `vagrant ssh` in `vm` folder. You will find all materials in `/bootcamp` folder.

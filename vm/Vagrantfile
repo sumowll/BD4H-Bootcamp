@@ -89,6 +89,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     bigtop.vm.network :private_network, ip: bigtop_ip
+    bigtop.vm.network :forwarded_port, guest: 8080, host: 10080
     bigtop.vm.hostname = bigtop_hostname
 
     # three levels up is the bigtop "home" directory.
