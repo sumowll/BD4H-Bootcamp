@@ -3,7 +3,7 @@ layout: post
 title: Getting Started
 categories: [section]
 navigation:
-  section: [7, 2]
+  section: [7, 3]
 ---
 {% objective %}
 - Learn basic usage of deep learning frameworks.

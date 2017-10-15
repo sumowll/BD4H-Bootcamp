@@ -3,7 +3,7 @@ layout: post
 title: Recurrent Neural Network (Part 2)
 categories: [section]
 navigation:
-  section: [7, 6]
+  section: [7, 7]
 ---
 {% objective %}
 - Learn how to apply RNN to more complex healthcare data.

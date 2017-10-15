@@ -3,7 +3,7 @@ layout: post
 title: Deep Learning for Healthcare
 categories: [section]
 navigation:
-  section: [7, 2]
+  section: [7, 1]
 ---
 
 # ---ALPHA TEST---

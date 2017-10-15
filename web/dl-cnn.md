@@ -3,7 +3,7 @@ layout: post
 title: Convolutional Neural Network
 categories: [section]
 navigation:
-  section: [7, 4]
+  section: [7, 5]
 ---
 {% objective %}
 - Learn how to apply CNN to healthcare data.
