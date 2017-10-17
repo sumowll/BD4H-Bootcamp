@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Feedforward Neural Network
+title: Feedforward Neural Networks
 categories: [section]
 navigation:
   section: [7, 4]
