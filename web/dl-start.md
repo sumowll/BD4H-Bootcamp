@@ -33,7 +33,7 @@ We will learn the following topics in this chapter:
 * GPU Acceleration
 * Automatic differentiation with Variable
 
-Let's get started with some examples [here!](https://github.com/ast0414/CSE6250BDH-LAB-DL/blob/master/0_Intro_PyTorch.ipynb)
+Let's get started with some examples **[here!](https://github.com/ast0414/CSE6250BDH-LAB-DL/blob/master/0_Intro_PyTorch.ipynb)**
 
 <sub><sup><b id="f1">1</b> [PyTorch](pytorch.org/about/) [↩](#a1)</sup></sub>
 

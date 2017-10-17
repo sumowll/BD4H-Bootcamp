@@ -58,7 +58,7 @@ We will practice the following topics in the tutotial notebook for this chapter 
 
 We will use Epileptic Seizure Recognition Data Set which is publicly available at [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Epileptic+Seizure+Recognition) for this tutorial. Please try to read the description and download the dataset.
 
-Now, let's start in Notebook [here](https://github.com/ast0414/CSE6250BDH-LAB-DL/blob/master/2_CNN.ipynb)
+Now, let's start in Notebook **[here](https://github.com/ast0414/CSE6250BDH-LAB-DL/blob/master/2_CNN.ipynb)**
 
 <sub><sup><b id="f1">1</b> [CS231n Convolutional Neural Networks for Visual Recognition, Stanford University](http://cs231n.github.io/convolutional-networks/) [↩](#a1)</sup></sub>  
 <sub><sup><b id="f2">2</b> Lecun, Y., L. Bottou, Y. Bengio, and P. Haffner. 1998. “Gradient-Based Learning Applied to Document Recognition.” Proceedings of the IEEE 86 (11): 2278–2324. [↩](#a2)</sup></sub>  

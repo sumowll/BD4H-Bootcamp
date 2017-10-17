@@ -210,7 +210,7 @@ We will practice the following topics in the tutotial notebook for this chapter 
 
 Same as the previous chapter, we will use Epileptic Seizure Recognition Data Set which is publicly available at [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Epileptic+Seizure+Recognition) for this tutorial.
 
-Now, let's start in Notebook [here](https://github.com/ast0414/CSE6250BDH-LAB-DL/blob/master/3_RNN.ipynb)
+Now, let's start in Notebook **[here](https://github.com/ast0414/CSE6250BDH-LAB-DL/blob/master/3_RNN.ipynb)**
 
 <sub><sup><b id="f1">1</b> [Goodfellow, I., Y. Bengio, and A. Courville. 2016. “Deep Learning”, Chapter 10.](http://www.deeplearningbook.org/contents/rnn.html) [↩](#a1)</sup></sub>  
 <sub><sup><b id="f2">2</b> A. Graves. 2012. “Supervised Sequence Labelling with Recurrent Neural Networks”, Chapter 4. [↩](#a2)</sup></sub>  

@@ -34,6 +34,6 @@ We will practice the following topics in the tutotial notebook for this chapter:
 * Loss function and Optimizer
 * Basic trining iteration
 
-Let's start in Notebook [here](https://github.com/ast0414/CSE6250BDH-LAB-DL/blob/master/1_FeedforwardNet.ipynb)
+Let's start in Notebook **[here](https://github.com/ast0414/CSE6250BDH-LAB-DL/blob/master/1_FeedforwardNet.ipynb)**
 
 <sub><sup><b id="f1">1</b> http://deeplearning.net/tutorial/mlp.html. [↩](#a1)</sup></sub>
