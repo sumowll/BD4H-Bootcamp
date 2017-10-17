@@ -6,6 +6,7 @@ navigation:
   section: [7, 5]
 ---
 {% objective %}
+- Understand/Refresh the key backgrounds of CNN
 - Learn how to apply CNN to healthcare data.
 {% endobjective %}
 

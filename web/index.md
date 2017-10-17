@@ -57,10 +57,13 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 0. [Environment Setup](dl-setup)
 1. [Intro](dl-intro)
 2. [Getting Started](dl-start)
-3. [Feedforward Neural Network](dl-fnn)
-4. [Convolutional Neural Network](dl-cnn)
-5. [Recurrent Neural Network (Part 1)](dl-rnn1)
+3. [Feedforward Neural Networks](dl-fnn)
+4. [Convolutional Neural Networks](dl-cnn)
+5. [Recurrent Neural Networks](dl-rnn)
+
+<!--
 6. [Recurrent Neural Network (Part 2)](dl-rnn2)
+-->
 
 # Sponsors
 

@@ -6,6 +6,7 @@ navigation:
   section: [7, 4]
 ---
 {% objective %}
+- Understand/Refresh the key backgrounds of general neural networks.
 - Learn how to implement feed-forward neural networks.
 {% endobjective %}
 
