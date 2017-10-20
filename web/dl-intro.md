@@ -10,7 +10,7 @@ Deep learning techniques are widely used in many domains such as Computer Vision
 
 Empowered by a massive amount of healthcare data such as Electronic Health Records (EHR) or insurance claims data, deep learning techniques have been applied for healthcare applications also and have achieved succesful results <sup id="a1">[1](#f1)</sup><sup>,</sup><sup id="a2">[2](#f2)</sup><sup>,</sup><sup id="a3">[3](#f3)</sup>, even though there are some challenges different from other areas.  
 ![skin_cancer_cnn]({{ site.baseurl }}/image/DL/skin_cancer_cnn.png)  
-<sup> Classification of skin cancer with a fine-tuned Google Inception v3 CNN architecture.<sup id="a2">[2](#f2)</sup></sup>  
+<sup> Classification of skin cancer with a fine-tuned Google Inception v3 CNN architecture.<sup id="a1">[1](#f1)</sup></sup>  
 ![arrhythmia_cnn]({{ site.baseurl }}/image/DL/arrhythmia_cnn.png)  
 <sup> Arrhythmia Detection with Convolutional Neural Networks.<sup id="a3">[3](#f3)</sup></sup>
 
