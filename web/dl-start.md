@@ -16,8 +16,8 @@ PyTorch is a python package that provides two high-level features:<sup id="a1">[
 
 ## Tensor
 If you have ever used numpy in Python, you already have used Tensors (a.k.a ndarray)<sup id="a1">[1](#f1)</sup>
-![tensor_illustration]({{ site.baseurl }}/image/DL/tensor_illustration.png)
-<sup>pytorch.org</sup>
+![tensor_illustration]({{ site.baseurl }}/image/DL/tensor.png)
+<sup>Image by <https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/linear_algebra.html></sup>
 
 PyTorch provides Tensors that can be created and manipulated on both CPU and GPU. Also, it is easy to convert numpy ndarray to PyTorch Tensor and vice versa.
 
