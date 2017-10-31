@@ -60,7 +60,7 @@ If you want to directly run the tutorial notebook files, you need to run a Jupyt
 We prepared a server with a GPU on Microsoft Azure. It would be enough to follow just the lab sessions even though the server is not very powerful one.
 
 ### Access to the server
-You can directly access to the JupyterHub with pre-copied Notebooks used in entire lab sessions on your web browser. Please open your favorite web browser and move to the following address including the port number:
+You can directly access to the JupyterHub with the pre-copied Notebooks used in the entire lab sessions on your web browser. Please open your favorite web browser and move to the following address including the port number:
 
 <a href='http://52.175.231.74:8000' target='_blank'>http://52.175.231.74:8000</a>
 
@@ -76,7 +76,7 @@ Once you successfully login with the guest account, you can find the folders
 - Scratch Pads
 	- Temporary folder for guests.
 
-You can find the same notebook files used in the entire tutorials in `Deep Learning Labs` folder. Also, you can try to practice by yourself with creating a new file in `Scratch Pads` folder. Please note that we will clean up `Scratch Pads` folder occasionally without any notice.
+You can find the same notebook files used in the entire tutorials in `Deep Learning Labs` folder. Also, you can use `Scratch Pads` folder as your temporary storage. Please create a subfolder with a name `YOUR-GT-ACCOUNT` under `Scratch Pads` if you want to create a new notebook file for your own practice. Please note that we could clean up `Scratch Pads` folder occasionally without any notice.
 
 ## Native
 You can also use your native local machine as your environment if you want to.

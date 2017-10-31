@@ -21,7 +21,7 @@ Perceptron algorithm is very simple. It sums up the weighted inputs and a bias, 
 The perceptron shown above consists of a single 'layer' as it has only one layer of weighted connection between input units and output unit(s). Single-layer perceptrons (SLP) can be considered as the simplest **feed-forward network** and SLPs are only capable of learning linearly separable patterns such as 'OR' logical function. XOR functions is a simple representative problem that SLP cannot learn.
 
 ## Multi-layer Perceptron
-We can extend perceptron to have multiple layers - input layer, hidden layer(s), and output layer - and they are called multi-layer perceptrons (MLP). An example of MLP with one hidden layer is shown below.
+We can extend perceptron to have multiple layers - input layer, hidden layer(s), and output layer - and they are called multi-layer perceptron (MLP). An example of MLP with one hidden layer is shown below.
 ![mlp]({{ site.baseurl }}/image/DL/mlp.png)
 
 It is known that even a single hidden layer is sufficient to make MLPs a universal function approximator, which means single hidden layer MLPs can learn any function theoritically. However, we can experience that there are substantial benefits to using many hidden layers which is directly connected to the premise of **deep learning**.<sup id="a1">[1](#f1)</sup> It is usally said that networks are *shallow* if they have one hidden layer, *deep* if they have multiple hidden layers. 
