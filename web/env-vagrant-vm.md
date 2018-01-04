@@ -116,14 +116,14 @@ You will see
 ```
 
 which means you sucessfully connect.
- 
+
 5. After connecting with you virtual box, we need to install git:
 
-```
+```text
 $ sudo yum install git
 $ git clone https://bitbucket.org/realsunlab/bigdata-bootcamp.git
 ```
- 
+
 Now, you have the bigdata-bootcamp folder in your virtualbox system.
 You are all set to run the lab sessions.
 If you want to disconnect with the vagrant ssh, use Ctrl+D to exit the vagrant connection
@@ -131,7 +131,6 @@ If you want to disconnect with the vagrant ssh, use Ctrl+D to exit the vagrant c
 As reference, [here is a link](https://asciinema.org/a/138214) shows the progress of vagrant's starting up in macOS.
 
 Hope this sharing help! If there is anything else you would like to add, please feel free to leave the message below to share, especially for window users because I am also a Mac guy. I am not sure if we are allowed to implement in different way, hope instructor or other TA could explain it. 
-
 
 # Using Zeppelin in Vagrant
 
@@ -143,11 +142,11 @@ Because of zeppelin requires much more resources, you are supposed to update the
 
 Besides, you are also required to update `Vagrantfile`, and append one line as follow:
 
-```
+```text
 bigtop.vm.network :forwarded_port, guest: 8080, host: 10080
 ```
 
-Don't Panic! Please just simply update your git repository using `git pull origin fall2017` in `${bigdata-bootcamp}`
+Don't Panic! You can also just simply update your git repository using `git pull origin spring2018` in `${bigdata-bootcamp}`
 
 And then, you can reload vagrant using `vagrant reload` in vm.
 
@@ -161,7 +160,7 @@ This command will install zeppelin and related interpreters.
 
 Here are the related commands
 
-```
+```text
 sudo -u zeppelin /usr/local/zeppelin/bin/zeppelin-daemon.sh start # start zeppelin service
 sudo -u zeppelin /usr/local/zeppelin/bin/zeppelin-daemon.sh stop  # stop zeppelin service
 sudo -u zeppelin /usr/local/zeppelin/bin/zeppelin-daemon.sh status # check current status
@@ -169,7 +168,7 @@ sudo -u zeppelin /usr/local/zeppelin/bin/zeppelin-daemon.sh status # check curre
 
 Once you started your service, please check your log file "/usr/local/zeppelin/logs/*.log", it may seems as follow:
 
-```
+```text
 INFO [2017-09-20 00:39:32,023] ({main} Server.java[doStart]:327) - jetty-9.2.15.v20160210  # It may stuck here for a while, since it is loading interpreters
 INFO [2017-09-20 00:42:17,357] ({main} StandardDescriptorProcessor.java[visitServlet]:297) - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
 WARN [2017-09-20 00:42:17,831] ({main} Helium.java[loadConf]:101) - /bootcamp/data/zeppelin-0.7.2-bin-all/conf/helium.json does not exists
@@ -185,7 +184,6 @@ After the service is ready, you can visit your browser using url "localhost:1008
 
 If you are facing any problem, please attach the related dump and log files, which could be found in `/usr/local/zeppelin/logs`.
 
-
 # Related Vagrant Operations
 
 You could connect to master node by run `vagrant ssh` in `vm` folder. You will find all materials in `/bootcamp` folder.
@@ -196,5 +194,6 @@ After you finish, you may want to terminate the virtual cluster. You could achie
 2. Run `vagrant destroy -f` to destroy the VM.
 
 Alternatively, you may just perform a graceful shutdown (without removing all traces of the virtual machine like above) by
+
 1. Navigate to *vm* folder.
 2. Run `vagrant halt` to gracefully shutdown the VM.
