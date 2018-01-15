@@ -12,6 +12,7 @@ permalink: pretty
 #github_username: cmanul
 #facebook_username: cmanul
 #email: jsun@cc
+google_analytics: "UA-112385497-1"
 
 # Markdown
 markdown: redcarpet # kramdown #
