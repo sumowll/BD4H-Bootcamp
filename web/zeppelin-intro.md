@@ -11,20 +11,8 @@ navigation:
 
 ## You can skip this section, if you use your locally installed Zeppelin
 ## 1. Run provided Docker image
-Currently, we are using 0.04.1 for Zeppelin.
-If you have not run Docker yet, please run it first.
-Please refer to [Docker in Local OS (For Spark 2.0 or Jupyter/Zeppelin Notebook)]({{ site.baseurl }}/env-docker) for more details.
 
-Please check the actual IP assigned to the container. For example in OSX:
-```
-$ printenv  | grep "DOCKER_HOST"
-DOCKER_HOST=tcp://192.168.99.100:2376
-```
-`192.168.99.100` is assigned IP address.
-Then, start actual container, for example in OSX:
-```
-docker run -it --privileged=true -m 4096m -p 2222:22 -p 8888:8888 -p 8889:8889 -h bootcamp1.docker sunlab/bigdata:0.04.1 /bin/bash
-```
+Please prepare your docker environment and refer to [this section]({{ site.baseurl}}/env-local-docker#2-pull-and-run-docker-image) to start your zeppelin service.
 
 ### Shared Folder
 You can use shared folder between your local OS and the virtual environment on Docker.
@@ -34,35 +22,47 @@ Use `-v` option to make shared folder from an existing local folder and a folder
 -v <local_folder:vm_folder>
 ```
 You should use absolute path for `vm_folder`, but it does not need to be an existing folder. For example, if want to use `~/Data/` in my local OS as shared folder connected with `/sample_data/` in VM, I can start a container as following:
+
 ```
-docker run -it -v ~/Data/:/sample_data/ --privileged=true -m 4096m -p 2222:22 -p 8888:8888 -p 8889:8889 -h bootcamp1.docker sunlab/bigdata:0.04.1 /bin/bash
+docker run -it --privileged=true \
+  --cap-add=SYS_ADMIN \
+  -m 8192m -h bootcamp1.docker \
+  --name bigbox -p 2222:22 -p 9530:9530 -p 8888:8888\
+  -v /path/to/Data/:/sample_data/ \
+  sunlab/bigbox:latest \
+  /bin/bash
 ```
 
 ## 2. Start Zeppelin service and create HDFS folder
+
 If you have not started Zeppelin service,
+
 ```
-sudo service zeppelin start
+/scripts/start-zeppelin.sh # 
 ```
 
-We need to create a HDFS folder for the user `zeppelin` as:  
+We need to create a HDFS folder for the user `zeppelin` as:
+
 ```
-sudo su - hdfs
-hdfs dfs -mkdir /user/zeppelin
-hdfs dfs -chown zeppelin /user/zeppelin
+sudo su - hdfs # switch to user 'hdfs'
+hdfs dfs -mkdir -p /user/zeppelin # create folder in hdfs
+hdfs dfs -chown zeppelin /user/zeppelin #  change the folder owner
 exit
 ```
 You can check whether it has been created or not by using:
+
 ```
 hdfs dfs -ls /user/
 ```
 
 ## 3. Open Zeppelin Notebook in your browser
+
 Once you have started Zeppelin service and have created HDFS folder for Zeppelin, you can access Zeppelin Notebook by using your local web browser.
 
 Open your web browser, and type in the address:
 `host-ip:port-for-zeppelin`
 For example,
-`192.168.99.100:8889` since the IP address assigned to my Docker container is `192.168.99.100` as it is shown above, and the port number assigned to Zeppelin service is `8889` as default in our Docker image.
+`192.168.99.100:9530` since the IP address assigned to my Docker container is `192.168.99.100` as it is shown above, and the port number assigned to Zeppelin service is `9530` as default in our Docker image.
 
 Once you navigate to that IP address with the port number, you will see the front page of Zeppelin like:
 ![zeppelin-frontpage]({{ site.baseurl }}/image/zeppelin/frontpage.png)
