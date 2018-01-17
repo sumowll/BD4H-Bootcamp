@@ -13,7 +13,7 @@ This page is outdated, please visit [this section]({{ site.baseurl}}/env-local-d
 If we want to start this environment, we should
 
 + prepare a docker environment in local machine
-+ pull docker image sunlab/bigbox:0.04.1 or sunlab/bigdata:0.05
++ pull docker image sunlab/bigdata:0.04.1 or sunlab/bigdata:0.05
 
 ## 1. Install Docker
 
