@@ -6,14 +6,25 @@ description: Georgia Tech big data bootcamp training material
 
 This section will show you how to setup environment. Setting up Hadoop, Spark, Java, etc. for a learning can be time consuming and tedious. In order to simplify this, we provide several different approaches. 
 
-# Preliminary steps 
+# Setup Virtual Environment
+
+We provide two simple approaches for environment setup, the 1st one is preferred.
+
+1. [Docker in Local OS]({{ site.baseurl}}/env-local-docker)
+2. [Docker in Azure]({{ site.baseurl}}/env-azure-docker) (Alternative)
+
+
+# Other Steps
 
 ## Using  Terminal
+
 In this training, we reply heavily on terminal.
 
 - For *Linux* users, you are probably familiar with the terminal.
-- For  *Mac* users, you could search for the `terminal` application if you have never use that before.
+- For *Mac* users, you could search for the `terminal` application if you have never use that before.
 - For *Windows* users, please [install git](#install-git) and use the `Git Bash` application that comes with **Git for Windows**.
+
+If you wish, you can also just using git in docker, which was already installed.
 
 ## Install Git
 
@@ -39,17 +50,10 @@ Follow instructions in [Download for Linux and Unix](https://git-scm.com/downloa
 
 # Download Samples
 
-Please download sample code, data etc. from our bitbucket repository by issuing below command in a Terminal
+You can find a copy from '/bootcamp' in docker.
+
+You can also download sample code, data etc. to your host machine from our bitbucket repository by issuing below command in a Terminal
 
 ```
 git clone https://bitbucket.org/realsunlab/bigdata-bootcamp.git
 ```
-
-# Setup Virtual Environment
-
-We provide two simple approaches for environment setup, the 1st one is preferred.
-
-1. [Centos in Vagrant]({{ site.baseurl }}/env-vagrant-vm)
-2. [Docker in AWS EC2]({{ site.baseurl}}/env-aws-docker) (Alternative)
-3. [Docker in Local OS (For Spark 2.0 or Jupyter/Zeppelin Notebook)]({{ site.baseurl }}/env-docker) (Alpha)
-4.  [Docker in Azure]({{ site.baseurl}}/env-azure-docker) (Alternative)

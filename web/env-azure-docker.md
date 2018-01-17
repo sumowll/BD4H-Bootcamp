@@ -31,24 +31,25 @@ Most of the related application are already installed, you can also install othe
 For example:
 
 ```bash
-sudo apt-get install git
+sudo apt-get install git tmux
 ```
 
-and then execute
+And then, start a new docker instance
 
 ```bash
-git clone https://bitbucket.org/realsunlab/bigdata-bootcamp.git
+docker run -it --privileged=true \
+  --cap-add=SYS_ADMIN \
+  -m 6144m -h bootcamp1.docker \
+  --name bigbox -p 2222:22 -p 9530:9530 -p 8888:8888\
+  -v /:/mnt/host \
+  sunlab/bigbox:latest \
+  /bin/bash
 ```
 
-to clone related data.
+Please refer to [this section]({{ site.baseurl}}/env-local-docker#2-pull-and-run-docker-image) for some detail information.
 
-You can start docker with command 
 
-```bash
-docker run -it --privileged=true -m 4096m -h bootcamp1.docker -v $HOME/bigdata-bootcamp:/home/ec2-user/bigdata-bootcamp sunlab/bigdata:0.04.1 /bin/bash
-```
-
-Please follow [this guide](https://hub.docker.com/r/sunlab/bigdata/) to start and stop services.
-
-### Tip
+{% msginfo %}
 You may use [tmux](https://tmux.github.io/) to make your life better.
+{% endmsginfo %}
+

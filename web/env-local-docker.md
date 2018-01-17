@@ -214,6 +214,7 @@ docker run -it --privileged=true \
   --cap-add=SYS_ADMIN \
   -m 8192m -h bootcamp1.docker \
   --name bigbox -p 2222:22 -p 9530:9530 -p 8888:8888\
+  -v /:/mnt/host \
   sunlab/bigbox:latest \
   /bin/bash
 ```
@@ -258,6 +259,10 @@ Again, if you opened a new terminal session, you should run the following comman
 $ eval $(docker-machine env default)
 ```
 Then, you can visit 192.168.99.100:8888 or 192.168.99.100:9530 , or 192.168.99.100:`host-port` you changed.
+
+{% msginfo %}
+`-v /:/mnt/host` means this docker machine will mount your host machine from / to docker in /mnt/host.
+{% endmsginfo %}
 
 ## (2) Start all necessary services
 
