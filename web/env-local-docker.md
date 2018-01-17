@@ -37,10 +37,10 @@ Please refer to [this page (CentOS)](https://docs.docker.com/engine/installation
 
 In brief, after updated your system, you can simply type the follow commands:
 
-```
-$ sudo yum install docker-ce -y # install docker package
-$ sudo service  docker start # start docker service
-$ chkconfig docker on # start up automatically
+```bash
+sudo yum install docker-ce -y # install docker package
+sudo service  docker start # start docker service
+chkconfig docker on # start up automatically
 ```
 
 ### FAQ
@@ -97,12 +97,21 @@ However, here is an alternative solution.
 
 Firstly, you should make sure you have already installed [HomeBrew](http://brew.sh/).
 
-Then, you can install it using the follow commands:
+Secondly, you are supposed to make sure your brew is the updated.
 
+```bash
+brew update # update brew repository
+brew upgrade # update all packages for brew
+brew doctor # check the status of your brew, it will provide some guide to make your brew be normal
 ```
-$ brew install Caskroom/cask/virtualbox
-$ brew install docker-machine
-$ brew install docker
+
+
+Finally, you can install it using the follow commands:
+
+```bash
+brew install Caskroom/cask/virtualbox
+brew install docker-machine
+brew install docker
 ```
 
 To keep the Docker service active, we can use brew's service manager
@@ -122,8 +131,8 @@ docker-machine started name   /Users/name/Library/LaunchAgents/homebrew.mxcl.doc
 
 Create a default instance using the follow command:
 
-```
-$ docker-machine create --driver virtualbox --virtualbox-memory 8192  default
+```bash
+docker-machine create --driver virtualbox --virtualbox-memory 8192  default
 ```
 
 Please refer to [this link](https://docs.docker.com/machine/reference/create/) for some detail instruction.
@@ -131,8 +140,8 @@ Please refer to [this link](https://docs.docker.com/machine/reference/create/) f
 
 Everytime you created a new terminal window, and before you execute 'docker *', you are supposed to type the follow command:
 
-```
-$ eval $(docker-machine env default)
+```bash
+eval $(docker-machine env default)
 ```
 
 This command will append some environment variables to your current sessions.
@@ -152,6 +161,15 @@ Please make sure you have already started your session.
 2. Start docker-machine failed, can not get ip address
 
 docker-machine is conflict with vpn [AnyConnect](https://faq.oit.gatech.edu/content/how-do-i-get-started-campus-vpn), if you are using it, just disconnect it.
+
+3. If you meet an error similar to:
+
+```
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+Error: Failure while executing: git config --local --replace-all homebrew.analyticsmessage true
+```
+
+try `xcode-select --install` and then `brew update`, `brew upgrade`, and `brew doctor` again
 
 
 ## Install Docker on Windows
@@ -277,16 +295,21 @@ You can stop services if you want:
 
 
 ## (4) Detach or Exit
+
 To detach instance for keeping it up,
+
 ```
 ctrl + p, ctrl + q
 ```
+
 To exit,
+
 ```
 exit
 ```
 
 ## (5) Re-attach
+
 If you detached a instance and want to attach again,
 check the `CONTAINER ID` or `NAMES` of it.
 
