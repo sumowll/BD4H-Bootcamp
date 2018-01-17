@@ -7,29 +7,29 @@ description: Georgia Tech big data bootcamp training material
 
 {% objective %}
 
-For the purpose of normalize the envoronment, we provide a simple [docker](https://docs.docker.com/) image for you, which contains most of the software required by this course. Besides, we can easily provide a few scripts to install some optional packages.
+For the purpose of the environment normalization, we provide a simple [docker](https://docs.docker.com/) image for you, which contains most of the software required by this course. We also provide a few scripts to install some optional packages.
 
 {% endobjective %}
 
 The whole progress would seem as follow:
 
 1. Make sure you have enough resource:
-	1. It requires at least 8GiB Physical RAM, 16GiB or greater would be better
-	2. It requires at least 15GiB hard disk storage
+	1. It requires at least 8GB Physical RAM, 16GB or greater would be better
+	2. It requires at least 15GB hard disk storage
 2. Install a docker environment in local machine
 3. Start Docker Service, pull images and create a instance
 4. Just rock it!
-5. Destroy the containers and images if it is not required
+5. Destroy the containers and images if they are not required anymore
 
 # 0. System Environment
 
-You should have engough system resource if you are planning to start a container in you local os.
-You are supposed to reserve at least 4 GiB RAM to docker, and reserve some other memory to the host machine. Besides, if you only reserved 4GiB to the virtual machine, you can start all the hadoop related service except [Zeppelin](https://zeppelin.apache.org)
+You should have enough system resource if you are planning to start a container in your local OS.
+You are supposed to reserve at least 4 GB RAM for Docker, and some other memory for the host machine. While, you can still start all the Hadoop related services except [Zeppelin](https://zeppelin.apache.org), even if you only reserve 4GB for the virtual machine.
 
 
 # 1. Install Docker
 
-There is an official instruction [here](https://docs.docker.com/engine/installation/). You can also check the official documentation to get the latest news and some detail explainations.
+There is an official instruction [here](https://docs.docker.com/engine/installation/). You can check the official documentation to get the latest news and some detail explanations.
 
 ## Install Docker on RHEL/CentOS/Fedora
 
@@ -76,9 +76,9 @@ Just delete directory /var/lib/docker and restart docker service
 
 ## Install Docker on Ubuntu/Debian
 
-Please refer [this link (for ubuntu)](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/) or [this one (debian)](https://docs.docker.com/engine/installation/linux/docker-ce/debian/) for the official instructions.
+Please refer to [this link (for ubuntu)](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/) or [this one (debian)](https://docs.docker.com/engine/installation/linux/docker-ce/debian/) for the official instructions.
 
-Generally, you are supposed to add repository, and then finally
+Generally, you are supposed to add the repository, and then
 
 ```bash
 sudo apt-get install docker-ce
@@ -87,17 +87,17 @@ sudo apt-get install docker-ce
 
 ## Install Docker on macOS
 
-macOS, Windows are kind of different from Linux. They are using a third-party to host the backend VMs, using a 'docker-machine' to manage the virtual machines.
+macOS, Windows are kinds of different from Linux. They are using a third-party to host the backend VMs, using a 'docker-machine' to manage the virtual machines.
 
-Currently, docker is using virtualbox as backend.
+Currently, Docker is using VirtualBox as its backend.
 
 If you are using macOS, you could follow [this guide](https://docs.docker.com/docker-for-mac/install/). Download an image, and drag to your 'Applications' folder, click and run.
 
 However, here is an alternative solution.
 
-Firstly, you should make sure you have already installed [HomeBrew](http://brew.sh/).
+First of all, you should make sure you have already installed [HomeBrew](http://brew.sh/).
 
-Secondly, you are supposed to make sure your brew is the updated.
+Also, you are supposed to make sure your brew is up-to-date.
 
 ```bash
 brew update # update brew repository
@@ -106,7 +106,7 @@ brew doctor # check the status of your brew, it will provide some guide to make 
 ```
 
 
-Finally, you can install it using the follow commands:
+Finally, you can install VirtualBox and Docker by using the following commands:
 
 ```bash
 brew install Caskroom/cask/virtualbox
@@ -129,7 +129,7 @@ Name           Status  User Plist
 docker-machine started name   /Users/name/Library/LaunchAgents/homebrew.mxcl.docker-machine.plist
 ```
 
-Create a default instance using the follow command:
+Create a default instance using the following command:
 
 ```bash
 docker-machine create --driver virtualbox --virtualbox-memory 8192  default
@@ -138,7 +138,7 @@ docker-machine create --driver virtualbox --virtualbox-memory 8192  default
 Please refer to [this link](https://docs.docker.com/machine/reference/create/) for some detail instruction.
 
 
-Everytime you created a new terminal window, and before you execute 'docker *', you are supposed to type the follow command:
+Every time you created a new terminal window, and before you execute any command of 'docker *', you are supposed to run the following command:
 
 ```bash
 eval $(docker-machine env default)
@@ -176,7 +176,7 @@ try `xcode-select --install` and then `brew update`, `brew upgrade`, and `brew d
 
 An official guide for Docker for Windows could be found [here](https://docs.docker.com/docker-for-windows/install/)
 
-Docker for Windows requires Windows 10 Pro or Enterpriise version 1586/2016 RTM. 
+Docker for Windows requires Windows 10 Pro or Enterprise version 1586/2016 RTM. 
 
 <a>
 ![]({{ site.baseurl }}/image/docker/docker-for-windows-10-pre-reqyusute-not-fullfilled.png)
@@ -184,7 +184,7 @@ Docker for Windows requires Windows 10 Pro or Enterpriise version 1586/2016 RTM.
 
 You may only able to install [Docker Toolbox on Windows](https://docs.docker.com/toolbox/toolbox_install_windows/) instead.
 
-Going to the instruction page, click '[Get Docker Toolbox for Windows](https://download.docker.com/win/stable/DockerToolbox.exe)', you will download a installer. You are supposed to install docker and virtualbox during this wizard.
+Going to the instruction page, click '[Get Docker Toolbox for Windows](https://download.docker.com/win/stable/DockerToolbox.exe)', you will download a installer. You are supposed to install Docker and VirtualBox during this wizard.
 
 <a>
 ![]({{ site.baseurl }}/image/docker/terminal-and-virtualbox.png)
@@ -224,7 +224,7 @@ In general, the synopsis of `docker run` is
 docker run [options] image[:tag|@digest] [command] [args]
 ```
 
-If you are interested in the detail explaination of the args, please visit [this link](https://docs.docker.com/engine/reference/run/)
+If you are interested in the detail explanation of the args, please visit [this link](https://docs.docker.com/engine/reference/run/)
 
 Specifically, we use:
 
@@ -252,8 +252,12 @@ After started those services, you can access each Notebook with your local web b
 $ printenv  | grep "DOCKER_HOST"
 DOCKER_HOST=tcp://192.168.99.100:2376
 ```
+Again, if you opened a new terminal session, you should run the following command first to check the IP from the command above. Otherwise, nothing will be shown.
 
-and then, you can visit 192.168.99.100:8888 or 192.168.99.100:9530 , or 192.168.99.100:`host-port` you changed.
+```bash
+$ eval $(docker-machine env default)
+```
+Then, you can visit 192.168.99.100:8888 or 192.168.99.100:9530 , or 192.168.99.100:`host-port` you changed.
 
 ## (2) Start all necessary services
 
@@ -261,28 +265,28 @@ and then, you can visit 192.168.99.100:8888 or 192.168.99.100:9530 , or 192.168.
 /scripts/start-services.sh
 ```
 
-If you wish to host zeppelin, you should install it first using command:
+If you wish to host Zeppelin, you should install it first by using the command:
 
 ```
 /scripts/install-zeppelin.sh
 ```
 
-And start you service using command:
+and start the service by using command:
 
 ```
 /scripts/start-zeppelin.sh
 ```
 
-Zeppelin will listen port `9530`
+then, Zeppelin will listen the port `9530`
 
 
-If you wish to host jupyter, you can start it using command:
+If you wish to host Jupyter, you can start it by using command:
 
 ```
 /scripts/start-jupyter.sh
 ```
 
-Zeppelin will listen port `8888`
+Jupyter will listen the port `8888`
 
 
 ## (3) Stop all services
