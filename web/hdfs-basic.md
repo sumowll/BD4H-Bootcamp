@@ -19,17 +19,17 @@ Hadoop provides a command line utility `hdfs` to interact with HDFS. Basic opera
 ## Create home directory
 When you use HDFS for the first time, it's likely that your home directory in HDFS has not been created yet. Your home directory in HDFS is `/user/<username>/` by default. In the environment that we provide, there's a special user `hdfs` who is an HDFS administrator and has the permission to create new home directories.
 
-First cd into bigdata-bootcamp/vm and run vagrant up followed by vagrant ssh. You will then need to switch to the `hdfs` user via
+First, you will need to switch to the `hdfs` user via
 ``` bash
 > sudo su - hdfs
 ```
 Then, you can create a directory and change ownership of the newly created folder
 ```
-> hdfs dfs -mkdir /user/<username>
+> hdfs dfs -mkdir -p /user/<username>
 > hdfs dfs -chown <username> /user/<username>
 ```
-Please remember to change `<username>` to your actual linux user name (i.e. *user2*). Finally switch back to your user with `exit`.
-Note: the username needs to correspond to the machine (i.e. whatever is in front of the @). If your machine is vagrant@bigtop1 then set username to vagrant.
+Please remember to change `<username>` to your actual linux user name. Currently, the default user of our Docker image is `root`. Since it is a virtual environment, you don't need to worry about using `root` user and its permission. After you create the folder, switch back to your user with `exit`.
+
 ## Create directory
 Similar to creating local directory via linux command `mkdir`, creating a folder named `input` in HDFS use
 ```
