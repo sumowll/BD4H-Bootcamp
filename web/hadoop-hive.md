@@ -39,6 +39,27 @@ OK
 Time taken: 0.289 seconds
 hive> 
 ```
+
+{% msginfo %}
+If you meet error like:
+
+```
+AccessControlException Permission denied: user=root, access=WRITE, inode="/user/hive/warehouse/events"
+	:hdfs:supergroup:drwxr-xr-x
+```
+
+You can simply create this folder via hdfs and invoke it to your current user.
+
+Currently, we are using 'root' in the docker image.
+
+```
+sudo -u hdfs hdfs dfs -mkdir -p /user/hive/warehouse
+sudo -u hdfs hdfs dfs -chown -R root /user/hive
+```
+
+{% endmsginfo %}
+
+
 And you can check existing tables and schema with the commands `SHOW TABLES;` and `DESCRIBE table_name;` respectively.
 ``` sql
 hive> SHOW TABLES;
