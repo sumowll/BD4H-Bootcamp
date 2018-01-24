@@ -328,11 +328,20 @@ CONTAINER ID        IMAGE                  COMMAND                CREATED       
 011547e95ef5        sunlab/bigbox:latest   "/tini -- /bin/bash"   6 hours ago         Up 4 seconds        0.0.0.0:8888->8888/tcp, 0.0.0.0:9530->9530/tcp, 0.0.0.0:2222->22/tcp   bigbox
 ```
 
+If the "STATUS" column is similar to "Exited (0) 10 hours ago", you are supposed to start the container again.
+
+```
+$ docker start <CONTAINER ID or NAMES>
+```
+
 Then attach it by:
 
 ```
 $ docker attach <CONTAINER ID or NAMES>
 ```
+
+Every time you restart your container, you are supposed to start all those services again before any HDFS related operations.
+
 
 ## (5) Destroy instance
 

@@ -16,6 +16,8 @@ This section shows the basic usage of Hadoop Hive. Hive uses a SQL-like language
 
 # Interactive shell
 In the sample code below we will continue to use the same event tuple [patient data]({{ site.baseurl }}/data/). Let's start the Hive CLI interactive shell first by typing `hive` in the command line.
+
+
 ```bash
 > cd bigdata-bootcamp/sample/hive
 > hive
@@ -23,6 +25,8 @@ In the sample code below we will continue to use the same event tuple [patient d
 [info]
 hive> 
 ```
+Note: If you are using docker image, it was pre-cloned to "/bootcamp" , and you can simply go to "bootcamp/sample/hive" instead.
+
 
 # Create table
 Before loading data, we first need to define a table just like we would if we were working with a database server such as SQL.
@@ -61,6 +65,7 @@ sudo -u hdfs hdfs dfs -chown -R root /user/hive
 
 
 And you can check existing tables and schema with the commands `SHOW TABLES;` and `DESCRIBE table_name;` respectively.
+
 ``` sql
 hive> SHOW TABLES;
 OK
@@ -76,7 +81,9 @@ Time taken: 0.221 seconds, Fetched: 4 row(s)
 ```
 
 # Load data
+
 Next we'll insert data into the table.
+
 ```sql
 hive> LOAD DATA LOCAL INPATH 'data'
       OVERWRITE INTO TABLE events;
@@ -85,6 +92,9 @@ Table default.events stats: [numFiles=2, numRows=0, totalSize=1208972, rawDataSi
 OK
 Time taken: 0.521 seconds
 ```
+
+This command will try to load every files from "data/" as csv format, and save to table events. Please have a double check of the directory, make sure there are only *.csv files, and move other unrelated files away.
+
 
 # Query
 ## Basic
@@ -133,6 +143,7 @@ Besides running commands with the interactive shell, you can also run a script i
 ```
 
 This script simply contains all of the commands that we ran in the shell, with one additional statement to drop the existing table if necessary:
+
 ``` sql
 DROP TABLE IF EXISTS events;
 
