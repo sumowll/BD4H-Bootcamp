@@ -546,5 +546,7 @@ scala> List(1,2,3,4,5).grouped(2)
 res13: Iterator[List[Int]] = Iterator(List(1, 2), List(3, 4), List(5))
 ```
 
-Credit to Yu Jing PDF(with copyright issue): https://doc.argcv.com/scala/Programming.in.Scala.2ed.pdf 
+You can visit [this PDF](https://www.scala-lang.org/docu/files/ScalaByExample.pdf) for an official guide.
+
+We also highly recomended to read the book [Programming in Scala](https://www.amazon.com/dp/B004Z1FTXS) for more detail instruction.
 
