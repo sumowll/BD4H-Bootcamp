@@ -166,6 +166,15 @@ Variable `host-src` accepts absolute path only.
 
 Once you enter this docker environment, you can ping this docker environment itself as `bootcamp1.docker`. This variable is used in some configuration files for Hadoop ecosystems.
 
+> -m 8192m
+
+Memory limit (format: `<number>[<unit>]`). Number is a positive integer. Unit can be one of `b`, `k`, `m`, or `g`.
+
+This docker image requires at least 4G RAM, 8G RAM is recommended. However, if your local Physical Machine has ONLY 8G RAM, you are recommended to reduce this number to 4G.
+
+Local machine is not the same as the remote server. If you are launching a remote server with 8G RAM, you can set this number as 7G.
+
+
 If you are interested in the detail explanation of the args, please visit [this link](https://docs.docker.com/engine/reference/run/)
 
 
@@ -321,12 +330,12 @@ MemAvailable:    5113340 kB
 model name	: Intel(R) Core(TM) i7-7920HQ CPU @ 3.10GHz
 # cat /proc/cpuinfo  | grep 'model name' | wc -l # CPU Count
 4
-# df -h # Current Hard Disk Usage
+# df -h # List Current Hard Disk Usage
 Filesystem      Size  Used Avail Use% Mounted on
 overlay          32G  4.6G   26G  16% /
 tmpfs            64M     0   64M   0% /dev
 ...
-# ps -ef # Current Running Process
+# ps -ef # List Current Running Process
 UID        PID  PPID  C STIME TTY          TIME CMD
 root         1     0  0 01:38 pts/0    00:00:00 /tini -- /bin/bash
 root         7     1  0 01:38 pts/0    00:00:00 /bin/bash
@@ -334,21 +343,21 @@ root        77     1  0 01:43 ?        00:00:00 /usr/sbin/sshd
 zookeep+   136     1  0 01:43 ?        00:00:14 /usr/lib/jvm/java-openjdk/bin/java -Dzookeeper.log.dir=/var/log/zookeeper -Dzookeeper.root.logger=INFO,ROLLINGFILE -cp /usr/lib/zookeeper/bin/../build/classes:/
 yarn       225     1  0 01:43 ?        00:00:13 /usr/lib/jvm/java/bin/java -Dproc_proxyserver -Xmx1000m -Dhadoop.log.dir=/var/log/hadoop-yarn -Dyarn.log.dir=/var/log/hadoop-yarn -Dhadoop.log.file=yarn-yarn-pr
 ...
-# lsof -i:9530 # Check Process Listening Some Specific Port
+# lsof -i:9530 # Find the Process Listening to Some Specific Port
 COMMAND  PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 java    3165 zeppelin  189u  IPv4 229945      0t0  TCP *:9530 (LISTEN)
 ```
 
 ## Logs
 
-+ hadoop-hdfs -- /var/log/hadoop-hdfs/*
-+ hadoop-mapreduce  -- /var/log/hadoop-mapreduce/*
-+ hadoop-yarn -- /var/log/hadoop-yarn/*
-+ hbase  --  /var/log/hbase/*
-+ hive  -- /var/log/hive/*
-+ spark  -- /var/log/spark/*
-+ zookeeper -- /var/log/zookeeper/*
-+ zeppelin -- /usr/local/zeppelin/logs/*
++ **hadoop-hdfs** -- /var/log/hadoop-hdfs/*
++ **hadoop-mapreduce**  -- /var/log/hadoop-mapreduce/*
++ **hadoop-yarn** -- /var/log/hadoop-yarn/*
++ **hbase**  --  /var/log/hbase/*
++ **hive**  -- /var/log/hive/*
++ **spark**  -- /var/log/spark/*
++ **zookeeper** -- /var/log/zookeeper/*
++ **zeppelin** -- /usr/local/zeppelin/logs/*
 
 ## Misc.
 
