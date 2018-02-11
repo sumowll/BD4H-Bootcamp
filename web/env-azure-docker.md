@@ -49,6 +49,7 @@ In this case, you could unlocked more options in Azure Instance Type. Whatever y
 3. Select your instances from “Virtual machines (classic)”, “Cloud service” or "Virtual machines" depends on your choise
 4. find Public IP addresses in “Overview”
 5. Login via command “ssh your-username@public-ip” in *nix or using putty for windows
+6. (If you are using option 2), [Install Docker in Linux]({{ site.baseurl}}/env-local-docker-linux/)
 
 ### Start a docker container
 
