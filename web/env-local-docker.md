@@ -13,7 +13,7 @@ For the purpose of the environment normalization, we provide a simple [docker](h
 
 The whole progress would seem as follow:
 
-1. Make sure you have enough resource:
+1. **Make sure you have enough resource**:
 	1. It requires at least 8GB Physical RAM, 16GB or greater would be better
 	2. It requires at least 15GB hard disk storage
 2. Install a docker environment in local machine
@@ -21,189 +21,94 @@ The whole progress would seem as follow:
 4. Just rock it!
 5. Destroy the containers and images if they are not required anymore
 
+{% msgwarning %}
+
+Since this docker image integrated a lot of related services for the course, it requires at least 4GB RAM for this virtual machine. If your can meet the minimum requirement, the system could randomly kill one or a few process due to resource limitation, which causes a lot of strange errors which is even unable to reproduce.
+
+**DON'T TRY TO DO THAT.**
+
+{% endmsgwarning %}
+
+
 # 0. System Environment
 
 You should have enough system resource if you are planning to start a container in your local OS.
+
 You are supposed to reserve at least 4 GB RAM for Docker, and some other memory for the host machine. While, you can still start all the Hadoop related services except [Zeppelin](https://zeppelin.apache.org), even if you only reserve 4GB for the virtual machine.
 
 
 # 1. Install Docker
 
-There is an official instruction [here](https://docs.docker.com/engine/installation/). You can check the official documentation to get the latest news and some detail explanations.
+Docker is a software technology providing operating-system-level virtualization also known as containers, promoted by the company [Docker, Inc.](docker.com). Docker uses the resource isolation features of the Linux kernel such as cgroups and kernel namespaces, and a union-capable file system such as OverlayFS and others to allow independent "containers" to run within a single Linux instance, avoiding the overhead of starting and maintaining virtual machines (VMs). (from [Wikipedia](https://en.wikipedia.org/wiki/Docker_(software)))
 
-## Install Docker on RHEL/CentOS/Fedora
+Basically, you can treat docker as a lightweight virtual machine hosted on Linux with a pretty high performance.
 
-Please refer to [this page (CentOS)](https://docs.docker.com/engine/installation/linux/docker-ce/centos/) (or [this](https://docs.docker.com/engine/installation/linux/docker-ce/fedora/) for fedora) for the guide.
+The principle of setting up a docker environment is pretty straightforward.
 
-In brief, after updated your system, you can simply type the follow commands:
++ IF your operating system is Linux, you are supposed to install docker service directly
++ IF your operating system is mac OS, Windows,  FreeBSD, and so on, you are supposed to install a virtual machine, start a special configured Linux system which hosts a Docker service. You will control the dockers using remote tool
 
-```bash
-sudo yum install docker-ce -y # install docker package
-sudo service  docker start # start docker service
-chkconfig docker on # start up automatically
-```
+There is an official instruction from [this link](https://docs.docker.com/engine/installation/). You can check the official documentation to get the latest news and some detail explanations.
 
-### FAQ
 
-1. If your SELinux and BTRFS are on working, you may meet an error message as follow:
++ [Install Docker In Linux]({{ site.baseurl }}/env-local-docker-linux)
++ [Install Docker In macOS]({{ site.baseurl }}/env-local-docker-macos)
++ [Install Docker In Microsoft Windows]({{ site.baseurl }}/env-local-docker-windows)
 
-```
-# systemctl status docker.service -l
-...
-SELinux is not supported with the BTRFS graph driver!
-...
-```
+Once the docker installed, you should get a few commands start from docker and able to start your docker service, and launch your docker container.
 
-Modify /etc/sysconfig/docker as follow:
++ docker - a tool to control docker
++ docker-machine -  a tool that lets you install Docker Engine on virtual hosts, and manage the hosts in remote
++ docker-compose - a tool for defining and running multi-container Docker applications
 
-```
-# Modify these options if you want to change the way the docker daemon runs
-#OPTIONS='--selinux-enabled'
-OPTIONS=''
-...
-```
-
-Restart your docker service
-
-2. Storage Issue:
-Error message found in /var/log/upstart/docker.log
-
-```
-[graphdriver] using prior storage driver \"btrfs\"...
-```
-
-Just delete directory /var/lib/docker and restart docker service
-
-## Install Docker on Ubuntu/Debian
-
-Please refer to [this link (for ubuntu)](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/) or [this one (debian)](https://docs.docker.com/engine/installation/linux/docker-ce/debian/) for the official instructions.
-
-Generally, you are supposed to add the repository, and then
+If we are using VirtualBox + Windows/macOS, the theory is pretty clear: we created a Linux instance in "virtual remote", and control it using docker-machine. If we are supposed to operate the "remote docker service", we are supposed to prepare a set of environment variables. We can list it using command:
 
 ```bash
-sudo apt-get install docker-ce
+docker-machine env default
 ```
 
-
-## Install Docker on macOS
-
-macOS, Windows are kinds of different from Linux. They are using a third-party to host the backend VMs, using a 'docker-machine' to manage the virtual machines.
-
-Currently, Docker is using VirtualBox as its backend.
-
-If you are using macOS, you could follow [this guide](https://docs.docker.com/docker-for-mac/install/). Download an image, and drag to your 'Applications' folder, click and run.
-
-However, here is an alternative solution.
-
-First of all, you should make sure you have already installed [HomeBrew](http://brew.sh/).
-
-Also, you are supposed to make sure your brew is up-to-date.
-
-```bash
-brew update # update brew repository
-brew upgrade # update all packages for brew
-brew doctor # check the status of your brew, it will provide some guide to make your brew be normal
-```
-
-
-Finally, you can install VirtualBox and Docker by using the following commands:
-
-```bash
-brew install Caskroom/cask/virtualbox
-brew install docker-machine
-brew install docker
-```
-
-To keep the Docker service active, we can use brew's service manager
-
-```
-$ brew services start docker-machine
-==> Successfully started `docker-machine` (label: homebrew.mxcl.docker-machine)
-```
-
-Check the status:
-
-```
-$ brew services list
-Name           Status  User Plist
-docker-machine started name   /Users/name/Library/LaunchAgents/homebrew.mxcl.docker-machine.plist
-```
-
-Create a default instance using the following command:
-
-```bash
-docker-machine create --driver virtualbox --virtualbox-memory 8192  default
-```
-
-Please refer to [this link](https://docs.docker.com/machine/reference/create/) for some detail instruction.
-
-
-Every time you created a new terminal window, and before you execute any command of 'docker *', you are supposed to run the following command:
+This is the reason that why do we have to execute the follow command to access the docker.
 
 ```bash
 eval $(docker-machine env default)
 ```
 
-This command will append some environment variables to your current sessions.
 
+{% msginfo %}
+If you are using docker-machine, you can not reach the port from virtual machine using ip 127.0.0.1 (localhost). As replacement, you should extract the IP using this command:
 
-### FAQ
-
-1. Can not connect to docker:
-
-```
-$ docker ps -a
-Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+```bash
+$ printenv  | grep "DOCKER_HOST"
+DOCKER_HOST=tcp://192.168.99.100:2376
 ```
 
-Please make sure you have already started your session.
+And then you should visit `192.168.99.100` instead of `127.0.0.1` to visit the network stream from virtual machine.
+{% endmsginfo %}
 
-2. Start docker-machine failed, can not get ip address
+If these environment are unsetted, docker will try to connect to the default unix socket file `/var/run/docker.sock`.
 
-docker-machine is conflict with vpn [AnyConnect](https://faq.oit.gatech.edu/content/how-do-i-get-started-campus-vpn), if you are using it, just disconnect it.
+As a Docker.app user, this file is: 
 
-3. If you meet an error similar to:
-
+```bash
+$ ls -alh /var/run/docker.sock
+lrwxr-xr-x  1 root  daemon    55B Feb 10 19:09 /var/run/docker.sock -> /Users/yu/Library/Containers/com.docker.docker/Data/s60
+$ ls -al /Users/yu/Library/Containers/com.docker.docker/Data/s60
+srwxr-xr-x  1 yu  staff  0 Feb 10 19:09 /Users/yu/Library/Containers/com.docker.docker/Data/s60
 ```
-xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
-Error: Failure while executing: git config --local --replace-all homebrew.analyticsmessage true
+
+As a Linux user, the situation is slightly different:
+
+```bash
+$ ls -al /var/run/docker.sock
+srw-rw---- 1 root root 0 Feb 11 11:35 /var/run/docker.sock
 ```
 
-try `xcode-select --install` and then `brew update`, `brew upgrade`, and `brew doctor` again
-
-
-## Install Docker on Windows
-
-An official guide for Docker for Windows could be found [here](https://docs.docker.com/docker-for-windows/install/)
-
-Docker for Windows requires Windows 10 Pro or Enterprise version 1586/2016 RTM. 
-
-<a>
-![]({{ site.baseurl }}/image/docker/docker-for-windows-10-pre-reqyusute-not-fullfilled.png)
-</a>
-
-You may only able to install [Docker Toolbox on Windows](https://docs.docker.com/toolbox/toolbox_install_windows/) instead.
-
-Going to the instruction page, click '[Get Docker Toolbox for Windows](https://download.docker.com/win/stable/DockerToolbox.exe)', you will download a installer. You are supposed to install Docker and VirtualBox during this wizard.
-
-<a>
-![]({{ site.baseurl }}/image/docker/terminal-and-virtualbox.png)
-</a>
-
-Click 'Docker Quickstart Terminal', you should able to start a bash session. Close it, click virtual box. You may find there is one virtual machine is in running. Close this machine, update the maximum base memory. 
-
-<a>
-![]({{ site.baseurl }}/image/docker/poweroff-vm.png)
-</a>
-
-<a>
-![]({{ site.baseurl }}/image/docker/set-max-ram.png)
-</a>
-
-Click the 'Docker Quickstart Terminal' and your docker is ready.
-
+{% msginfo %}
+A Linux user **must** add a "sudo" before command `docker` since he has no access to `docker.sock` as an ordinary user.
+{% endmsginfo %}
 
 # 2. Pull and run Docker image
+
 
 ## (1) Start the container with:
 
@@ -225,50 +130,68 @@ In general, the synopsis of `docker run` is
 docker run [options] image[:tag|@digest] [command] [args]
 ```
 
+Here is a case study to the options:
+
+> -p host-port:vm-port
+
+This option is used to map the TCP port `vm-port` in the container to port `host-port` on the Docker host.
+
+Currently, `vm-port`s are reserved to:
+
++ 8888 - Jupyter Notebook
++ 9530 - Zeppelin Notebook
+
+Once you started the Zeppelin service, this service will keep listening port `9530` in docker. You should able to visit this service using `http://127.0.0.1:9530` or `http://DOCKER_HOST_IP:9530`.
+
+This remote IP depends on the Docker Service you are running, which has already described above.
+
++ If you are using Linux or Docker.app in macOS, you just need to visit "localhost:9530", or other port numbers if you changed `host-port`
++ If you are using VirtualBox + macOS or Windows, you should get the Docker's IP first
+
+> -v, --volume=[host-src:]container-dest[:&lt;options&gt;]
+
+This option is used to bind mount a volume.
+
+Currently, we are using `-v /:/mnt/host`. In this case, we can visit the root of your file system for your host machine. If you are using macOS, `/mnt/host/Users/<yourname>/` would be the `$HOME` of your MacBook. If you are using Windows, you can reach your `C:` disk from `/mnt/host/c` in docker.
+
+Variable `host-src` accepts absolute path only.
+
+
+> -it
+
++ -i              : Keep STDIN open even if not attached
++ -t              : Allocate a pseudo-tty
+
+> -h bootcamp1.docker
+
+Once you enter this docker environment, you can ping this docker environment itself as `bootcamp1.docker`. This variable is used in some configuration files for Hadoop ecosystems.
+
 If you are interested in the detail explanation of the args, please visit [this link](https://docs.docker.com/engine/reference/run/)
 
-Specifically, we use:
-
-```
--p host-port:vm-port
-```
-
-To forward the network stream from docker to host.
-
-means you will visit `host-port` in your host environment and it will forward the message to `vm-port` in docker container. You can change this parameter `host-port` if you meet error like "port already in use".
-
-`vm-port`s are reserved to:
-
-```
-8888 - Jupyter Notebook
-9530 - Zeppelin Notebook
-```
-
-After started those services, you can access each Notebook with your local web browser.
-
-+ If you are using Linux, you just need to visit "localhost:8888", or other port number if you changed `host-port`
-+ If you are using macOS or Windows, you should get the Docker's IP first with command as follow:
-
-```bash
-$ printenv  | grep "DOCKER_HOST"
-DOCKER_HOST=tcp://192.168.99.100:2376
-```
-Again, if you opened a new terminal session, you should run the following command first to check the IP from the command above. Otherwise, nothing will be shown.
-
-```bash
-$ eval $(docker-machine env default)
-```
-Then, you can visit 192.168.99.100:8888 or 192.168.99.100:9530 , or 192.168.99.100:`host-port` you changed.
-
-{% msginfo %}
-`-v /:/mnt/host` means this docker machine will mount your host machine from / to docker in /mnt/host.
-{% endmsginfo %}
 
 ## (2) Start all necessary services
+
+In generally, when you are in front of the command line interface, you will meet 2 kinds of prompt.
+
+```bash
+# whoami  # this prompt is '#' 
+			#indices you are root aka the administrator of this environment now
+root
+$ whoami # this promot is '$' indices you are a ordinary user now
+yu
+```
+
+Of course, it is pretty easy to change, you can simply update the environment variable `PS1`.
+
+Assumption: every script is executed by `root`.
+
 
 ```
 /scripts/start-services.sh
 ```
+
+This script will help you start a the services for Hadoop ecosystems. You may meet "Connection Refused" exception if you did something else before started these services.
+
 
 If you wish to host Zeppelin, you should install it first by using the command:
 
@@ -283,6 +206,8 @@ and start the service by using command:
 ```
 
 then, Zeppelin will listen the port `9530`
+
+Note: Please keep all the service are running before installing/starting Zeppelin.
 
 
 If you wish to host Jupyter, you can start it by using command:
@@ -360,11 +285,7 @@ List images first
 ```
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-sunlab/bigbox       latest              4d3f9f826f10        16 hours ago        2.48GB
-centos              7                   ff426288ea90        8 days ago          207MB
-centos              latest              ff426288ea90        8 days ago          207MB
-debian              stretch             da653cee0545        5 weeks ago         100MB
-sunlab/bigdata      0.04                694cab7752ba        24 months ago       3.29GB
+sunlab/bigbox       latest              bfd258e00de3        16 hours ago        2.65GB
 ```
 
 Remove them by REPOSITORY or IMAGE ID using command:
@@ -372,5 +293,128 @@ Remove them by REPOSITORY or IMAGE ID using command:
 ```
 $ docker rmi <REPOSITORY or IMAGE ID>
 ```
+
+## (7) Update images
+
+```
+$ docker pull sunlab/bigbox
+```
+
+
+## (8) Doc
+
+Please refer to [this link](https://docs.docker.com/v17.09/engine/userguide/storagedriver/imagesandcontainers/) for the introduction of images, containers, and storage drivers.
+
+
+
+# 3. Logs and Diagnosis
+
+
+## System Configurations
+
+```
+# cat /proc/meminfo  | grep Mem # Current Memory
+MemTotal:        8164680 kB # Note: This value shoud no less than 4GB
+MemFree:          175524 kB
+MemAvailable:    5113340 kB
+# cat /proc/cpuinfo  | grep 'model name' | head -1  # CPU Brand
+model name	: Intel(R) Core(TM) i7-7920HQ CPU @ 3.10GHz
+# cat /proc/cpuinfo  | grep 'model name' | wc -l # CPU Count
+4
+# df -h # Current Hard Disk Usage
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          32G  4.6G   26G  16% /
+tmpfs            64M     0   64M   0% /dev
+...
+# ps -ef # Current Running Process
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 01:38 pts/0    00:00:00 /tini -- /bin/bash
+root         7     1  0 01:38 pts/0    00:00:00 /bin/bash
+root        77     1  0 01:43 ?        00:00:00 /usr/sbin/sshd
+zookeep+   136     1  0 01:43 ?        00:00:14 /usr/lib/jvm/java-openjdk/bin/java -Dzookeeper.log.dir=/var/log/zookeeper -Dzookeeper.root.logger=INFO,ROLLINGFILE -cp /usr/lib/zookeeper/bin/../build/classes:/
+yarn       225     1  0 01:43 ?        00:00:13 /usr/lib/jvm/java/bin/java -Dproc_proxyserver -Xmx1000m -Dhadoop.log.dir=/var/log/hadoop-yarn -Dyarn.log.dir=/var/log/hadoop-yarn -Dhadoop.log.file=yarn-yarn-pr
+...
+# lsof -i:9530 # Check Process Listening Some Specific Port
+COMMAND  PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+java    3165 zeppelin  189u  IPv4 229945      0t0  TCP *:9530 (LISTEN)
+```
+
+## Logs
+
++ hadoop-hdfs -- /var/log/hadoop-hdfs/*
++ hadoop-mapreduce  -- /var/log/hadoop-mapreduce/*
++ hadoop-yarn -- /var/log/hadoop-yarn/*
++ hbase  --  /var/log/hbase/*
++ hive  -- /var/log/hive/*
++ spark  -- /var/log/spark/*
++ zookeeper -- /var/log/zookeeper/*
++ zeppelin -- /usr/local/zeppelin/logs/*
+
+## Misc.
+
+### User and Role
+
+```
+[root@bootcamp1 /]# su hdfs  # This command is used to switch your current user to hdfs
+					# Note: switch user requires special permission
+					# You can not switch back using su root again
+bash-4.2$ whoami # check current user
+hdfs
+bash-4.2$ exit # role is a stack, you can quit your role from hdfs to root
+[root@bootcamp1 /]#
+[root@bootcamp1 /]# sudo -u hdfs whoami # execute a command 'whoami' using user 'hdfs'
+hdfs
+[root@bootcamp1 /]#
+
+```
+
+User `hdfs` is the super user in HDFS system. User `root` is the super user in Linux system.
+
+```
+[root@bootcamp1 /]# sudo -u hdfs hdfs dfs -mkdir /tmp
+```
+
+In this case, user root has no permission to write data in `/`, but it could ask user hdfs to process it. 
+
+### Relative Path and Absolute Path
+
+An absolute or full path points to the same location in a file system, regardless of the current working directory. To do that, it must include the root directory. [wiki](https://en.wikipedia.org/wiki/Path_(computing)#Absolute_and_relative_paths).
+
+When we are talking about `/mnt/host`, it always pointing to the path `/mnt/host`. However, if the path is not startswith "/", it means to start from "current working path".
+
+In Linux system, you can get your "current working path" using command 
+
+```
+# pwd
+/root
+```
+
+In HDFS system, the "current working path" would be `/user/<your-name>`.
+
+A relative path would be the result of `cwd` plus your string.
+
+When we are coding in hadoop, we may required to fill in a location pointing to the path of input files. The synopsis of this path is is 
+
+`[schema://]your-path`
+
+An HDFS path `hdfs:///hw1/test.csv` is combined by `hdfs://` and  `/hw1/test.csv`. There are 3 slashes over there. If you only filled 2 slashes over there (`hdfs://hw1/test.csv`), it is equal to `hdfs:///user/root/hw1/test.csv`, which may not be expected.
+
+Ditto for `file:///path/to/your/local/file.csv`.
+
+### Other Linux Commands
+
+This environment is based on CentOS 7. This course does not requires you have too much knowledge in Linux, but if you can use some basic commands, that would be better.
+
+If you are interested, please refer to [this link](https://files.fosswire.com/2007/08/fwunixref.pdf) for a Unix/Linux Command Cheat Sheet.
+
+
+
+
+
+
+
+
+
+
 
 
