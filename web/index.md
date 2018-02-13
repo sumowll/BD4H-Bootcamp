@@ -36,6 +36,7 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 3. [Spark Application](spark-application)
 4. [Spark MLlib](spark-mllib)
 5. [Spark GraphX](spark-graphx)
+6. [Spark Gotchas](spark-gotchas)
 
 ## Zeppelin
 1. [Zeppelin Intro](zeppelin-intro)
