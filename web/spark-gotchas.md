@@ -31,10 +31,8 @@ case class Test(x: String)
 
 object ObjectMemberIssue {
 
-	{% comment %}
 	// When foo is accessed via a map operation (transformation) on a worker
 	// it will be null
-	{% endcomment %}
 	var foo: String = null
 
 	def main(args: Array[String]) : Unit = {
@@ -47,13 +45,11 @@ object ObjectMemberIssue {
 
 		val dsOfStrings = (1 to 100).map(new Test(_.toString)).toDS()
 
-		{% comment %}
 		// This will produce a NullPointerException on the worker which will
 		// cause it to die if the job is not running in local mode in the same JVM
 		// as the driver.  In cluster mode (standalone or otherwise) MemberIssue
 		// will be serialized in its default state to the worker causing 
 		// the access of foo and the append to x to produce the NPE
-		{% encomment %}
 		dsOfStrings.map(i => i.copy(i.x ++ foo)).collect().foreach(println)
 	}
 }
@@ -67,10 +63,8 @@ object ObjectMemberIssueSolution {
 
 	var foo: String = null
 
-	{% comment %}
 	// implicits are searched for and are contexually bound for serialization
 	// at runtime time but are intrinsically value structures and will not change
-	{% encomment %}
 	def append(base: String)(implicit val s: String) = base ++ s
 
 	def main(args: Array[String]) : Unit = {
@@ -79,19 +73,16 @@ object ObjectMemberIssueSolution {
 
 		foo = "bar"
 
-		{% comment %}
 		// implicits are contexual serialized 
 		// especially when passed through another method which forces it to be bound
 		// in the Spark serializer as the scala compiler guarantees implicits are bound
 		// at compile time based upon references
-		{% encomment %}
 		implicit val _foo = foo
 
 		import session.implicits._
 
 		val dsOfStrings = (1 to 100).map(new Test(_.toString)).toDS()
 
-		{% comment %}
 		// This will produce a NullPointerException on the worker which will
 		// cause it to die if the job is not running in local mode in the same JVM
 		// as the driver.  In cluster mode (standalone or otherwise) MemberIssue
@@ -101,7 +92,6 @@ object ObjectMemberIssueSolution {
 		//
 		// The implicit does not need to be passed as it is automagically wired in via 
 		// 
-		{% encomment %}
 		dsOfStrings.map(i => i.copy(append(i.x)).collect().foreach(println)
 	}
 }

@@ -28,16 +28,13 @@ Datasets can be created explicitly or loaded form a source (e.g. file, stream, p
 ```
 case class Person(firstName: String, lastName:String)
 
-{% comment %}
 // wire-in spark implicits
-{% encomment %}
 import spark.implicits._
 
 case class Person(firstName: String, lastName: String)
 
 val ds = Seq(Person("Daniel", "Williams")).toDS()
 
-{% comment %}
 // here you can perform operations that are deferred until an action is invoked.
 // creates a anonymous lambda that looks at the 
 // firstName of the Dataset[Person] type and invokes a collect
@@ -45,7 +42,6 @@ val ds = Seq(Person("Daniel", "Williams")).toDS()
 // the foreach then will invoke a println on each Person
 // instance and implicit apply the toString operation that is 
 // held in the Product trait
-{% encomment %}
 ds.filter(_.firstName == "Daniel").collect().foreach(println)
 
 ```
