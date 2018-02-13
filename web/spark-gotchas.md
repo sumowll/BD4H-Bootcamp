@@ -26,7 +26,7 @@ change locally in the call stack from _main()_.
 *Note:* Spark uses closures to defined execution strategies but these closures do not operate in the same fashion as in Scala itself.
 
 
-```
+```scala
 case class Test(x: String)
 
 object ObjectMemberIssue {
@@ -58,7 +58,8 @@ object ObjectMemberIssue {
 
 An alternative solution is to use an implicit val:
 
-```
+```scala
+
 object ObjectMemberIssueSolution {
 
 	var foo: String = null
