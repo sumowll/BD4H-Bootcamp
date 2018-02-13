@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Docker in AWS EC2
 description: Georgia Tech big data bootcamp training material
 ---

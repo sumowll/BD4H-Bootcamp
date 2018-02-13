@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Docker in Azure
 description: Georgia Tech big data bootcamp training material
 ---

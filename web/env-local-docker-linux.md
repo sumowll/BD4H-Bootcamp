@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Install Docker In Linux
 description: Install Docker In Linux
 ---

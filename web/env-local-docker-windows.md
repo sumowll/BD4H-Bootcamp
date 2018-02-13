@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Install Docker In Microsoft Windows
 description: Install Docker In Microsoft Windows
 ---

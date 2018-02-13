@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Install Docker In macOS
 description: Install Docker In macOS
 ---

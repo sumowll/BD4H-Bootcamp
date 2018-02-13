@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Docker in Local OS
 categories: [section]
 description: Georgia Tech big data bootcamp training material
