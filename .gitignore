@@ -11,3 +11,4 @@ web/deploy.sh
 #####=== Vagrant ===#####
 .vagrant/
 
+.DS_Store

@@ -75,11 +75,6 @@ Content of the training material is divided into two chapters **Hadoop** and **S
 </a>
 </div>
 <div class="col-xs-4 col-md-3 col-lg-3 vcenter">
-<a href="https://aws.amazon.com/" target="_blank" style="cursor: pointer;">
-<img src="{{ site.baseurl }}/image/aws-logo-large.png" class="img-responsive" alt="Amazon Web Service">
-</a>
-</div>
-<div class="col-xs-4 col-md-3 col-lg-3 vcenter">
 <a href="http://analytics.gatech.edu/" target="_blank" style="cursor: pointer;">
 <img src="{{ site.baseurl }}/image/gt-analytics-ms.png" class="img-responsive" alt="MS in Analytics @ Georgia Tech">
 </a>
