@@ -14,11 +14,11 @@
 
 ## Release
 
-Homework of this class will be distributed through [Canvas](//gatech.instructure.com/).
+Homework of this class will be distributed through [Canvas](http://gatech.instructure.com/).
 
 ## Discussion
 
-For questions regarding homework, we encourage you to use piazza to raise discussion and we will answer ASAP. If necessary you can email [instructor and TAs](/aboutus.html). For on-campus students, we will schedule TA office hours.
+For questions regarding homework, we encourage you to use piazza to raise discussion and we will answer ASAP. If necessary you can email [instructor and TAs](/contact.html). For on-campus students, we will schedule TA office hours.
 
 ## Submission
 

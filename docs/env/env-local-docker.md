@@ -228,13 +228,13 @@ You can stop services if you want:
 
 To detach instance for keeping it up,
 
-```text
+```
 ctrl + p, ctrl + q
 ```
 
 To exit,
 
-```text
+```
 exit
 ```
 

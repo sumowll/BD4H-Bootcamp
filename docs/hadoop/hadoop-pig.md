@@ -41,7 +41,7 @@ grunt> case_events = LOAD 'data/case.csv' USING PigStorage(',') AS (patientid:ch
 
 Here we call the `case_events` a [**relation**](http://pig.apache.org/docs/r0.14.0/basic.html#relations) in Pig Latin. In this statement, we load data from the `data/case.csv` file into the `case_events` relation. We also specify the [**schema**](http://pig.apache.org/docs/r0.14.0/basic.html#schemas) of the data as
 
-```text
+```
 (patientid:chararray, eventname:chararray, dateoffset:int, value:double)
 ```
 
@@ -119,7 +119,7 @@ In this section, we briefly describe data types. Pig can work with simple types 
 
 **Tuple** is usually represented by `()`. For example,
 
-```text
+```
 (021FB39310BC3797,DRUG55154239805,1456,10.0)
 ```
 
@@ -187,7 +187,7 @@ Notice that as dateoffset is no longer useful after filtering, we dropped it fro
 
 Our raw data is an event sequence. In order to aggregate that into features suitable for machine learning, we can **sum** up values for each event type into a single feature value corresponding to the given event. We will directly use the event name as the name of the corresponding feature. For example, given the raw event sequence for a patient with ID `FBFD014814507B5C` below:
 
-```text
+```
 FBFD014814507B5C,PAYMENT,1220,30.0
 FBFD014814507B5C,DIAGE887,1321,1.0
 FBFD014814507B5C,PAYMENT,1321,1000.0
@@ -197,7 +197,7 @@ FBFD014814507B5C,DRUG52959072214,1016,30.0
 
 We can get a (feature name, value) pair for this patient as
 
-```text
+```
 (PAYMENT, 1030.0)
 (DIAGE887, 2.0)
 (DRUG52959072214, 30.0)
@@ -290,7 +290,7 @@ For example, given a patient `2363A06EF118B098` with the following features who 
 
 we will encode the patient features as:
 
-```text
+```
 0 1:60 4:30 9:60 23:10 45:90
 ```
 

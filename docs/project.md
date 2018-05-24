@@ -31,7 +31,7 @@ Students will use [EachChair](https://easychair.org/conferences/?conf=bdhsp2018)
 
 Please use below framework for peer review
 
-```text
+```
 [Summary]: What is the paper about?
 
 [Strength]

@@ -39,7 +39,7 @@ bin/solr start
 
 By default Solr runs on 8983. Verify Solr is running by visiting [the Solr Dashboard](http://localhost:8983/) in your browser.
 
-```text
+```
 http://localhost:8983/solr/#/
 ```
 
@@ -244,13 +244,13 @@ We can also facet with ranges (in numeric and date fields), or use [facet pivots
 
 The Terms component is useful to see the most common tokens in your schema, and you can limit to a specific field or range of terms. It can be useful for making suggestions to users, but it may also benefit from data cleaning, such as stop word removal, e.g.
 
-```text
+```
 http://localhost:8983/solr/reports/terms?terms.fl=report_text&terms.limit=100
 ```
 
 The Term Vector component can be enabled on a field by setting `termVectors=true`. It can return the term frequency, inverse document frequency, position and offset information. Term frequency-inverse document frequency or <b>tf-idf</b> is a common statistic used in IR, basically weighting the term to how many times it appears in a particular documents, versus the frequency of the term in the entire document set. It helps identify the importance of terms, and offsets common words like 'the', 'at', 'her', etc.
 
-```text
+```
 http://localhost:8983/solr/reports/tvrh?q=*%3A*&start=0&rows=1&fl=id,warnings_section&tv.tf_idf=true
 ```
 
@@ -260,7 +260,7 @@ Highlights the document fragments that match the query
 
 Sample:
 
-```text
+```
 http://localhost:8983/solr/reports/select?hl=on&q=seizure&wt=xml&hl.fl=report_text&fl=subject
 ```
 
@@ -270,7 +270,7 @@ Recommends spelling suggestions based on the Solr index
 
 Sample:
 
-```text
+```
 http://localhost:8983/solr/reports/spell?df=text&spellcheck.q=siezure&spellcheck=true&spellcheck.collateParam.q.op=AND&wt=xml
 ```
 
@@ -280,7 +280,7 @@ Queries for similar documents to the search results.
 
 Sample:
 
-```text
+```
 http://localhost:8983/solr/reports/select?indent=on&q=%22treatment%20of%20partial%20seizures%22&wt=json&fl=indications_and_usage_section&rows=10&mlt=true&mlt.fl=indications_and_usage_section
 ```
 
@@ -354,7 +354,7 @@ Of course many of these tasks can be done with other NLP libraries like NLTK or 
 
 Only do this with CAUTION. Solr will delete all the documents matching your query.
 
-```text
+```
 http://localhost:8983/solr/reports/update?stream.body=%3Cdelete%3E%3Cquery%3Ereport_text%3A%22query%20of%20documents%20to%20delete%22%3C%2Fquery%3E%3C%2Fdelete%3E&commit=true
 ```
 
@@ -378,19 +378,19 @@ bin/solr stop
 
 Use facet queries to find the most common manufacturer (organization_attr).
 
-```text
+```
 http://localhost:8983/solr/reports/select?facet.field=organization_attr&facet=on&indent=on&q=*:*&rows=0&wt=json
 ```
 
 What are the most common drugs (subject) by this manufacturer? Look at using a filter query (fq) for limiting your search. Filter queries can improve speed and simplify your principal query (q).
 
-```text
+```
 http://localhost:8983/solr/reports/select?facet.field=subject&facet=on&indent=on&q*:*&fq=organization_attr:%22REMEDYREPACK%20INC.%22&rows=0&wt=json
 ```
 
 Facet pivots provide a decision-tree like result to return multiple facets. How do you use facets to find the most common drugs and manufacturers?
 
-```text
+```
 http://localhost:8983/solr/reports/select?q=*:*&facet.pivot=subject,organization_attr&facet=true&facet.field=subject&facet.limit=5&rows=0&wt=json&indent=true&facet.pivot.mincount=2
 ```
 
@@ -402,7 +402,7 @@ http://localhost:8983/solr/reports/select?q=*:*&facet.pivot=subject,organization
 
 Look at the terms handler in Solr. How do you return the top 250 terms in the warnings_section?
 
-```text
+```
 http://localhost:8983/solr/reports/terms?terms.fl=warnings_section&terms.limit=250
 ```
 

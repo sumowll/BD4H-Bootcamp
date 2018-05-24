@@ -28,7 +28,9 @@ import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import { pathToComponentName } from '@app/util'
+import store from '@app/store'
 import { resolveSidebarItems } from './util'
+import throttle from 'lodash.throttle'
 
 export default {
   components: { Home, Page, Sidebar, Navbar },
@@ -42,7 +44,11 @@ export default {
     shouldShowNavbar () {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
-      if (frontmatter.navbar === false) return false
+      if (
+        frontmatter.navbar === false ||
+        themeConfig.navbar === false) {
+        return false
+      }
       return (
         this.$title ||
         themeConfig.logo ||
@@ -52,7 +58,6 @@ export default {
       )
     },
     shouldShowSidebar () {
-      const { themeConfig } = this.$site
       const { frontmatter } = this.$page
       return (
         !frontmatter.layout &&
@@ -69,45 +74,21 @@ export default {
         this.$localePath
       )
     },
-    pageClasses() {
+    pageClasses () {
       const userPageClass = this.$page.frontmatter.pageClass
       return [
         {
           'no-navbar': !this.shouldShowNavbar,
           'sidebar-open': this.isSidebarOpen,
-          'no-sidebar': !this.shouldShowSidebar,
+          'no-sidebar': !this.shouldShowSidebar
         },
         userPageClass
       ]
     }
   },
 
-  created () {
-    if (this.$ssrContext) {
-      this.$ssrContext.title = this.$title
-      this.$ssrContext.lang = this.$lang
-      this.$ssrContext.description = this.$page.description || this.$description
-    }
-
-  },
-
   mounted () {
-    // update title / meta tags
-    this.currentMetaTags = []
-    const updateMeta = () => {
-      document.title = this.$title
-      document.documentElement.lang = this.$lang
-      const meta = [
-        {
-          name: 'description',
-          content: this.$description
-        },
-        ...(this.$page.frontmatter.meta || [])
-      ]
-      this.currentMetaTags = updateMetaTags(meta, this.currentMetaTags)
-    }
-    this.$watch('$page', updateMeta)
-    updateMeta()
+    window.addEventListener('scroll', this.onScroll)
 
     // configure progress bar
     nprogress.configure({ showSpinner: false })
@@ -126,7 +107,7 @@ export default {
   },
 
   beforeDestroy () {
-    updateMetaTags(null, this.currentMetaTags)
+    window.removeEventListener('scroll', this.onScroll)
   },
 
   methods: {
@@ -150,25 +131,37 @@ export default {
           this.toggleSidebar(false)
         }
       }
-    }
-  }
-}
+    },
+    onScroll: throttle(function () {
+      this.setActiveHash()
+    }, 300),
+    setActiveHash () {
+      const sidebarLinks = [].slice.call(document.querySelectorAll('.sidebar-link'))
+      const anchors = [].slice.call(document.querySelectorAll('.header-anchor'))
+        .filter(anchor => sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash))
 
-function updateMetaTags (meta, current) {
-  if (current) {
-    current.forEach(c => {
-      document.head.removeChild(c)
-    })
-  }
-  if (meta) {
-    return meta.map(m => {
-      const tag = document.createElement('meta')
-      Object.keys(m).forEach(key => {
-        tag.setAttribute(key, m[key])
-      })
-      document.head.appendChild(tag)
-      return tag
-    })
+      const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+
+      for (let i = 0; i < anchors.length; i++) {
+        const anchor = anchors[i]
+        const nextAnchor = anchors[i + 1]
+
+        const isActive = i === 0 && scrollTop === 0 ||
+          (scrollTop >= anchor.parentElement.offsetTop + 10 &&
+            (!nextAnchor || scrollTop < nextAnchor.parentElement.offsetTop - 10))
+
+        if (isActive && decodeURIComponent(this.$route.hash) !== decodeURIComponent(anchor.hash)) {
+          store.disableScrollBehavior = true
+          this.$router.replace(decodeURIComponent(anchor.hash), () => {
+            // execute after scrollBehavior handler.
+            this.$nextTick(() => {
+              store.disableScrollBehavior = false
+            })
+          })
+          return
+        }
+      }
+    }
   }
 }
 </script>

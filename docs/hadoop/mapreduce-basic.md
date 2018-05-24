@@ -20,7 +20,7 @@ Each phase uses key-value pairs as input and output, the types of which can be c
 
 The input files are split and fed to mappers on different machines. Each mapper processes the corresponding input file "splits" line by line, and outputs the resulting key-value pairs to the local disk. Hadoop then performs a shuffle operation wherein the key-value data output by the map operations is sorted across machines. This is done to collect the key value data and group it by key so that data with the same key is sent to the same reducer. The reducers then combines each group of key-value pairs with the same key into a single key-value pair. Since the shuffle phase is carried out automatically by Hadoop, the user only needs to define the `map` and `reduce` operations.
 
-Let's write a simple MapReduce program in Java to calculate the frequency of each `event-id` in our **case.csv** file (described in [sample data](/data/)).
+Let's write a simple MapReduce program in Java to calculate the frequency of each `event-id` in our **case.csv** file (described in [sample data](/data.html)).
 
 A MapReduce program consists of three parts:
 

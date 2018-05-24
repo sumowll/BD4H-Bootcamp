@@ -41,7 +41,7 @@ Restart your docker service
 
 Error message found in /var/log/upstart/docker.log
 
-```text
+```
 [graphdriver] using prior storage driver \"btrfs\"...
 ```
 

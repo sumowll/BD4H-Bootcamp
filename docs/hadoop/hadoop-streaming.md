@@ -102,7 +102,7 @@ cat data/* | python mapper.py | sort | python reducer.py
 
 You will see results like:
 
-```text
+```
 DIAG0043        1
 DIAG00845       8
 DIAG0086        1

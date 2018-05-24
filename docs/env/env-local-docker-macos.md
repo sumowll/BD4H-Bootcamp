@@ -102,7 +102,7 @@ The default manager by vbox is conflict with vpn [AnyConnect](https://faq.oit.ga
 
 ##### **Q:** Invalid Active Developer Path
 
-```text
+```
 xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
 Error: Failure while executing: git config --local --replace-all homebrew.analyticsmessage true
 ```

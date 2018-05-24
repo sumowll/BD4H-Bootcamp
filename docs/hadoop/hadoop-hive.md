@@ -49,7 +49,7 @@ hive>
 
 If you meet error like:
 
-```text
+```
 AccessControlException Permission denied: user=root, access=WRITE, inode="/user/hive/warehouse/events"
 :hdfs:supergroup:drwxr-xr-x
 ```

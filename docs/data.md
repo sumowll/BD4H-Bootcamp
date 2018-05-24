@@ -87,7 +87,7 @@ There are two data files with names `case.csv` and `control.csv` respectively. F
 
 Each line of the sample data file consists of a tuple structured as `(patient-id, event-id, timestamp, value)`, below are a few lines as an example:
 
-``` text
+```
 020E860BD31CAC69,DRUG36987254604,968,30.0
 020E860BD31CAC69,DRUG64158080642,974,30.0
 020E860BD31CAC69,DRUG00440128228,976,60.0
