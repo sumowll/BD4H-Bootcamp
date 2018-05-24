@@ -26,6 +26,7 @@ pipelines:
             - yarn -v
             - uname -a
             - cat /etc/debian_version
+            - ls -al ~/.ssh
             - cd docs
             - pwd
             - yarn install
