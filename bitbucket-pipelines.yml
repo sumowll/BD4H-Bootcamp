@@ -17,3 +17,8 @@ pipelines:
           - yarn install
           - yarn build
           - ls -al .vuepress/dist/
+  branches:
+    fall2018:
+      - step:
+          script:
+            - echo "This script runs only on commit to the fall2018 branch."
