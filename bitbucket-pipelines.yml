@@ -20,5 +20,13 @@ pipelines:
   branches:
     fall2018:
       - step:
+          caches:
+            - node
           script:
-            - echo "This script runs only on commit to the fall2018 branch."
+            - pwd
+            - cd docs
+            - pwd
+            - yarn install
+            - yarn build
+            - ls -al .vuepress/dist/
+            - echo "TODO: upload"
