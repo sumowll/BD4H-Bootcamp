@@ -22,6 +22,9 @@ pipelines:
       - step:
           script:
             - pwd
+            - node -v
+            - yarn -v
+            - uname -a
             - cd docs
             - pwd
             - yarn install
