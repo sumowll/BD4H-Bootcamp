@@ -8,8 +8,8 @@ image: yuikns/yarn:10
 pipelines:
   default:
     - step:
-        # caches:
-        #   - node
+        caches:
+          - node
         script:
           - pwd
           - cd docs
@@ -31,5 +31,5 @@ pipelines:
             - yarn install
             - yarn build
             - ls -al .vuepress/dist
-            - echo "Not really uploaded yet"
-
+            - apt-get update && apt-get --yes install rsync
+            - rsync -avzh --delete .vuepress/dist/ $CI_USER@sunlab.org:$SITE_BASE/teaching/cse6250/fall2018/
