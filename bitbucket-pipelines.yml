@@ -8,8 +8,8 @@ image: yuikns/yarn:10
 pipelines:
   default:
     - step:
-        caches:
-          - node
+        # caches:
+        #   - node
         script:
           - pwd
           - cd docs
@@ -25,6 +25,7 @@ pipelines:
             - node -v
             - yarn -v
             - uname -a
+            - cat /etc/debian_version
             - cd docs
             - pwd
             - yarn install
