@@ -20,13 +20,12 @@ pipelines:
   branches:
     fall2018:
       - step:
-          caches:
-            - node
           script:
             - pwd
             - cd docs
             - pwd
             - yarn install
             - yarn build
-            - ls -al .vuepress/dist/
-            - echo "TODO: upload"
+            - ls -al .vuepress/dist
+            - echo "Not really uploaded yet"
+
