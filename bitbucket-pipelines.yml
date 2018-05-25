@@ -11,26 +11,22 @@ pipelines:
         caches:
           - node
         script:
-          - pwd
           - cd docs
-          - pwd
           - yarn install
           - yarn build
           - ls -al .vuepress/dist/
+          - test -f .vuepress/dist/index.html
   branches:
     fall2018:
       - step:
           script:
-            - pwd
             - node -v
             - yarn -v
-            - uname -a
-            - cat /etc/debian_version
-            - ls -al ~/.ssh
             - cd docs
             - pwd
             - yarn install
             - yarn build
             - ls -al .vuepress/dist
+            - test -f .vuepress/dist/index.html
             - apt-get update && apt-get --yes install rsync
             - rsync -avzh --delete .vuepress/dist/ $CI_USER@sunlab.org:$SITE_BASE/teaching/cse6250/fall2018/
