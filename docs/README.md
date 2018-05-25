@@ -8,7 +8,7 @@ tagline: Big Data Analytics for Healthcare
 navbar: false
 withContent: true
 actionText: Get Started →
-actionLink: /lab/
+actionLink: /about.html
 sponsors:
 - title: Microsoft Azure
   link: https://azure.microsoft.com
