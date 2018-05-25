@@ -25,9 +25,10 @@ To run Solr, you'll need at least to be running Java 8. After that, download and
 ### Downloading Solr
 
 ```bash
-wget http://www-eu.apache.org/dist/lucene/solr/6.4.0/solr-6.4.0.tgz
-tar -xvf solr-6.4.0.tgz
+wget http://www-eu.apache.org/dist/lucene/solr/7.3.1/solr-7.3.1.tgz
+tar -xvf solr-7.3.1.tgz
 ```
+In case of the above link is broken, you can also use this url instead: <http://sunlab.org/teaching/download/nlp/solr/solr-7.3.1.tgz>.
 
 ### Starting up Solr
 
@@ -98,7 +99,7 @@ Run the following commands to add fields to our new core.
 
 ```bash
 curl -X POST -H 'Content-type:application/json' --data-binary '{
-  "add-field":{"name":"report_date","type":"date","indexed":true,"stored":true},
+  "add-field":{"name":"report_date","type":"pdate","indexed":true,"stored":true},
 "add-field":{"name":"report_id","type":"string","indexed":true,"stored":true},
 "add-field":{"name":"report_text","type":"searchText","indexed":true,"stored":true,"termPositions":true,"termVectors":true,"docValues":false,"required":true},
 "add-field":{"name":"warnings_section","type":"searchText","indexed":true,"stored":true,"termPositions":true,"termVectors":true,"docValues":false,"required":true},
@@ -118,8 +119,14 @@ We have some basic metadata fields for id, type, and our default search field is
 
 Indexing is the way to get documents into Solr. Solr provides some native POST tools to load documents in Solr, for JSON, XML and CSV. Many of the native language Solr libraries also support indexing such as SolrJ. For this example, will run the following command to index a subset of the [FDA Drug Label](https://dailymed.nlm.nih.gov/dailymed/spl-resources-all-drug-labels.cfm) set into Solr.
 
+There is a copy of the dataset in our repository in `bootcamp/solr`. You should uncompress it first using command:
+
 ```bash
-bin/post -c reports ~/bigdata-bootcamp/data/solr_data/drug_labels.csv
+tar -xJvf solr_data.tar.xz
+```
+
+```bash
+bin/post -c reports /path/to/bigdata-bootcamp/data/drug_labels.csv
 ```
 
 See more information about indexing [here](https://cwiki.apache.org/confluence/display/solr/Indexing+and+Basic+Data+Operations).
