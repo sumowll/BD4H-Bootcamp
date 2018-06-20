@@ -110,7 +110,7 @@ The basic start command should be:
 ```bash
 docker run -it --privileged=true \
   --cap-add=SYS_ADMIN \
-  -m 8192m -h bootcamp1.docker \
+  -m 8192m -h bootcamp.local \
   --name bigbox -p 2222:22 -p 9530:9530 -p 8888:8888\
   -v /:/mnt/host \
   sunlab/bigbox:latest \
@@ -154,9 +154,9 @@ Variable `host-src` accepts absolute path only.
 + -i              : Keep STDIN open even if not attached
 + -t              : Allocate a pseudo-tty
 
-> -h bootcamp1.docker
+> -h bootcamp.local
 
-Once you enter this docker environment, you can ping this docker environment itself as `bootcamp1.docker`. This variable is used in some configuration files for Hadoop ecosystems.
+Once you enter this docker environment, you can ping this docker environment itself as `bootcamp.local`. This variable is used in some configuration files for Hadoop ecosystems.
 
 > -m 8192m
 

@@ -62,7 +62,7 @@ And then, start a new docker instance
 ```bash
 sudo docker run -it --privileged=true \
   --cap-add=SYS_ADMIN \
-  -m 6144m -h bootcamp1.docker \
+  -m 6144m -h bootcamp.local \
   --name bigbox -p 2222:22 -p 9530:9530 -p 8888:8888\
   -v /:/mnt/host \
   sunlab/bigbox:latest \

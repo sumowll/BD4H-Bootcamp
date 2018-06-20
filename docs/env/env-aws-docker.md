@@ -64,25 +64,25 @@ Then start all hadoop related service by
 JMX enabled by default
 Using config: /etc/zookeeper/conf/zoo.cfg
 Starting zookeeper ... STARTED
-starting proxyserver, logging to /var/log/hadoop-yarn/yarn-yarn-proxyserver-bootcamp1.docker.out
+starting proxyserver, logging to /var/log/hadoop-yarn/yarn-yarn-proxyserver-bootcamp.local.out
 Started Hadoop proxyserver:                                [  OK  ]
-starting namenode, logging to /var/log/hadoop-hdfs/hadoop-hdfs-namenode-bootcamp1.docker.out
+starting namenode, logging to /var/log/hadoop-hdfs/hadoop-hdfs-namenode-bootcamp.local.out
 Started Hadoop namenode:                                   [  OK  ]
-starting datanode, logging to /var/log/hadoop-hdfs/hadoop-hdfs-datanode-bootcamp1.docker.out
+starting datanode, logging to /var/log/hadoop-hdfs/hadoop-hdfs-datanode-bootcamp.local.out
 Started Hadoop datanode (hadoop-hdfs-datanode):            [  OK  ]
-starting resourcemanager, logging to /var/log/hadoop-yarn/yarn-yarn-resourcemanager-bootcamp1.docker.out
+starting resourcemanager, logging to /var/log/hadoop-yarn/yarn-yarn-resourcemanager-bootcamp.local.out
 Started Hadoop resourcemanager:                            [  OK  ]
-starting historyserver, logging to /var/log/hadoop-mapreduce/mapred-mapred-historyserver-bootcamp1.docker.out
+starting historyserver, logging to /var/log/hadoop-mapreduce/mapred-mapred-historyserver-bootcamp.local.out
 Started Hadoop historyserver:                              [  OK  ]
-starting nodemanager, logging to /var/log/hadoop-yarn/yarn-yarn-nodemanager-bootcamp1.docker.out
+starting nodemanager, logging to /var/log/hadoop-yarn/yarn-yarn-nodemanager-bootcamp.local.out
 Started Hadoop nodemanager:                                [  OK  ]
 Starting Spark worker (spark-worker):                      [  OK  ]
 Starting Spark master (spark-master):                      [  OK  ]
-Starting Hadoop HBase regionserver daemon: starting regionserver, logging to /var/log/hbase/hbase-hbase-regionserver-bootcamp1.docker.out
+Starting Hadoop HBase regionserver daemon: starting regionserver, logging to /var/log/hbase/hbase-hbase-regionserver-bootcamp.local.out
 hbase-regionserver.
-starting master, logging to /var/log/hbase/hbase-hbase-master-bootcamp1.docker.out
+starting master, logging to /var/log/hbase/hbase-hbase-master-bootcamp.local.out
 Started HBase master daemon (hbase-master):                [  OK  ]
-starting thrift, logging to /var/log/hbase/hbase-hbase-thrift-bootcamp1.docker.out
+starting thrift, logging to /var/log/hbase/hbase-hbase-thrift-bootcamp.local.out
 Started HBase thrift daemon (hbase-thrift):                [  OK  ]
 [ec2-user@bootcamp1 ~]$
 ```
