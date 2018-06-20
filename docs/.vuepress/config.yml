@@ -50,6 +50,7 @@ themeConfig:
         - "/env/env-local-docker-macos.html"
         - "/env/env-local-docker-windows.html"
         - "/env/env-azure-docker.html"
+        - "/env/env-docker-compose.html"
       # - "/env/env-aws-docker.html"
     - title: Hadoop Ecosystem
       collapsable: true

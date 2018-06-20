@@ -53,9 +53,9 @@ scala> val labeled0 = LabeledPoint(0, Vectors.sparse(3, Seq((0, 1.0), (2, 3.0)))
 
 ### Overview
 
-To apply machine learning algorithms, we need to transform our data into `RDD[LabeledPoint]`. This feature construction is similar to what we did in [Hadoop Pig]({/hadoop/hadoop-pig.html), but will be more concise since we are programming in Scala on Spark. We will need to consider an one-year prediction window. Specifically, we will only use data one year before HF diagnosis. The figure below depicts relationship between prediction window and target.
+To apply machine learning algorithms, we need to transform our data into `RDD[LabeledPoint]`. This feature construction is similar to what we did in [Hadoop Pig](/hadoop/hadoop-pig.html), but will be more concise since we are programming in Scala on Spark. We will need to consider an one-year prediction window. Specifically, we will only use data one year before HF diagnosis. The figure below depicts relationship between prediction window and target.
 
-We can also specify an observation window, inside which data will be used to construct feature vectors. 
+We can also specify an observation window, inside which data will be used to construct feature vectors.
 
 ![Prediction Window](./images/prediction-window.jpg "Prediction Window")
 

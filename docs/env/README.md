@@ -11,9 +11,23 @@ We provide two simple approaches for environment setup, the 1st one is preferred
 1. [Docker in Local OS](/env/env-local-docker.html)
 2. [Docker in Azure](/env/env-azure-docker.html) (Alternative)
 
+## Get Training Material
+
+You can find a copy from `/bigdata-bootcamp` in the docker.
+
+You can also download sample code, data etc. to your host machine from our bitbucket repository by issuing below command in a Terminal
+
+```bash
+git clone https://bitbucket.org/realsunlab/bigdata-bootcamp.git
+```
+
+Please refer to [this link](/data.html#bootcamp-training-material) for more detail.
+
 ## Other Steps
 
-### Using  Terminal
+Since everything are integrated into the docker image, nothing else is required to do for the base environment. However, if you wish to do something else in your host machine. The following tips may help.
+
+### Using Terminal
 
 In this training, we reply heavily on terminal.
 
@@ -47,12 +61,3 @@ Otherwise, we highly recommend you install Git through [Homebrew](http://brew.sh
 
 Follow instructions in [Download for Linux and Unix](https://git-scm.com/download/linux).
 
-## Download Samples
-
-You can find a copy from '/bootcamp' in docker.
-
-You can also download sample code, data etc. to your host machine from our bitbucket repository by issuing below command in a Terminal
-
-```bash
-git clone https://bitbucket.org/realsunlab/bigdata-bootcamp.git
-```
