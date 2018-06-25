@@ -18,9 +18,11 @@ The whole progress would seem as follow:
 5. Destroy the containers and images if they are not required anymore
 
 ::: warning
-Since this docker image integrated a lot of related services for the course, it requires at least 4GB RAM for this virtual machine. If your can meet the minimum requirement, the system could randomly kill one or a few process due to resource limitation, which causes a lot of strange errors which is even unable to reproduce.
+Since this docker image integrated a lot of related services for the course, it requires at least 4GB RAM for this virtual machine. If your can not meet the minimum requirement, the system could randomly kill one or a few process due to resource limitation, which causes a lot of strange errors which is even unable to reproduce.
 
 **DON'T TRY TO DO THAT.**
+
+You may try [Azure](/env/env-azure-docker.html) instead.
 :::
 
 [[toc]]
