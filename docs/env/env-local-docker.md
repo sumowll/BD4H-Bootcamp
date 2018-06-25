@@ -44,7 +44,7 @@ The principle of setting up a docker environment is pretty straightforward.
 + IF your operating system is Linux, you are supposed to install docker service directly
 + IF your operating system is mac OS, Windows,  FreeBSD, and so on, you are supposed to install a virtual machine, start a special configured Linux system which hosts a Docker service. You will control the dockers using remote tool
 
-There is an official instruction from [this link](https://docs.docker.com/engine/installation/). You can check the official documentation to get the latest news and some detail explanations.
+There is an official instruction from [the link](https://docs.docker.com/engine/installation/). You can check the official documentation to get the latest news and some detail explanations.
 
 + [Install Docker In Linux](/env/env-local-docker-linux.html)
 + [Install Docker In macOS](/env/env-local-docker-macos.html)
