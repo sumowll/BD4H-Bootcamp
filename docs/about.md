@@ -20,19 +20,16 @@ To be successful in the course, students should have acquired:
 
 ## Grading scheme
 
-- **40% Homework**
-  4 homework 10% each
+- **50% Homework**
+  5 homework 10% each
 
-- **49% Project**
+- **40% Project**
   - 6%  proposal
   - 11% paper draft
   - 13% final presentation
-  - 19% final paper
+  - 10% final paper
 
-- **2%  Peer feedback**
-  - 2%  draft paper
-
-- **9%  Participation**
+- **10%  Participation**
   - Piazza activities
   - Bitbucket pull requests for improving the lab materials
   - class attendance (on-campus students only)
