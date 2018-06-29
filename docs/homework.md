@@ -7,10 +7,11 @@
 
 ## Important dates
 
-- Jan 21: Homework 1 due
-- Feb 11: Homework 2 due
-- Feb 25: Homework 3 due
-- Mar 18: Homework 4 due
+- Sep 2: Homework 1 due
+- Sep 23: Homework 2 due
+- Oct 7: Homework 3 due
+- Oct 28: Homework 4 due
+- Nov 17: Homework 5 due
 
 ## Release
 
