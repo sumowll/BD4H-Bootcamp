@@ -12,12 +12,10 @@ We allow individual or group projects (up to 3 students per group). You are resp
 
 |Due day     |  Due day|
 |---------|:------------------:|
-|Mar 1   |Project group formation |
-|Mar 11   |Project proposal |
-|Mar 25  |Peer review bidding|
-|Apr 1  |Project draft|
-|Apr 8  |Peer Review on Draft|
-|Apr 24 |Final Project (code+presentation+final paper) |
+|Sep 30   |Project group formation |
+|Oct 14   |Project proposal |
+|Nov 11  |Project draft|
+|Dec 9 |Final Project (code+presentation+final paper) |
 
 ## Final project
 
@@ -27,7 +25,7 @@ Students should submit source code, presentation slides, and final paper pdf.
 
 Students will use [EachChair](https://easychair.org/conferences/?conf=bdhsp2018) for submission of project proposal, draft and final paper.
 
-## Peer Review
+## Peer Review (optional)
 
 Please use below framework for peer review
 
