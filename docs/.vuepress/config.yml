@@ -21,6 +21,8 @@ markdown:
   # lineNumbers: false
 themeConfig:
   nav:
+  - text: About
+    link: /about
   - text: Schedule
     link: /schedule
   - text: Lab
@@ -40,7 +42,7 @@ themeConfig:
   # - text: CSE 6250
   #   link: http://sunlab.org/teaching/cse6250/fall2018
   sidebar:
-    - "/about"
+    # - "/about"
     - title: Environment
       collapsable: true
       children:

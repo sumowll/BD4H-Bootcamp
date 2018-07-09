@@ -9,16 +9,16 @@ navbar: false
 withContent: true
 actionText: Get Started →
 actionLink: /about.html
-sponsors:
-- title: Microsoft Azure
-  link: https://azure.microsoft.com
-  image: images/sponsors/azure-logo-large.png
+# sponsors:
+# - title: Microsoft Azure
+#   link: https://azure.microsoft.com
+#   image: images/sponsors/azure-logo-large.png
 # - title: Amazon Web Service
 #   link: https://aws.amazon.com
 #   image: images/sponsors/aws-logo-large.png
-- title: MS in Analytics @ Georgia Tech
-  link: http://analytics.gatech.edu
-  image: images/sponsors/gt-analytics-ms.png
+# - title: MS in Analytics @ Georgia Tech
+#   link: http://analytics.gatech.edu
+#   image: images/sponsors/gt-analytics-ms.png
 footer: Jimeng Sun  •  2018  •  sunlab.org
 ---
 #

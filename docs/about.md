@@ -1,5 +1,5 @@
 ---
-# layout: SpecialPage
+layout: SpecialPage
 sidebarDepth: 1
 ---
 # Welcome
