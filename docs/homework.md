@@ -1,4 +1,5 @@
 ---
+layout: SpecialPage
 # sidebarDepth: 2
 ---
 # Homework

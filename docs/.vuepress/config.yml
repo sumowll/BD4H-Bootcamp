@@ -21,10 +21,10 @@ markdown:
   # lineNumbers: false
 themeConfig:
   nav:
-  # - text: Lab
-  #   link: /lab/
   - text: Schedule
     link: /schedule
+  - text: Lab
+    link: /env/
   - text: Homework
     link: /homework
   - text: Data
