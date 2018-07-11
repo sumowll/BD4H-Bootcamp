@@ -2,7 +2,18 @@
 layout: SpecialPage
 sidebarDepth: 1
 ---
-# Welcome
+# CSE 6250 Big Data Analytics for Healthcare
+
+<div class="main-explain-area jumbotron">
+
+This website covers information for [Georgia Institute of Technology](//www.gatech.edu)'s Spring 2018 course **CSE6250 Big Data Analytics for Healthcare**.  All students may refer to this site for most up to date content.
+
++ Instructor: [Prof. Jimeng Sun](//sunlab.org)
++ Discussion: [CSE6250 Spring 2018 Piazza](http://piazza.com/gatech/spring2018/cse6250)
++ Location:   Klaus 2443
++ Time:       Tue/Thu 3-4:15PM
+
+</div>
 
 ## About course
 
