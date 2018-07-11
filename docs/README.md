@@ -1,35 +1,60 @@
 ---
-home: true
-heroImage: images/favicon.png
-heroText: CSE 6250
-tagline: Big Data Analytics for Healthcare
-# heroSubText: Big Data Analytics for Healthcare
-# tagline: Georgia Tech Big Data Bootcamp training material
-navbar: false
-withContent: true
-actionText: Get Started →
-actionLink: /about.html
-# sponsors:
-# - title: Microsoft Azure
-#   link: https://azure.microsoft.com
-#   image: images/sponsors/azure-logo-large.png
-# - title: Amazon Web Service
-#   link: https://aws.amazon.com
-#   image: images/sponsors/aws-logo-large.png
-# - title: MS in Analytics @ Georgia Tech
-#   link: http://analytics.gatech.edu
-#   image: images/sponsors/gt-analytics-ms.png
-footer: Jimeng Sun  •  2018  •  sunlab.org
+layout: SpecialPage
+sidebarDepth: 1
 ---
-#
+# Welcome
 
-<div class="main-explain-area jumbotron">
+## About course
 
-This website covers information for [Georgia Institute of Technology](//www.gatech.edu)'s Spring 2018 course **CSE6250 Big Data Analytics for Healthcare**.  All students may refer to this site for most up to date content.
+Data science plays an important role in many industries. In facing massive amount of heterogeneous data, scalable machine learning and data mining algorithms and systems become extremely important for data scientists. The growth of volume, complexity and speed in data drives the need for scalable data analytic algorithms and systems. In this course, we study such algorithms and systems in the context of healthcare applications.
 
-+ Instructor: [Prof. Jimeng Sun](//sunlab.org)
-+ Discussion: [CSE6250 Spring 2018 Piazza](http://piazza.com/gatech/spring2018/cse6250)
-+ Location:   Klaus 2443
-+ Time:       Tue/Thu 3-4:15PM
+In healthcare, large amounts of heterogeneous medical data have become available in various healthcare organizations (payers, providers, pharmaceuticals). This data could be an enabling resource for deriving insights for improving care delivery and reducing waste. The enormity and complexity of these datasets present great challenges in analyses and subsequent applications to a practical clinical environment. In this course, we  introduce the characteristics of medical data and associated data mining challenges on dealing with such data. We cover various algorithms and systems for big data analytics. We focus on studying those big data techniques in the context of concrete healthcare analytic applications such as _predictive modeling_, _computational phenotyping_ and _patient similarity_. We also study big data analytic technology:
 
-</div>
+1. scalable machine learning algorithms such as online learning and fast similarity search;
+2. big data analytic system such as Hadoop family (Hive, Pig, HBase), Spark and Graph DB
+
+To be successful in the course, students should have acquired:
+
+1. Good machine learning and data mining concepts such as classification and clustering;
+2. Proficient programming and system skills in  <b> Scala </b>, Python and Java;
+3. Proficient knowledge and experience in dealing with data and understand the ETL process(recommended skills include SQL, NoSQL such as MongoDB).
+
+## Grading scheme
+
+- **50% Homework**
+  5 homework 10% each
+
+- **40% Project**
+  - 6%  proposal
+  - 11% paper draft
+  - 13% final presentation
+  - 10% final paper
+
+- **10%  Participation**
+  - Piazza activities
+  - Bitbucket pull requests for improving the lab materials
+  - class attendance (on-campus students only)
+  - Piazza activities
+  - Bitbucket pull requests for improving the lab materials
+
+<!--
+  - 5% piazza activities for on-campus ones
+  - 4% in-class quiz & attendance for on-campus ones
+-->
+
+## Formal prerequisites for CX4803
+
+Minimum grade of C for
+MATH 3215 or MATH 3225 or ECE 3077 or ISYE 2027. Two of the following:
+
+- CX 4240. Introduction to Computing for Data Analysis
+- CS 4400 - Introduction to Database Systems
+- CX 4242. Data and Visual Analytics
+
+## Formal prerequisites for CX8803
+
+None as long as you have learned the background covered in the prerequisites for CX4803.
+
+## Textbooks and reading materials
+
+None required but papers and book chapters will be listed under lectures.
