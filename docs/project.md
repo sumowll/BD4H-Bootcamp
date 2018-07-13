@@ -20,12 +20,13 @@ We allow individual or group projects (up to 3 students per group). You are resp
 
 ## Final project
 
-Students should submit source code, presentation slides, and final paper pdf. 
+Students should submit source code, presentation slides, and final paper pdf to Canvas. 
 
 ## EasyChair
 
-Students will use [EachChair](https://easychair.org/conferences/?conf=bdhsp2018) for submission of project proposal, draft and final paper.
+Students will use [EachChair](https://easychair.org/conferences/?conf=bdhsp2018) for submission of project proposal, draft (and final paper).
 
+<!--
 ## Peer Review (optional)
 
 Please use below framework for peer review
@@ -45,8 +46,10 @@ W3
 
 [Broader impact] (how important is the proposed problem?)
 
-[Evaluation] (how comprehensive is their evaluation? how good are their results?)
+[Evaluation] (how comprehensive is their evaluation? how good are their results?) 
+
 ```
+-->
 
 <!--
 # AWS
