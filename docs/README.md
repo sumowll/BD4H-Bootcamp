@@ -6,12 +6,10 @@ sidebarDepth: 1
 
 <div class="main-explain-area jumbotron">
 
-This website covers information for [Georgia Institute of Technology](//www.gatech.edu)'s Spring 2018 course **CSE6250 Big Data Analytics for Healthcare**.  All students may refer to this site for most up to date content.
+This website covers information for [Georgia Institute of Technology](//www.gatech.edu)'s Fall 2018 course **CSE6250 Big Data Analytics for Healthcare**.  All students may refer to this site for most up to date content.
 
 + Instructor: [Prof. Jimeng Sun](//sunlab.org)
-+ Discussion: [CSE6250 Spring 2018 Piazza](http://piazza.com/gatech/spring2018/cse6250)
-+ Location:   Klaus 2443
-+ Time:       Tue/Thu 3-4:15PM
++ Discussion: [CSE6250 Fall 2018 Piazza](http://piazza.com/gatech/fall2018/cse6250)
 
 </div>
 
@@ -36,16 +34,13 @@ To be successful in the course, students should have acquired:
   5 homework 10% each
 
 - **40% Project**
-  - 6%  proposal
-  - 11% paper draft
-  - 13% final presentation
-  - 10% final paper
+  - 3%  proposal
+  - 7% paper draft
+  - 10% final presentation
+  - 20% final paper
 
 - **10%  Participation**
-  - Piazza activities
-  - Bitbucket pull requests for improving the lab materials
-  - class attendance (on-campus students only)
-  - Piazza activities
+  - Piazza activities(contributions ***/posts viewed **/days online *)
   - Bitbucket pull requests for improving the lab materials
 
 <!--
