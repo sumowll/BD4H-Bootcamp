@@ -21,7 +21,7 @@ Spark provides an API to load data from JSON, Parquet, Hive table etc. You can r
 Start the Spark shell in local mode with the command below to add extra dependencies which are needed to complete this training.
 
 ```bash
-% spark-shell --master "local[2]" --driver-memory 3G --packages com.databricks:spark-csv_2.10:1.3.0
+% spark-shell --master "local[2]" --driver-memory 3G --packages com.databricks:spark-csv_2.11:1.5.0
 [logs]
 
 Spark context available as sc.
@@ -30,6 +30,13 @@ SQL context available as sqlContext.
 
 scala>
 ```
+
+::: tip
+
+Spark 2.0+ has built-in csv library now. This parameter does not required any more, and it is only used as a sample.
+
+:::
+
 
 ::: tip
 
@@ -43,9 +50,13 @@ Logger.getRootLogger.setLevel(Level.ERROR)
 
 :::
 
+
 Now load data into the shell.
 
 ```scala
+scala> val sqlContext = spark.sqlContext
+sqlContext: org.apache.spark.sql.SQLContext = org.apache.spark.sql.SQLContext@5cef5fc9
+
 scala> val patientEvents = sqlContext.load("input/", "com.databricks.spark.csv").
      toDF("patientId", "eventId", "date", "rawvalue").
      withColumn("value", 'rawvalue.cast("Double"))
@@ -102,13 +113,17 @@ scala> patientEvents.
     groupBy("patientId", "eventId").
     count.
     orderBy($"count".desc).
-    save("aggregated.json", "json")
+    write.json("aggregated.json")
 ```
 
 to save your transformed data in `json` format or
 
 ```scala
-scala> patientEvents.filter($"eventId".startsWith("DIAG")).groupBy("patientId", "eventId").count.orderBy($"count".desc).save("aggregated.csv", "com.databricks.spark.csv")
+scala> patientEvents.
+    filter($"eventId".startsWith("DIAG")).
+    groupBy("patientId", "eventId").count.
+    orderBy($"count".desc).
+    write.format("com.databricks.spark.csv").save("aggregated.csv")
 ```
 
 to save  in `csv` format.
