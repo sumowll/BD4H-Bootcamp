@@ -33,7 +33,7 @@ scala>
 
 ::: tip
 
-Spark 2.0+ has built-in csv library now. This parameter does not required any more, and it is only used as a sample.
+Spark 2.0+ has built-in csv library now. This parameter is not required any more, and it is only used as a sample.
 
 :::
 
