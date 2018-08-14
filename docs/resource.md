@@ -5,14 +5,17 @@ layout: SpecialPage
 
 ## Guest Lectures
 
-One may find the guest lectures recorded throughout the semester at this [LINK](https://cdnapisec.kaltura.com/p/2019031/sp/201903100/embedIframeJs/uiconf_id/40436601/partner_id/2019031/widget_id/1_2ipb2j47?iframeembed=true&playerId=kaltura_player_5aaa84d737fc5&flashvars[playlistAPI.kpl0Id]=1_pjxzalrg&flashvars[playlistAPI.autoContinue]=true&flashvars[playlistAPI.autoInsert]=true&flashvars[ks]=&flashvars[localizationCode]=en&flashvars[imageDefaultDuration]=30&flashvars[leadWithHTML5]=true&flashvars[forceMobileHTML5]=true&flashvars[nextPrevBtn.plugin]=true&flashvars[sideBarContainer.plugin]=true&flashvars[sideBarContainer.position]=left&flashvars[sideBarContainer.clickToClose]=true&flashvars[chapters.plugin]=true&flashvars[chapters.layout]=vertical&flashvars[chapters.thumbnailRotator]=false&flashvars[streamSelector.plugin]=true&flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&flashvars[dualScreen.plugin]=true) with the following order of playlist.
+One may find the recent guest lectures recorded at this [LINK](https://smartech.gatech.edu/handle/1853/59348) or this [LINK](https://cdnapisec.kaltura.com/p/2019031/sp/201903100/embedIframeJs/uiconf_id/40436601/partner_id/2019031/widget_id/1_2ipb2j47?iframeembed=true&playerId=kaltura_player_5aaa84d737fc5&flashvars[playlistAPI.kpl0Id]=1_pjxzalrg&flashvars[playlistAPI.autoContinue]=true&flashvars[playlistAPI.autoInsert]=true&flashvars[ks]=&flashvars[localizationCode]=en&flashvars[imageDefaultDuration]=30&flashvars[leadWithHTML5]=true&flashvars[forceMobileHTML5]=true&flashvars[nextPrevBtn.plugin]=true&flashvars[sideBarContainer.plugin]=true&flashvars[sideBarContainer.position]=left&flashvars[sideBarContainer.clickToClose]=true&flashvars[chapters.plugin]=true&flashvars[chapters.layout]=vertical&flashvars[chapters.thumbnailRotator]=false&flashvars[streamSelector.plugin]=true&flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&flashvars[dualScreen.plugin]=true) with the following order of playlist.
 
-1. **James M. Rehg** from School of Interactive Computing, GT. *Big Data in Behavioral Medicine*. (Mar 6, 2018)
-2. **David Page** from Univ. of Wisconsin-Madison. *ML from EHR: High-Throughput Prediction, Insights into Causation*. (Feb 27, 2018)
-3. **Ioakeim (Kimis) Perros** from SunLab. *Unsupervised Phenotyping using Tensor Factoriztion*. (Feb 20, 2018)
-4. **Jon Duke** from Georgia Tech Research Institute. *Precision Medicine at Georgia Tech: Introduction to the Health Data Analytics Platform*. (Feb 6, 2018)
-5. **Rachel Patzer** from Emory Univ. *Predicting Hospital Readmissions Among Kidney Transplant Recipients*. (Feb 13, 2018)
-6. **Chunhua Weng** from Columbia Univ. *Using Electronic Health Records Data to Support Patient Care and Clinical Research*. (Jan 30, 2018)
+1. **Stewart, Walter** from Sutter Health. *How Do We Accelerate Data Driven Health Care?* (April 19, 2018)
+2. **Swamidass, S. Joshua** from Washington University in St. Louis. *Translating from Chemistry to Clinic with Deep Learning: Modeling the Metabolism and Subsequent Reactivity of Drugs* (April 12, 2018)
+3. **Cooper, Gregory** from Univ. of Pittsburgh. *Causal Network Discovery from Biomedical and Clinical Data* (April 5, 2018)
+4. **James M. Rehg** from School of Interactive Computing, GT. *Big Data in Behavioral Medicine*. (Mar 6, 2018)
+5. **David Page** from Univ. of Wisconsin-Madison. *ML from EHR: High-Throughput Prediction, Insights into Causation*. (Feb 27, 2018)
+6. **Ioakeim (Kimis) Perros** from SunLab. *Unsupervised Phenotyping using Tensor Factoriztion*. (Feb 20, 2018)
+7. **Jon Duke** from Georgia Tech Research Institute. *Precision Medicine at Georgia Tech: Introduction to the Health Data Analytics Platform*. (Feb 6, 2018)
+8. **Rachel Patzer** from Emory Univ. *Predicting Hospital Readmissions Among Kidney Transplant Recipients*. (Feb 13, 2018)
+9. **Chunhua Weng** from Columbia Univ. *Using Electronic Health Records Data to Support Patient Care and Clinical Research*. (Jan 30, 2018)
 
 ## Past Guest Lectures
 
