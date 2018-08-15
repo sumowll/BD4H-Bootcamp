@@ -82,7 +82,7 @@ In order to obtain access, it is necessary to:
 
 ## Bootcamp Training Material
 
-Throughout the training exercises on this site we will use a small sample data set. If you followed the instructions documented on the [environment setup](/env) page to set up your environment, you will find the sample data in the `~/bigdata-bootcamp/data` folder in the virtual environment.
+Throughout the training exercises on this site we will use a small sample data set. If you followed the instructions documented on the [environment setup](/env/) page to set up your environment, you will find the sample data in the `/bigdata-bootcamp/data` folder in the virtual environment.
 
 There are two data files with names `case.csv` and `control.csv` respectively. For the purpose of these exercises we will define patients who developed heart failure (HF) at some time point as case patients, and those who didn't develop HF as control patients.
 
