@@ -5,7 +5,7 @@ layout: SpecialPage
 
 ## Project format
 
-We allow individual or group projects (up to 3 students per group). You are responsible to form groups on your own. We will provide some project ideas but you can also propose your own projects with the instructor's approval. The successful resulting project can potentially lead to research publication at health informatic venues such as [AMIA](https://www.amia.org/amia2017), [JAMIA](http://jamia.oxfordjournals.org/) and [JBI](https://www.journals.elsevier.com/journal-of-biomedical-informatics/).
+We allow individual or group projects (up to 4 students per group). You are responsible to form groups on your own. We will provide some project ideas but you can also propose your own projects with the instructor's approval. The successful resulting project can potentially lead to research publication at health informatic venues such as [AMIA](https://www.amia.org/amia2017), [JAMIA](http://jamia.oxfordjournals.org/) and [JBI](https://www.journals.elsevier.com/journal-of-biomedical-informatics/).
 
 <!--See **T-Square resource > Project related > project guide.pdf** for detailed requirements.-->
 
