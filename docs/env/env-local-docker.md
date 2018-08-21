@@ -298,10 +298,16 @@ $ docker pull sunlab/bigbox
 ```
 
 
-### (8) Doc
+### (8) More official documents
 
 Please refer to [this link](https://docs.docker.com/v17.09/engine/userguide/storagedriver/imagesandcontainers/) for the introduction of images, containers, and storage drivers.
 
+
+### (9) Optional: use docker-compose
+
+[Docker Compose](https://docs.docker.com/compose/) is a tool for defining and running multi-container Docker applications. A simple `docker-compose.yml` could ***simplify*** the parameters, and make the life easier.
+
+Please refer to [this link](/env/env-docker-compose.html#docker-compose) for some further instruction.
 
 
 ## 3. Logs and Diagnosis

@@ -69,11 +69,34 @@ sudo docker run -it --privileged=true \
   /bin/bash
 ```
 
-Please refer to [this section](/env/env-local-docker.html#_2-pull-and-run-docker-image) for some detail information.
+Please refer to [this section](/env/env-local-docker.html#_2-pull-and-run-docker-image) for some detail information of docker.
+
+If you are interested, you may also use [docker-compose](/env/env-docker-compose.html#docker-compose) to manage the service easier.
+
+
+## Login remotely and the corresponding security issue
+
+To access the service we launched in Azure, we are required to get the corresponding port opened. In default, the ports are closed. A good way to open it is change the rule of filewall. Please refer to [this official document](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nsg-quickstart-portal) to open the port.
+
+However, since this image was designed to start a easy learning environment, if you keep the ports open to the public, your environment could be hacked easily. You can also making full use of the [SSH port forwarding](https://www.ssh.com/ssh/tunneling/example).
+
+For example, you can create a new terminal, and type a command as follow:
+
+```
+ssh -L 2222:localhost:2222 \
+    -L 9530:localhost:9530  \
+    -L 8888:localhost:8888  \
+    your-azure-user@your-azure-host
+```
+
+This command will connect to your azure VM. In the meantime, It will also forward the network steam from azure:{2222, 9530, 8888}. And then, you can visit `localhost:8888` to visit jupiter if you have your jupiter in azure started.
+
+
+
 
 ::: tip
 
-1. You may use [tmux](https://tmux.github.io/) to make your life better
-2. The spending in Azure is calculated by time usage. Launch a better instance and fully destroy it instance once you finish your job will reduce your time in any dimension
+1. The spending in Azure is calculated by time usage. Launch a better instance and fully destroy it instance once you finish your job will reduce your time in any dimension
+2. You may use [tmux](https://tmux.github.io/) to make your life better
 
 :::
