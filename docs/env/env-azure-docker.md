@@ -84,12 +84,11 @@ For example, you can create a new terminal, and type a command as follow:
 
 ```
 ssh -L 2222:localhost:2222 \
-    -L 9530:localhost:9530  \
     -L 8888:localhost:8888  \
     your-azure-user@your-azure-host
 ```
 
-This command will connect to your azure VM. In the meantime, It will also forward the network steam from azure:{2222, 9530, 8888}. And then, you can visit `localhost:8888` to visit jupiter if you have your jupiter in azure started.
+This command will connect to your azure VM. In the meantime, It will also forward the network steam from azure:{2222, 8888}. And then, you can visit `localhost:8888` to visit jupiter if you have your jupiter in azure started.
 
 
 
