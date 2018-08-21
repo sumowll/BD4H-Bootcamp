@@ -22,3 +22,4 @@ We will host office hour through WebEx or bluejean **every weekday**. See below 
 |![minipic](images/avatar/kimis.png) | Ioakeim (Kimis) Perros,  TA perros<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Wed 10AM | Klaus 1211
 |![minipic](images/avatar/SungtaeAn.jpg) | Sungtae An, Sunlab PhD,  TA  stan84<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Thu 2PM | Klaus 1211
 |![minipic](images/avatar/YuJing.jpg) | Yu Jing,  TA yujing<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Fri 10AM | <https://bluejeans.com/3485734294>
+|![minipic](images/avatar/yanbo.png) | Yanbo Xu,  TA yujing<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Fri 10AM | <https://bluejeans.com/3485734294>
