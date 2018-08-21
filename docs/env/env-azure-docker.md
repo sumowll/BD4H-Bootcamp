@@ -21,6 +21,12 @@ We can create a Docker on Ubuntu Server in Azure, and then pull image from hub.d
 7. Click Pricing Tier, and choose D2S_V3
 8. Click “create” to create the instance
 
+::: tip
+
+The `D2S_V3` is just an example. You may choose anyone fulfill the requirement ( RAM may greater than 8G, CPU should more than 1).
+
+:::
+
 ### Option 2: Launch a clear linux
 
 "Docker on Ubuntu Server" is using "[classic deployment](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-deployment-model)". It seems like there are too few choise in "classic deployment" now. If you wish to have different option.
