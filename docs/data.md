@@ -28,23 +28,6 @@ MIMIC supports a diverse range of analytic studies spanning epidemiology, clinic
 2. it encompasses a diverse and very large population of ICU patients
 3. it contains high temporal resolution data including lab results, electronic documentation, and bedside monitor trends and waveforms.
 
-### CITI Training
-
-Gatech policy requires that all personnel involved with human subjects research must pass a training course before doing so. This requirement encompasses all types of interactions with human subjects, including the analysis of data. To complete the human subjects training:
-
-1. Go to [https://www.citiprogram.org/](https://www.citiprogram.org/)
-2. Login via SSO (Single Sign On). SSO will allows to login using your Georgia Tech username and password
-3. Select Georgia Institute of Technology as the authentication provider
-4. Once logged in, under Georgia Institute of Technology courses, click on "Add Course or Update Learner Groups"
-5. Now you will have three main courses to select. You will check the box for "Human Subjects Research"
-6. Click next, then you will select the radio button "NO, I have NOT completed the basic course"
-7. Now, you will see three learner groups. You are required to complete Group 1 and Group 2. Let us start with Group 1 (select Group 1) and click next
-8. Good Clinical Practice is not required so select "N/A", then click next
-9. Health Information Privacy and Security (HIPS) **is required**, click "CITI Health Information Privacy and Security (HIPS) for Biomedical Research Investigators"
-10. Select "RCR for engineering"
-11. Now under Georgia Tech courses you will have "Group 1 Biomedical research Investigators and Key Personnel" listed as incomplete. You will have to go through every tutorial in that course and complete a quiz for each.
-12. Once you completed and passed Group 1, repeats the steps above to complete Group 2 (Social / Behavioral Research Investigators and Key Personnel)
-
 ### Request MIMIC Access
 
 During this course, we will be working with the MIMIC database. MIMIC, although de-identified, still contains detailed information regarding the clinical care of patients, and must be treated with appropriate care and respect.
