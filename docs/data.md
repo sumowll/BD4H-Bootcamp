@@ -32,13 +32,12 @@ MIMIC supports a diverse range of analytic studies spanning epidemiology, clinic
 
 During this course, we will be working with the MIMIC database. MIMIC, although de-identified, still contains detailed information regarding the clinical care of patients, and must be treated with appropriate care and respect.
 
-**You must finish CITI training first to get MIMIC access.**
-
-We will collect all student information and will send a batch request.
+**You must finish CITI training first to get MIMIC access.**   **Do NOT request access individually.**
 
 Please do not fill this form until you are notified (typically happens around Mid-term, don't do it during HW1): [Google Form](to be added)
 
-**Do NOT request access individually.**
+We will collect all student information and send a batch request, after which you'll be notified and send the access request.
+
 
 <NotInUse>
 
