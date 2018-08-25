@@ -36,7 +36,7 @@ During this course, we will be working with the MIMIC database. MIMIC, although 
 
 We will collect all student information and will send a batch request.
 
-Please fill this form: [Google Form](to be added)
+Please do not fill this form until you are notified (typically happens around Mid-term, don't do it during HW1): [Google Form](to be added)
 
 **Do NOT request access individually.**
 
