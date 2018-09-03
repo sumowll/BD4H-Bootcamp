@@ -79,7 +79,7 @@ for line in sys.stdin:
         # a new key to work on
         if current_event:
             # write result to STDOUT
-            print '%s\t%s' % (current_event, current_count)
+            print('%s\t%s' % (current_event, current_count))
         current_count = count
         current_event = event_name
 
@@ -191,7 +191,7 @@ for line in sys.stdin:
         # a new key to work on
         if current_event and current_count > 1:
             # write result to STDOUT
-            print '%s\t%s' % (current_event, current_count)
+            print('%s\t%s' % (current_event, current_count))
         current_count = count
         current_event = event_name
 
