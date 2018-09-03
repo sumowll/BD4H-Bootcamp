@@ -36,7 +36,7 @@ for line in sys.stdin:
     patient_id, event_name, date_offset, value = splits
 
     # emit key-value pair seperated by \t for all events
-    print event_name + '\\' + '1'
+    print(event_name + '\\' + '1')
 ```
 
 This script reads lines from standard input and with some simple processing outputs to standard output the `event_name` as the key and `1` as the value.
@@ -85,7 +85,7 @@ for line in sys.stdin:
 
 ## do not forget to output the last event_name if needed!
 if current_event == event_name:
-    print '%s\t%s' % (current_event, current_count)
+    print('%s\t%s' % (current_event, current_count))
 ```
 
 This script checks the boundaries of the sorted input and sums up values from same key.
@@ -154,7 +154,7 @@ You will need to update both the mapper and reducer, for the mapper:
 ```python
 ## emit key-value pair seperated by \t for all diagnostic code
 if event_name.startswith('DIAG'):
-    print event_name + '\\' + '1'
+    print(event_name + '\\' + '1')
 ```
 
 and the reducer looks like:
@@ -197,7 +197,7 @@ for line in sys.stdin:
 
 ## do not forget to output the last event_name if needed!
 if current_event == event_name and current_count > 1:
-    print '%s\t%s' % (current_event, current_count)
+    print('%s\t%s' % (current_event, current_count))
 
 ```
 
