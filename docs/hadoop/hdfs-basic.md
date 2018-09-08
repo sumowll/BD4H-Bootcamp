@@ -48,7 +48,7 @@ where `hdfs` is the HDFS utility program, `dfs` is the subcommand to handle basi
 Suppose you followed previous instructions and created an directory named `input`, you can then copy data from local file system to HDFS using `-put`. For example,
 
 ``` bash
-> cd /bootcamp/data
+> cd /bigdata-bootcamp/data
 > hdfs dfs -put case.csv input
 > hdfs dfs -put control.csv input
 ```
