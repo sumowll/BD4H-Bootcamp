@@ -22,9 +22,9 @@ We allow individual or group projects (up to 4 students per group). You are resp
 
 Students should submit source code, presentation slides, and final paper pdf to Canvas. 
 
-## EasyChair
+## Canvas
 
-Students will use [EachChair](https://easychair.org/conferences/?conf=bdhsp2018) for submission of project proposal, draft (and final paper).
+Students will use Canvas for submission of project proposal, draft (and final paper).
 
 <!--
 ## Peer Review (optional)
