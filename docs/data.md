@@ -34,9 +34,7 @@ During this course, we will be working with the MIMIC database. MIMIC, although 
 
 **You must finish CITI training first to get MIMIC access.**   **Do NOT request access individually.**
 
-Please do not fill this form until you are notified (typically happens around Mid-term, don't do it during HW1): [Google Form](to be added)
-
-We will collect all student information and send a batch request, after which you'll be notified and send the access request.
+We will collect all student information and send a batch request to MIT, after which you'll be notified and send the access request.
 
 
 <NotInUse>
