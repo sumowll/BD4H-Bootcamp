@@ -80,7 +80,7 @@ val patientVertex = patientVertexIdRDD.
   asInstanceOf[RDD[(VertexId, VertexProperty)]]
 ```
 
-In order to use the newly created vetext id, we finally `collect` all the patient to `VertrexID` mapping.
+In order to use the newly created vertex id, we finally `collect` all the patient to `VertrexID` mapping.
 
 ::: warning
 
@@ -132,7 +132,7 @@ val edges = diagnosticEvents.
 
 We first broadcast patient and diagnostic code to vertext id mapping. Broadcast can avoid unnecessary copy in distributed setting thus will be more effecient. Then we count occurrence of `(patient-id, icd-9-code)` pairs with `map` and `reduceByKey`, finally we translate them to proper `VertexID`.
 
-### Assemble vetex and edge
+### Assemble vertex and edge
 
 We will need to put vertices and edges together to create the graph
 
