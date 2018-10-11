@@ -64,9 +64,11 @@ We prepared a server with a GPU on Microsoft Azure. It would be enough to follow
 
 #### Access to the server
 
-You can directly access to the JupyterHub with the pre-copied Notebooks used in the entire lab sessions on your web browser. Please open your favorite web browser and move to the following address including the port number:
+You should install VPN first. ([How?](https://faq.oit.gatech.edu/content/how-do-i-get-started-campus-vpn))
 
-<http://52.175.231.74:8000>
+Once you get the VPN connected, you may able to access the JupyterHub with the pre-copied Notebooks used in the entire lab sessions on your web browser. Please open your favorite web browser and move to the following address including the port number:
+
+<http://eclipse1.cc.gatech.edu:64321>
 
 Then, you will meet the following login page.
 ![login](./images/login.png)
@@ -92,7 +94,7 @@ We recommend you to use [Anaconda](https://anaconda.org/) for your Python backen
 
 #### GPU acceleration
 
-If you have a proper NVIDIA GPU(s) and want to utilize it, install [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads) (7.5 or 8.0) including [cuDNN](https://developer.nvidia.com/cudnn) before installing PyTorch.
+If you have a proper NVIDIA GPU(s) and want to utilize it, install [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads) (7.5, 8.0, 9.0 or 10.0) including [cuDNN](https://developer.nvidia.com/cudnn) before installing PyTorch.
 
 #### Install PyTorch
 
