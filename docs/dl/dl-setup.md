@@ -73,7 +73,7 @@ Once you get the VPN connected, you may able to access the JupyterHub with the p
 Then, you will meet the following login page.
 ![login](./images/login.png)
 
-Please use `guest` for both Username and Password.
+Please use `guestfa2018` for both Username and Password.
 Once you successfully login with the guest account, you can find the folders
 ![jupyter](./images/jupyter.png)
 
