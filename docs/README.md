@@ -38,9 +38,11 @@ To be successful in the course, students should have acquired:
   - 7% paper draft
   - 10% final presentation
   - 20% final paper
+  - Note: Penalty will be reflected due to inactive team contribution
 
 - **10%  Participation**
   - Piazza activities(contributions ***/posts viewed **/days online *)
+  - Class participation (on-campus students only)
   - Bitbucket pull requests for improving the lab materials
 
 <!--
