@@ -35,7 +35,7 @@ Students should watch Udacity course videos according to the following schedule.
 -->
  <!-- **Guest lecture by Noemie Elhadad (Columbia)** -->
  
- --| Week # | Dates     | In-class lesson                                                     | Video lessons                       | Lab                              | Deliverable Due                                                          | 
+| Week # | Dates     | In-class lesson                                                     | Video lessons                       | Lab                              | Deliverable Due                                                          | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
 | 1      | 1/8/2019  | Intro to the BDH class                                              | [1. Intro to Big Data Analytics](https://www.udacity.com/course/viewer#!/c-ud758/l-6311012028)      |                                  |                                                                          | 
 | 1      | 1/10/2019 | Sunlab's research by Jimeng Sun                                     | [2. Course Overview](https://www.udacity.com/course/viewer#!/c-ud758/l-5046828066)                  | [Scala Basic](/spark/scala-basic.html)                      |                                                                          | 
