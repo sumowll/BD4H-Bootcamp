@@ -13,10 +13,10 @@ We allow individual or group projects (up to 4 students per group). You are resp
 
 |Due day     |  Due day|
 |---------|:------------------:|
-|Sep 30   |Project group formation |
-|Oct 14   |Project proposal |
-|Nov 11  |Project draft|
-|Dec 9 |Final Project (code+presentation+final paper) |
+|Feb 17   |Project group formation |
+|Mar 3   |Project proposal |
+|Apr 7  |Project draft|
+|Apr 25 |Final Project (code+presentation+final paper) |
 
 ## Final project
 
