@@ -10,6 +10,8 @@ This website covers information for [Georgia Institute of Technology](//www.gate
 
 + Instructor: [Prof. Jimeng Sun](//sunlab.org)
 + Discussion: [CSE6250 Spring 2019 Piazza](http://piazza.com/gatech/spring2019/cse6250)
++ Time: TR 03:00 pm-04:15 pm
++ Location: Mason 2117
 
 </div>
 
