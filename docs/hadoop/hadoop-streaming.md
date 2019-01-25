@@ -43,7 +43,7 @@ This script reads lines from standard input and with some simple processing outp
 
 ### Reducer
 
-The reducer is a little bit more complex. The output of the mapper will be shuffled by Hadoop framework's shuffle process (a part of MapReduce) and the reduder will get a list of key-value pairs. The MapReduce framework guarantees that all key-value pairs with the same key will go to same reducer instance.
+The reducer is a little bit more complex. The output of the mapper will be shuffled by Hadoop framework's shuffle process (a part of MapReduce) and the reducer will get a list of key-value pairs. The MapReduce framework guarantees that all key-value pairs with the same key will go to same reducer instance.
 
 The source code for the reducer is:
 
