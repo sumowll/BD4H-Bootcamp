@@ -3,6 +3,13 @@
 
 # Install Docker In Microsoft Windows
 
+::: tip
+
+If you are interested in software from Microsoft (excluding Microsoft Office products), [this link](https://support.cc.gatech.edu/resources/downloads) may helps.
+
+You may follow the guide, go to the [Imagine](https://e5.onthehub.com/WebStore/Welcome.aspx?vsro=8&ws=82FE585A-DB9B-E011-969D-0030487D8897) login page to download the Windows image for free.
+:::
+
 ## Windows Docker Desktop (recommended)
 
 An official guide for Windows Docker Desktop could be found [here](https://docs.docker.com/docker-for-windows/install/).
