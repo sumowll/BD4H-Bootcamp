@@ -7,7 +7,7 @@
 
 An official guide for Windows Docker Desktop could be found [here](https://docs.docker.com/docker-for-windows/install/).
 
-Download the image from [this link](https://hub.docker.com/editions/community/docker-ce-desktop-windows) and follow the installer one by one.
+Download the image from [this link](https://hub.docker.com/editions/community/docker-ce-desktop-windows) and follow the installer step by step.
 
 **Windows Docker Desktop requires Windows 10 Pro or Enterprise version 1586/2016 RTM or above**
 
