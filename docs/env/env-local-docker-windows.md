@@ -11,7 +11,7 @@ Download the image from [this link](https://hub.docker.com/editions/community/do
 
 **Windows Docker Desktop requires Windows 10 Pro or Enterprise version 1586/2016 RTM or above**
 
-If your windows is not fulfill the prerequisite, you may see the image as follow. Please use *Docker Toolbox on Windows* instead.
+If your windows is not fulfill the prerequisite, you may see the image as follow. Please use *[Docker Toolbox on Windows](#docker-toolbox-on-windows)* instead.
 
 ![](./images/docker-for-windows-10-prerequisite-not-fullfilled.png)
 
