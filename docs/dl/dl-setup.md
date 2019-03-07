@@ -56,7 +56,7 @@ If you want to use Anaconda2 (Python 2.7), you can replace `anaconda3` in the co
 
 ##### Jupyter
 If you want to directly run the tutorial notebook files, you need to run a Jupyter server first.
--->
+
 
 ### JupyterHub on Azure
 
@@ -83,6 +83,28 @@ Once you successfully login with the guest account, you can find the folders
   - Temporary folder for guests.
 
 You can find the same notebook files used in the entire tutorials in `Deep Learning Labs` folder. Also, you can use `Scratch Pads` folder as your temporary storage. Please create a subfolder with a name `YOUR-GT-ACCOUNT` under `Scratch Pads` if you want to create a new notebook file for your own practice. Please note that we could clean up `Scratch Pads` folder occasionally without any notice.
+-->
+### JupyterHub on GT GitHub
+
+We prepared a server with a GPU on a GT server. You should be able to access the JupyterHub with the pre-copied Notebooks used in the entire lab sessions on your web browser. Please open your favorite web browser and move to the following address:
+
+<http://dl-live.sunlab.org>
+
+Then, you may see the following login page.
+![login](./images/login.png)
+
+Click the icon 'Sign in with GitHub' and use your current **GT username and password** (not your personal github account) to login since it is built on the GT GitHub Enterprise.
+![github](./images/login_github.png)
+
+Once you successfully login with your GT account, you can find the folders
+![jupyter](./images/jupyter_home.png)
+
+- Notebooks
+  - Notebook files used in the deep learning lab series.
+- Possibly many `<gt-account>` folders
+  - Temporary folder for each user.
+
+You can find the same notebook files used in the entire tutorials in `Notebooks ` folder. Also, you can use `<your-gt-account>` folder as your temporary storage if you want to create a new notebook file for your own practice. Please note that we could clean up all user folders occasionally without any notice.
 
 ### Native
 
