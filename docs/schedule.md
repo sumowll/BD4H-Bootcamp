@@ -45,7 +45,7 @@ For the online video lectures, CS/CSE students should go to **Udacity** while An
 |14    |4/9/2019 |Guest lecture                              |                                                    |                                      |                                                                            |
 |14    |4/11/2019|Guest lecture                              |                                                    |                                      |                                                                            |
 |15    |4/16/2019|Guest lecture by Dr Green                  |                                                    |                                      |                                                                            |
-|15    |4/18/2019|Guest lecture                              |                                                    |                                      |                                                                            |
+|15    |4/18/2019|Guest lecture by Dr. Patzer                |                                                    |                                      |                                                                            |
 |16    |4/23/2019|Student project presentation               |                                                    |                                      |                                                                            |
 |16    |4/25/2019|Student project presentation               |                                                    |                                      |Final Project with code, presentation, and the final paper (4/28/2019)      |
 
