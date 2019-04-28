@@ -1,7 +1,7 @@
 title: CSE 6250 Big Data for Healthcare
 description: Georgia Tech Big Data Bootcamp training material
 ga: 'UA-112385497-1'
-base: '/teaching/cse6250/spring2019/'
+base: '/teaching/cse6250/fall2019/'
 head:
 - - meta
   - name: apple-mobile-web-app-capable
