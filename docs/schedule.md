@@ -29,7 +29,7 @@ For the online video lectures, CS/CSE students should go to **Udacity** while An
 | 13     | Nov 11-15 |  Potential Guest Lecture                                    |                                  |                                                Project Draft Due (Nov 10)                          | 
 | 14     | Nov 18-22 |  Project Discussion                                    |                                  |                                                                          | 
 | 15     | Nov 25-29 |  Project Discussion                                     |                                  |           Final Exam (Dec 3)                                                               | 
-| 16     | Dec 2-6 |   Final Exam Week                                    |                                  | Final Project Due (code + presentation + final paper) (Dec 8) | 
+| 16     | Dec 2-6 |   Project Submission                                    |                                  | Final Project Due (code + presentation + final paper) (Dec 8) | 
 
 
 <!-- Updated @ Jan.4, 2019 -->
