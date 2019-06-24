@@ -71,7 +71,6 @@ For the online video lectures, CS/CSE students should go to **Udacity** while An
 -->
 
 <!--
-
 | Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
 | 1      | Aug 19-23  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |  [Scala Basic]                      |                                                                          | 
@@ -90,7 +89,6 @@ For the online video lectures, CS/CSE students should go to **Udacity** while An
 | 14     | Nov 18-22 |  Project Discussion                                    |                                  |                                                                          | 
 | 15     | Nov 25-29 |  Project Discussion                                     |                                  |           Final Exam (Dec 3)                                                               | 
 | 16     | Dec 2-6 |   Final Exam Week                                    |                                  | Final Project Due (code + presentation + final paper) (Dec 8) | 
-
 -->
 
 <!--
