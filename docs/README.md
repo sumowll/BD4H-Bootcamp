@@ -10,8 +10,6 @@ This website covers information for [Georgia Institute of Technology](//www.gate
 
 + Instructor: [Prof. Jimeng Sun](//sunlab.org)
 + Discussion: [CSE6250 Fall 2019 Piazza](http://piazza.com/gatech/fall2019/cse6250)
-+ Time: TR 03:00 pm-04:15 pm
-+ Location: Mason 2117
 
 </div>
 
@@ -35,17 +33,17 @@ To be successful in the course, students should have acquired:
 - **50% Homework**
   5 homework 10% each
 
-- **40% Project**
+- **35% Project**
   - 3%  proposal
   - 7% paper draft
-  - 10% final presentation
-  - 20% final paper
+  - 5% final presentation
+  - 10% final paper
   - Note: Penalty will be reflected due to inactive team contribution
+- **15% final exam**
 
 - **10%  Participation**
-  - Piazza activities(contributions ***/posts viewed **/days online *)
-  - Class participation (on-campus students only)
-  - Bitbucket pull requests for improving the lab materials
+  - Piazza activities(contributions 6%/posts viewed 2%/days online 2%)
+  - Bitbucket pull requests for improving the lab materials (bonus up to 2%)
 
 <!--
   - 5% piazza activities for on-campus ones
