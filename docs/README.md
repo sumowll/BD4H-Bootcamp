@@ -42,9 +42,9 @@ To be successful in the course, students should have acquired:
 - **20% final exam**
 
 - **5%  Participation**
-  - Piazza activities(contributions 6%/posts viewed 2%/days online 2%)
-  - Bitbucket pull requests for improving the lab materials (bonus up to 2%)
-
+  - Piazza activities(contributions to piazza: questions answered and threads created)
+<!--  - Bitbucket pull requests for improving the lab materials (bonus up to 2%)
+-->
 <!--
   - 5% piazza activities for on-campus ones
   - 4% in-class quiz & attendance for on-campus ones
