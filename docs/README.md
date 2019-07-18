@@ -43,7 +43,8 @@ To be successful in the course, students should have acquired:
 
 - **5%  Participation**
   - Piazza activities(contributions to piazza: questions answered and threads created)
-<!--  - Bitbucket pull requests for improving the lab materials (bonus up to 2%)
+<!--  
+  - Bitbucket pull requests for improving the lab materials (bonus up to 2%)
 -->
 <!--
   - 5% piazza activities for on-campus ones
