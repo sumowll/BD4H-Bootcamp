@@ -9,15 +9,18 @@ layout: SpecialPage
 
 ## WebEx Office Hour
 
-We will host office hour(1 hour per person) through WebEx or bluejean **every weekday**. See below table for detailed schedule
+We will host office hour(40 mins per person) through WebEx or bluejean **Weekly**. Email him/her if you have trouble to join the meeting. See below table for detailed schedule
+For on-campus students, we will hold office hours right after lectures. Please find the corresponding TA regular duties on Piazza, if you have any question, email him/her when needed.
 
 | Photo| Name|Time (EST)             | Location or Web Link |
 | :-------------: | :-------------: | ---------------- | --------------------------------------------------------------------------------------|
 |![minipic](images/avatar/Jimeng.png)   |  Jimeng Sun, instructor jsun<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;cc.gatech.edu     |      |       Request by email         |
-|![minipic](images/avatar/MingLiu.jpg) | Ming Liu , PhD,  TA mliu302<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Wed 10AM |<https://gatech.webex.com/meet/mliu302>
+|![minipic](images/avatar/MingLiu.jpg) | Ming Liu , PhD,  TA mliu302<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Wed 5PM |<https://gatech.webex.com/meet/mliu302>
 |![minipic](images/avatar/Balaji.png) |     Balaji Sundaresan, TA bsundaresan3<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu | Thu 9PM | [https://gatech.webex.com/meet/bsundaresan3](https://gatech.webex.com/meet/bsundaresan3)
-|![minipic](images/avatar/SungtaeAn.jpg) | Sungtae An, Sunlab PhD,  TA  stan84<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Mon 6PM | <https://gatech.webex.com/meet/san37>
-|![minipic](images/avatar/yj.jpg) | Yu Jing,  TA yujing<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Fri 11AM | <https://gatech.webex.com/meet/yjing43>
-|![minipic](images/avatar/yanbo.png) | Yanbo Xu, Sunlab PhD,  TA yxu465<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Wed 3:30PM | <https://gatech.webex.com/meet/yxu465>
-|![minipic](images/avatar/siddharth.png) | Siddharth Biswal, Sunlab PhD, TA sbiswal7<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Thu 11AM | <https://gatech.webex.com/join/sbiswal7>
-|![minipic](images/avatar/Kapil2.jpg) | Kapil Vuthoo, MS, TA kapilv@gatech.edu<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Thu 11AM | <https://gatech.webex.com/join/sbiswal7>
+|![minipic](images/avatar/SungtaeAn.jpg) | Sungtae An, Sunlab PhD,  TA  stan84<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Mon 5PM | <https://gatech.webex.com/meet/san37>
+|![minipic](images/avatar/yj.jpg) | Yu Jing,  TA yujing<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| By Email | <https://gatech.webex.com/meet/yjing43>
+|![minipic](images/avatar/yanbo.png) | Yanbo Xu, Sunlab PhD,  TA yxu465<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Tues 2PM | <https://gatech.webex.com/meet/yxu465>
+|![minipic](images/avatar/siddharth.png) | Siddharth Biswal, Sunlab PhD, TA sbiswal7<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Tues 2PM | <https://gatech.webex.com/join/sbiswal7>
+![minipic](images/avatar/Ari.jpg) | Ardavan (Ari) Afshar, PhD, TA aafshar8<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Mon 3PM | <https://gatech.webex.com/meet/aafshar8>
+![minipic](images/avatar/Zhe.jpg) | Zhe Zhu, MS, TA zhezhu<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Mon 10AM | <https://gatech.webex.com/meet/zzhu324>
+|![minipic](images/avatar/Kapil2.jpg) | Kapil Vuthoo, MS, TA kapilv<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Sat 9PM | <https://gatech.webex.com/gatech/j.php?MTID=m7969767003ecf6a2c2a213622fd1cc14>

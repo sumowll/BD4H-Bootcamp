@@ -74,7 +74,7 @@ Sometimes, `DUMP` will generate a lot of output but you may just want to see a f
 
 ```bash
 tmp = LIMIT A 10;
-DUMP tmpl
+DUMP tmp;
 ```
 
 to print the top 10 items in relation `A`.

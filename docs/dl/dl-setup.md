@@ -56,7 +56,7 @@ If you want to use Anaconda2 (Python 2.7), you can replace `anaconda3` in the co
 
 ##### Jupyter
 If you want to directly run the tutorial notebook files, you need to run a Jupyter server first.
--->
+
 
 ### JupyterHub on Azure
 
@@ -83,6 +83,28 @@ Once you successfully login with the guest account, you can find the folders
   - Temporary folder for guests.
 
 You can find the same notebook files used in the entire tutorials in `Deep Learning Labs` folder. Also, you can use `Scratch Pads` folder as your temporary storage. Please create a subfolder with a name `YOUR-GT-ACCOUNT` under `Scratch Pads` if you want to create a new notebook file for your own practice. Please note that we could clean up `Scratch Pads` folder occasionally without any notice.
+-->
+### JupyterHub on GT GitHub
+
+We prepared a server with a GPU on a GT server. You should be able to access the JupyterHub with the pre-copied Notebooks used in the entire lab sessions on your web browser. Please open your favorite web browser and move to the following address:
+
+<http://dl-live.sunlab.org>
+
+Then, you may see the following login page.
+![login](./images/login.png)
+
+Click the icon 'Sign in with GitHub' and use your current **GT username and password** (not your personal github account) to login since it is built on the GT GitHub Enterprise.
+![github](./images/login_github.png)
+
+Once you successfully login with your GT account, you can find the folders
+![jupyter](./images/jupyter_home.png)
+
+- Notebooks
+  - Notebook files used in the deep learning lab series.
+- Possibly many `<gt-account>` folders
+  - Temporary folder for each user.
+
+You can find the same notebook files used in the entire tutorials in `Notebooks ` folder. Also, you can use `<your-gt-account>` folder as your temporary storage if you want to create a new notebook file for your own practice. Please note that we could clean up all user folders occasionally without any notice.
 
 ### Native
 
@@ -94,22 +116,29 @@ We recommend you to use [Anaconda](https://anaconda.org/) for your Python backen
 
 #### GPU acceleration
 
-If you have a proper NVIDIA GPU(s) and want to utilize it, install [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads) (7.5, 8.0, 9.0 or 10.0) including [cuDNN](https://developer.nvidia.com/cudnn) before installing PyTorch.
+If you have a proper NVIDIA GPU(s) with a driver installed, you just need to install the associated version of PyTorch binary, which contains CUDA Toolkit and cuDNN library already.
 
-#### Install PyTorch
+&#8251; **For MacOS:** MacOS Binaries dont support CUDA, install from source if CUDA is needed after installing [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads) (8.0, 9.0 or 10.0) and [cuDNN](https://developer.nvidia.com/cudnn) first.
 
-##### Linux
+#### Install PyTorch 1.0
+You will use PyTorch 1.0 throughout the lab series.
 
-###### CUDA 8.0
+##### Linux and Windows
+
+###### CUDA 8.0, 9.0, or 10.0
 
 ```bash
-conda install pytorch torchvision cuda80 -c soumith
+conda install pytorch torchvision cudatoolkit=<CUDA version> -c pytorch
+```
+For example, if you are using CUDA 9.0 toolkit,
+
+```bash
+conda install pytorch torchvision cudatoolkit=9.0 -c pytorch
 ```
 
-###### CUDA 7.5
-
+###### CPU only
 ```bash
-conda install pytorch torchvision -c soumith
+conda install pytorch-cpu torchvision-cpu -c pytorch
 ```
 
 ##### macOS
@@ -122,15 +151,8 @@ conda install pytorch torchvision -c soumith
 
 Mac users who want to use your GPU, you will need to build PyTorch from the [source](https://github.com/pytorch/pytorch#from-source). Here is a good blog post about it ([link](https://zhaoyu.li/post/install-pytorch-on-mac-with-nvidia-gpu/)).
 
-##### Windows
-
-There is no official support for Windows yet, but for Anaconda3 on Windows x64 (Windows 10, Windows Server 2016) you can try:
-
-```bash
-conda install -c peterjc123 pytorch
-```
-
-If you have some troubles, please refer to this [pre-official discussion](https://github.com/pytorch/pytorch/issues/494). It seems it will be merged into the official version soon!
+##### Install using pip
+Please refer to PyTorch [get started](https://pytorch.org/get-started/locally/) page.
 
 #### Notebooks
 

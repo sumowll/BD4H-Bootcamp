@@ -1,6 +1,7 @@
 ---
 ---
-## MapReduce Basics
+
+# MapReduce Basics
 
 ::: tip
 
