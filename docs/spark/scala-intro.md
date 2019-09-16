@@ -409,7 +409,7 @@ for {
 	j <- b
 	k <- c
 	r <- {
-		println(s"i: $i, j:$i, k:$k")
+		println(s"i: $i, j:$j, k:$k")
 		Some(i * j * k)
 	}
 } yield r
@@ -433,7 +433,7 @@ scala> for {
      |   j <- b
      |   k <- c
      |   r <- {
-     |           println(s"i: $i, j:$i, k:$k")
+     |           println(s"i: $i, j:$j, k:$k")
      |           Some(i * j * k)
      |   }
      | } yield r
