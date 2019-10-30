@@ -43,7 +43,7 @@ For the online video lectures, CS/CSE students should go to **Udacity** while An
 |14    |4/7/2020 |Guest lecture                              |                                                    |                                      |                                                                            |
 |14    |4/9/2020 |			                                 |                                                    |                                      |                                                                            |
 |15    |4/14/2020|                							 |                                                    |                                      |                                                                            |
-|15    |4/16/2020|							                 |                                                    |                                      |Final Examl(4/16/2020)                                                      |
+|15    |4/16/2020|							                 |                                                    |                                      |Final Examl(4/16/2020, online students will have a time window)      		  |
 |16    |4/21/2020|Student project presentation               |                                                    |                                      |                                                                            |
 |16    |4/23/2020|Student project presentation               |                                                    |                                      |Final Project with code, presentation, and the final paper (4/26/2020)      |
 
