@@ -32,4 +32,4 @@ Homework assignments are strictly individual efforts, while final projects can b
 
 ## EXTENSIONS, LATE ASSIGNMENTS, & RE-SCHEDULED/MISSED EXAMS
 
-Each student is allowed 2 days of late submission, to be USED for homework. You can use these 2 days for any assignment. Once you have used up your late days, late assignments will be penalized at a rate of 10% per day. Assignments more than 5 days late will not be accepted.
+Each student is allowed 2 days of late submission, to be USED for homework. You can split the 2 days grace period across two different homework. Once you have used up your late days, late assignments will be penalized at a rate of 10% per day. Assignments more than 5 days late will not be accepted. Also, you can't apply it toward final project. We don't consider other homework extension request, so please schedule your time slots well in advance.
