@@ -11,7 +11,43 @@ layout: SpecialPage
 Students should watch Udacity course videos according to the following schedule. It is **recommended** for students to do lab sessions on the schedule by yourself **as early as possible** since some of homework may cover the lab materials scheduled later than the homework.
 For the online video lectures, CS/CSE students should go to **Udacity** while Analytics students should navigate to **Edx** instead, please check details on Canvas.
 ## Schedule
-<!--update @Jun 24, 2019-->
+<!-- Updated @ Oct.30, 2019 -->
+|Week #|Dates    |In-class lesson                            |Video lessons                                       |Lab                                   |Deliverable Due                                                             |
+|:-----|:--------|:------------------------------------------|:---------------------------------------------------|:-------------------------------------|:---------------------------------------------------------------------------|
+|1     |1/7/2020 |Intro to the BDH class                     |1. Intro to Big Data Analytics                      |                                      |                                                                            |
+|1     |1/9/2020|Sunlab's research by Jimeng Sun             |2. Course Overview                                  |Scala Basic                           |                                                                            |
+|2     |1/14/2020|Predictive modeling                        |3. Predictive Modeling                              |                                      |                                                                            |
+|2     |1/16/2020|Classification                             |                                                    |Hadoop & HDFS Basic                   |HW1 Due (1/19/2020)                                                         |
+|3     |1/21/2020|MapReduce                                  |4.MapReduce& HBase                                  |                                      |                                                                            |
+|3     |1/23/2020|Guest lecture								 |                                                    |Hadoop Pig & Hive         			 |                                                                            |
+|4     |1/28/2020|Tensor factorization                       |5.Classification evaluation metrics                 |                                      |                                                                            |
+|4     |1/30/2020|Tensor factorization (phenotyping)         |6.Classification ensemble methods                   |                     				 |HW2 Due (2/2/2020)                                                          |
+|5     |2/4/2020 |                                           |7. Phenotyping                                      |                                      |                                                                            |
+|5     |2/6/2020 |Clustering                                 |8. Clustering                                       |Spark Basic, Spark SQL                |                                                                            |
+|6     |2/11/2020|Spark                                      |9. Spark                                            |                                      |                                                                            |
+|6     |2/13/2020|Project overview                           |                                                    |Spark Application & Spark MLlib       |HW3 Due & Project Group Formation Due & Project Requirements Release (2/16/2020)|
+|7     |2/18/2020|Medical ontology                           |10. Medical ontology                                |                                      |                                                                            |
+|7     |2/20/2020|                                           |                                                    |NLP Lab by Charity Hilton             |                                                                            |
+|8     |2/25/2020|Graph analysis                             |11. Graph analysis                                  |                                      |                                                                            |
+|8     |2/27/2020|Sunlab research work		                 |                                                    |Spark GraphX                          |Project Proposal Due (3/1/2020)                                             |
+|9     |3/3/2020 |Project proposal presentation              |12. Dimensionality Reduction  13. Patient similarity|                                      |                                                                            |
+|9     |3/5/2020 |Project proposal presentation              |14. DNN                                             |Deep Learning Lab by Sungtae An       |HW4 Due (3/8/2020)                                                          |
+|10    |3/10/2020|Guest lecture				                 |15. CNN 		                                      |Deep Learning Lab					 |                                                                            |
+|10    |3/12/2020|Guest lecture			                     |16. RNN                                             |                                      |                                                                            |
+|11    |3/17/2020|Spring break                               |                                   		          |                                      |                                                                            |
+|11    |3/19/2020|Spring break                               |                                                    |                                      |HW5 Due (3/22/2020)                                                         |
+|12    |3/24/2020|Deep learning 1                            |                                                    |                                      |                                                                            |
+|12    |3/26/2020|Deep learning 2 			                 |                                                    |                                      |                                                                            |
+|13    |3/31/2020|Deep learning 3                            |                                                    |                                      |                                                                            |
+|13    |4/2/2020 |Guest lecture				          		 |                                                    |                                      |Project Draft Due (4/5/2020)                                                |
+|14    |4/7/2020 |Guest lecture                              |                                                    |                                      |                                                                            |
+|14    |4/9/2020 |			                                 |                                                    |                                      |                                                                            |
+|15    |4/14/2020|                							 |                                                    |                                      |                                                                            |
+|15    |4/16/2020|							                 |                                                    |                                      |Final Examl(4/16/2020)                                                      |
+|16    |4/21/2020|Student project presentation               |                                                    |                                      |                                                                            |
+|16    |4/23/2020|Student project presentation               |                                                    |                                      |Final Project with code, presentation, and the final paper (4/26/2020)      |
+
+<!--update @Oct 30, 2019
 | Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
 | 1      | Aug 19-23  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |  [Scala Basic]                      |                                                                          | 
@@ -30,44 +66,6 @@ For the online video lectures, CS/CSE students should go to **Udacity** while An
 | 14     | Nov 18-22 |  Project Discussion                                    |                                  |                                                                          | 
 | 15     | Nov 25-29 |  Project Discussion                                     |                                  |           Final Exam (Dec 3)                                                               | 
 | 16     | Dec 2-6 |   Project Submission                                    |                                  | Final Project Due (code + presentation + final paper) (Dec 8) | 
-
-
-<!-- Updated @ Jan.4, 2019 -->
-<!--
-|Week #|Dates    |In-class lesson                            |Video lessons                                       |Lab                                   |Deliverable Due                                                             |
-|:-----|:--------|:------------------------------------------|:---------------------------------------------------|:-------------------------------------|:---------------------------------------------------------------------------|
-|1     |1/8/2019 |Intro to the BDH class                     |1. Intro to Big Data Analytics                      |                                      |                                                                            |
-|1     |1/10/2019|Sunlab's research by Jimeng Sun            |2. Course Overview                                  |Scala Basic                           |                                                                            |
-|2     |1/15/2019|Predictive modeling                        |3. Predictive Modeling                              |                                      |                                                                            |
-|2     |1/17/2019|Classification                             |                                                    |Hadoop & HDFS Basic                   |HW1 Due (1/20/2019)                                                         |
-|3     |1/22/2019|MapReduce                                  |4.MapReduce& HBase                                  |                                      |                                                                            |
-|3     |1/24/2019|Guest lecture by Danica Xiao (IBM Research)|                                                    |Hadoop Pig & Hive         			 |                                                                            |
-|4     |1/29/2019|Tensor factorization                       |5.Classification evaluation metrics                 |                                      |                                                                            |
-|4     |1/31/2019|Tensor factorization (phenotyping)         |6.Classification ensemble methods                   |                     				 |HW2 Due (2/3/2019)                                                          |
-|5     |2/5/2019 |                                           |7. Phenotyping                                      |                                      |                                                                            |
-|5     |2/7/2019 |Clustering                                 |8. Clustering                                       |Spark Basic, Spark SQL                |                                                                            |
-|6     |2/12/2019|Spark                                      |9. Spark                                            |                                      |                                                                            |
-|6     |2/14/2019|Project overview                           |                                                    |Spark Application & Spark MLlib       |HW3 Due & Project Group Formation & Project Requirements Release (2/17/2019)|
-|7     |2/19/2019|Medical ontology                           |10. Medical ontology                                |                                      |                                                                            |
-|7     |2/21/2019|                                           |                                                    |NLP Lab by Charity Hilton             |                                                                            |
-|8     |2/26/2019|Graph analysis                             |11. Graph analysis                                  |                                      |                                                                            |
-|8     |2/28/2019|Sunlab research work		                 |                                                    |Spark GraphX                          |Project Proposal Due (3/3/2019)                                             |
-|9     |3/5/2019 |Project proposal presentation              |12. Dimensionality Reduction  13. Patient similarity|                                      |                                                                            |
-|9     |3/7/2019 |Project proposal presentation              |14. DNN                                             |Deep Learning Lab by Sungtae An       |HW4 Due (3/10/2019)                                                         |
-|10    |3/12/2019|Guest lecture by Jon Duke	                 |15. CNN 		                                      |Deep Learning Lab by Sungtae An - Cont|                                                                            |
-|10    |3/14/2019|Guest lecture by Joyce Ho                  |16. RNN                                             |                                      |                                                                            |
-|11    |3/19/2019|Spring break                               |                                   		          |                                      |                                                                            |
-|11    |3/21/2019|Spring break                               |                                                    |                                      |HW5 Due (3/24/2019)                                                         |
-|12    |3/26/2019|Deep learning 1                            |                                                    |                                      |                                                                            |
-|12    |3/28/2019|Deep learning 2 			                 |                                                    |                                      |                                                                            |
-|13    |4/2/2019 |Deep learning 3                            |                                                    |                                      |                                                                            |
-|13    |4/4/2019 |Guest lecture by Dr. Omer           		 |                                                    |                                      |Project Draft Due (4/7/2019)                                                |
-|14    |4/9/2019 |Guest lecture                              |                                                    |                                      |                                                                            |
-|14    |4/11/2019|Guest lecture                              |                                                    |                                      |                                                                            |
-|15    |4/16/2019|Guest lecture by Dr. Green                 |                                                    |                                      |                                                                            |
-|15    |4/18/2019|Guest lecture by Dr. Patzer                |                                                    |                                      |                                                                            |
-|16    |4/23/2019|Student project presentation               |                                                    |                                      |                                                                            |
-|16    |4/25/2019|Student project presentation               |                                                    |                                      |Final Project with code, presentation, and the final paper (4/28/2019)      |
 -->
 
 <!--
