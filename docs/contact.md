@@ -22,4 +22,3 @@ For on-campus students, we will hold office hours right after lectures. Please f
 |![minipic](images/avatar/yj.jpg) | Yu Jing,  TA yujing<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| By Email | <https://gatech.webex.com/meet/yjing43>
 |![minipic](images/avatar/Rishabh2.jpeg) | Rishabh Bhardwaj, MS,  TA rbhardwaj39<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Fri 2PM | <https://gatech.webex.com/meet/rbhardwaj39>
 |![minipic](images/avatar/Bin.jpeg) | Bin Xie, MS, TA bin.xie<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Wed 2PM | <https://gatech.webex.com/meet/bxie41>
-|![minipic](images/avatar/Qianzhen.jpeg) | Qianzhen Li, MS, TA qli365<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Mon 2PM | <https://gatech.webex.com/meet/qli365>
