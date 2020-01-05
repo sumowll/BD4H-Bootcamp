@@ -28,7 +28,7 @@ As a practical class, we will have a lot of **programming questions**. Please st
 
 ## COLLABORATION & GROUP WORK
 
-Homework assignments are strictly individual efforts, while final projects can be done by small groups (3 people or less) or individuals and grading rubrics will be the same for every team. You can discuss high level concepts regarding to lectures or homework on the piazza but you shouldn't share your own (or others') solution and code with other students (either on piazza or through other means), and we will use anti-cheating software to avoid cheating.
+Homework assignments are strictly individual efforts, while final projects can be done by small groups (up to 4 person) or individuals and grading rubrics is same for every team. You can discuss high level concepts regarding to lectures or homework on the piazza but you shouldn't share your own (or others') solution and code with other students (either on piazza or through other means), and we will use anti-cheating software to avoid cheating.
 
 ## EXTENSIONS, LATE ASSIGNMENTS, & RE-SCHEDULED/MISSED EXAMS
 
