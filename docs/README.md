@@ -42,8 +42,7 @@ To be successful in the course, students should have acquired:
 - **20% final exam**
 
 - **5%  Participation**
-  - Piazza activities(contributions to piazza: questions answered and threads created)
-  - Class attendance(on-campus students only)
+  - Piazza activities(piazza contributions/posts viewed/days online)
 
 ## Formal prerequisites for CX4803
 
