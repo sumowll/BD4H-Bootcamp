@@ -8,7 +8,7 @@ sidebarDepth: 1
 
 This website covers information for [Georgia Institute of Technology](//www.gatech.edu)'s Spring 2020 course **CSE6250 Big Data Analytics for Healthcare**.  All students may refer to this site for most up to date content.
 
-+ Instructor: [Prof. Jimeng Sun (OMSCS/OMS Analytics); Jeffrey Valdez (on-campus)](//sunlab.org)
++ Instructor: [Prof. Jimeng Sun (OMSCS/OMS Analytics)](//sunlab.org); [Jeffrey Valdez (on-campus)](https://www.cc.gatech.edu/people/jeffrey-valdez)
 + Discussion: [CSE6250 Spring 2020 Piazza](http://piazza.com/gatech/spring2020/cse6250)
 + Location: Mason 2117
 
