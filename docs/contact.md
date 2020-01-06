@@ -15,7 +15,7 @@ For on-campus students, we will hold office hours right after lectures. Please f
 | Photo| Name|Time (EST)             | Location or Web Link |
 | :-------------: | :-------------: | ---------------- | --------------------------------------------------------------------------------------|
 |![minipic](images/avatar/Jimeng.png)   |  Jimeng Sun, instructor jsun<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;cc.gatech.edu     |      |       Request by email         |
-|![minipic](sunlab-web/images/avatars/jeffrey-valdez.jpg)   |  Jeffrey Valdez, instructor valdez@<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;cc.gatech.edu     |      |       Request by email         |
+|![minipic](images/avatar/jeff.jpg)   |  Jeffrey Valdez, instructor valdez@<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;cc.gatech.edu     |      |       Request by email         |
 |![minipic](images/avatar/MingLiu.jpg) | Ming Liu , PhD,  TA mliu302<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Tues 11AM |<https://gatech.webex.com/meet/mliu302>
 |![minipic](images/avatar/SungtaeAn.jpg) | Sungtae An, Sunlab PhD,  TA  stan84<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Tues 3PM | <https://gatech.webex.com/meet/san37>
 |![minipic](images/avatar/park32.jpg) | Su Young Park, MS, TA spark638<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| Thur 12PM | <https://gatech.webex.com/meet/spark638>
@@ -23,6 +23,7 @@ For on-campus students, we will hold office hours right after lectures. Please f
 |![minipic](images/avatar/Ari.jpg) | Ardavan (Ari) Afshar, PhD, TA aafshar8<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| TBD | <https://gatech.webex.com/meet/aafshar8>
 |![minipic](images/avatar/path.jpg) | Irfan Al-Huissani, PhD, TA iah3<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| TBD | <https://gatech.webex.com/meet/iah3>
 |![minipic](images/avatar/path.jpg) | Wendi Ren, MS, TA wren44<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| TBD | <https://gatech.webex.com/meet/wren44>
+|![minipic](images/avatar/path.jpg) | Tianfan Fu, PhD, TA tfu42<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| TBD | <https://gatech.webex.com/meet/tfu42>
 
 
 
