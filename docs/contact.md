@@ -23,6 +23,7 @@ For on-campus students, we will hold office hours right after lectures. Please f
 |![minipic](images/avatar/Ari.jpg) | Ardavan (Ari) Afshar, PhD, TA aafshar8<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| TBD | <https://gatech.webex.com/meet/aafshar8>
 |![minipic](images/avatar/path.jpg) | Irfan Al-Huissani, PhD, TA iah3<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| TBD | <https://gatech.webex.com/meet/iah3>
 |![minipic](images/avatar/path.jpg) | Wendi Ren, MS, TA wren44<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| TBD | <https://gatech.webex.com/meet/wren44>
+|![minipic](images/avatar/path.jpg) | Tianfan Fu, PhD, TA tfu42<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| TBD | <https://gatech.webex.com/meet/tfu42>
 
 
 
