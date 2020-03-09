@@ -110,7 +110,7 @@ You can find the same notebook files used in the entire tutorials in `Notebooks 
 ### Native
 
 You can also use your native local machine as your environment if you want to.
-<!--
+-->
 #### Python Backend
 
 We recommend you to use [Anaconda](https://anaconda.org/) for your Python backend (the tutorial notebooks are based on Python 3.6).
