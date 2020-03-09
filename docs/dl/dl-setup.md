@@ -7,6 +7,7 @@
 ### PyTorch
 
 We will use ***[PyTorch](http://pytorch.org/)*** on Python 3.6 as our main deep learning framework for the lab sessions for now. Later, we may expand these lab sessions with other popular deep learning frameworks such as TensorFlow and Theano. Your helps for adopting other frameworks or for enriching the lab materials are always welcome!
+
 <!--
 ### Jupyter Notebook
 
@@ -21,7 +22,6 @@ We have prepared a Docker image (***sorry for the additional environment, we hav
 ```bash
 docker run -it --privileged=true --cap-add=SYS_ADMIN --name doctorai -p 2222:22 -p 9530:9530 -v /YOUR/LOCAL/FOLDER/TO/SHARE:/mnt/data yuikns/doctorai:latest /bin/bash
 ```
-
 -->
 
 <!--
