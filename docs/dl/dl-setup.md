@@ -7,14 +7,14 @@
 ### PyTorch
 
 We will use ***[PyTorch](http://pytorch.org/)*** on Python 3.6 as our main deep learning framework for the lab sessions for now. Later, we may expand these lab sessions with other popular deep learning frameworks such as TensorFlow and Theano. Your helps for adopting other frameworks or for enriching the lab materials are always welcome!
-
+<!--
 ### Jupyter Notebook
 
 We will provide a Jupyter (iPython) Notebook file to practice some examples for each part of tutorials.
 
 ## Environment
 
-<!--
+
 ### Docker
 We have prepared a Docker image (***sorry for the additional environment, we have a plan to combine all into a single environment***) and you can start a instance by following commands (install Docker first if you did not.)
 
