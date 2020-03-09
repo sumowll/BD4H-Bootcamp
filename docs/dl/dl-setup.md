@@ -84,6 +84,7 @@ Once you successfully login with the guest account, you can find the folders
 
 You can find the same notebook files used in the entire tutorials in `Deep Learning Labs` folder. Also, you can use `Scratch Pads` folder as your temporary storage. Please create a subfolder with a name `YOUR-GT-ACCOUNT` under `Scratch Pads` if you want to create a new notebook file for your own practice. Please note that we could clean up `Scratch Pads` folder occasionally without any notice.
 -->
+<!--
 ### JupyterHub on GT GitHub
 
 We prepared a server with a GPU on a GT server. You should be able to access the JupyterHub with the pre-copied Notebooks used in the entire lab sessions on your web browser. Please open your favorite web browser and move to the following address:
@@ -109,7 +110,7 @@ You can find the same notebook files used in the entire tutorials in `Notebooks 
 ### Native
 
 You can also use your native local machine as your environment if you want to.
-
+<!--
 #### Python Backend
 
 We recommend you to use [Anaconda](https://anaconda.org/) for your Python backend (the tutorial notebooks are based on Python 3.6).
