@@ -15,7 +15,7 @@ We allow individual or group projects (up to 4 students per group, grading rubri
 |---------|:------------------:|
 |Feb 16   |Project group formation |
 |Mar 1    |Project proposal |
-|Apr 5  |Project draft|
+|Apr 12  |Project draft|
 |Apr 26 |Final Project (code+presentation+final paper) |
 
 ## Final project
