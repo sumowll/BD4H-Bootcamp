@@ -40,7 +40,7 @@ To be successful in the course, students should have acquired:
   - 5% final presentation
   - 10% final paper
   - Note: Penalty will be reflected due to inactive team contribution
-- **20% final exam**
+- **20% final exam**  cancelled
 
 - **5%  Participation**
   - Piazza activities(piazza contributions/posts viewed/days online)
