@@ -11,8 +11,8 @@ layout: SpecialPage
 - Aug 30: Homework 1 due
 - Sep 13: Homework 2 due
 - Sep 27: Homework 3 due
-- Oct 11: Homework 4 due
-- Oct 18: Homework 5 due
+- Oct 18: Homework 4 due
+- Nov 1: Homework 5 due
 
 ## Release
 
