@@ -10,7 +10,6 @@ This website covers information for [Georgia Institute of Technology](//www.gate
 
 + Instructor: [Prof. Jimeng Sun (OMSCS/OMS Analytics)](//sunlab.org)
 + Discussion: [CSE6250 FALL 2020 Piazza](piazza.com/gatech/fall2020/cse6250bdh)
-+ Location: Mason 2117
 
 </div>
 
