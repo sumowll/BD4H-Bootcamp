@@ -9,7 +9,7 @@ sidebarDepth: 1
 This website covers information for [Georgia Institute of Technology](//www.gatech.edu)'s FALL 2020 course **CSE6250 Big Data Analytics for Healthcare**.  All students may refer to this site for most up to date content.
 
 + Instructor: [Prof. Jimeng Sun (OMSCS/OMS Analytics)](//sunlab.org)
-+ Discussion: [CSE6250 FALL 2020 Piazza](//piazza.com/gatech/fall2020/cse6250bdh)
++ Discussion: [CSE6250 FALL 2020 Piazza](http://piazza.com/gatech/fall2020/cse6250bdh)
 
 </div>
 
