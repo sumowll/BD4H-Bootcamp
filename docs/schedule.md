@@ -15,7 +15,7 @@ For the online video lectures, CS/CSE students should go to **Udacity** while An
 | Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
 | 1      | Aug 17-21  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |                        |                                                                          | 
-| 2      | Aug 24-28 |  [3. Predictive Modeling]              |   [Hadoop & HDFS Basics]                               |    HW1 Due (Oct 30)                                                                       | 
+| 2      | Aug 24-28 |  [3. Predictive Modeling]              |   [Hadoop & HDFS Basics]                               |    HW1 Due (Aug 30)                                                                       | 
 | 3      | Aug 31- Sep 4 |  [4.MapReduce]& [HBase]                  |   [Hadoop Pig & Hive]                               |                                                           | 
 | 4      | Sep 7-11 |  [5.Classification evaluation metrics], [6.Classification ensemble methods] |                             |   HW2 Due (Sep 13)                                                                        | 
 | 5      | Sep 14-18  |  [7. Phenotyping], [8. Clustering]                      |  [Scala Basic], [Spark Basic], [Spark SQL]                                |                                                                          | 
