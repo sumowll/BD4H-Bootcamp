@@ -20,11 +20,11 @@ We allow individual or group projects (up to 4 students per group, grading rubri
 
 ## Final project
 
-Students should submit source code, presentation slides, and final paper pdf to Canvas. 
+Students should wrap up source code, presentation slides, and final paper pdf to Canvas at the end of semester.
 
-## Canvas
+## Canvas/Gradescope
 
-Students will use Canvas for submission of project proposal, draft (and final paper).
+Students will use Gradescope to submit project proposal, draft and final paper for team paper review.
 
 <!--
 ## Peer Review (optional)
