@@ -13,18 +13,18 @@ We allow individual or group projects (up to 4 students per group, grading rubri
 
 |Due day     |  Due day|
 |---------|:------------------:|
-|Sep 27   |Project group formation |
-|Oct 11    |Project proposal |
-|Nov 8  |Project draft|
-|Dec 6 |Final Project (code+presentation+final paper) |
+|Feb 28   |Project group formation |
+|Mar 14    |Project proposal |
+|Apr 18  |Project draft|
+|May 2 |Final Project (code+presentation+final paper) |
 
-## Final project
+## Canvas
 
-Students should wrap up source code, presentation slides, and final paper pdf to Canvas at the end of semester.
+Each student need zip all the files that contains source code, presentation slides, and final paper to Canvas.
 
-## Canvas/Gradescope
+## Gradescope
 
-Students will use Gradescope to submit project proposal, draft and final paper for team paper review.
+Students will use Gradescope to submit written part for project proposal, draft and final paper at team level (one submission per team and include other teammates in submission).
 
 <!--
 ## Peer Review (optional)
