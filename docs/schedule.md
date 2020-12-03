@@ -11,7 +11,26 @@ layout: SpecialPage
 Students should watch Udacity course videos according to the following schedule. It is **recommended** for students to do lab sessions on the schedule by yourself **as early as possible** since some of homework may cover the lab materials scheduled later than the homework.
 For the online video lectures, CS/CSE students should go to **Udacity** while Analytics students should navigate to **Edx** instead, please check details on Canvas.
 ## Schedule
-<!--update @Oct 30, 2019-->
+| Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
+|--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
+| 1      | Jan 18-22  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |                        |                                                                          | 
+| 2      | Jan 25-29 |  [3. Predictive Modeling]              |   [Hadoop & HDFS Basics]                               |    HW1 Due (Jan 31)                                                                       | 
+| 3      | Feb 1-5 |  [4.MapReduce]& [HBase]                  |   [Hadoop Pig & Hive]                               |                                                           | 
+| 4      | Feb 8-12 |  [5.Classification evaluation metrics], [6.Classification ensemble methods] |                             |   HW2 Due (Feb 14)                                                                        | 
+| 5      | Feb 15-19  |  [7. Phenotyping], [8. Clustering]                      |  [Scala Basic], [Spark Basic], [Spark SQL]                                |                                                                          | 
+| 6      | Feb 22-26 |  [9. Spark]                            |   [Spark Application] & [Spark MLlib]                               |    HW3 Due & Project Group Formation & Project Requirements Release (proposal/draft/final) (Feb 28)                                                                      | 
+| 7      | Mar 1-5 |  [10. Medical ontology]                 |  [NLP Lab]                                |                                                                          | 
+| 8      | Mar 8-12 |  [11. Graph analysis]                  | [Spark GraphX]                                 |   Project Proposal Due (Mar 14)                                                                        | 
+| 9      | Mar 15-19  |  [12. Dimensionality Reduction], [13. Patient similairty], [14. CNN]        |   [Deep Learning Lab]                               |       HW4 Due (Mar 21)                                                                   | 
+| 10     | Mar 22-26 |   [15. DNN], [16. RNN]               | |                                                                          | 
+| 11     | Mar 29-Apr 2 |   Project Discussion                                    |                                  |                                                                           HW5 Due (Apr 4)
+| 12     | Apr 5-9 |  Project Discussion                                                 |                                     |                                   | 
+| 13     | Apr 12-16 |  Project Discussion                                    |                                  |                                                Project Draft Due (Apr 18)                          | 
+| 14     | Apr 19-23 |  Project Discussion                                    |                                  |                       Final Exam (Apr 25)                                                   | 
+| 15     | Apr 26-30 |  Project Discussion                                     |                                  |       Final Project Due (code + presentation + final paper) (May 2)                                                                   | 
+| 16     | May 3-6 |   Project Submission                                    |                                  |  | 
+
+<!--update @Dec 2, 2020
 | Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
 | 1      | Aug 17-21  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |                        |                                                                          | 
@@ -30,7 +49,7 @@ For the online video lectures, CS/CSE students should go to **Udacity** while An
 | 14     | Nov 16-20 |  Project Discussion                                    |                                  |                                                                          | 
 | 15     | Nov 23-27 |  Project Discussion                                     |                                  |           Final Exam (Dec 1)                                                               | 
 | 16     | Noc 30-Dec 4 |   Project Submission                                    |                                  | Final Project Due (code + presentation + final paper) (Dec 6) | 
-
+-->
 <!-- Updated @ Oct.30, 2019
 |Week #|Dates    |In-class lesson                            |Video lessons                                       |Lab                                   |Deliverable Due                                                             |
 |:-----|:--------|:------------------------------------------|:---------------------------------------------------|:-------------------------------------|:---------------------------------------------------------------------------|
