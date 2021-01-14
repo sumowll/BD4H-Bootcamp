@@ -9,7 +9,7 @@ layout: SpecialPage
 
 <!--Both on-campus and OMS student should watch  Udacity course videos. On-campus student should watch video before class. Deliverable due dates apply to both OMS and on-campus student.-->
 Students should watch Udacity course videos according to the following schedule. It is **recommended** for students to do lab sessions on the schedule by yourself **as early as possible** since some of homework may cover the lab materials scheduled later than the homework.
-For the online video lectures, CS/CSE students should go to **Udacity** while Analytics students should navigate to **Edx** instead, please check details on Canvas.
+For the online video lectures, CS/CSE students should go to Udacity or Canvas to access to the sources.
 ## Schedule
 | Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
