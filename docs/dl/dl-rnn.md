@@ -212,7 +212,7 @@ We will practice the following topics in the tutotial notebook for this chapter 
 - Preparing data in a proper shape for RNN
 - How to use Recurrent Layer modules in PyTorch
 
-Same as the previous chapter, we will use Epileptic Seizure Recognition Data Set which is publicly available at [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Epileptic+Seizure+Recognition) for this tutorial.
+Same as the previous chapter, we will use Epileptic Seizure Recognition Data Set which is publicly available at [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Epileptic+Seizure+Recognition) for this tutorial; alternatively you can access to the data [here](https://drive.google.com/file/d/11A18TmC7k84bG6mGBKESg7nxkUFYs6OF/view?usp=sharing).
 
 Now, let's start in Notebook **[here](https://github.com/ast0414/CSE6250BDH-LAB-DL/blob/master/3_RNN.ipynb)**
 
