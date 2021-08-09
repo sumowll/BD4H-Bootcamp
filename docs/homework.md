@@ -8,11 +8,11 @@ layout: SpecialPage
 
 ## Important dates
 
-- Jan 31: Homework 1 due
-- Feb 14: Homework 2 due
-- Feb 28: Homework 3 due
-- Mar 21: Homework 4 due
-- Apr 4: Homework 5 due
+- Sep 5: Homework 1 due
+- Sep 12: Homework 2 due
+- Sep 26: Homework 3 due
+- Oct 17: Homework 4 due
+- Oct 31: Homework 5 due
 
 ## Release
 
