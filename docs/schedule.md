@@ -48,7 +48,7 @@ For the online video lectures, CS/CSE students should go to Udacity or Canvas to
 | 12     | Nov 8-12 |  Project Discussion                                                 |                                     |                                   | 
 | 13     | Nov 15-19 |  Project Discussion                                    |                                  |                                                Project Draft Due (Nov 21)                          | 
 | 14     | Nov 22-26 |  Project Discussion                                    |                                  |                                                                          | 
-| 15     | Nov 29-Dec 3 |  Project Discussion                                     |                                  |           Final Exam (Dec 7)                                                               | 
+| 15     | Nov 29-Dec 3 |  Project Discussion                                     |                                  |           Final Exam (Dec 4-6)                                                               | 
 | 16     | Dec 6-10 |   Project Submission                                    |                                  | Final Project Due (code + presentation + final paper) (Dec 12) | 
 
 <!-- Updated @ Oct.30, 2019
