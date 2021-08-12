@@ -9,7 +9,7 @@ sidebarDepth: 1
 This website covers information for [Georgia Institute of Technology](//www.gatech.edu)'s Fall 2021 course **CSE6250 Big Data Analytics for Healthcare**.  All students may refer to this site for most up to date content.
 
 + Instructor: [Prof. Jimeng Sun (OMSCS/OMS Analytics)](//sunlab.org)
-+ Discussion: [CSE6250 Fall 2021 Piazza](http://piazza.com/gatech/fall2021/cse6250)
++ Discussion: [CSE6250 Fall 2021 Ed Discussion](https://edstem.org/us/courses/8050/discussion)
 
 </div>
 
@@ -42,7 +42,7 @@ To be successful in the course, students should have acquired:
 - **20% final exam**  
 
 - **5%  Participation**
-  - Piazza activities(piazza contributions/posts viewed/days online)
+  - Ed Discussion activities(contributions/posts viewed/days online)
 
 ## Formal prerequisites for CX4803
 
