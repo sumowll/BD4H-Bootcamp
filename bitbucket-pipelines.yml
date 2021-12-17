@@ -17,7 +17,7 @@ pipelines:
           - ls -al .vuepress/dist/
           - test -f .vuepress/dist/index.html
   branches:
-    fall2021:
+    spring2022:
       - step:
           script:
             - node -v
