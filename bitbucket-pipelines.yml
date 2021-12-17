@@ -28,5 +28,5 @@ pipelines:
             - yarn build
             - ls -al .vuepress/dist
             - test -f .vuepress/dist/index.html
-            - rsync -avzh --delete .vuepress/dist/ $CI_USER@sunlab.org:$SITE_BASE/teaching/cse6250/fall2021/
+            - rsync -avzh --delete .vuepress/dist/ $CI_USER@sunlab.org:$SITE_BASE/teaching/cse6250/spring2022/
 
