@@ -21,7 +21,7 @@ For the online video lectures, CS/CSE students should go to Udacity or Canvas to
 | 5      | Feb 7-11  |  [7. Phenotyping], [8. Clustering]                      |  [Scala Basic], [Spark Basic], [Spark SQL]                                |                                                                          | 
 | 6      | Feb 14-18 |  [9. Spark]                            |   [Spark Application] & [Spark MLlib]                               |    HW3 Due & Project Group Formation & Project Requirements Release (proposal/draft/final) (Feb 20)                                                                      | 
 | 7      | Feb 21-25 |  [10. Medical ontology]                 |  [NLP Lab]                                |                                                                          | 
-| 8      | Feb 28-Mar 3 |  [11. Graph analysis]                  | [Spark GraphX]                                 |   Project Proposal Due (Mar 14)                                                                        | 
+| 8      | Feb 28-Mar 3 |  [11. Graph analysis]                  | [Spark GraphX]                                 |   Project Proposal Due (Mar 5)                                                                        | 
 | 9      | Mar 7-11  |  [12. Dimensionality Reduction], [13. Patient similairty], [14. CNN]        |   [Deep Learning Lab]                               |       HW4 Due (Mar 13)                                                                   | 
 | 10     | Mar 14-18 |   [15. DNN], [16. RNN]               | |                                                                          | 
 | 11     | Mar 21-25 |   Project Discussion                                    |                                  |                                                                           HW5 Due (Mar 27)
@@ -31,8 +31,8 @@ For the online video lectures, CS/CSE students should go to Udacity or Canvas to
 | 15     | Apr 18-22 |  Project Discussion                                     |                                  |       Final Project Due (code + presentation + final paper) (Apr 24)                                                                   | 
 | 16     | Apr 25-29 |   Project Submission                                    |                                  |  | 
 
-
-<!-- | Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
+<!-- 
+| Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
 | 1      | Aug 23-27  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |                        |                                                                          | 
 | 2      | Aug 30- Sep 3 |  [3. Predictive Modeling]              |   [Hadoop & HDFS Basics]                               |    HW1 Due (Sep 5)                                                                       | 
@@ -49,7 +49,7 @@ For the online video lectures, CS/CSE students should go to Udacity or Canvas to
 | 13     | Nov 15-19 |  Project Discussion                                    |                                  |                                                Project Draft Due (Nov 21)                          | 
 | 14     | Nov 22-26 |  Project Discussion                                    |                                  |                                                                          | 
 | 15     | Nov 29-Dec 3 |  Project Discussion                                     |                                  |           Final Exam (Dec 4-6)                                                               | 
-| 16     | Dec 6-10 |   Project Submission                                    |                                  | Final Project Due (code + presentation + final paper) (Dec 12) |  -->
+| 16     | Dec 6-10 |   Project Submission                                    |                                  | Final Project Due (code + presentation + final paper) (Dec 12) |  --> 
 
 
 ## Previous Guest Lectures
