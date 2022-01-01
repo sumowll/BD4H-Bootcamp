@@ -30,8 +30,7 @@ To be successful in the course, students should have acquired:
 
 ## Grading scheme
 
-- **50% Homework**
--  5 homework 10% each
+- **50% Homework** 5 homework 10% each
 
 - **25% Project**
 
