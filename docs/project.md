@@ -5,7 +5,7 @@ layout: SpecialPage
 
 ## Project format
 
-We allow individual or group projects (up to 4 students per group, grading rubrics is same for team project and individual project). You are responsible to form groups on Piazza/Email each other. We will provide some project ideas but you can also propose your own projects with the instructor's approval. The successful resulting project can potentially lead to research publication at health informatic venues such as [AMIA](https://www.amia.org/amia2017), [JAMIA](http://jamia.oxfordjournals.org/) and [JBI](https://www.journals.elsevier.com/journal-of-biomedical-informatics/).
+We only allow group projects (up to 4 students per group, grading rubrics is same for teams of any size). You are responsible to form groups on Piazza/Email each other. We will provide some project ideas but you can also propose your own projects with the instructor's approval. The successful resulting project can potentially lead to research publication at health informatic venues such as [AMIA](https://amia.org/), [JAMIA](http://jamia.oxfordjournals.org/) and [JBI](https://www.journals.elsevier.com/journal-of-biomedical-informatics/).
 
 <!--See **T-Square resource > Project related > project guide.pdf** for detailed requirements.-->
 
@@ -13,10 +13,10 @@ We allow individual or group projects (up to 4 students per group, grading rubri
 
 |Due day     |  Due day|
 |---------|:------------------:|
-|Oct 3   |Project group formation |
-|Oct 17    |Project proposal |
-|Nov 21  |Project draft|
-|Dec 12 |Final Project (code+presentation+final paper) |
+|Feb 20   |Project group formation |
+|Mar 5    |Project proposal |
+|Apr 10   |Project draft|
+|Apr 24 |Final Project (code+presentation+final paper) |
 
 ## Canvas
 
