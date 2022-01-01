@@ -8,15 +8,14 @@ layout: SpecialPage
 
 ## Important dates
 
-- Jan 10: Homework 1 due
-- Sep 19: Homework 2 due
-- Oct 3: Homework 3 due
-- Oct 24: Homework 4 due
-- Nov 7: Homework 5 due
-
+- Jan 23: Homework 1 due
+- Feb 6: Homework 2 due
+- Feb 20: Homework 3 due
+- Mar 13: Homework 4 due
+- Mar 27: Homework 5 due
 ## Release
 
-Homework of this class will be distributed through [Canvas](http://gatech.instructure.com/).
+Homework of this class will be distributed through [Canvas](http://gatech.instructure.com/). All homework material can only be used within class.
 
 ## Discussion
 
@@ -28,8 +27,8 @@ As a practical class, we will have a lot of **programming questions**. Please st
 
 ## COLLABORATION & GROUP WORK
 
-Homework assignments are strictly individual efforts, while final projects can be done by small groups (up to 4 person) or individuals and grading rubrics is same for every team. You can discuss high level concepts regarding to lectures or homework on the piazza but you shouldn't share your own (or others') solution and code with other students (either on piazza or through other means), and we will use anti-cheating software to avoid cheating.
+Homework assignments are strictly individual efforts, while final projects can be done by small groups and grading rubrics is same for every team. You can discuss high level concepts regarding to lectures or homework on the piazza but you shouldn't share your own (or others') solution and code with other students (either on piazza or through other means), and we will use anti-cheating software to avoid cheating.
 
 ## EXTENSIONS, LATE ASSIGNMENTS, & RE-SCHEDULED/MISSED EXAMS
 
-Each student is allowed 2 days of late submission in total to be used for HOMEWORK only. You can split the 2 days grace period across two different homework (20 hours will be counted as 1 day and 30 hours counted as 2 days). Once you have used up your late days, late assignments will be penalized at a rate of 10% per day. Assignments more than 5 days late will not be accepted. Also, you can't apply it toward final project or Kaggle. We don't consider ANY other homework extension excuses except healthcare emergency incident (doctor's proof is required), so please split the given grace period well and make appropriate arrangements in advance.
+Each student is allowed 2 days of late submission in total to be used for HOMEWORK only. You can split the 2 days grace period across two different homework (20 hours will be counted as 1 day and 30 hours counted as 2 days). Once you have used up your late days, late assignments will be penalized at 10 pts per day. Assignments more than 5 days late will not be accepted. Also, you can't apply it toward final project or Kaggle. We don't consider ANY other homework extension excuses except healthcare emergency incident (doctor's proof is required), so please split the given grace period well and make appropriate arrangements in advance.
