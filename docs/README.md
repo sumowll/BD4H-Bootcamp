@@ -6,7 +6,7 @@ sidebarDepth: 1
 
 <div class="main-explain-area jumbotron">
 
-This website covers information for [Georgia Institute of Technology](//www.gatech.edu)'s Fall 2021 course **CSE6250 Big Data Analytics for Healthcare**.  All students may refer to this site for most up to date content.
+This website covers information for [Georgia Institute of Technology](//www.gatech.edu)'s Spring 2022 course **CSE6250 Big Data Analytics for Healthcare**.  All students may refer to this site for most up to date content.
 
 + Instructor: [Prof. Jimeng Sun (OMSCS/OMS Analytics)](//sunlab.org)
 + Discussion: [CSE6250 Spring 2022 Ed Discussion](https://edstem.org/us/courses/15974/discussion/)
@@ -25,7 +25,7 @@ In healthcare, large amounts of heterogeneous medical data have become available
 To be successful in the course, students should have acquired:
 
 1. Good machine learning and data mining concepts such as classification and clustering;
-2. Proficient programming and system skills in  <b> Scala </b>, Python and Java;
+2. Proficient programming and system skills in Scala, Python and Java;
 3. Proficient knowledge and experience in dealing with data and understand the ETL process(recommended skills include SQL, NoSQL such as MongoDB).
 
 ## Grading scheme
@@ -34,15 +34,15 @@ To be successful in the course, students should have acquired:
   5 homework 10% each
 
 - **25% Project**
-  - 3%  proposal
+  <!-- - 3%  proposal
   - 7% paper draft
   - 5% final presentation
   - 10% final paper
-  - Note: Penalty will be reflected due to inactive team contribution
+  - Note: Penalty will be reflected due to inactive team contribution -->
 - **20% final exam**  
 
 - **5%  Participation**
-  - Ed Discussion activities(contributions/posts viewed/days online)
+  - Ed Discussion activities(number and quality of your answers/posts)
 
 ## Formal prerequisites for CX4803
 
