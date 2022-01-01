@@ -31,18 +31,20 @@ To be successful in the course, students should have acquired:
 ## Grading scheme
 
 - **50% Homework**
-  5 homework 10% each
+-  5 homework 10% each
 
 - **25% Project**
+
   <!-- - 3%  proposal
   - 7% paper draft
   - 5% final presentation
   - 10% final paper
   - Note: Penalty will be reflected due to inactive team contribution -->
+
 - **20% final exam**  
 
 - **5%  Participation**
-  - Ed Discussion activities(number and quality of your answers/posts)
+  - Ed Discussion activities (number and quality of your answers/posts)
 
 ## Formal prerequisites for CX4803
 
