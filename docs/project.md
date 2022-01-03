@@ -5,7 +5,7 @@ layout: SpecialPage
 
 ## Project format
 
-We only allow group projects (up to 4 students per group, grading rubrics is same for teams of any size). You are responsible to form groups on Piazza/Email each other. We will provide some project ideas but you can also propose your own projects with the instructor's approval. The successful resulting project can potentially lead to research publication at health informatic venues such as [AMIA](https://amia.org/), [JAMIA](http://jamia.oxfordjournals.org/) and [JBI](https://www.journals.elsevier.com/journal-of-biomedical-informatics/).
+We only allow group projects (up to 4 students per group, grading rubrics is same for teams of any size). You are responsible to form groups on Ed Discussion/Email each other. We will provide project guidelines. The successful resulting project can potentially lead to research publication at health informatic venues such as [AMIA](https://amia.org/), [JAMIA](http://jamia.oxfordjournals.org/) and [JBI](https://www.journals.elsevier.com/journal-of-biomedical-informatics/).
 
 <!--See **T-Square resource > Project related > project guide.pdf** for detailed requirements.-->
 
@@ -20,7 +20,7 @@ We only allow group projects (up to 4 students per group, grading rubrics is sam
 
 ## Canvas
 
-Each student need zip all the files that contains source code, presentation slides, and final paper to Canvas.
+In end of semester, each student need zip all the files that contains source code, presentation slides, and final paper to Canvas.
 
 ## Gradescope
 
