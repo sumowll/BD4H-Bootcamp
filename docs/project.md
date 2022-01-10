@@ -5,7 +5,7 @@ layout: SpecialPage
 
 ## Project format
 
-We only allow group projects (up to 4 students per group, grading rubrics is same for teams of any size). You are responsible to form groups on Ed Discussion/Email each other. We will provide project guidelines. The successful resulting project can potentially lead to research publication at health informatic venues such as [AMIA](https://amia.org/), [JAMIA](http://jamia.oxfordjournals.org/) and [JBI](https://www.journals.elsevier.com/journal-of-biomedical-informatics/).
+In project, you will work another teammate on reproducing experiments in a published paper. We only allow group projects (2 students in each group). You are responsible to form groups on Ed Discussion/Email each other. We will provide detailed project guidelines. The successful resulting project can potentially lead to research publication at health informatic venues such as [AMIA](https://amia.org/), [JAMIA](http://jamia.oxfordjournals.org/) and [JBI](https://www.journals.elsevier.com/journal-of-biomedical-informatics/).
 
 <!--See **T-Square resource > Project related > project guide.pdf** for detailed requirements.-->
 
@@ -13,7 +13,7 @@ We only allow group projects (up to 4 students per group, grading rubrics is sam
 
 |Due day     |  Due day|
 |---------|:------------------:|
-|Feb 20   |Project group formation |
+|Feb 20   |Team Registration & Paper Selection |
 |Mar 5    |Project proposal |
 |Apr 10   |Project draft|
 |Apr 24 |Final Project (code+presentation+final paper) |
