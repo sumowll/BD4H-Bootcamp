@@ -17,7 +17,7 @@ pipelines:
           - ls -al .vuepress/dist/
           - test -f .vuepress/dist/index.html
   branches:
-    spring2022:
+    fall2022:
       - step:
           script:
             - node -v
@@ -28,5 +28,5 @@ pipelines:
             - yarn build
             - ls -al .vuepress/dist
             - test -f .vuepress/dist/index.html
-            - rsync -avzh --delete .vuepress/dist/ $CI_USER@sunlab.org:$SITE_BASE/teaching/cse6250/spring2022/
+            - rsync -avzh --delete .vuepress/dist/ $CI_USER@sunlab.org:$SITE_BASE/teaching/cse6250/fall2022/
 
