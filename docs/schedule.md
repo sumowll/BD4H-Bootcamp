@@ -12,7 +12,7 @@ Students should watch Udacity course videos according to the following schedule.
 For the online video lectures, CS/CSE students should go to Udacity or Canvas to access to the sources.
 ## Schedule
 <!-- update @Dec 2, 2020 -->
-| Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
+<!-- | Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
 | 1      | Jan 10-14  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |                        |                                                                          | 
 | 2      | Jan 17-21 |  [3. Predictive Modeling]              |   [Hadoop & HDFS Basics]                               |    HW1 Due (Jan 23)                                                                       | 
@@ -29,27 +29,27 @@ For the online video lectures, CS/CSE students should go to Udacity or Canvas to
 | 13     | Apr 4-8 |  Project Discussion                                    |                                  |                                                Project Draft Due (Apr 10)                          | 
 | 14     | Apr 11-15 |  Project Discussion                                    |                                  |                       Final Exam (Apr 17)                                                   | 
 | 15     | Apr 18-22 |  Project Discussion                                     |                                  |       Final Project Due (code + presentation + final paper) (Apr 24)                                                                   | 
-| 16     | Apr 25-29 |   Project Submission                                    |                                  |  | 
+| 16     | Apr 25-29 |   Project Submission                                    |                                  |  |  -->
 
-<!-- 
-| Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
+
+| Week # | Dates     |  Video lessons                       | Lab                              | Deliverable & Due (8 AM EDT)                                                         | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
-| 1      | Aug 23-27  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |                        |                                                                          | 
-| 2      | Aug 30- Sep 3 |  [3. Predictive Modeling]              |   [Hadoop & HDFS Basics]                               |    HW1 Due (Sep 5)                                                                       | 
-| 3      | Sep 6-10 |  [4.MapReduce]& [HBase]                  |   [Hadoop Pig & Hive]                               |                                                           | 
-| 4      | Sep 13-17 |  [5.Classification evaluation metrics], [6.Classification ensemble methods] |                             |   HW2 Due (Sep 19)                                                                        | 
-| 5      | Sep 20-24  |  [7. Phenotyping], [8. Clustering]                      |  [Scala Basic], [Spark Basic], [Spark SQL]                                |                                                                          | 
-| 6      | Sep 27- Oct 1 |  [9. Spark]                            |   [Spark Application] & [Spark MLlib]                               |    HW3 Due & Project Group Formation & Project Requirements Release (proposal/draft/final) (Oct 3)                                                                      | 
-| 7      | Oct 4-8 |  [10. Medical ontology]                 |  [NLP Lab]                                |                                                                          | 
-| 8      | Oct 11-15 |  [11. Graph analysis]                  | [Spark GraphX]                                 |   Project Proposal Due (Oct 17)                                                                        | 
-| 9      | Oct 18-22  |  [12. Dimensionality Reduction], [13. Patient similairty], [14. CNN]        |   [Deep Learning Lab]                               |       HW4 Due (Oct 24)                                                                   | 
-| 10     | Oct 25-29 |   [15. DNN], [16. RNN]               | |                                                                          | 
-| 11     | Nov 1-5 |   Project Discussion                                    |                                  |                                                                           HW5 Due (Nov 7)
-| 12     | Nov 8-12 |  Project Discussion                                                 |                                     |                                   | 
-| 13     | Nov 15-19 |  Project Discussion                                    |                                  |                                                Project Draft Due (Nov 21)                          | 
-| 14     | Nov 22-26 |  Project Discussion                                    |                                  |                                                                          | 
-| 15     | Nov 29-Dec 3 |  Project Discussion                                     |                                  |           Final Exam (Dec 4-6)                                                               | 
-| 16     | Dec 6-10 |   Project Submission                                    |                                  | Final Project Due (code + presentation + final paper) (Dec 12) |  --> 
+| 1      | Aug 22-26  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |                        |                                                                          | 
+| 2      | Aug 29- Sep 2 |  [3. Predictive Modeling]              |   [Hadoop & HDFS Basics]                               |    HW1 Due (Sep 5)                                                                       | 
+| 3      | Sep 5-9 |  [4.MapReduce]& [HBase]                  |   [Hadoop Pig & Hive]                               |                                                           | 
+| 4      | Sep 12-16 |  [5.Classification evaluation metrics], [6.Classification ensemble methods] |                             |   HW2 Due (Sep 19)                                                                        | 
+| 5      | Sep 19-23  |  [7. Phenotyping], [8. Clustering]                      |  [Scala Basic], [Spark Basic], [Spark SQL]                                |                                                                          | 
+| 6      | Sep 26-30 |  [9. Spark]                            |   [Spark Application] & [Spark MLlib]                               |    HW3 Due & Project Group Formation (Oct 3)                                                                      | 
+| 7      | Oct 3-7 |  [10. Medical ontology]                 |  [NLP Lab]                                |                                                                          | 
+| 8      | Oct 10-14 |  [11. Graph analysis]                  | [Spark GraphX]                                 |   Project Proposal Due (Oct 17)                                                                        | 
+| 9      | Oct 17-21  |  [12. Dimensionality Reduction], [13. Patient similairty], [14. CNN]        |   [Deep Learning Lab]                               |       HW4 Due (Oct 24)                                                                   | 
+| 10     | Oct 24-28 |   [15. DNN], [16. RNN]               | |                                                                          | 
+| 11     | Oct 31- Nov 4 |   Project Discussion                                    |                                  |                                                                           HW5 Due (Nov 7)
+| 12     | Nov 7-11 |  Project Discussion                                                 |                                     |                                   | 
+| 13     | Nov 14-18 |  Project Discussion                                    |                                  |                                                Project Draft Due (Nov 21)                          | 
+| 14     | Nov 21-25 |  Project Discussion                                    |                                  |               Final Exam (Nov 27-28)                                                           | 
+| 15     | Nov 28-Dec 2 |  Project Discussion                                     |                                  |           Final Project Due (Dec 5)                                                               | 
+| 16     | Dec 5-9 |   Project Submission                                    |                                  |                    |  
 
 
 ## Previous Guest Lectures
