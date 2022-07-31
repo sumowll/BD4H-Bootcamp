@@ -8,11 +8,12 @@ layout: SpecialPage
 ## Overview
 
 <!--Both on-campus and OMS student should watch  Udacity course videos. On-campus student should watch video before class. Deliverable due dates apply to both OMS and on-campus student.-->
-Students should watch Udacity course videos according to the following schedule. It is **recommended** for students to do lab sessions on the schedule by yourself **as early as possible** since some of homework may cover the lab materials scheduled later than the homework.
+Students should watch Canvas/Ed Lessons course videos according to the following schedule. It is **recommended** for students to do lab sessions on the schedule by yourself **as early as possible** since some of homework may cover the lab materials scheduled later than the homework.
 For the online video lectures, CS/CSE students should go to Udacity or Canvas to access to the sources.
 ## Schedule
 <!-- update @Dec 2, 2020 -->
-<!-- | Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
+<!-- 
+| Week # | Dates     |  Video lessons                       | Lab                              | Deliverable Due                                                          | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
 | 1      | Jan 10-14  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |                        |                                                                          | 
 | 2      | Jan 17-21 |  [3. Predictive Modeling]              |   [Hadoop & HDFS Basics]                               |    HW1 Due (Jan 23)                                                                       | 
@@ -29,10 +30,11 @@ For the online video lectures, CS/CSE students should go to Udacity or Canvas to
 | 13     | Apr 4-8 |  Project Discussion                                    |                                  |                                                Project Draft Due (Apr 10)                          | 
 | 14     | Apr 11-15 |  Project Discussion                                    |                                  |                       Final Exam (Apr 17)                                                   | 
 | 15     | Apr 18-22 |  Project Discussion                                     |                                  |       Final Project Due (code + presentation + final paper) (Apr 24)                                                                   | 
-| 16     | Apr 25-29 |   Project Submission                                    |                                  |  |  -->
+| 16     | Apr 25-29 |   Project Submission                                    |                                  |  |  
+-->
 
 
-| Week # | Dates     |  Video lessons                       | Lab                              | Deliverable & Due (8 AM EDT)                                                         | 
+| Week # | Dates     |  Video lessons                       | Lab                              | Deliverable & Due (EDT)                                                         | 
 |--------|-----------|---------------------------------------------------------------------|-------------------------------------|----------------------------------|--------------------------------------------------------------------------| 
 | 1      | Aug 22-26  |  [1. Intro to Big Data Analytics], [2. Course Overview]     |                        |                                                                          | 
 | 2      | Aug 29- Sep 2 |  [3. Predictive Modeling]              |   [Hadoop & HDFS Basics]                               |    HW1 Due (Sep 5)                                                                       | 
