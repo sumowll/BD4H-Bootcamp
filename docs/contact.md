@@ -13,10 +13,12 @@ We will host multiple remote office hour (30 mins) through Zoom weekly. The sche
 
 | Photo| Name| Location or Web Link |
 | :-------------: | :-------------: | --------------------------------------------------------------------------------------|
-|![minipic](images/avatar/Jimeng.png)   |  Jimeng Sun, instructor jsun<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;cc.gatech.edu    |       Request by email         |
-![minipic](images/avatar/quanguo.jpg) | Quan Guo ,  Head TA qguo48<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu|<https://gatech.zoom.us/j/5021978057?pwd=YnlrZ3JSbXpKRkloNU0yMXdPbEFxdz09> |
+|![minipic](images/avatar/Jimeng.png)   |  Jimeng Sun, instructor, jsun@cc.gatech.edu    |       Request by email         |
+|![minipic](images/avatar/quanguo.jpg) | Quan Guo ,  Head TA, qguo48@gatech.edu | <https://gatech.zoom.us/j/5021978057?pwd=YnlrZ3JSbXpKRkloNU0yMXdPbEFxdz09> |
 
-|![minipic](images/avatar/Pengwei.jpeg) | Yuzheng Liu, TA, liuyz@gatech.edu|  https://gatech.bluejeans.com/1663230390 |
-|![minipic](images/avatar/Yixu.jpg) | Yixu Yang, MS, TA yyang847<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu| https://bluejeans.com/3356598906/
-|![minipic](images/avatar/Renjie.jpg) | Renjie Yao, MS, TA ryao36<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu|  https://bluejeans.com/3695305874
-|![minipic](images/avatar/xiaocheng.jpg) | Xiaocheng Chen, MS, TA xchen788<span style="display:none">hello</span>&nbsp;AT<span style="display:none">world</span>&nbsp;gatech.edu|  https://bluejeans.com/7801916259
+|![minipic](images/avatar/Yuzheng.jpeg) | Yuzheng Liu, TA, liuyz@gatech.edu   |  <https://gatech.zoom.us/j/9400574255?pwd=Um1SSUV3dVhkVDFoT0VLOHh5VTluZz09> |
+|![minipic](images/avatar/Jinhan.jpg) | Jinhan Zhao, TA, jzhao0626@gatech.edu   | <https://gatech.zoom.us/j/4673097357?pwd=Q3lZeTM2K1NWZmdXekV4NGVUbmpzZz09> |
+|![minipic](images/avatar/Renjie.jpg) | Renjie Yao, TA, ryao36@gatech.edu    |  https://bluejeans.com/3695305874 |
+|![minipic](images/avatar/xiaocheng.jpg) | Xiaocheng Chen, TA, xchen788@gatech.edu   |  <https://gatech.zoom.us/j/7781618921?pwd=Qm4yaFpaKzk5cVFZOUNQMEpORjBPUT09> |
+|![minipic](images/avatar/Junbai.jpg) | Junbai Tian, jtian81@gatech.edu    | <https://gatech.zoom.us/j/4093798538?pwd=OW80U043RFNTYWhOSzBBLzhmdUpLQT09> |
+
