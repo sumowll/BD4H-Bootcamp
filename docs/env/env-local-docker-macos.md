@@ -2,10 +2,10 @@
 ---
 # Install Docker In macOS
 
-If you are using macOS, you are supposed to prepare a virtual machine/service to host a real Linux instance, and then control it in the remote.
 
-Currently, there are at least 2 solutions to achieve it.
+If you are using macOS M1 chips (arm64), current image does not work for you, you can create a windows virtual machine on Azure to install the docker and image, here is an instruction you can follow: [set windows VM on Azure](https://docs.google.com/document/d/1DWyvfB1toif2OmQwjJSrHZZeFJv9lCsaoAZTwZm3bHo/edit?usp=sharing)
 
+If you are using macOS with intel chips (x86), you are supposed to prepare a virtual machine/service to host a real Linux instance, and then control it in the remote. Below are 2 optional solutions to achieve it.
 ## Option One:  Docker.app
 
 If you are using macOS, you could follow [this guide](https://docs.docker.com/docker-for-mac/install/). Download an image, and drag to your 'Applications' folder, click and run.
