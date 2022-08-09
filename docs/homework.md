@@ -8,11 +8,11 @@ layout: SpecialPage
 
 ## Important dates
 
-- Jan 23: Homework 1 due
-- Feb 6: Homework 2 due
-- Feb 20: Homework 3 due
-- Mar 13: Homework 4 due
-- Mar 27: Homework 5 due
+- Sep 5: Homework 1 due
+- Sep 19: Homework 2 due
+- Oct 3: Homework 3 due
+- Oct 24: Homework 4 due
+- Nov 7: Homework 5 due
 ## Release
 
 Homework of this class will be distributed through [Canvas](http://gatech.instructure.com/). All homework material can only be used within class.
@@ -31,4 +31,4 @@ Homework assignments are strictly individual efforts, while final projects can b
 
 ## EXTENSIONS, LATE ASSIGNMENTS, & RE-SCHEDULED/MISSED EXAMS
 
-Each student is allowed 2 days of late submission in total to be used for HOMEWORK only. You can split the 2 days grace period across two different homework (20 hours will be counted as 1 day and 30 hours counted as 2 days). Once you have used up your late days, late assignments will be penalized at 10 pts per day. Assignments more than 5 days late will not be accepted. Also, you can't apply it toward final project or Kaggle. We don't consider ANY other homework extension excuses except healthcare emergency incident (doctor's proof is required), so please split the given grace period well and make appropriate arrangements in advance.
+Each student is allowed 2 days of late submission in total to be used for HOMEWORK only. You can split the 2 days grace period across two different homework (20 hours will be counted as 1 day and 30 hours counted as 2 days). Once you have used up your late days, late assignments will be penalized at 10 pts per day. Assignments more than 4 days late will not be accepted. Also, you can't apply it toward final project or Kaggle. We don't consider ANY other homework extension excuses except healthcare emergency incident (doctor's proof is required), so please split the given grace period well and make appropriate arrangements in advance.

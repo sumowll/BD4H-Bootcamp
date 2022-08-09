@@ -9,7 +9,7 @@ sidebarDepth: 1
 This website covers information for [Georgia Institute of Technology](//www.gatech.edu)'s Fall 2022 course **CSE6250 Big Data Analytics for Healthcare**.  All students may refer to this site for most up to date content.
 
 + Instructor: [Prof. Jimeng Sun (OMSCS/OMS Analytics)](//sunlab.org)
-+ Discussion: [CSE6250 Fall 2022 Ed Discussion](https://edstem.org/us/courses/24374/discussion/1655836)
++ Discussion: [CSE6250 Fall 2022 Ed Discussion](https://edstem.org/us/courses/24703/discussion/)
 
 </div>
 

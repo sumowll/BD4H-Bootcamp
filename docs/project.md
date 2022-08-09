@@ -13,10 +13,10 @@ In project, you will work another teammate on reproducing experiments in a publi
 
 |Due day     |  Due day|
 |---------|:------------------:|
-|Feb 20   |Team Registration & Paper Selection |
-|Mar 5    |Project proposal |
-|Apr 10   |Project draft|
-|Apr 24 |Final Project (code+presentation+final paper) |
+|Oct 3   |Team Registration & Paper Selection |
+|Oct 17    |Project proposal |
+|Nov 21   |Project draft|
+|Dec 5 |Final Project (code+presentation+final paper) |
 
 ## Canvas
 
