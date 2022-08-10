@@ -9,7 +9,7 @@ layout: SpecialPage
 
 ## Remote Office Hour
 
-We will host multiple remote office hour (30 mins) through Zoom weekly. The schedule can be find on this Google Calendar as well as Canvas calender. Office hour is used for Q&A only and no instruction will be given.
+We will host multiple remote office hour (30 mins) through Zoom weekly. The schedule can be find on this [Google Calendar](https://calendar.google.com/calendar/u/0?cid=ZWVhYzU4ZmY4bDh0ajcxZzk5N2djNWdka2NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ). Office hour is used for Q&A only and no instruction will be given.
 
 | Photo| Name| Location or Web Link |
 | :-------------: | :-------------: | --------------------------------------------------------------------------------------|
