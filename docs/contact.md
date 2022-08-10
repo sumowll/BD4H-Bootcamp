@@ -19,5 +19,5 @@ We will host multiple remote office hour (30 mins) through Zoom weekly. The sche
 |![minipic](images/avatar/Jinhan.jpg) | Jinhan Zhao, TA, jzhao0626@gatech.edu   | <https://gatech.zoom.us/j/4673097357?pwd=Q3lZeTM2K1NWZmdXekV4NGVUbmpzZz09> |
 |![minipic](images/avatar/Renjie.jpg) | Renjie Yao, TA, ryao36@gatech.edu    |  <https://gatech.zoom.us/j/8019952381?pwd=MURyUVNuL1ZaN3hSeWEveTdVTUd2dz09> |
 |![minipic](images/avatar/xiaocheng.jpg) | Xiaocheng Chen, TA, xchen788@gatech.edu   |  <https://gatech.zoom.us/j/7781618921?pwd=Qm4yaFpaKzk5cVFZOUNQMEpORjBPUT09> |
-|![minipic](images/avatar/Junbai.jpg) | Junbai Tian, jtian81@gatech.edu    | <https://gatech.zoom.us/j/4093798538?pwd=OW80U043RFNTYWhOSzBBLzhmdUpLQT09> |
+|![minipic](images/avatar/Junbai.jpg) | Junbai Tian, TA, jtian81@gatech.edu    | <https://gatech.zoom.us/j/4093798538?pwd=OW80U043RFNTYWhOSzBBLzhmdUpLQT09> |
 
