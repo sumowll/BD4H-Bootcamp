@@ -5,7 +5,7 @@ layout: SpecialPage
 
 ## Toolkits
 
-**PyHealth**: https://github.com/zzachw/PyHealth
+**PyHealth**: [https://github.com/zzachw/PyHealth](https://github.com/zzachw/PyHealth)
 
 PyHealth is a comprehensive Python package for healthcare AI, designed for both ML researchers and healthcare and medical practitioners. PyHealth accepts diverse healthcare data such as longitudinal electronic health records (EHRs), continuous signials (ECG, EEG), and clinical notes (to be added), and supports various predictive modeling methods using deep learning and other advanced machine learning algorithms published in the literature.
 
