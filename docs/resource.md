@@ -3,6 +3,14 @@ layout: SpecialPage
 ---
 # Resource
 
+## Toolkits
+
+**PyHealth**: https://github.com/zzachw/PyHealth
+
+PyHealth is a comprehensive Python package for healthcare AI, designed for both ML researchers and healthcare and medical practitioners. PyHealth accepts diverse healthcare data such as longitudinal electronic health records (EHRs), continuous signials (ECG, EEG), and clinical notes (to be added), and supports various predictive modeling methods using deep learning and other advanced machine learning algorithms published in the literature.
+
+The library is proudly developed and maintained by researchers from Carnegie Mellon University, IQVIA, and University of Illinois at Urbana-Champaign. PyHealth makes many important healthcare tasks become accessible, such as phenotyping prediction, mortality prediction, and ICU length stay forecasting, etc. Running these prediction tasks with deep learning models can be as short as 10 lines of code in PyHealth.
+
 ## Past Guest Lectures
 
 One may find the recent guest lectures recorded at this [LINK](https://cdnapisec.kaltura.com/p/2019031/sp/201903100/embedIframeJs/uiconf_id/40436601/partner_id/2019031/widget_id/1_2ipb2j47?iframeembed=true&playerId=kaltura_player_5aaa84d737fc5&flashvars[playlistAPI.kpl0Id]=1_pjxzalrg&flashvars[playlistAPI.autoContinue]=true&flashvars[playlistAPI.autoInsert]=true&flashvars[ks]=&flashvars[localizationCode]=en&flashvars[imageDefaultDuration]=30&flashvars[leadWithHTML5]=true&flashvars[forceMobileHTML5]=true&flashvars[nextPrevBtn.plugin]=true&flashvars[sideBarContainer.plugin]=true&flashvars[sideBarContainer.position]=left&flashvars[sideBarContainer.clickToClose]=true&flashvars[chapters.plugin]=true&flashvars[chapters.layout]=vertical&flashvars[chapters.thumbnailRotator]=false&flashvars[streamSelector.plugin]=true&flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&flashvars[dualScreen.plugin]=true) with the following playlist.
